@@ -29,6 +29,6 @@ The website uses the preferred display name Julie Kumar. Publications, the CV, a
 
 The supplied CV lists accepted 2026 papers; these are not represented as already published. Selected publications are not a complete bibliography or a citation metric. The internal non-teaching statement is not published as a document.
 
-Portrait source: the owner's public faculty page, https://www.kean.edu/directory/yulia-kumar (image: /sites/default/files/2019-10/yulia_kumar.jpg). The optimized local copy avoids third-party image requests. Original project illustrations are CSS/SVG diagrams and are decorative rather than experimental results.
+Portrait source: the owner's supplied photo, IMG_2946 (1).jpeg, updated September 28, 2026. The web asset preserves the photograph, applies its recorded orientation, and is resized and compressed for loading speed with camera metadata omitted. CSS frames the photograph responsively. Original project illustrations are CSS/SVG diagrams and are decorative rather than experimental results.
 
 This is a personal site. Institutional logos are not used. Contact is the public university email.
