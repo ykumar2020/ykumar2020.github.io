@@ -79,19 +79,15 @@ if ('IntersectionObserver' in window) {
   document.querySelectorAll('main section[id]').forEach(section => observer.observe(section));
 }
 
-// Load the locally bundled 3D renderer only as the planet section approaches view.
+// The full-viewport background loads after the first paint, independent of scroll.
 const planetRoot = document.querySelector('#planetarium');
-if (planetRoot && 'IntersectionObserver' in window) {
-  const planetLoader = new IntersectionObserver(entries => {
-    if (!entries.some(entry => entry.isIntersecting)) return;
-    planetLoader.disconnect();
+if (planetRoot) {
+  setTimeout(() => {
     import('./assets/planets.js').then(module => module.mountPlanets(planetRoot)).catch(() => {
       planetRoot.dataset.state = 'fallback';
       planetRoot.querySelector('.planet-controls').hidden = true;
-      planetRoot.querySelector('.planet-status').textContent = 'Still view';
     });
-  }, { rootMargin: '250px' });
-  planetLoader.observe(planetRoot);
+  }, 150);
 }
 
 // Three-photo flip carousel. Content remains static when motion is reduced.

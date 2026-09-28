@@ -23,10 +23,7 @@ export function mountPlanets(root) {
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.25;
   const canvas = renderer.domElement;
-  canvas.tabIndex = 0;
-  canvas.setAttribute('role', 'img');
-  canvas.setAttribute('aria-label', 'Interactive 3D scene: four imagined planets orbit a golden star.');
-  canvas.setAttribute('aria-describedby', 'planet-instructions');
+  canvas.setAttribute('aria-hidden', 'true');
   host.append(canvas);
 
   const system = new THREE.Group();
@@ -122,9 +119,9 @@ export function mountPlanets(root) {
 
   let paused = motion.matches, visible = false, lost = false;
   let yaw = 0, elevation = .68, zoom = 1, elapsed = 0, frame = 0, previous = 0;
-  let dragging = null;
+
   function updateCamera() {
-    const distance = Math.max(23, 18 / camera.aspect) * zoom;
+    const distance = Math.max(20, 18 / camera.aspect) * zoom;
     camera.position.set(Math.sin(yaw) * Math.cos(elevation) * distance, Math.sin(elevation) * distance, Math.cos(yaw) * Math.cos(elevation) * distance);
     camera.lookAt(0, 0, 0);
   }
@@ -149,7 +146,7 @@ export function mountPlanets(root) {
   }
   function sync() {
     cancelAnimationFrame(frame); frame = 0; previous = performance.now();
-    toggle.textContent = paused ? 'Play orbits' : 'Pause orbits';
+    toggle.textContent = paused ? 'Play motion' : 'Pause motion';
     toggle.setAttribute('aria-pressed', String(paused));
     root.dataset.motion = paused ? 'paused' : 'playing';
     status.textContent = paused ? 'Motion paused' : 'Orbits in motion';
@@ -159,6 +156,7 @@ export function mountPlanets(root) {
     const { width, height } = host.getBoundingClientRect();
     if (!width || !height) return;
     camera.aspect = width / height; camera.updateProjectionMatrix();
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5, Math.sqrt(2000000 / (width * height))));
     renderer.setSize(width, height); render();
   }
   const resizeObserver = new ResizeObserver(resize); resizeObserver.observe(host);
@@ -169,34 +167,11 @@ export function mountPlanets(root) {
   buttons.addEventListener('click', e => {
     const action = e.target.closest('[data-orbit]')?.dataset.orbit;
     if (action === 'pause') { paused = !paused; sync(); }
+    if (action === 'left') yaw += .18;
+    if (action === 'right') yaw -= .18;
     if (action === 'in') zoom = Math.max(.7, zoom - .13);
     if (action === 'out') zoom = Math.min(1.7, zoom + .13);
     if (action === 'reset') { yaw = 0; elevation = .68; zoom = 1; elapsed = 0; }
-    render();
-  });
-  canvas.addEventListener('pointerdown', e => {
-    if (e.button !== 0) return;
-    dragging = { x: e.clientX, y: e.clientY }; canvas.setPointerCapture(e.pointerId);
-  });
-  canvas.addEventListener('pointermove', e => {
-    if (!dragging) return;
-    yaw -= (e.clientX - dragging.x) * .006;
-    if (e.pointerType !== 'touch') elevation = THREE.MathUtils.clamp(elevation + (e.clientY - dragging.y) * .004, .18, 1.3);
-    dragging = { x: e.clientX, y: e.clientY }; render();
-  });
-  const release = () => { dragging = null; };
-  canvas.addEventListener('pointerup', release); canvas.addEventListener('pointercancel', release);
-  canvas.addEventListener('lostpointercapture', release);
-  canvas.addEventListener('keydown', e => {
-    if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', '+', '-', '=', 'Home'].includes(e.key)) return;
-    e.preventDefault();
-    if (e.key === 'ArrowLeft') yaw += .12;
-    if (e.key === 'ArrowRight') yaw -= .12;
-    if (e.key === 'ArrowUp') elevation = Math.min(1.3, elevation + .1);
-    if (e.key === 'ArrowDown') elevation = Math.max(.18, elevation - .1);
-    if (e.key === '+' || e.key === '=') zoom = Math.max(.7, zoom - .13);
-    if (e.key === '-') zoom = Math.min(1.7, zoom + .13);
-    if (e.key === 'Home') { yaw = 0; elevation = .68; zoom = 1; }
     render();
   });
   canvas.addEventListener('webglcontextlost', e => {

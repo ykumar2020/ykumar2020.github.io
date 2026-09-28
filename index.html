@@ -21,6 +21,21 @@
 </head>
 <body class="relative isolate overflow-x-clip">
 <div class="cosmos" aria-hidden="true"><svg class="orbit-scene" viewBox="0 0 850 780" fill="none"><circle cx="520" cy="365" r="260" stroke="#ffe052" stroke-width="0.6"/><circle cx="520" cy="365" r="320" stroke="#91d9ff" stroke-width="0.5" stroke-dasharray="3 16"/><ellipse cx="520" cy="365" rx="355" ry="145" transform="rotate(-35 520 365)" stroke="#91d9ff" stroke-width="0.7"/><circle cx="330" cy="185" r="4" fill="#ffe052"/><circle cx="795" cy="480" r="3" fill="#91d9ff"/></svg></div>
+
+<div class="planetarium" id="planetarium" data-state="still">
+  <div class="planet-viewport" aria-hidden="true"><img class="planet-fallback" src="assets/planets-fallback.svg" alt="" width="1200" height="470"></div>
+  <div class="planet-controls" role="group" aria-label="Background planet animation controls" hidden>
+    <button type="button" data-orbit="pause" aria-pressed="false">Pause motion</button>
+    <details class="planet-options"><summary>Scene options</summary><div class="planet-options-panel">
+      <p>Imagined worlds &middot; not to scale</p>
+      <div class="planet-option-buttons">
+        <button type="button" data-orbit="left" aria-label="Rotate planets left">&#8592;</button><button type="button" data-orbit="right" aria-label="Rotate planets right">&#8594;</button>
+        <button type="button" data-orbit="in" aria-label="Zoom in on planets">+</button><button type="button" data-orbit="out" aria-label="Zoom out from planets">&minus;</button><button type="button" data-orbit="reset">Reset</button>
+      </div>
+    </div></details>
+    <span class="planet-status sr-only" aria-live="polite">Still view</span>
+  </div>
+</div>
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="nav-shell">
@@ -40,7 +55,6 @@
     <p class="hero-description">I connect research in secure, trustworthy AI with hands-on computing education—helping students ask better questions, build thoughtfully, and test what they create.</p>
     <div class="hero-roles"><span>Senior Lecturer · Kean University</span><span>ECE doctoral researcher · Rutgers University</span></div>
     <div class="hero-actions"><a class="button primary" href="#research">Explore my work <span aria-hidden="true">↗</span></a><a class="button secondary" href="documents/Yulia-Kumar-CV.pdf" target="_blank" rel="noopener">View CV <span class="file-type">PDF</span></a></div>
-    <a class="text-link planet-invite" href="#planetarium">Explore the planets <span aria-hidden="true">&#8595;</span></a>
     <div class="social-links" aria-label="Academic profiles"><a href="https://scholar.google.com/citations?user=aVmqEKgAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar ↗</a><a href="https://orcid.org/0000-0002-7621-2734" target="_blank" rel="noopener">ORCID ↗</a><a href="https://github.com/ykumar2020" target="_blank" rel="noopener">GitHub ↗</a></div>
   </div>
   <div class="hero-portrait" id="photo-carousel" role="region" aria-roledescription="carousel" aria-label="Photos of Julie Kumar">
@@ -62,23 +76,7 @@
 </section>
 <div class="credential-strip"><div class="wrap"><span>NSF CSGrad4US Fellow</span><span>IEEE Senior Member</span><span>AAAI-26 Program Committee</span><span>NCWIT North New Jersey Co-chair</span></div></div>
 
-<section class="planetarium wrap" id="planetarium" aria-labelledby="planet-title" data-state="still">
-  <div class="planet-heading"><div><p class="eyebrow">A little space for curiosity</p><h2 id="planet-title">Explore a little <em>further.</em></h2></div><p>Four imagined worlds. One shared orbit around discovery.</p></div>
-  <div class="planet-stage">
-    <div class="planet-scene-label"><span class="status-dot" aria-hidden="true"></span><span class="planet-status" aria-live="polite">Still view</span></div>
-    <div class="planet-viewport">
-      <img class="planet-fallback" src="assets/planets-fallback.svg" alt="An imagined blue ocean planet, red rocky planet, golden ringed giant, and violet ice planet orbiting a glowing star." width="1200" height="470" loading="lazy">
-    </div>
-    <div class="planet-controls" role="group" aria-label="Planet scene controls" hidden>
-      <button type="button" data-orbit="pause" aria-pressed="false">Pause orbits</button>
-      <button type="button" data-orbit="in" aria-label="Zoom in on planets">+</button>
-      <button type="button" data-orbit="out" aria-label="Zoom out from planets">&minus;</button>
-      <button type="button" data-orbit="reset">Reset view</button>
-    </div>
-    <div class="planet-legend" aria-label="Imagined planets"><span><i class="world-ocean"></i>Ocean world</span><span><i class="world-ember"></i>Ember world</span><span><i class="world-gas"></i>Ringed giant</span><span><i class="world-ice"></i>Ice world</span></div>
-  </div>
-  <div class="planet-caption"><p id="planet-instructions">Drag left or right to orbit. Keyboard: arrow keys to rotate, + / &minus; to zoom, Home to reset.</p><p>Artistic scene &middot; not to scale.</p></div>
-</section>
+
 
 <section class="section wrap about" id="about" aria-labelledby="about-title">
   <div class="section-heading"><p class="eyebrow">01 / About</p><h2 id="about-title">Where research meets<br><em>the classroom.</em></h2></div>
