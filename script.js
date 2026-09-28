@@ -93,3 +93,91 @@ if (planetRoot && 'IntersectionObserver' in window) {
   }, { rootMargin: '250px' });
   planetLoader.observe(planetRoot);
 }
+
+// Three-photo flip carousel. Content remains static when motion is reduced.
+const photoCarousel = document.querySelector('#photo-carousel');
+if (photoCarousel) {
+  const slides = [...photoCarousel.querySelectorAll('.portrait-slide')];
+  const controls = photoCarousel.querySelector('.photo-controls');
+  const pauseButton = controls.querySelector('[data-photo="pause"]');
+  const counter = photoCarousel.querySelector('.photo-count');
+  const liveStatus = photoCarousel.querySelector('.photo-status');
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  let current = 0, busy = false, paused = reducedMotion.matches;
+  let hovered = false, focused = false, visible = true, timer;
+  let animations = [];
+
+  function schedulePhoto() {
+    clearTimeout(timer);
+    pauseButton.textContent = paused ? 'Play' : 'Pause';
+    pauseButton.setAttribute('aria-label', paused ? 'Play photo rotation' : 'Pause photo rotation');
+    pauseButton.setAttribute('aria-pressed', String(paused));
+    photoCarousel.dataset.paused = String(paused);
+    if (!paused && !hovered && !focused && visible && !document.hidden && !busy) {
+      timer = setTimeout(() => showPhoto(current + 1, false), 8000);
+    }
+  }
+
+  async function flip(element, from, to) {
+    const animation = element.animate([
+      { transform: `rotateY(${from}deg)`, opacity: Math.abs(from) > 0 ? .55 : 1 },
+      { transform: `rotateY(${to}deg)`, opacity: Math.abs(to) > 0 ? .55 : 1 }
+    ], { duration: 280, easing: 'ease-in-out', fill: 'both' });
+    animations.push(animation);
+    try { await animation.finished; } catch { /* Reduced-motion changes can cancel a flip. */ }
+    return animation;
+  }
+
+  async function showPhoto(index, manual = true) {
+    if (busy) return;
+    const next = (index + slides.length) % slides.length;
+    if (next === current) return;
+    busy = true;
+    if (manual) paused = true;
+    clearTimeout(timer);
+    const oldSlide = slides[current], newSlide = slides[next];
+    try {
+      const img = newSlide.querySelector('img');
+      await img.decode();
+      if (!reducedMotion.matches) await flip(oldSlide, 0, 88);
+      oldSlide.hidden = true;
+      newSlide.hidden = false;
+      current = next;
+      photoCarousel.dataset.index = String(current);
+      counter.textContent = String(current + 1).padStart(2, '0') + ' / 03';
+      if (manual) liveStatus.textContent = 'Photo ' + (current + 1) + ' of 3. ' + img.alt;
+      if (!reducedMotion.matches) await flip(newSlide, -88, 0);
+    } catch {
+      if (manual) liveStatus.textContent = 'This photo could not load. Please try another photo.';
+    } finally {
+      animations.forEach(animation => animation.cancel()); animations = [];
+      busy = false; schedulePhoto();
+    }
+  }
+  controls.hidden = false;
+  photoCarousel.dataset.index = '0';
+  controls.addEventListener('click', event => {
+    const action = event.target.closest('[data-photo]')?.dataset.photo;
+    if (action === 'next') showPhoto(current + 1);
+    if (action === 'previous') showPhoto(current - 1);
+    if (action === 'pause') { paused = !paused; schedulePhoto(); }
+  });
+  photoCarousel.addEventListener('keydown', event => {
+    if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+      event.preventDefault(); showPhoto(current + (event.key === 'ArrowRight' ? 1 : -1));
+    }
+  });
+  photoCarousel.addEventListener('pointerenter', event => { if (event.pointerType !== 'touch') { hovered = true; schedulePhoto(); } });
+  photoCarousel.addEventListener('pointerleave', () => { hovered = false; schedulePhoto(); });
+  photoCarousel.addEventListener('focusin', () => { focused = true; schedulePhoto(); });
+  photoCarousel.addEventListener('focusout', event => { focused = photoCarousel.contains(event.relatedTarget); schedulePhoto(); });
+  document.addEventListener('visibilitychange', schedulePhoto);
+  reducedMotion.addEventListener('change', () => {
+    if (reducedMotion.matches) { paused = true; animations.forEach(animation => animation.cancel()); }
+    schedulePhoto();
+  });
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; schedulePhoto(); }, { threshold: .25 }).observe(photoCarousel);
+  }
+  schedulePhoto();
+}

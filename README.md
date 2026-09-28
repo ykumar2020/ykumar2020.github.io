@@ -36,3 +36,7 @@ This is a personal site. Institutional logos are not used. Contact is the public
 ## Interactive planets
 
 `src/planets.js` builds a fictional four-planet scene with Three.js; `npm run build:planets` bundles it into `assets/planets.js` with esbuild. The bundle loads as the section approaches view. Planet textures are generated procedurally; no third-party assets or requests are needed. Orbits stop when off-screen or the tab is hidden, rendering is capped at 30 fps and pixel ratio 1.5, and reduced-motion preference starts the scene paused. Mouse drag, horizontal touch drag, keyboard arrows, zoom, reset, and pause are supported. A static SVG remains available without JavaScript or WebGL. The scene is explicitly artistic, not to scale.
+
+## Photo carousel
+
+The homepage rotates through the owner-supplied IMG_2946 (1).jpeg, IMG_0013.jpeg, and IMG_5495.jpeg photographs. The 3:4 frame preserves the portrait composition. WebP assets apply EXIF orientation and omit camera metadata. A two-stage 3D flip runs every eight seconds, with previous/next and play/pause controls. Hover, focus, off-screen position, and hidden tabs suspend autoplay. Manual navigation pauses autoplay; reduced-motion preference starts paused and removes flipping. The initial photo remains readable without JavaScript. The social preview retains the first photo.

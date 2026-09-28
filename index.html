@@ -43,9 +43,20 @@
     <a class="text-link planet-invite" href="#planetarium">Explore the planets <span aria-hidden="true">&#8595;</span></a>
     <div class="social-links" aria-label="Academic profiles"><a href="https://scholar.google.com/citations?user=aVmqEKgAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar ↗</a><a href="https://orcid.org/0000-0002-7621-2734" target="_blank" rel="noopener">ORCID ↗</a><a href="https://github.com/ykumar2020" target="_blank" rel="noopener">GitHub ↗</a></div>
   </div>
-  <div class="hero-portrait">
-    <div class="portrait-frame"><img src="assets/julie-kumar.webp" width="1200" height="1600" alt="Julie Kumar smiling with a companion in front of a green plant display" fetchpriority="high"></div>
+  <div class="hero-portrait" id="photo-carousel" role="region" aria-roledescription="carousel" aria-label="Photos of Julie Kumar">
+    <div class="portrait-frame" id="portrait-gallery" aria-live="off">
+      <div class="portrait-slide" role="group" aria-roledescription="slide" aria-label="1 of 3"><img src="assets/julie-kumar.webp" width="1200" height="1600" alt="Julie Kumar smiling with a companion in front of a green plant display" fetchpriority="high"></div>
+      <div class="portrait-slide" role="group" aria-roledescription="slide" aria-label="2 of 3" hidden><img src="assets/julie-event.webp" width="1200" height="1600" alt="Julie with pink face paint beside a smiling child wearing blue face paint and a blue costume at an indoor event" decoding="async"></div>
+      <div class="portrait-slide" role="group" aria-roledescription="slide" aria-label="3 of 3" hidden><img src="assets/julie-conference.webp" width="1200" height="1600" alt="Julie at a technology exhibition with computing and AI booths in the background" decoding="async"></div>
+    </div>
     <div class="portrait-label"><span class="label-star" aria-hidden="true">✳</span><div>Research with purpose.<br><strong>Learning through making.</strong></div></div>
+    <div class="photo-controls" role="group" aria-label="Photo carousel controls" hidden>
+      <button type="button" data-photo="previous" aria-label="Previous photo" aria-controls="portrait-gallery">&#8592;</button>
+      <span class="photo-count" aria-hidden="true">01 / 03</span>
+      <button type="button" data-photo="next" aria-label="Next photo" aria-controls="portrait-gallery">&#8594;</button>
+      <button type="button" data-photo="pause" aria-label="Pause photo rotation" aria-pressed="false">Pause</button>
+    </div>
+    <span class="photo-status sr-only" aria-live="polite" aria-atomic="true"></span>
     <span class="portrait-coordinate" aria-hidden="true">NEW JERSEY · CONNECTED GLOBALLY</span>
   </div>
 </section>

@@ -71,10 +71,15 @@
   .status-dot { @apply mr-2 inline-block size-1.5 rounded-full bg-signal; box-shadow: 0 0 12px #ffe052aa; }
   .hero-portrait { @apply relative isolate mx-auto w-full max-w-[440px] pb-9 pl-3 pr-3 pt-3; }
   .hero-portrait::before { content: ""; @apply pointer-events-none absolute inset-x-0 bottom-7 top-0 -z-10 rounded-[26px] border border-signal/35; transform: rotate(3deg); }
-  .portrait-frame { @apply relative overflow-hidden rounded-2xl border border-line bg-panel; aspect-ratio: .92; box-shadow: 0 0 75px #416ec722; }
+  .portrait-frame { @apply relative overflow-hidden rounded-2xl border border-line bg-panel; aspect-ratio: 3 / 4; box-shadow: 0 0 75px #416ec722; perspective: 1100px; }
   .portrait-frame::after { content: ""; @apply pointer-events-none absolute inset-0; background: linear-gradient(180deg, transparent 65%, #090b12b3 100%); }
   .portrait-frame img { @apply h-full w-full object-cover object-center; }
-  .portrait-label { @apply absolute bottom-16 -left-2 z-10 flex items-center gap-3 rounded-md border border-signal/40 bg-space/95 px-5 py-4 text-[11px] leading-relaxed; box-shadow: 0 10px 35px #0006; }
+  .portrait-slide { @apply absolute inset-0; backface-visibility: hidden; transform-origin: center; }
+  .portrait-label { @apply pointer-events-none absolute bottom-36 -left-2 z-10 flex items-center gap-3 rounded-md border border-signal/40 bg-space/95 px-5 py-4 text-[11px] leading-relaxed; box-shadow: 0 10px 35px #0006; }
+  .photo-controls { @apply mt-4 flex items-center justify-center gap-2; }
+  .photo-controls button { @apply min-h-11 min-w-11 rounded-md border border-line bg-panel px-3 text-sm text-starlight transition-colors hover:border-signal hover:text-signal; }
+  .photo-controls button[data-photo="pause"] { @apply ml-2 min-w-[72px] text-xs text-signal; }
+  .photo-count { @apply px-2 font-mono text-[11px] tracking-wider text-muted; }
   .label-star { @apply text-3xl text-signal; }
   .portrait-coordinate { @apply absolute bottom-0 right-3 font-mono text-[9px] tracking-widest text-muted; }
   .credential-strip { @apply border-y border-line bg-panel/80; }
