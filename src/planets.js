@@ -145,12 +145,15 @@ export function mountPlanets(root) {
     uniforms: { time: { value: 0 } },
     vertexShader: `uniform float time; varying float brightness;
       void main() { vec4 mv = modelViewMatrix * vec4(position, 1.0);
-        brightness = .35 + .65 * pow(.5 + .5 * sin(time * 1.2 + position.x * 4.0 + position.y * 2.0), 3.0);
-        gl_PointSize = clamp(85.0 / -mv.z, 1.0, 3.2);
+        brightness = .08 + .92 * pow(.5 + .5 * sin(time * 1.6 + position.x * 4.0 + position.y * 2.0), 2.0);
+        gl_PointSize = clamp(280.0 / -mv.z, 3.0, 8.0);
         gl_Position = projectionMatrix * mv; }`,
     fragmentShader: `varying float brightness;
-      void main() { float d = length(gl_PointCoord - .5) * 2.0;
-        gl_FragColor = vec4(.55, .83, 1.0, (1.0 - smoothstep(.1, 1.0, d)) * brightness); }`,
+      void main() { vec2 uv = abs(gl_PointCoord - .5) * 2.0;
+        float core = exp(-8.0 * dot(uv,uv));
+        float rays = exp(-25.0 * min(uv.x,uv.y)) * pow(1.0-max(uv.x,uv.y),2.0);
+        vec3 tint = mix(vec3(.45,.8,1.0),vec3(1.0,.92,.65),brightness);
+        gl_FragColor = vec4(tint, min(1.0, core + rays * .75) * brightness); }`,
     transparent: true, depthWrite: false, blending: THREE.AdditiveBlending
   }));
   scene.add(starfield);

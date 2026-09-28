@@ -177,3 +177,54 @@ if (photoCarousel) {
   }
   schedulePhoto();
 }
+
+
+// Rotate the expertise cube, keeping its explanations accessible outside 3D space.
+const skillsRoot = document.querySelector('#skills-cube');
+if (skillsRoot) {
+  const cube = skillsRoot.querySelector('.skills-cube');
+  const details = [...skillsRoot.querySelectorAll('.skill-detail')];
+  const selectors = [...skillsRoot.querySelectorAll('[data-skill-select]')];
+  const pause = skillsRoot.querySelector('[data-cube="pause"]');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  const angles = [[-14,-25],[-14,-115],[-14,-205],[-14,-295],[-104,0],[76,0]];
+  let current = 0, paused = reduce.matches, visible = false, hovered = false, focused = false, timer;
+  function schedule() {
+    clearTimeout(timer);
+    pause.textContent = paused ? 'Play cube' : 'Pause cube';
+    pause.setAttribute('aria-pressed', String(paused));
+    if (!paused && visible && !hovered && !focused && !document.hidden) timer = setTimeout(() => select(current+1,false),5500);
+  }
+  function select(index, manual=true) {
+    current = (index+details.length)%details.length;
+    if (manual) paused=true;
+    const [x,y]=angles[current];
+    cube.style.transform=`rotateX(${x}deg) rotateY(${y}deg)`;
+    details.forEach((item,i)=>item.hidden=i!==current);
+    selectors.forEach((button,i)=>button.setAttribute('aria-pressed',String(i===current)));
+    skillsRoot.dataset.face=String(current);
+    if (manual) skillsRoot.querySelector('.cube-status').textContent=details[current].querySelector('h3').textContent;
+    schedule();
+  }
+  skillsRoot.querySelector('.cube-controls').hidden=false;
+  skillsRoot.querySelector('.skill-selectors').hidden=false;
+  skillsRoot.addEventListener('click',event=>{
+    const chosen=event.target.closest('[data-skill-select]');
+    if(chosen) select(Number(chosen.dataset.skillSelect));
+    const action=event.target.closest('[data-cube]')?.dataset.cube;
+    if(action==='next') select(current+1);
+    if(action==='previous') select(current-1);
+    if(action==='pause') { paused=!paused; schedule(); }
+  });
+  skillsRoot.addEventListener('keydown',event=>{
+    if(event.key==='ArrowRight'||event.key==='ArrowLeft') { event.preventDefault(); select(current+(event.key==='ArrowRight'?1:-1)); }
+  });
+  skillsRoot.addEventListener('pointerenter',e=>{if(e.pointerType!=='touch'){hovered=true;schedule();}});
+  skillsRoot.addEventListener('pointerleave',()=>{hovered=false;schedule();});
+  skillsRoot.addEventListener('focusin',()=>{focused=true;schedule();});
+  skillsRoot.addEventListener('focusout',e=>{focused=skillsRoot.contains(e.relatedTarget);schedule();});
+  document.addEventListener('visibilitychange',schedule);
+  reduce.addEventListener('change',()=>{paused=reduce.matches;schedule();});
+  new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;schedule();},{threshold:.2}).observe(skillsRoot);
+  select(0,false);
+}

@@ -50,3 +50,7 @@ Orbitron variable font gives the name and section headings a futuristic characte
 The carousel includes six supplied photographs. Added IMG_9760.jpeg (atrium), IMG_3802.jpeg (MIT sign), and IMG_0793.jpeg (research posters). Original image content is preserved, orientation normalized, and camera metadata omitted. The landscape MIT photo uses contain framing to retain both the sign and Julie. Slide counts and announcements derive from the slide collection.
 
 The full-page Three.js scene now uses cyan, pink, gold, and violet emissive planets, atmospheric rim shaders, additive halos, luminous rings, and individually twinkling stars. Planet brightness follows staggered smooth 3.5-second pulses. Pause and reduced-motion settings freeze all pulsation and orbital motion together.
+
+## Skills cube and star twinkles
+
+The research-area cards are replaced by a six-face CSS 3D cube with icons, skills, and accompanying explanations. Automatic turns occur every 5.5 seconds while visible; hover, keyboard focus, hidden tabs, and reduced-motion preference suspend automatic rotation. Previous/next, direct skill selection, arrow keys, and pause/play work without dragging. All six descriptions remain readable without JavaScript and in print. The starfield includes larger shader glints and staggered CSS sparkles tied to the background pause control.
