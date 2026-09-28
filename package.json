@@ -1,0 +1,28 @@
+{
+  "name": "julie-kumar-academic-site",
+  "version": "1.0.0",
+  "description": "Julie Kumar academic portfolio, built with Tailwind CSS",
+  "scripts": {
+    "build": "python build.py && npm run build:css",
+    "build:css": "tailwindcss -i ./src/tailwind.css -o ./styles.css --minify",
+    "watch:css": "tailwindcss -i ./src/tailwind.css -o ./styles.css --watch",
+    "preview": "python -m http.server 8091 --bind 127.0.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ykumar2020/ykumar2020.github.io.git"
+  },
+  "keywords": [],
+  "author": "Julie Kumar",
+  "license": "UNLICENSED",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ykumar2020/ykumar2020.github.io/issues"
+  },
+  "homepage": "https://ykumar2020.github.io/",
+  "devDependencies": {
+    "@tailwindcss/cli": "4.3.3",
+    "tailwindcss": "4.3.3"
+  },
+  "private": true
+}

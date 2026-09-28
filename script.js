@@ -9,7 +9,7 @@ menuButton.addEventListener('click', () => {
 });
 navigation.addEventListener('click', event => { if (event.target.closest('a')) closeMenu(); });
 document.addEventListener('keydown', event => { if (event.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') { closeMenu(); menuButton.focus(); } });
-window.matchMedia('(min-width: 821px)').addEventListener('change', closeMenu);
+window.matchMedia('(min-width: 1024px)').addEventListener('change', closeMenu);
 const papers = [...document.querySelectorAll('.paper')];
 const filters = [...document.querySelectorAll('.filter')];
 const search = document.querySelector('#publication-search');

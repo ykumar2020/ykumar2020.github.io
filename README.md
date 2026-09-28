@@ -1,16 +1,18 @@
-# Yulia Kumar — academic website
+# Julie Kumar — academic website
 
 Live site: https://ykumar2020.github.io/
 
-A responsive academic portfolio built with semantic HTML, CSS, and small vanilla JavaScript enhancements. No frontend framework, paid hosting, analytics, external font requests, or runtime build service is required.
+A responsive academic portfolio built with Tailwind CSS 4, semantic HTML, and small vanilla JavaScript enhancements. The dark space theme uses gold, coral, and blue accents inspired by Lightning CSS. All styling is compiled locally; there is no browser-side Tailwind CDN or runtime framework.
 
 ## Edit and preview
 
 - Edit template.html for biography, research, teaching, experience, and service.
 - Edit data/publications.json for selected publications. Preserve accepted/published status and publisher links.
-- Run python build.py to regenerate index.html. Commit index.html together with source changes.
+- Install Node.js 22+ and Python 3, then run `npm ci` once.
+- Run `npm run build` to regenerate index.html and compile/minify styles.css. Commit both outputs together with source changes.
 - Run python -m http.server 8091 and open http://localhost:8091/.
-- Edit styles.css for design and script.js for filters/navigation.
+- Edit `src/tailwind.css` for Tailwind theme tokens and component utilities, and script.js for filters/navigation. Do not edit generated styles.css directly.
+- `npm run watch:css` rebuilds styles during design work; `npm run preview` serves the site locally.
 - Replace documents/Yulia-Kumar-CV.pdf when the CV changes. Keep personal contact details appropriate for public release.
 
 GitHub Pages serves the root of the main branch. The .nojekyll file disables Jekyll processing. Pushing main updates the site.
@@ -22,6 +24,8 @@ Mobile navigation; keyboard focus and skip link; native expandable teaching sect
 ## Content and assets
 
 Content is based on the owner-supplied 2026 CV, 2025 non-teaching effectiveness statement, and NSF synergistic activities statement. Education uses the newer CV's 2026 M.S. listing and explicitly marks the ECE Ph.D. as in progress.
+
+The website uses the preferred display name Julie Kumar. Publications, the CV, and structured academic identity retain Yulia Kumar; structured data also records Julie as the alternate name.
 
 The supplied CV lists accepted 2026 papers; these are not represented as already published. Selected publications are not a complete bibliography or a citation metric. The internal non-teaching statement is not published as a document.
 
