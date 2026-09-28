@@ -1,22 +1,1289 @@
 [
-  {"year":2026,"title":"The LLM Story: A Data-Bound Visual Narrative for Transformer Education and Preliminary Diagnostics","authors":"Y. Kumar, D. Kruger, J. J. Li, and S. Ghosh","venue":"IEEE ISAIA 2026","status":"Accepted","topic":"Education","url":"https://www.youtube.com/watch?v=PHBoa0n2Pgs","linkLabel":"Watch the visualization"},
-  {"year":2026,"title":"A Periodic Table of Data Poisoning","authors":"Y. Kumar, A. Luna, D. Kruger, J. J. Li, S. Sengupta, and H. Abdalla","venue":"IEEE ISAIA 2026","status":"Accepted","topic":"Trustworthy AI","url":"https://github.com/ykumar2020/datapoisontable","linkLabel":"Explore the project"},
-  {"year":2026,"title":"AutoNutriFact Agentic Lab: Scoring Evidential Truth in Diabetes Nutrition RAG Pipelines","authors":"Y. Kumar, D. Kruger, J. J. Li, R. Thandra, S. Pandey, S. Guzman, J. Marchena, and S. Ghosh","venue":"IEEE ISAIA 2026","status":"Accepted","topic":"Agentic AI","url":"","linkLabel":""},
-  {"year":2026,"title":"Can LLMs Estimate Scale from 3D Meshes?","authors":"H. Rivera, Y. Kumar, D. Kruger, and J. J. Li","venue":"IEEE ISAIA 2026","status":"Accepted","topic":"Multimodal AI","url":"","linkLabel":""},
-  {"year":2026,"title":"A Student-Friendly Quantum NLP Pipeline","authors":"Y. Kumar, D. Lambropoulos, J. Hay, J. Cunha, K. Ponze, J. J. Li, and D. Kruger","venue":"IEEE ISEC 2026","status":"Accepted · CV listing","topic":"Education","url":"","linkLabel":""},
-  {"year":2026,"title":"Authenticating Matryoshka Nesting Dolls via an Auditable 2D–3D–Text Evidence Framework with BMA Compression and Zero-Shot 3D Completion","authors":"Y. Kumar and S. Sengupta","venue":"Electronics 15(5), 992","status":"Published","topic":"Multimodal AI","url":"https://doi.org/10.3390/electronics15050992","linkLabel":"Read paper"},
-  {"year":2026,"title":"A Systematic Analysis of AGI and ASI Existential Risk Scenarios","authors":"Y. Kumar, J. J. Li, and D. Kruger","venue":"AI Revolution: Research, Ethics and Society · Springer","status":"Published","topic":"Trustworthy AI","url":"https://doi.org/10.1007/978-3-032-12313-8_2","linkLabel":"Read chapter"},
-  {"year":2026,"title":"Data Compression for AI Model Training","authors":"D. Kruger, Y. Kumar, and J. J. Li","venue":"Data Compression Conference (DCC), p. 444","status":"Published","topic":"AI Systems","url":"https://doi.org/10.1109/DCC66757.2026.00071","linkLabel":"Read paper"},
-  {"year":2026,"title":"Preliminary Results of LLM Vulnerability Testing in Less Common Languages","authors":"Y. Kumar, J. Mardi, G. Yang, D. Kruger, and J. J. Li","venue":"Applied Cognitive Computing and Artificial Intelligence · Springer","status":"Published","topic":"Trustworthy AI","url":"https://doi.org/10.1007/978-3-032-22205-3_17","linkLabel":"Read chapter"},
-  {"year":2025,"title":"AdversaGuard: A Distributed Data-Poisoning Benchmark for Parallel AI","authors":"Y. Kumar, S. Thomas, D. Gayle, J. J. Li, and D. Kruger","venue":"SC25 · Research poster","status":"Poster","topic":"Trustworthy AI","url":"https://sc25.supercomputing.org/proceedings/posters/poster_files/post110s2-file3.pdf","linkLabel":"View poster"},
-  {"year":2025,"title":"Comparative Analysis of RAG-Based Methods for Multilingual SwarmLexAI","authors":"Y. Kumar, J. Marchena, S. Guzman, D. Kruger, and J. J. Li","venue":"Intelligent Systems Conference · Springer","status":"Published","topic":"Agentic AI","url":"https://doi.org/10.1007/978-3-032-07109-5_16","linkLabel":"Read chapter"},
-  {"year":2025,"title":"Real-Time Object Detection and Skeletonization for Motion Prediction in Video Streaming","authors":"G. Wong, Y. Kumar, J. J. Li, and D. Kruger","venue":"AAAI 39(28), 29712–29714","status":"Published","topic":"Multimodal AI","url":"https://ojs.aaai.org/index.php/AAAI/article/view/35376","linkLabel":"Read paper"},
-  {"year":2025,"title":"Evaluating the Advantage of an AI-Native IDE Cursor on Programmer Performance","authors":"Y. Kumar, I. Akinwunmi, and D. Kruger","venue":"IEEE Integrated STEM Education Conference","status":"Published","topic":"Education","url":"https://doi.org/10.1109/ISEC64801.2025.11147402","linkLabel":"Read paper"},
-  {"year":2025,"title":"Enhanced Privacy-Preserving Architecture for Fundus Disease Diagnosis with Federated Learning","authors":"R. Jiang, Y. Kumar, and D. Kruger","venue":"Applied Sciences 15(6), 3004","status":"Published","topic":"Trustworthy AI","url":"https://doi.org/10.3390/app15063004","linkLabel":"Read paper"},
-  {"year":2024,"title":"The AI-Powered Evolution of Big Data","authors":"Y. Kumar, J. Marchena, A. H. Awlla, J. J. Li, and H. B. Abdalla","venue":"Applied Sciences 14(22), 10176","status":"Published","topic":"AI Systems","url":"https://doi.org/10.3390/app142210176","linkLabel":"Read paper"},
-  {"year":2024,"title":"A Comprehensive Review of AI Advancement Using testFAILS and testFAILS-2 for the Pursuit of AGI","authors":"Y. Kumar, M. Lin, C. Paredes, D. Li, G. Yang, D. Kruger, J. J. Li, and P. Morreale","venue":"Electronics 13(24), 4991","status":"Published","topic":"Trustworthy AI","url":"https://doi.org/10.3390/electronics13244991","linkLabel":"Read paper"},
-  {"year":2024,"title":"Adversarial Testing of LLMs Across Multiple Languages","authors":"Y. Kumar, C. Paredes, G. Yang, J. J. Li, and P. Morreale","venue":"IEEE International Symposium on Networks, Computers and Communications","status":"Published","topic":"Trustworthy AI","url":"https://ieeexplore.ieee.org/document/10758949","linkLabel":"Read paper"},
-  {"year":2024,"title":"Assessing the Impact of Professional Development on K-12 CS Education: A One-Year Follow-Up Survey Analysis","authors":"Y. Kumar, A. Manikandan, E. Kupershtein, J. J. Li, and P. Morreale","venue":"IEEE Integrated STEM Education Conference","status":"Published","topic":"Education","url":"https://ieeexplore.ieee.org/document/10665196","linkLabel":"Read paper"},
-  {"year":2024,"title":"Applying Swin Architecture to Diverse Sign Language Datasets","authors":"Y. Kumar, K. Huang, C. C. Lin, A. Watson, J. J. Li, P. Morreale, and J. Delgado","venue":"Electronics 13(8), 1509","status":"Published","topic":"Multimodal AI","url":"https://doi.org/10.3390/electronics13081509","linkLabel":"Read paper"},
-  {"year":2023,"title":"A Testing Framework for AI Linguistic Systems (testFAILS)","authors":"Y. Kumar, P. Morreale, P. Sorial, J. Delgado, J. J. Li, and P. Martins","venue":"Electronics 12(14), 3095","status":"Published","topic":"Trustworthy AI","url":"https://doi.org/10.3390/electronics12143095","linkLabel":"Read paper"}
+  {
+    "id": "cv-01",
+    "year": 2026,
+    "title": "The LLM Story: A Data-Bound Visual Narrative for Transformer Education and Preliminary Diagnostics",
+    "venue": "IEEE ISAIA 2026",
+    "topic": "Education",
+    "status": "Accepted",
+    "url": "https://www.youtube.com/watch?v=PHBoa0n2Pgs",
+    "linkLabel": "Watch the visualization",
+    "sources": [
+      "2026 CV, entry 1"
+    ],
+    "cvIndex": 1,
+    "authors": "Y. Kumar, D. Kruger, J. J. Li, and S. Ghosh"
+  },
+  {
+    "id": "cv-02",
+    "year": 2026,
+    "title": "Can LLMs Estimate Scale from 3D Meshes?",
+    "venue": "IEEE ISAIA 2026",
+    "topic": "Multimodal AI",
+    "status": "Accepted",
+    "url": "",
+    "linkLabel": "",
+    "sources": [
+      "2026 CV, entry 2"
+    ],
+    "cvIndex": 2,
+    "authors": "H. Rivera, Y. Kumar, D. Kruger, and J. J. Li"
+  },
+  {
+    "id": "cv-03",
+    "year": 2026,
+    "title": "A Periodic Table of Data Poisoning",
+    "venue": "IEEE ISAIA 2026",
+    "topic": "Trustworthy AI",
+    "status": "Accepted",
+    "url": "https://github.com/ykumar2020/datapoisontable",
+    "linkLabel": "Explore the project",
+    "sources": [
+      "2026 CV, entry 3"
+    ],
+    "cvIndex": 3,
+    "authors": "Y. Kumar, A. Luna, D. Kruger, J. J. Li, S. Sengupta, and H. Abdalla"
+  },
+  {
+    "id": "cv-04",
+    "year": 2026,
+    "title": "Auditing Occupational Score Stratification in Category-Visible LLM Resume Screening",
+    "venue": "IEEE ISAIA 2026",
+    "topic": "Trustworthy AI",
+    "status": "Accepted",
+    "url": "",
+    "linkLabel": "",
+    "sources": [
+      "2026 CV, entry 4"
+    ],
+    "cvIndex": 4,
+    "authors": "D. Li, G. Yang, Y. Kumar, J. J. Li, and D. Kruger"
+  },
+  {
+    "id": "cv-05",
+    "year": 2026,
+    "title": "Optimization of Stability-Aware Self-Organizing Maps for Interdisciplinary Applications",
+    "venue": "IEEE ISAIA 2026",
+    "topic": "AI Systems",
+    "status": "Accepted",
+    "url": "",
+    "linkLabel": "",
+    "sources": [
+      "2026 CV, entry 5"
+    ],
+    "cvIndex": 5,
+    "authors": "G. Yang, D. Li, Y. Kumar, D. Kruger, J. J. Li, H. Abdalla, and Y. S. Chung"
+  },
+  {
+    "id": "cv-06",
+    "year": 2026,
+    "title": "AutoNutriFact Agentic Lab: Scoring Evidential Truth in Diabetes Nutrition RAG Pipelines",
+    "venue": "IEEE ISAIA 2026",
+    "topic": "Agentic AI",
+    "status": "Accepted",
+    "url": "",
+    "linkLabel": "",
+    "sources": [
+      "2026 CV, entry 6"
+    ],
+    "cvIndex": 6,
+    "authors": "Y. Kumar, D. Kruger, J. J. Li, R. Thandra, S. Pandey, S. Guzman, J. Marchena, and S. Ghosh"
+  },
+  {
+    "id": "cv-07",
+    "year": 2026,
+    "title": "Compiler-in-the-Loop Synthesis of GLSL Shaders and CMake Build Files with Local LLMs",
+    "venue": "IEEE ISAIA 2026",
+    "topic": "Agentic AI",
+    "status": "Accepted",
+    "url": "",
+    "linkLabel": "",
+    "sources": [
+      "2026 CV, entry 7"
+    ],
+    "cvIndex": 7,
+    "authors": "S. Ghosh, D. Kruger, J. J. Li, Y. Kumar, D. Sinnreich-Levi, K. August, and M. Striki"
+  },
+  {
+    "id": "cv-08",
+    "year": 2026,
+    "title": "AI Assisted Generation of Educational Software Components",
+    "venue": "IEEE ISAIA 2026",
+    "topic": "Education",
+    "status": "Accepted",
+    "url": "",
+    "linkLabel": "",
+    "sources": [
+      "2026 CV, entry 8"
+    ],
+    "cvIndex": 8,
+    "authors": "D. Kruger, S. Ghosh, Y. Kumar, D. Sinnreich-Levi, J. J. Li, K. August, M. Striki, and V. Lawrence"
+  },
+  {
+    "id": "cv-09",
+    "year": 2026,
+    "title": "IDoc: Single-Source Authoring of Interactive, Accessible, Auto-Graded Documents",
+    "venue": "IEEE ISAIA 2026",
+    "topic": "Education",
+    "status": "Accepted",
+    "url": "",
+    "linkLabel": "",
+    "sources": [
+      "2026 CV, entry 9"
+    ],
+    "cvIndex": 9,
+    "authors": "D. Kruger, S. Ghosh, D. Sinnreich-Levi, M. Striki, J. J. Li, Y. Kumar, K. August, and V. Lawrence"
+  },
+  {
+    "id": "cv-10",
+    "year": 2026,
+    "title": "A Systematic Analysis of AGI and ASI Existential Risk Scenarios",
+    "venue": "AI Revolution: Research, Ethics and Society, CCIS 2721, Springer",
+    "topic": "Trustworthy AI",
+    "status": "Published",
+    "url": "https://doi.org/10.1007/978-3-032-12313-8_2",
+    "linkLabel": "Read chapter",
+    "sources": [
+      "2026 CV, entry 10",
+      "https://orcid.org/0000-0002-7621-2734"
+    ],
+    "cvIndex": 10,
+    "authors": "Y. Kumar, J. J. Li, and D. Kruger"
+  },
+  {
+    "id": "cv-11",
+    "year": 2026,
+    "title": "Data Compression for AI Model Training",
+    "venue": "Data Compression Conference (DCC), p. 444",
+    "topic": "AI Systems",
+    "status": "Published",
+    "url": "https://doi.org/10.1109/DCC66757.2026.00071",
+    "linkLabel": "Read paper",
+    "sources": [
+      "2026 CV, entry 11",
+      "https://api.crossref.org/works/10.1109/dcc66757.2026.00071"
+    ],
+    "cvIndex": 11,
+    "authors": "Dov Kruger, Yulia Kumar, J. Jenny Li"
+  },
+  {
+    "id": "cv-12",
+    "year": 2026,
+    "title": "Preliminary Results of LLM Vulnerability Testing in Less Common Languages",
+    "venue": "Applied Cognitive Computing and Artificial Intelligence, CCIS 2933, pp. 235-245, Springer",
+    "topic": "Trustworthy AI",
+    "status": "Published",
+    "url": "https://doi.org/10.1007/978-3-032-22205-3_17",
+    "linkLabel": "Read chapter",
+    "sources": [
+      "2026 CV, entry 12",
+      "https://orcid.org/0000-0002-7621-2734",
+      "https://api.crossref.org/works/10.1007/978-3-032-22205-3_17"
+    ],
+    "cvIndex": 12,
+    "authors": "Yulia Kumar, James Mardi, Guohao Yang, Dov Kruger, J. Jenny Li"
+  },
+  {
+    "id": "cv-13",
+    "year": 2026,
+    "title": "Collaborative Human-AI ageNt Swarm for Conducting Scientific Research",
+    "venue": "22nd International Conference on Intelligent Environments",
+    "topic": "Agentic AI",
+    "status": "Accepted",
+    "url": "",
+    "linkLabel": "",
+    "sources": [
+      "2026 CV, entry 13"
+    ],
+    "cvIndex": 13,
+    "authors": "W. Villalobos, Y. Kumar, D. Kruger, J. J. Li, and J. Marchena",
+    "note": "Related conference records appear under Intelligent Environments and ICDS in the CV."
+  },
+  {
+    "id": "cv-14",
+    "year": 2026,
+    "title": "Human-Educator-In-The-Loop for Teaching with AutoML",
+    "venue": "IEEE Integrated STEM Education Conference (ISEC)",
+    "topic": "Education",
+    "status": "Accepted",
+    "url": "",
+    "linkLabel": "",
+    "sources": [
+      "2026 CV, entry 14"
+    ],
+    "cvIndex": 14,
+    "authors": "J. Loja, Y. Kumar, J. J. Li, and D. Kruger"
+  },
+  {
+    "id": "cv-15",
+    "year": 2026,
+    "title": "Gamified Signal Processing Trainer with Interactive Visualizations and AI",
+    "venue": "IEEE Integrated STEM Education Conference (ISEC)",
+    "topic": "Education",
+    "status": "Accepted",
+    "url": "",
+    "linkLabel": "",
+    "sources": [
+      "2026 CV, entry 15"
+    ],
+    "cvIndex": 15,
+    "authors": "M. Hagg, Y. Kumar, J. J. Li, and D. Kruger"
+  },
+  {
+    "id": "cv-16",
+    "year": 2026,
+    "title": "A Student-Friendly Quantum NLP Pipeline",
+    "venue": "IEEE Integrated STEM Education Conference (ISEC)",
+    "topic": "Education",
+    "status": "Accepted",
+    "url": "",
+    "linkLabel": "",
+    "sources": [
+      "2026 CV, entry 16"
+    ],
+    "cvIndex": 16,
+    "authors": "Y. Kumar, D. Lambropoulos, J. Hay, J. Cunha, K. Ponze, J. J. Li, and D. Kruger"
+  },
+  {
+    "id": "cv-17",
+    "year": 2026,
+    "title": "Kuiper TTS: Making Legacy Scientific Papers Accessible by Converting Equations into Spoken Language",
+    "venue": "IEEE Integrated STEM Education Conference (ISEC)",
+    "topic": "Education",
+    "status": "Accepted",
+    "url": "",
+    "linkLabel": "",
+    "sources": [
+      "2026 CV, entry 17"
+    ],
+    "cvIndex": 17,
+    "authors": "S. Ghosh, D. Kruger, M. Be, Y. Kumar, et al."
+  },
+  {
+    "id": "cv-18",
+    "year": 2026,
+    "title": "Read the Math: Improving Mathematics Education Using Vision-Accessibility Techniques",
+    "venue": "IEEE Integrated STEM Education Conference (ISEC)",
+    "topic": "Education",
+    "status": "Accepted",
+    "url": "",
+    "linkLabel": "",
+    "sources": [
+      "2026 CV, entry 18"
+    ],
+    "cvIndex": 18,
+    "authors": "K. G. August, D. Kruger, D. Lambropoulos, T. M. Willis III, J. Komitas, J. J. Li, V. B. Lawrence, A. D. Dhillon, Y. Kumar, S. Ghosh, and M. Be"
+  },
+  {
+    "id": "cv-19",
+    "year": 2026,
+    "title": "Authenticating Matryoshka Nesting Dolls via an Auditable 2D–3D–Text Evidence Framework with BMA Compression and Zero-Shot 3D Completion",
+    "venue": "Electronics 15(5), 992",
+    "topic": "Multimodal AI",
+    "status": "Published",
+    "url": "https://doi.org/10.3390/electronics15050992",
+    "linkLabel": "Read paper",
+    "sources": [
+      "2026 CV, entry 19",
+      "https://orcid.org/0000-0002-7621-2734",
+      "https://api.crossref.org/works/10.3390/electronics15050992"
+    ],
+    "cvIndex": 19,
+    "authors": "Yulia Kumar, Srotriyo Sengupta"
+  },
+  {
+    "id": "cv-20",
+    "year": 2026,
+    "title": "Authenticating Matryoshka Nesting Dolls via MML-LLM-Zero-shot 3D Reconstruction",
+    "venue": "Preprints.org",
+    "topic": "Multimodal AI",
+    "status": "Preprint",
+    "url": "https://doi.org/10.20944/preprints202602.0036.v1",
+    "linkLabel": "Read preprint",
+    "sources": [
+      "2026 CV, entry 20",
+      "https://orcid.org/0000-0002-7621-2734",
+      "https://api.crossref.org/works/10.20944/preprints202602.0036.v1"
+    ],
+    "cvIndex": 20,
+    "authors": "Yulia Kumar, Srotriyo Sengupta",
+    "note": "Earlier preprint; superseded by the Electronics 2026 article."
+  },
+  {
+    "id": "cv-21",
+    "year": 2026,
+    "title": "Beyond Realism: A Utility-Fidelity-Privacy Framework for Trustworthy Synthetic Data",
+    "venue": "Journal of Data and Information Science",
+    "topic": "Trustworthy AI",
+    "status": "Published",
+    "url": "https://doi.org/10.1515/jdis-2026-0038",
+    "linkLabel": "View publication",
+    "sources": [
+      "2026 CV, entry 21",
+      "https://api.crossref.org/works/10.1515/jdis-2026-0038"
+    ],
+    "cvIndex": 21,
+    "authors": "Hemn Barzan Abdalla, Yulia Kumar, J. Jenny Li, Dov Kruger, Kennedy Ehimwenma"
+  },
+  {
+    "id": "cv-23",
+    "year": 2026,
+    "title": "A Multi-model Comparison of RAG Methods for Grant Requirement Extraction via SolicitationWizard",
+    "venue": "Intelligent Systems Conference, Springer",
+    "topic": "Agentic AI",
+    "status": "CV listing",
+    "url": "",
+    "linkLabel": "",
+    "sources": [
+      "2026 CV, entry 23"
+    ],
+    "cvIndex": 23,
+    "authors": "Y. Kumar, J. Marchena, D. Kruger, and J. J. Li",
+    "note": "Listed in the CV; publication status has not been independently confirmed."
+  },
+  {
+    "id": "cv-24",
+    "year": 2026,
+    "title": "Collaborative Human-AI ageNt Swarm for Conducting Scientific Research",
+    "venue": "20th International Conference on Digital Society (ICDS), pp. 8-15",
+    "topic": "Agentic AI",
+    "status": "Published",
+    "url": "",
+    "linkLabel": "",
+    "sources": [
+      "2026 CV, entry 24"
+    ],
+    "cvIndex": 24,
+    "authors": "W. Villalobos, Y. Kumar, J. Marchena, J. J. Li, and D. Kruger",
+    "note": "Related conference records appear under Intelligent Environments and ICDS in the CV."
+  },
+  {
+    "id": "cv-25",
+    "year": 2026,
+    "title": "Semi-Autonomous Harness DRAG for Repeatable Multilingual Robust Testing of LLMs",
+    "venue": "26th International Conference on Software Quality, Reliability and Security (QRS)",
+    "topic": "Trustworthy AI",
+    "status": "To appear",
+    "url": "",
+    "linkLabel": "",
+    "sources": [
+      "2026 CV, entry 25"
+    ],
+    "cvIndex": 25,
+    "authors": "Y. Kumar, C. Paredes, M. Elhowary, D. Kruger, and J. J. Li"
+  },
+  {
+    "id": "cv-22",
+    "year": 2026,
+    "title": "Enhancing Airborne Surveillance with Live Feedback via Multimodal Skeleton-Based Pipeline",
+    "venue": "Manuscript in preparation (IEEE Access listed as target venue in CV)",
+    "topic": "Multimodal AI",
+    "status": "Work in progress",
+    "url": "",
+    "linkLabel": "",
+    "sources": [
+      "2026 CV, entry 22"
+    ],
+    "cvIndex": 22,
+    "authors": "Y. Kumar, G. Garcia-Vargas, J. J. Li, D. Kruger, and S. Aggarewal",
+    "note": "Work in progress, not a published or accepted article."
+  },
+  {
+    "id": "cv-26",
+    "year": 2025,
+    "title": "AdversaGuard: A Distributed Data-Poisoning Benchmark for Parallel AI",
+    "venue": "SC25 research poster",
+    "topic": "Trustworthy AI",
+    "status": "Poster",
+    "url": "https://sc25.supercomputing.org/proceedings/posters/poster_files/post110s2-file3.pdf",
+    "linkLabel": "View poster",
+    "sources": [
+      "2026 CV, entry 24"
+    ],
+    "cvIndex": 26,
+    "authors": "Y. Kumar, S. Thomas, D. Gayle, J. J. Li, and D. Kruger"
+  },
+  {
+    "id": "cv-27",
+    "year": 2025,
+    "title": "Comparative Analysis of RAG-Based Methods for Multilingual SwarmLexAI",
+    "venue": "Intelligent Systems Conference, pp. 229-245, Springer",
+    "topic": "Agentic AI",
+    "status": "Published",
+    "url": "https://doi.org/10.1007/978-3-032-07109-5_16",
+    "linkLabel": "Read chapter",
+    "sources": [
+      "2026 CV, entry 25",
+      "https://api.crossref.org/works/10.1007/978-3-032-07109-5_16"
+    ],
+    "cvIndex": 27,
+    "authors": "Yulia Kumar, Jose Marchena, Stephany Guzman, Dov Kruger, J. Jenny Li"
+  },
+  {
+    "id": "cv-28",
+    "year": 2025,
+    "title": "Cross-Lingual and Multimodal Cyberbullying and Bias Detection and Content Generation via CyberGenDet",
+    "venue": "Intelligent Systems Conference, pp. 210-224, Springer",
+    "topic": "Trustworthy AI",
+    "status": "Published",
+    "url": "https://doi.org/10.1007/978-3-031-99965-9_14",
+    "linkLabel": "View publication",
+    "sources": [
+      "2026 CV, entry 26",
+      "https://orcid.org/0000-0002-7621-2734",
+      "https://api.crossref.org/works/10.1007/978-3-031-99965-9_14"
+    ],
+    "cvIndex": 28,
+    "authors": "Guohao Yang, Hemn Abdalla, Yulia Kumar, Dov Kruger, J. Jenny Li"
+  },
+  {
+    "id": "cv-29",
+    "year": 2025,
+    "title": "Parametric Matching for Improved Data Compression",
+    "venue": "Data Compression Conference (DCC), p. 383",
+    "topic": "AI Systems",
+    "status": "Published",
+    "url": "https://doi.org/10.1109/DCC62719.2025.00070",
+    "linkLabel": "View publication",
+    "sources": [
+      "2026 CV, entry 27",
+      "https://orcid.org/0000-0002-7621-2734"
+    ],
+    "cvIndex": 29,
+    "authors": "D. Kruger, Y. Kumar, and J. J. Li"
+  },
+  {
+    "id": "cv-30",
+    "year": 2025,
+    "title": "Real-Time Object Detection and Skeletonization for Motion Prediction in Video Streaming",
+    "venue": "AAAI 39(28), pp. 29712-29714",
+    "topic": "Multimodal AI",
+    "status": "Published",
+    "url": "https://doi.org/10.1609/aaai.v39i28.35376",
+    "linkLabel": "Read paper",
+    "sources": [
+      "2026 CV, entry 28",
+      "https://orcid.org/0000-0002-7621-2734",
+      "https://api.crossref.org/works/10.1609/aaai.v39i28.35376"
+    ],
+    "cvIndex": 30,
+    "authors": "Gavin Wong, Yulia Kumar, J.Jenny Li, Dov Kruger"
+  },
+  {
+    "id": "cv-31",
+    "year": 2025,
+    "title": "Text-to-Sign Language Video Generation Using GANs, BERT, and Sora",
+    "venue": "IEEE Integrated STEM Education Conference (ISEC), pp. 1-4",
+    "topic": "Multimodal AI",
+    "status": "Published",
+    "url": "https://doi.org/10.1109/isec64801.2025.11147381",
+    "linkLabel": "View publication",
+    "sources": [
+      "2026 CV, entry 29",
+      "https://orcid.org/0000-0002-7621-2734",
+      "https://api.crossref.org/works/10.1109/isec64801.2025.11147381"
+    ],
+    "cvIndex": 31,
+    "authors": "Yulia Kumar, Beining Niu, Mengtian Lin, Nidhi Mudholker"
+  },
+  {
+    "id": "cv-32",
+    "year": 2025,
+    "title": "Preliminary Results of Emotions Detection with AMIGO App",
+    "venue": "IEEE Integrated STEM Education Conference (ISEC), pp. 1-4",
+    "topic": "Multimodal AI",
+    "status": "Published",
+    "url": "https://doi.org/10.1109/isec64801.2025.11147309",
+    "linkLabel": "View publication",
+    "sources": [
+      "2026 CV, entry 30",
+      "https://orcid.org/0000-0002-7621-2734",
+      "https://api.crossref.org/works/10.1109/isec64801.2025.11147309"
+    ],
+    "cvIndex": 32,
+    "authors": "Yulia Kumar, Dov Kruger, Jose Marchena, J. Jenny Li"
+  },
+  {
+    "id": "cv-33",
+    "year": 2025,
+    "title": "Evaluating the Advantage of an AI-Native IDE Cursor on Programmer Performance",
+    "venue": "IEEE Integrated STEM Education Conference (ISEC), pp. 1-8",
+    "topic": "Education",
+    "status": "Published",
+    "url": "https://doi.org/10.1109/ISEC64801.2025.11147402",
+    "linkLabel": "Read paper",
+    "sources": [
+      "2026 CV, entry 31",
+      "https://orcid.org/0000-0002-7621-2734"
+    ],
+    "cvIndex": 33,
+    "authors": "Y. Kumar, I. Akinwunmi, and D. Kruger"
+  },
+  {
+    "id": "cv-34",
+    "year": 2025,
+    "title": "Enhanced Privacy-Preserving Architecture for Fundus Disease Diagnosis with Federated Learning",
+    "venue": "Applied Sciences 15(6), 3004",
+    "topic": "Trustworthy AI",
+    "status": "Published",
+    "url": "https://doi.org/10.3390/app15063004",
+    "linkLabel": "Read paper",
+    "sources": [
+      "2026 CV, entry 32",
+      "https://orcid.org/0000-0002-7621-2734",
+      "https://api.crossref.org/works/10.3390/app15063004"
+    ],
+    "cvIndex": 34,
+    "authors": "Raymond Jiang, Yulia Kumar, Dov Kruger",
+    "related": [
+      {
+        "label": "Earlier preprint",
+        "url": "https://doi.org/10.20944/preprints202501.1357.v1"
+      }
+    ]
+  },
+  {
+    "id": "cv-35",
+    "year": 2025,
+    "title": "The Future of Artificial Intelligence in the Face of Data Scarcity",
+    "venue": "Computers, Materials & Continua 84(1)",
+    "topic": "AI Systems",
+    "status": "Published",
+    "url": "https://doi.org/10.32604/cmc.2025.063551",
+    "linkLabel": "View publication",
+    "sources": [
+      "2026 CV, entry 33",
+      "https://orcid.org/0000-0002-7621-2734"
+    ],
+    "cvIndex": 35,
+    "authors": "H. B. Abdalla, Y. Kumar, J. Marchena, S. Guzman, A. Awlla, M. Gheisari, and M. Cheraghy"
+  },
+  {
+    "id": "cv-36",
+    "year": 2025,
+    "title": "A Comprehensive Survey of MapReduce Models for Processing Big Data",
+    "venue": "Big Data and Cognitive Computing 9(4), 77",
+    "topic": "AI Systems",
+    "status": "Published",
+    "url": "https://doi.org/10.3390/bdcc9040077",
+    "linkLabel": "View publication",
+    "sources": [
+      "2026 CV, entry 34",
+      "https://orcid.org/0000-0002-7621-2734",
+      "https://api.crossref.org/works/10.3390/bdcc9040077"
+    ],
+    "cvIndex": 36,
+    "authors": "Hemn Barzan Abdalla, Yulia Kumar, Yue Zhao, Davide Tosi"
+  },
+  {
+    "id": "cv-37",
+    "year": 2024,
+    "title": "The AI-Powered Evolution of Big Data",
+    "venue": "Applied Sciences 14(22), 10176",
+    "topic": "AI Systems",
+    "status": "Published",
+    "url": "https://doi.org/10.3390/app142210176",
+    "linkLabel": "Read paper",
+    "sources": [
+      "2026 CV, entry 35",
+      "https://orcid.org/0000-0002-7621-2734",
+      "https://api.crossref.org/works/10.3390/app142210176"
+    ],
+    "cvIndex": 37,
+    "authors": "Yulia Kumar, Jose Marchena, Ardalan H. Awlla, J. Jenny Li, Hemn Barzan Abdalla"
+  },
+  {
+    "id": "cv-38",
+    "year": 2024,
+    "title": "A Comprehensive Review of AI Advancement Using testFAILS and testFAILS-2 for the Pursuit of AGI",
+    "venue": "Electronics 13(24), 4991",
+    "topic": "Trustworthy AI",
+    "status": "Published",
+    "url": "https://doi.org/10.3390/electronics13244991",
+    "linkLabel": "Read paper",
+    "sources": [
+      "2026 CV, entry 36",
+      "https://orcid.org/0000-0002-7621-2734"
+    ],
+    "cvIndex": 38,
+    "authors": "Y. Kumar, M. Lin, C. Paredes, D. Li, G. Yang, D. Kruger, J. J. Li, and P. Morreale"
+  },
+  {
+    "id": "cv-39",
+    "year": 2024,
+    "title": "Adversarial Testing of LLMs Across Multiple Languages",
+    "venue": "International Symposium on Networks, Computers and Communications (ISNCC), pp. 1-6",
+    "topic": "Trustworthy AI",
+    "status": "Published",
+    "url": "https://doi.org/10.1109/ISNCC62547.2024.10758949",
+    "linkLabel": "Read paper",
+    "sources": [
+      "2026 CV, entry 37",
+      "https://orcid.org/0000-0002-7621-2734",
+      "https://api.crossref.org/works/10.1109/isncc62547.2024.10758949"
+    ],
+    "cvIndex": 39,
+    "authors": "Y. Kumar, C. Paredes, G. Yang, J. J. Li, P. Morreale"
+  },
+  {
+    "id": "cv-40",
+    "year": 2024,
+    "title": "An AI-Powered Digital Foundation Recommender System",
+    "venue": "International Symposium on Networks, Computers and Communications (ISNCC), pp. 1-7",
+    "topic": "AI Systems",
+    "status": "Published",
+    "url": "https://doi.org/10.1109/ISNCC62547.2024.10759049",
+    "linkLabel": "View publication",
+    "sources": [
+      "2026 CV, entry 38",
+      "https://orcid.org/0000-0002-7621-2734",
+      "https://api.crossref.org/works/10.1109/isncc62547.2024.10759049"
+    ],
+    "cvIndex": 40,
+    "authors": "D. M. Ruiz, A. Watson, Y. Kumar, J. J. Li, P. Morreale"
+  },
+  {
+    "id": "cv-41",
+    "year": 2024,
+    "title": "Bias and Cyberbullying Detection and Data Generation Using Transformer Artificial Intelligence Models and Top Large Language Models",
+    "venue": "Electronics 13(17), 3431",
+    "topic": "Trustworthy AI",
+    "status": "Published",
+    "url": "https://doi.org/10.3390/electronics13173431",
+    "linkLabel": "View publication",
+    "sources": [
+      "2026 CV, entry 39",
+      "https://orcid.org/0000-0002-7621-2734",
+      "https://api.crossref.org/works/10.3390/electronics13173431"
+    ],
+    "cvIndex": 41,
+    "authors": "Yulia Kumar, Kuan Huang, Angelo Perez, Guohao Yang, J. Jenny Li, Patricia Morreale, Dov Kruger, Raymond Jiang",
+    "related": [
+      {
+        "label": "Earlier preprint",
+        "url": "https://doi.org/10.20944/preprints202407.0411.v1"
+      }
+    ]
+  },
+  {
+    "id": "cv-42",
+    "year": 2024,
+    "title": "Big Data: Past, Present, and Future Insights",
+    "venue": "Asia Pacific Conference on Computing Technologies, Communications and Networking, pp. 60-70",
+    "topic": "AI Systems",
+    "status": "Published",
+    "url": "https://doi.org/10.1145/3685767.3685777",
+    "linkLabel": "View publication",
+    "sources": [
+      "2026 CV, entry 40",
+      "https://orcid.org/0000-0002-7621-2734",
+      "https://api.crossref.org/works/10.1145/3685767.3685777"
+    ],
+    "cvIndex": 42,
+    "authors": "Hemn Barzan Abdalla, Ardalan Hussein Awlla, Yulia Kumar, Maryam Cheraghy"
+  },
+  {
+    "id": "cv-43",
+    "year": 2024,
+    "title": "Chef Dalle: Transforming Cooking with Multi-Model Multimodal AI",
+    "venue": "Computers 13(7), 156",
+    "topic": "Multimodal AI",
+    "status": "Published",
+    "url": "https://doi.org/10.3390/computers13070156",
+    "linkLabel": "View publication",
+    "sources": [
+      "2026 CV, entry 41",
+      "https://orcid.org/0000-0002-7621-2734",
+      "https://api.crossref.org/works/10.3390/computers13070156"
+    ],
+    "cvIndex": 43,
+    "authors": "Brendan Hannon, Yulia Kumar, J. Jenny Li, Patricia Morreale",
+    "related": [
+      {
+        "label": "Earlier preprint",
+        "url": "https://doi.org/10.20944/preprints202404.0334.v1"
+      }
+    ]
+  },
+  {
+    "id": "cv-44",
+    "year": 2024,
+    "title": "Growth Mindset Emojifier Multimodal App",
+    "venue": "International FLAIRS Conference Proceedings 37",
+    "topic": "Education",
+    "status": "Published",
+    "url": "https://journals.flvc.org/FLAIRS/article/view/135572",
+    "linkLabel": "View publication",
+    "sources": [
+      "2026 CV, entry 42"
+    ],
+    "cvIndex": 44,
+    "authors": "Y. Kumar, A. Manikandan, P. Morreale, and J. J. Li"
+  },
+  {
+    "id": "cv-45",
+    "year": 2024,
+    "title": "Applying Swin Architecture to Diverse Sign Language Datasets",
+    "venue": "Electronics 13(8), 1509",
+    "topic": "Multimodal AI",
+    "status": "Published",
+    "url": "https://doi.org/10.3390/electronics13081509",
+    "linkLabel": "Read paper",
+    "sources": [
+      "2026 CV, entry 43",
+      "https://orcid.org/0000-0002-7621-2734"
+    ],
+    "cvIndex": 45,
+    "authors": "Y. Kumar, K. Huang, C. C. Lin, A. Watson, J. J. Li, P. Morreale, and J. Delgado",
+    "related": [
+      {
+        "label": "Earlier preprint",
+        "url": "https://doi.org/10.20944/preprints202402.1506.v1"
+      }
+    ]
+  },
+  {
+    "id": "cv-46",
+    "year": 2024,
+    "title": "Assessing the Impact of Professional Development on K-12 CS Education: A One-Year Follow-Up Survey Analysis",
+    "venue": "IEEE Integrated STEM Education Conference (ISEC), pp. 1-8",
+    "topic": "Education",
+    "status": "Published",
+    "url": "https://doi.org/10.1109/ISEC61299.2024.10665196",
+    "linkLabel": "Read paper",
+    "sources": [
+      "2026 CV, entry 44",
+      "https://orcid.org/0000-0002-7621-2734"
+    ],
+    "cvIndex": 46,
+    "authors": "Y. Kumar, A. Manikandan, E. Kupershtein, J. J. Li, and P. Morreale"
+  },
+  {
+    "id": "cv-47",
+    "year": 2024,
+    "title": "Optimizing Large Language Models for Auto-Generation of Programming Quizzes",
+    "venue": "IEEE Integrated STEM Education Conference (ISEC), pp. 1-5",
+    "topic": "Education",
+    "status": "Published",
+    "url": "https://doi.org/10.1109/ISEC61299.2024.10665141",
+    "linkLabel": "View publication",
+    "sources": [
+      "2026 CV, entry 45",
+      "https://orcid.org/0000-0002-7621-2734",
+      "https://api.crossref.org/works/10.1109/isec61299.2024.10665141"
+    ],
+    "cvIndex": 47,
+    "authors": "Yulia Kumar, Anjana Manikandan, J. Jenny Li, Patricia Morreale"
+  },
+  {
+    "id": "cv-48",
+    "year": 2024,
+    "title": "Preliminary Results from Integrating Chatbots and Low-Code AI in CS Coursework",
+    "venue": "IEEE Integrated STEM Education Conference (ISEC), pp. 1-4",
+    "topic": "Education",
+    "status": "Published",
+    "url": "https://ieeexplore.ieee.org/abstract/document/10665039",
+    "linkLabel": "View publication",
+    "sources": [
+      "2026 CV, entry 46"
+    ],
+    "cvIndex": 48,
+    "authors": "Y. Kumar, A. Manikandan, J. J. Li, and P. Morreale"
+  },
+  {
+    "id": "cv-49",
+    "year": 2024,
+    "title": "Robust Testing of AI Language Model Resiliency with Novel Adversarial Prompts",
+    "venue": "Electronics 13(5), 842",
+    "topic": "Trustworthy AI",
+    "status": "Published",
+    "url": "https://doi.org/10.3390/electronics13050842",
+    "linkLabel": "View publication",
+    "sources": [
+      "2026 CV, entry 47",
+      "https://orcid.org/0000-0002-7621-2734",
+      "https://orcid.org/0000-0002-7621-2734",
+      "https://api.crossref.org/works/10.3390/electronics13050842"
+    ],
+    "cvIndex": 49,
+    "authors": "Brendan Hannon, Yulia Kumar, Dejaun Gayle, J. Jenny Li, Patricia Morreale",
+    "related": [
+      {
+        "label": "Earlier preprint",
+        "url": "https://doi.org/10.20944/preprints202401.1053.v1"
+      }
+    ]
+  },
+  {
+    "id": "cv-50",
+    "year": 2024,
+    "title": "The Multilingual Eyes Multimodal Traveler’s App",
+    "venue": "International Congress on Information and Communication Technology, pp. 565-575, Springer",
+    "topic": "Multimodal AI",
+    "status": "Published",
+    "url": "https://doi.org/10.1007/978-981-97-3305-7_45",
+    "linkLabel": "View publication",
+    "sources": [
+      "2026 CV, entry 48",
+      "https://orcid.org/0000-0002-7621-2734",
+      "https://api.crossref.org/works/10.1007/978-981-97-3305-7_45"
+    ],
+    "cvIndex": 50,
+    "authors": "Wilbert Villalobos, Yulia Kumar, J. Jenny Li"
+  },
+  {
+    "id": "cv-51",
+    "year": 2024,
+    "title": "ChatGPT Translation of Program Code for Image Sketch Abstraction",
+    "venue": "Applied Sciences 14(3), 992",
+    "topic": "AI Systems",
+    "status": "Published",
+    "url": "https://doi.org/10.3390/app14030992",
+    "linkLabel": "View publication",
+    "sources": [
+      "2026 CV, entry 49",
+      "https://orcid.org/0000-0002-7621-2734"
+    ],
+    "cvIndex": 51,
+    "authors": "Y. Kumar, Z. Gordon, O. Alabi, J. Li, K. Leonard, L. Ness, and P. Morreale"
+  },
+  {
+    "id": "cv-52",
+    "year": 2024,
+    "title": "Transformers and LLMs as the New Benchmark in Early Cancer Detection",
+    "venue": "ITM Web of Conferences 60, 00004",
+    "topic": "Multimodal AI",
+    "status": "Published",
+    "url": "https://doi.org/10.1051/itmconf/20246000004",
+    "linkLabel": "View publication",
+    "sources": [
+      "2026 CV, entry 50",
+      "https://orcid.org/0000-0002-7621-2734",
+      "https://api.crossref.org/works/10.1051/itmconf/20246000004"
+    ],
+    "cvIndex": 52,
+    "authors": "Yulia Kumar, Kuan Huang, Zachary Gordon, Lais Castro, Egan Okumu, Patricia Morreale, J. Jenny Li"
+  },
+  {
+    "id": "cv-53",
+    "year": 2023,
+    "title": "AssureAIDoctor- A Bias-Free AI Bot",
+    "venue": "International Symposium on Networks, Computers and Communications (ISNCC), pp. 1-6",
+    "topic": "Trustworthy AI",
+    "status": "Published",
+    "url": "https://doi.org/10.1109/ISNCC58260.2023.10323978",
+    "linkLabel": "View publication",
+    "sources": [
+      "2026 CV, entry 51",
+      "https://orcid.org/0000-0002-7621-2734",
+      "https://api.crossref.org/works/10.1109/isncc58260.2023.10323978"
+    ],
+    "cvIndex": 53,
+    "authors": "Y. Kumar, J. Delgado, E. Kupershtein, B. Hannon, Z. Gordon, J. J. Li, P. Morreale"
+  },
+  {
+    "id": "cv-54",
+    "year": 2023,
+    "title": "A Testing Framework for AI Linguistic Systems (testFAILS)",
+    "venue": "Electronics 12(14), 3095",
+    "topic": "Trustworthy AI",
+    "status": "Published",
+    "url": "https://doi.org/10.3390/electronics12143095",
+    "linkLabel": "Read paper",
+    "sources": [
+      "2026 CV, entry 52",
+      "https://orcid.org/0000-0002-7621-2734",
+      "https://api.crossref.org/works/10.3390/electronics12143095"
+    ],
+    "cvIndex": 54,
+    "authors": "Yulia Kumar, Patricia Morreale, Peter Sorial, Justin Delgado, J. Jenny Li, Patrick Martins",
+    "note": "Journal and conference versions are listed separately."
+  },
+  {
+    "id": "cv-55",
+    "year": 2023,
+    "title": "Mechanics of a Drone-based System for Algal Bloom Detection Utilizing Deep Learning and LLMs",
+    "venue": "IEEE MIT Undergraduate Research Technology Conference (URTC)",
+    "topic": "Multimodal AI",
+    "status": "Published",
+    "url": "https://doi.org/10.1109/urtc60662.2023.10534955",
+    "linkLabel": "View publication",
+    "sources": [
+      "2026 CV, entry 53",
+      "https://orcid.org/0000-0002-7621-2734",
+      "https://api.crossref.org/works/10.1109/urtc60662.2023.10534955"
+    ],
+    "cvIndex": 55,
+    "authors": "Andrea Balcacer, Brendan Hannon, Yulia Kumar, Kuan Huang, Joseph Sarnoski, Shuting Liu, J. Jenny Li, Patricia Morreale"
+  },
+  {
+    "id": "cv-56",
+    "year": 2023,
+    "title": "A Testing Framework for AI Linguistic Systems (testFAILS)",
+    "venue": "IEEE International Conference on Artificial Intelligence Testing (AITest), pp. 51-54",
+    "topic": "Trustworthy AI",
+    "status": "Published",
+    "url": "https://doi.org/10.1109/AITest58265.2023.00017",
+    "linkLabel": "View publication",
+    "sources": [
+      "2026 CV, entry 54"
+    ],
+    "cvIndex": 56,
+    "authors": "Y. Kumar, P. Morreale, P. Sorial, J. Delgado, J. J. Li and P. Martins",
+    "note": "Journal and conference versions are listed separately."
+  },
+  {
+    "id": "cv-57",
+    "year": 2023,
+    "title": "From Vulnerabilities to Improvements- A Deep Dive into Adversarial Testing of AI Models",
+    "venue": "International Conference on Software Engineering Research & Practice (SERP), pp. 24-27",
+    "topic": "Trustworthy AI",
+    "status": "Published",
+    "url": "https://doi.org/10.1109/CSCE60160.2023.00422",
+    "linkLabel": "View publication",
+    "sources": [
+      "2026 CV, entry 55",
+      "https://orcid.org/0000-0002-7621-2734",
+      "https://api.crossref.org/works/10.1109/csce60160.2023.00422"
+    ],
+    "cvIndex": 57,
+    "authors": "Brendan Hannon, Yulia Kumar, Peter Sorial, J. Jenny Li, Patricia Morreale"
+  },
+  {
+    "id": "cv-58",
+    "year": 2023,
+    "title": "ChatGPT as a Game-Changer for Embedding Emojis in Faculty Feedback",
+    "venue": "International Conference on Frontiers in Education: Computer Science & Computer Engineering (FECS)",
+    "topic": "Education",
+    "status": "Published",
+    "url": "https://doi.org/10.1109/CSCE60160.2023.00173",
+    "linkLabel": "View publication",
+    "sources": [
+      "2026 CV, entry 56",
+      "https://orcid.org/0000-0002-7621-2734",
+      "https://api.crossref.org/works/10.1109/csce60160.2023.00173"
+    ],
+    "cvIndex": 58,
+    "authors": "Ethan Kupershtein, Yulia Kumar, Anjana Manikandan, Patricia Morreale, J. Jenny Li"
+  },
+  {
+    "id": "cv-59",
+    "year": 2023,
+    "title": "Natural Language Coding (NLC) for Autonomous Stock Trading: A New Dimension in No-Code/Low-Code (NCLC) AI",
+    "venue": "IEEE International Conference on Software Quality, Reliability and Security Companion (QRS-C)",
+    "topic": "AI Systems",
+    "status": "Published",
+    "url": "https://doi.org/10.1109/QRS-C60940.2023.00047",
+    "linkLabel": "View publication",
+    "sources": [
+      "2026 CV, entry 57",
+      "https://orcid.org/0000-0002-7621-2734",
+      "https://api.crossref.org/works/10.1109/qrs-c60940.2023.00047"
+    ],
+    "cvIndex": 59,
+    "authors": "Yulia Kumar, Wenxiao Li, Kuan Huang, Michael Thompson, Brendan Hannon"
+  },
+  {
+    "id": "cv-60",
+    "year": 2023,
+    "title": "Love the Way You Lie: Unmasking the Deceptions of LLMs",
+    "venue": "IEEE International Conference on Software Quality, Reliability and Security Companion (QRS-C)",
+    "topic": "Trustworthy AI",
+    "status": "Published",
+    "url": "https://doi.org/10.1109/qrs-c60940.2023.00049",
+    "linkLabel": "View publication",
+    "sources": [
+      "2026 CV, entry 58",
+      "https://orcid.org/0000-0002-7621-2734",
+      "https://api.crossref.org/works/10.1109/qrs-c60940.2023.00049"
+    ],
+    "cvIndex": 60,
+    "authors": "Yulia Kumar, Zachary Gordon, Patricia Morreale, J. Jenny Li, Brendan Hannon"
+  },
+  {
+    "id": "cv-61",
+    "year": 2023,
+    "title": "Evaluating the Effectiveness of Equitable K-12 Professional Learning Access in Computer Science",
+    "venue": "IEEE Integrated STEM Education Conference (ISEC), pp. 222-227",
+    "topic": "Education",
+    "status": "Published",
+    "url": "https://doi.org/10.1109/ISEC57711.2023.10402302",
+    "linkLabel": "View publication",
+    "sources": [
+      "2026 CV, entry 59",
+      "https://orcid.org/0000-0002-7621-2734",
+      "https://api.crossref.org/works/10.1109/isec57711.2023.10402302"
+    ],
+    "cvIndex": 61,
+    "authors": "Jean Chu, Yulia Kumar, Daehan Kwak, James Novotny, Pankati Patel, Patricia Morreale"
+  },
+  {
+    "id": "cv-63",
+    "year": 2023,
+    "title": "Gauging Biases in Various Deep Learning AI Models",
+    "venue": "Intelligent Systems and Applications, IntelliSys 2022, LNNS 544, Springer",
+    "topic": "Trustworthy AI",
+    "status": "Published",
+    "url": "https://doi.org/10.1007/978-3-031-16075-2_11",
+    "linkLabel": "View publication",
+    "sources": [
+      "2026 CV, entry 61",
+      "https://orcid.org/0000-0002-7621-2734",
+      "https://api.crossref.org/works/10.1007/978-3-031-16075-2_11"
+    ],
+    "cvIndex": 63,
+    "authors": "N. Tellez, J. Serra, Y. Kumar, J. J. Li, P. Morreale"
+  },
+  {
+    "id": "cv-66",
+    "year": 2023,
+    "title": "Embedding Equitable Design in the CS Computing Curricula",
+    "venue": "54th ACM Technical Symposium on Computer Science Education V. 2, p. 1332",
+    "topic": "Education",
+    "status": "Published",
+    "url": "https://doi.org/10.1145/3545947.3576278",
+    "linkLabel": "View publication",
+    "sources": [
+      "2026 CV, entry 64",
+      "https://orcid.org/0000-0002-7621-2734",
+      "https://researchers.kean.edu/en/publications/embedding-equitable-design-in-the-cs-computing-curricula/"
+    ],
+    "cvIndex": 66,
+    "authors": "Pankati Patel, Patricia Morreale, Yulia Kumar, Daehan Kwak, Jean Chu, Rose Garcia, and Margaret Burnett"
+  },
+  {
+    "id": "cv-67",
+    "year": 2023,
+    "title": "Implementing Inclusive Software Design in the CS Curriculum",
+    "venue": "54th ACM Technical Symposium on Computer Science Education V. 2, p. 1272",
+    "topic": "Education",
+    "status": "Published",
+    "url": "",
+    "linkLabel": "",
+    "sources": [
+      "2026 CV, entry 65"
+    ],
+    "cvIndex": 67,
+    "authors": "P. Patel, J. Chu, Y. Kumar, D. Kwak, P. Morreale, R. Garcia, and M. Burnett"
+  },
+  {
+    "id": "cv-62",
+    "year": 2022,
+    "title": "Preliminary Results of Applying Transformers to Geoscience and Earth Science Data",
+    "venue": "International Conference on Computational Science and Computational Intelligence (CSCI), pp. 284-288",
+    "topic": "AI Systems",
+    "status": "Published",
+    "url": "https://doi.org/10.1109/CSCI58124.2022.00054",
+    "linkLabel": "View publication",
+    "sources": [
+      "2026 CV, entry 60",
+      "https://orcid.org/0000-0002-7621-2734",
+      "https://api.crossref.org/works/10.1109/csci58124.2022.00054"
+    ],
+    "cvIndex": 62,
+    "authors": "J. Delgado, U. Ebreso, Y. Kumar, J. J. Li, P. Morreale"
+  },
+  {
+    "id": "cv-64",
+    "year": 2022,
+    "title": "An Assure AI Bot (AAAI bot)",
+    "venue": "International Symposium on Networks, Computers and Communications (ISNCC), pp. 1-5",
+    "topic": "Trustworthy AI",
+    "status": "Published",
+    "url": "https://doi.org/10.1109/ISNCC55209.2022.9851759",
+    "linkLabel": "View publication",
+    "sources": [
+      "2026 CV, entry 62",
+      "https://orcid.org/0000-0002-7621-2734",
+      "https://api.crossref.org/works/10.1109/isncc55209.2022.9851759"
+    ],
+    "cvIndex": 64,
+    "authors": "N. Tellez, J. Serra, U. Ebreso, K. Opara, Y. Kumar, J. J. Li, P. Morreale"
+  },
+  {
+    "id": "cv-65",
+    "year": 2022,
+    "title": "Validation of AI models for ITCZ Detection from Climate Data",
+    "venue": "International Conference on Data Science and Information Technology (DSIT), pp. 1-7",
+    "topic": "AI Systems",
+    "status": "Published",
+    "url": "https://doi.org/10.1109/DSIT55514.2022.9943879",
+    "linkLabel": "View publication",
+    "sources": [
+      "2026 CV, entry 63",
+      "https://orcid.org/0000-0002-7621-2734",
+      "https://api.crossref.org/works/10.1109/dsit55514.2022.9943879"
+    ],
+    "cvIndex": 65,
+    "authors": "J. Serra, R. Quezada, S. Fortes, N. Tellez, A. Allaico, E. Landaverde, Y. Kumar, J. J. Li, P. Morreale"
+  },
+  {
+    "id": "cv-68",
+    "year": 2022,
+    "title": "Evaluation of the Use of Growth Mindset in the CS Classroom",
+    "venue": "53rd ACM Technical Symposium on Computer Science Education V. 1, pp. 878-884",
+    "topic": "Education",
+    "status": "Published",
+    "url": "https://doi.org/10.1145/3478431.3499365",
+    "linkLabel": "View publication",
+    "sources": [
+      "2026 CV, entry 66",
+      "https://orcid.org/0000-0002-7621-2734",
+      "https://api.crossref.org/works/10.1145/3478431.3499365"
+    ],
+    "cvIndex": 68,
+    "authors": "Daehan Kwak, Patricia Morreale, Sarah T. Hug, Yulia Kumar, Jean Chu, Ching-Yu Huang, J. Jenny Li, Paoline Wang"
+  },
+  {
+    "id": "cv-69",
+    "year": 2022,
+    "title": "A Self-Served AI Tutor for Growth Mindset Teaching",
+    "venue": "5th International Conference on Information and Computer Technologies (ICICT), pp. 55-59",
+    "topic": "Education",
+    "status": "Published",
+    "url": "https://doi.org/10.1109/ICICT55905.2022.00018",
+    "linkLabel": "View publication",
+    "sources": [
+      "2026 CV, entry 67",
+      "https://orcid.org/0000-0002-7621-2734",
+      "https://api.crossref.org/works/10.1109/icict55905.2022.00018"
+    ],
+    "cvIndex": 69,
+    "authors": "A. Abduljabbar, N. Gupta, L. Healy, Y. Kumar, J. J. Li, P. Morreale"
+  },
+  {
+    "id": "cv-70",
+    "year": 2021,
+    "title": "Framework for a Growth Mindset Classroom",
+    "venue": "52nd ACM Technical Symposium on Computer Science Education, p. 1269",
+    "topic": "Education",
+    "status": "Published",
+    "url": "https://doi.org/10.1145/3408877.3439631",
+    "linkLabel": "View publication",
+    "sources": [
+      "2026 CV, entry 68",
+      "https://orcid.org/0000-0002-7621-2734",
+      "https://api.crossref.org/works/10.1145/3408877.3439631"
+    ],
+    "cvIndex": 70,
+    "authors": "Patricia Morreale, J. Jenny Li, Ching-Yu Huang, Daehan Kwak, Jean Chu, Yulia Kumar, Paolien Wang"
+  },
+  {
+    "id": "cv-71",
+    "year": 2020,
+    "title": "Investigating Deep Learning for Predicting Multi-linguistic Interactions with a Chatterbot",
+    "venue": "5th IEEE International Conference on Big Data Analytics (ICBDA)",
+    "topic": "AI Systems",
+    "status": "Published",
+    "url": "https://doi.org/10.1109/ICBDA50157.2020.9289710",
+    "linkLabel": "View publication",
+    "sources": [
+      "2026 CV, entry 69",
+      "https://orcid.org/0000-0002-7621-2734",
+      "https://api.crossref.org/works/10.1109/icbda50157.2020.9289710"
+    ],
+    "cvIndex": 71,
+    "authors": "R. Kulesza, Y. Kumar, R. Ruiz, A. Torres, E. Weinman, J. J. Li, P. Morreale"
+  },
+  {
+    "id": "cv-72",
+    "year": 2019,
+    "title": "Station Assignment with Reallocation",
+    "venue": "Algorithmica 81(3), pp. 1096-1125",
+    "topic": "Algorithms",
+    "status": "Published",
+    "url": "https://doi.org/10.1007/s00453-018-0459-9",
+    "linkLabel": "View publication",
+    "sources": [
+      "2026 CV, entry 70",
+      "https://api.crossref.org/works/10.1007/s00453-018-0459-9"
+    ],
+    "cvIndex": 72,
+    "authors": "Austin Halper, Miguel A. Mosteiro, Yulia Rossikova, Prudence W. H. Wong",
+    "note": "Algorithmica volume 81 (2019); first published online in 2018. Published under the name Yulia Rossikova."
+  },
+  {
+    "id": "cv-73",
+    "year": 2018,
+    "title": "Station Assignment with Reallocation",
+    "venue": "CoRR, arXiv:1803.01276",
+    "topic": "Algorithms",
+    "status": "Preprint",
+    "url": "https://arxiv.org/abs/1803.01276",
+    "linkLabel": "Read preprint",
+    "sources": [
+      "2026 CV, entry 71"
+    ],
+    "cvIndex": 73,
+    "authors": "A. Halper, M. A. Mosteiro, Y. Rossikova, and P. W. H. Wong",
+    "note": "Preprint version of the Algorithmica article. Published under the name Yulia Rossikova."
+  },
+  {
+    "id": "cv-74",
+    "year": 2016,
+    "title": "Intelligent Data Mining for Translator Correctness Prediction",
+    "venue": "IEEE BigDataSecurity / HPSC / IDS, pp. 394-399",
+    "topic": "AI Systems",
+    "status": "Published",
+    "url": "https://doi.org/10.1109/BigDataSecurity-HPSC-IDS.2016.19",
+    "linkLabel": "View publication",
+    "sources": [
+      "2026 CV, entry 72",
+      "https://orcid.org/0000-0002-7621-2734",
+      "https://api.crossref.org/works/10.1109/bigdatasecurity-hpsc-ids.2016.19"
+    ],
+    "cvIndex": 74,
+    "authors": "Yulia Rossikova, J. Jenny Li, Patricia Morreale",
+    "note": "Published under the name Yulia Rossikova."
+  },
+  {
+    "id": "cv-75",
+    "year": 2016,
+    "title": "Natural Language Translator Correctness Prediction",
+    "venue": "Journal of Computer Science Applications and Information Technology 1(1)",
+    "topic": "AI Systems",
+    "status": "Published",
+    "url": "https://doi.org/10.15226/2474-9257/1/1/00107",
+    "linkLabel": "View publication",
+    "sources": [
+      "2026 CV, entry 73",
+      "https://orcid.org/0000-0002-7621-2734",
+      "https://api.crossref.org/works/10.15226/2474-9257/1/1/00107"
+    ],
+    "cvIndex": 75,
+    "authors": "Jenny Li J",
+    "note": "Published under the name Yulia Rossikova."
+  },
+  {
+    "id": "cv-76",
+    "year": 2015,
+    "title": "Station Assignment with Reallocation",
+    "venue": "International Symposium on Experimental Algorithms (SEA)",
+    "topic": "Algorithms",
+    "status": "Published",
+    "url": "https://doi.org/10.1007/978-3-319-20086-6_12",
+    "linkLabel": "View publication",
+    "sources": [
+      "2026 CV, entry 74"
+    ],
+    "cvIndex": 76,
+    "authors": "M. A. Mosteiro, Y. Rossikova, and P. W. H. Wong",
+    "note": "Published under the name Yulia Rossikova."
+  },
+  {
+    "id": "cv-77",
+    "year": 2015,
+    "title": "Predicting Correctness of Google Translate",
+    "venue": "International Conference on Artificial Intelligence (ICAI), pp. 825-826",
+    "topic": "AI Systems",
+    "status": "Poster",
+    "url": "https://worldcomp-proceedings.com/proc/proc2015/ICAI15_Final_Edition/ICAI_Contents_Vol_1.pdf",
+    "linkLabel": "View proceedings contents",
+    "sources": [
+      "2026 CV, entry 75"
+    ],
+    "cvIndex": 77,
+    "authors": "Y. Rossikova, J. J. Li, and P. Morreale",
+    "note": "Published under the name Yulia Rossikova."
+  }
 ]

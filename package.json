@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "Julie Kumar academic portfolio, built with Tailwind CSS",
   "scripts": {
-    "build": "python build.py && npm run build:css",
+    "build": "python build.py && npm run build:css && npm run build:planets",
     "build:css": "tailwindcss -i ./src/tailwind.css -o ./styles.css --minify",
     "watch:css": "tailwindcss -i ./src/tailwind.css -o ./styles.css --watch",
-    "preview": "python -m http.server 8091 --bind 127.0.0.1"
+    "preview": "python -m http.server 8091 --bind 127.0.0.1",
+    "build:planets": "esbuild src/planets.js --bundle --minify --format=esm --target=es2020 --outfile=assets/planets.js"
   },
   "repository": {
     "type": "git",
@@ -22,7 +23,11 @@
   "homepage": "https://ykumar2020.github.io/",
   "devDependencies": {
     "@tailwindcss/cli": "4.3.3",
+    "esbuild": "0.28.2",
     "tailwindcss": "4.3.3"
   },
-  "private": true
+  "private": true,
+  "dependencies": {
+    "three": "0.186.1"
+  }
 }

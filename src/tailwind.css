@@ -23,7 +23,7 @@
   ::selection { @apply bg-signal text-space; }
   a { @apply no-underline; text-underline-offset: 5px; }
   button, summary { @apply cursor-pointer; }
-  a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible { @apply outline-2 outline-offset-4 outline-signal; }
+  a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible, select:focus-visible { @apply outline-2 outline-offset-4 outline-signal; }
   [hidden] { display: none !important; }
   img, svg { @apply block max-w-full; }
   h1, h2, h3, h4 { @apply font-bold; }
@@ -149,6 +149,13 @@
   .copy-citation { @apply border-0 border-b border-dotted border-muted bg-transparent p-0 text-xs text-muted hover:text-signal; }
   .load-more { @apply mt-4; }
   .publication-note { @apply mt-5 text-xs text-muted; }
+  .publication-note a { @apply text-signal underline; }
+  .bibliography-summary { @apply font-mono text-xs tracking-wide text-signal; }
+  .bibliography-selects { @apply mt-4 flex flex-wrap gap-4; }
+  .bibliography-selects label { @apply flex flex-col gap-2 text-xs text-muted; }
+  .bibliography-selects select { @apply min-h-11 rounded-md border border-line bg-panel px-3 py-2 text-sm text-starlight; }
+  .paper-note { @apply mt-3 text-xs leading-relaxed text-muted; }
+  #show-all-publications { @apply ml-0 sm:ml-3; }
   .empty-state { @apply rounded-lg bg-panel p-8; }
   .teaching-section { @apply border-y border-line; background: radial-gradient(ellipse at 20% 30%, #202e5d66, transparent 70%), #10131f; }
   .teaching-layout { @apply mt-10 grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-20; }
@@ -191,6 +198,29 @@
   .site-footer p span { @apply text-[10px]; }
   .site-footer > a:last-child { @apply text-xs text-signal; }
   .toast { @apply fixed bottom-6 left-1/2 z-50 w-max max-w-[90vw] -translate-x-1/2 rounded-lg border border-signal/60 bg-panel px-5 py-3 text-xs text-starlight shadow-xl; }
+  .planet-invite { @apply mt-5; }
+  .planetarium { @apply pt-16 md:pt-20; }
+  .planet-heading { @apply mb-7 flex flex-col justify-between gap-5 md:flex-row md:items-end; }
+  .planet-heading h2 { @apply text-3xl md:text-4xl; }
+  .planet-heading > p { @apply max-w-xs text-sm text-muted; }
+  .planet-stage { @apply relative overflow-hidden rounded-2xl border border-line; background: radial-gradient(ellipse at 50% 45%, #1a2138, #080b14 70%); }
+  .planet-scene-label { @apply pointer-events-none absolute left-5 top-5 z-10 flex items-center font-mono text-[10px] uppercase tracking-widest text-muted; }
+  .planet-viewport { @apply relative h-[350px] w-full sm:h-[420px] lg:h-[470px]; }
+  .planet-viewport canvas { @apply absolute inset-0 block cursor-grab active:cursor-grabbing; touch-action: pan-y; }
+  .planet-viewport canvas:focus-visible { outline-offset: -5px; }
+  .planet-fallback { @apply absolute inset-0 h-full w-full object-contain; }
+  [data-state="ready"] .planet-fallback { @apply hidden; }
+  [data-state="fallback"] .planet-viewport canvas { @apply hidden; }
+  .planet-controls { @apply relative z-10 mx-4 mb-5 flex flex-wrap justify-center gap-2; }
+  .planet-controls button { @apply min-h-11 min-w-11 rounded-md border border-line bg-panel px-4 py-2 text-xs text-starlight transition-colors hover:border-signal hover:text-signal; }
+  .planet-controls button:first-child { @apply border-signal/60 text-signal; }
+  .planet-legend { @apply grid grid-cols-2 justify-center gap-x-6 gap-y-3 border-t border-line/60 bg-space/70 px-5 py-5 sm:flex sm:flex-wrap sm:gap-8; }
+  .planet-legend span { @apply flex items-center gap-2 text-[11px] text-muted; }
+  .planet-legend i { @apply inline-block size-2 rounded-full; }
+  .world-ocean { @apply bg-ice; } .world-ember { @apply bg-coral; }
+  .world-gas { @apply bg-signal; } .world-ice { background: #c9b3ff; }
+  .planet-caption { @apply mt-4 flex flex-col justify-between gap-2 text-[11px] text-muted md:flex-row; }
+  .planet-caption p:last-child { @apply shrink-0; }
 }
 
 /* Decorative space scene; motion is brief, optional, and never hides content. */
@@ -205,7 +235,7 @@
   html { color-scheme: light; }
   body, .section, .contact-section, .research-card, .project-card, .credential-strip { background: white !important; color: #111 !important; }
   body * { color: #111 !important; text-shadow: none !important; -webkit-text-stroke: 0 !important; box-shadow: none !important; }
-  .cosmos, .site-header, .hero-portrait, .project-art, .publication-tools, .load-more, .copy-citation, .toast, .site-footer, .hero-actions { display: none !important; }
+  .cosmos, .planetarium, .planet-invite, .site-header, .hero-portrait, .project-art, .publication-tools, .load-more, .copy-citation, .toast, .site-footer, .hero-actions { display: none !important; }
   .wrap { width: 100%; } .section, .contact-section, .hero { padding: 18px 0; }
   .hero { display: block; min-height: 0; } .paper[hidden] { display: grid !important; }
   .paper, .timeline-item, .service-grid article { break-inside: avoid; } .hero::before { display: none; }

@@ -40,6 +40,7 @@
     <p class="hero-description">I connect research in secure, trustworthy AI with hands-on computing education—helping students ask better questions, build thoughtfully, and test what they create.</p>
     <div class="hero-roles"><span>Senior Lecturer · Kean University</span><span>ECE doctoral researcher · Rutgers University</span></div>
     <div class="hero-actions"><a class="button primary" href="#research">Explore my work <span aria-hidden="true">↗</span></a><a class="button secondary" href="documents/Yulia-Kumar-CV.pdf" target="_blank" rel="noopener">View CV <span class="file-type">PDF</span></a></div>
+    <a class="text-link planet-invite" href="#planetarium">Explore the planets <span aria-hidden="true">&#8595;</span></a>
     <div class="social-links" aria-label="Academic profiles"><a href="https://scholar.google.com/citations?user=aVmqEKgAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar ↗</a><a href="https://orcid.org/0000-0002-7621-2734" target="_blank" rel="noopener">ORCID ↗</a><a href="https://github.com/ykumar2020" target="_blank" rel="noopener">GitHub ↗</a></div>
   </div>
   <div class="hero-portrait">
@@ -49,6 +50,24 @@
   </div>
 </section>
 <div class="credential-strip"><div class="wrap"><span>NSF CSGrad4US Fellow</span><span>IEEE Senior Member</span><span>AAAI-26 Program Committee</span><span>NCWIT North New Jersey Co-chair</span></div></div>
+
+<section class="planetarium wrap" id="planetarium" aria-labelledby="planet-title" data-state="still">
+  <div class="planet-heading"><div><p class="eyebrow">A little space for curiosity</p><h2 id="planet-title">Explore a little <em>further.</em></h2></div><p>Four imagined worlds. One shared orbit around discovery.</p></div>
+  <div class="planet-stage">
+    <div class="planet-scene-label"><span class="status-dot" aria-hidden="true"></span><span class="planet-status" aria-live="polite">Still view</span></div>
+    <div class="planet-viewport">
+      <img class="planet-fallback" src="assets/planets-fallback.svg" alt="An imagined blue ocean planet, red rocky planet, golden ringed giant, and violet ice planet orbiting a glowing star." width="1200" height="470" loading="lazy">
+    </div>
+    <div class="planet-controls" role="group" aria-label="Planet scene controls" hidden>
+      <button type="button" data-orbit="pause" aria-pressed="false">Pause orbits</button>
+      <button type="button" data-orbit="in" aria-label="Zoom in on planets">+</button>
+      <button type="button" data-orbit="out" aria-label="Zoom out from planets">&minus;</button>
+      <button type="button" data-orbit="reset">Reset view</button>
+    </div>
+    <div class="planet-legend" aria-label="Imagined planets"><span><i class="world-ocean"></i>Ocean world</span><span><i class="world-ember"></i>Ember world</span><span><i class="world-gas"></i>Ringed giant</span><span><i class="world-ice"></i>Ice world</span></div>
+  </div>
+  <div class="planet-caption"><p id="planet-instructions">Drag left or right to orbit. Keyboard: arrow keys to rotate, + / &minus; to zoom, Home to reset.</p><p>Artistic scene &middot; not to scale.</p></div>
+</section>
 
 <section class="section wrap about" id="about" aria-labelledby="about-title">
   <div class="section-heading"><p class="eyebrow">01 / About</p><h2 id="about-title">Where research meets<br><em>the classroom.</em></h2></div>
@@ -72,13 +91,15 @@
 </div></section>
 
 <section class="section wrap" id="publications" aria-labelledby="publications-title">
-  <div class="section-top"><div><p class="eyebrow">03 / Publications</p><h2 id="publications-title">Ideas, tested<br>and <em>shared.</em></h2></div><div class="section-intro"><p>Selected work across AI, software systems, and computing education. Publication status is shown for each entry.</p><a class="text-link" href="https://scholar.google.com/citations?user=aVmqEKgAAAAJ&amp;hl=en" target="_blank" rel="noopener">Full profile on Google Scholar ↗</a></div></div>
-  <div class="publication-tools" hidden><div class="filter-row" role="group" aria-label="Filter publications by research area"><button class="filter active" data-filter="All" aria-pressed="true">All work</button><button class="filter" data-filter="Trustworthy AI" aria-pressed="false">Trustworthy AI</button><button class="filter" data-filter="Agentic AI" aria-pressed="false">Agentic AI</button><button class="filter" data-filter="Multimodal AI" aria-pressed="false">Multimodal AI</button><button class="filter" data-filter="Education" aria-pressed="false">Education</button><button class="filter" data-filter="AI Systems" aria-pressed="false">AI systems</button></div><label class="search-box"><span>Search publications</span><input id="publication-search" type="search" placeholder="Title, author, venue, or year…" autocomplete="off"></label></div>
+  <div class="section-top"><div><p class="eyebrow">03 / Publications</p><h2 id="publications-title">Ideas, tested<br>and <em>shared.</em></h2></div><div class="section-intro"><p>The complete bibliography from my CV: journal articles, conference papers, posters, preprints, and work in progress. Filter by topic, year, or publication status.</p><a class="text-link" href="https://scholar.google.com/citations?user=aVmqEKgAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar profile ↗</a></div></div>
+  <p class="bibliography-summary"><!-- BIBLIOGRAPHY_SUMMARY --></p>
+  <div class="publication-tools" hidden><div class="filter-row" role="group" aria-label="Filter publications by research area"><button class="filter active" data-filter="All" aria-pressed="true">All work</button><button class="filter" data-filter="Trustworthy AI" aria-pressed="false">Trustworthy AI</button><button class="filter" data-filter="Agentic AI" aria-pressed="false">Agentic AI</button><button class="filter" data-filter="Multimodal AI" aria-pressed="false">Multimodal AI</button><button class="filter" data-filter="Education" aria-pressed="false">Education</button><button class="filter" data-filter="AI Systems" aria-pressed="false">AI systems</button><button class="filter" data-filter="Algorithms" aria-pressed="false">Algorithms</button></div><label class="search-box"><span>Search publications</span><input id="publication-search" type="search" placeholder="Title, author, venue, or year…" autocomplete="off"></label><div class="bibliography-selects"><label>Year<select id="publication-year"><option value="">All years</option><!-- YEAR_OPTIONS --></select></label><label>Status<select id="publication-status"><option value="">All statuses</option><!-- STATUS_OPTIONS --></select></label></div></div>
   <p class="result-count" id="publication-count" aria-live="polite" hidden></p>
   <div id="publication-list"><!-- PUBLICATIONS --></div>
   <p id="no-results" class="empty-state" hidden>No publications match your search. Try another keyword or research area.</p>
   <button class="button secondary load-more" type="button" id="load-more" hidden>Show more publications <span aria-hidden="true">↓</span></button>
-  <p class="publication-note">I publish as Yulia Kumar. Selected publications and acceptance statuses are current as of my 2026 CV. See the linked publisher pages for the published record.</p>
+  <button class="button secondary load-more" type="button" id="show-all-publications" hidden>Show all records</button>
+  <p class="publication-note">I publish as Yulia Kumar; earlier work appears under Yulia Rossikova. This bibliography includes every entry from my 2026 CV, with DOI details and additional preprint links from <a href="https://orcid.org/0000-0002-7621-2734" target="_blank" rel="noopener">ORCID</a> and publisher records. Conference, journal, and preprint versions may describe related work; the record count is not a count of distinct studies. Accepted and unfinished work is labeled separately. <a href="data/publications.json" download>Download bibliography data</a>.</p>
 </section>
 
 <section class="section teaching-section" id="teaching" aria-labelledby="teaching-title"><div class="wrap">
