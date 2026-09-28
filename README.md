@@ -40,3 +40,7 @@ This is a personal site. Institutional logos are not used. Contact is the public
 ## Photo carousel
 
 The homepage rotates through the owner-supplied IMG_2946 (1).jpeg, IMG_0013.jpeg, and IMG_5495.jpeg photographs. The 3:4 frame preserves the portrait composition. WebP assets apply EXIF orientation and omit camera metadata. A two-stage 3D flip runs every eight seconds, with previous/next and play/pause controls. Hover, focus, off-screen position, and hidden tabs suspend autoplay. Manual navigation pauses autoplay; reduced-motion preference starts paused and removes flipping. The initial photo remains readable without JavaScript. The social preview retains the first photo.
+
+## Typography
+
+Orbitron variable font gives the name and section headings a futuristic character; Space Grotesk provides readable body text and secondary headings. Both WOFF2 files are self-hosted in `assets/fonts/`, with their SIL Open Font License files, and preloaded on the homepage. Source: the Google Fonts repository, `ofl/orbitron` and `ofl/spacegrotesk`.
