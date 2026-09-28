@@ -2,13 +2,13 @@
  <defs>
   <radialGradient id="sun"><stop stop-color="#fffbc3"/><stop offset=".7" stop-color="#ffe052"/><stop offset="1" stop-color="#ee922d"/></radialGradient>
   <radialGradient id="halo"><stop stop-color="#ffe052" stop-opacity=".4"/><stop offset="1" stop-color="#ffe052" stop-opacity="0"/></radialGradient>
-  <radialGradient id="blue" cx=".3" cy=".25"><stop stop-color="#98ecff"/><stop offset=".4" stop-color="#2f8fbe"/><stop offset="1" stop-color="#0c1733"/></radialGradient>
-  <radialGradient id="red" cx=".3" cy=".3"><stop stop-color="#ffbd87"/><stop offset=".5" stop-color="#bd5b42"/><stop offset="1" stop-color="#301725"/></radialGradient>
-  <radialGradient id="gold" cx=".3" cy=".25"><stop stop-color="#fff4c7"/><stop offset=".6" stop-color="#ba965d"/><stop offset="1" stop-color="#41382c"/></radialGradient>
-  <radialGradient id="ice" cx=".35" cy=".25"><stop stop-color="#e5e6ff"/><stop offset=".5" stop-color="#989bdf"/><stop offset="1" stop-color="#232349"/></radialGradient>
+  <radialGradient id="blue" cx=".3" cy=".25"><stop stop-color="#98ecff"/><stop offset=".4" stop-color="#00d8ed"/><stop offset="1" stop-color="#0c1733"/></radialGradient>
+  <radialGradient id="red" cx=".3" cy=".3"><stop stop-color="#ffbd87"/><stop offset=".5" stop-color="#ff37be"/><stop offset="1" stop-color="#301725"/></radialGradient>
+  <radialGradient id="gold" cx=".3" cy=".25"><stop stop-color="#fff4c7"/><stop offset=".6" stop-color="#ffc42e"/><stop offset="1" stop-color="#41382c"/></radialGradient>
+  <radialGradient id="ice" cx=".35" cy=".25"><stop stop-color="#e5e6ff"/><stop offset=".5" stop-color="#b569ff"/><stop offset="1" stop-color="#232349"/></radialGradient>
  </defs>
  <g fill="#b2cfff" opacity=".65"><circle cx="120" cy="96" r="1"/><circle cx="1040" cy="86" r="1.5"/><circle cx="600" cy="67" r="1"/><circle cx="240" cy="335" r="1.2"/><circle cx="1010" cy="395" r="1"/><circle cx="430" cy="414" r="1"/><circle cx="950" cy="220" r="1.4"/><circle cx="350" cy="48" r="1"/><circle cx="730" cy="365" r="1"/></g>
- <g fill="none" stroke="#7999c8" stroke-opacity=".28"><ellipse cx="600" cy="240" rx="150" ry="62"/><ellipse cx="600" cy="240" rx="235" ry="100"/><ellipse cx="600" cy="240" rx="330" ry="143"/><ellipse cx="600" cy="240" rx="430" ry="185"/></g>
+ <g fill="none" stroke="#7999c8" stroke-opacity=".5"><ellipse cx="600" cy="240" rx="150" ry="62"/><ellipse cx="600" cy="240" rx="235" ry="100"/><ellipse cx="600" cy="240" rx="330" ry="143"/><ellipse cx="600" cy="240" rx="430" ry="185"/></g>
  <circle cx="600" cy="240" r="112" fill="url(#halo)"/><circle cx="600" cy="240" r="37" fill="url(#sun)"/>
  <circle cx="479" cy="204" r="27" fill="url(#blue)"/><circle cx="760" cy="314" r="21" fill="url(#red)"/>
  <g transform="translate(862 153) rotate(-22)"><ellipse rx="82" ry="24" fill="none" stroke="#cdb282" stroke-width="13" opacity=".7"/><circle r="43" fill="url(#gold)"/><path d="M-82 0A82 24 0 0 0 82 0" fill="none" stroke="#d7bf95" stroke-width="13"/></g>

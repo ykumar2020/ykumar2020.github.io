@@ -44,3 +44,9 @@ The homepage rotates through the owner-supplied IMG_2946 (1).jpeg, IMG_0013.jpeg
 ## Typography
 
 Orbitron variable font gives the name and section headings a futuristic character; Space Grotesk provides readable body text and secondary headings. Both WOFF2 files are self-hosted in `assets/fonts/`, with their SIL Open Font License files, and preloaded on the homepage. Source: the Google Fonts repository, `ofl/orbitron` and `ofl/spacegrotesk`.
+
+## Neon scene and expanded photos
+
+The carousel includes six supplied photographs. Added IMG_9760.jpeg (atrium), IMG_3802.jpeg (MIT sign), and IMG_0793.jpeg (research posters). Original image content is preserved, orientation normalized, and camera metadata omitted. The landscape MIT photo uses contain framing to retain both the sign and Julie. Slide counts and announcements derive from the slide collection.
+
+The full-page Three.js scene now uses cyan, pink, gold, and violet emissive planets, atmospheric rim shaders, additive halos, luminous rings, and individually twinkling stars. Planet brightness follows staggered smooth 3.5-second pulses. Pause and reduced-motion settings freeze all pulsation and orbital motion together.

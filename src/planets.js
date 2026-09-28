@@ -40,10 +40,10 @@ export function mountPlanets(root) {
     const ctx = c.getContext('2d');
     const data = ctx.createImageData(c.width, c.height);
     const palettes = {
-      ocean: [[12, 56, 123], [35, 142, 193], [91, 153, 94]],
-      ember: [[72, 22, 19], [191, 64, 34], [239, 141, 81]],
-      gas: [[108, 71, 41], [221, 177, 107], [255, 229, 166]],
-      ice: [[47, 45, 109], [127, 133, 206], [213, 217, 255]],
+      ocean: [[3, 28, 80], [0, 163, 211], [45, 255, 205]],
+      ember: [[80, 5, 49], [233, 22, 137], [255, 145, 220]],
+      gas: [[83, 34, 13], [240, 144, 24], [255, 231, 90]],
+      ice: [[49, 11, 98], [140, 53, 237], [229, 153, 255]],
       sun: [[255, 131, 17], [255, 199, 49], [255, 241, 160]]
     };
     for (let y = 0; y < 256; y++) {
@@ -55,7 +55,7 @@ export function mountPlanets(root) {
         if (kind === 'gas' || kind === 'ice') t = (Math.sin(v * (kind === 'gas' ? 36 : 16) + a * 2) + 1) / 2;
         const colors = palettes[kind];
         let low = colors[0], high = colors[1];
-        if (kind === 'ocean' && n > .18) { low = colors[2]; high = [166, 184, 117]; }
+        if (kind === 'ocean' && n > .18) { low = colors[2]; high = [134, 255, 229]; }
         else if (t > .55) { low = colors[1]; high = colors[2]; t = (t - .55) / .45; }
         const polar = kind === 'ocean' && (y < 15 || y > 241);
         const i = (y * 512 + x) * 4;
@@ -80,21 +80,47 @@ export function mountPlanets(root) {
   const glow = new THREE.Sprite(new THREE.SpriteMaterial({ map: new THREE.CanvasTexture(glowCanvas), transparent: true, blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false }));
   glow.scale.set(5.8, 5.8, 1); system.add(glow);
 
+  const auraCanvas = document.createElement('canvas'); auraCanvas.width = auraCanvas.height = 128;
+  const auraContext = auraCanvas.getContext('2d');
+  const auraGradient = auraContext.createRadialGradient(64, 64, 0, 64, 64, 64);
+  auraGradient.addColorStop(0, '#ffffffaa'); auraGradient.addColorStop(.32, '#ffffffbb');
+  auraGradient.addColorStop(.46, '#ffffff55'); auraGradient.addColorStop(.72, '#ffffff12');
+  auraGradient.addColorStop(1, '#ffffff00');
+  auraContext.fillStyle = auraGradient; auraContext.fillRect(0, 0, 128, 128);
+  const auraTexture = new THREE.CanvasTexture(auraCanvas);
+
   const specs = [
-    { kind: 'ocean', size: .65, orbit: 3, phase: 2.35, speed: .17 },
-    { kind: 'ember', size: .5, orbit: 4.55, phase: .55, speed: .12 },
-    { kind: 'gas', size: 1.0, orbit: 6.5, phase: -.8, speed: .075 },
-    { kind: 'ice', size: .73, orbit: 8.45, phase: 3.7, speed: .05 }
+    { neon: 0x18f7ff, kind: 'ocean', size: .65, orbit: 3, phase: 2.35, speed: .17 },
+    { neon: 0xff37be, kind: 'ember', size: .5, orbit: 4.55, phase: .55, speed: .12 },
+    { neon: 0xffd84c, kind: 'gas', size: 1.0, orbit: 6.5, phase: -.8, speed: .075 },
+    { neon: 0xb569ff, kind: 'ice', size: .73, orbit: 8.45, phase: 3.7, speed: .05 }
   ];
   const planets = specs.map(spec => {
     const group = new THREE.Group();
-    const surface = new THREE.Mesh(sphere, new THREE.MeshStandardMaterial({ map: texture(spec.kind), roughness: .83, metalness: .02 }));
+    const surface = new THREE.Mesh(sphere, new THREE.MeshStandardMaterial({ map: texture(spec.kind), roughness: .55, metalness: .12, emissive: spec.neon, emissiveIntensity: .3 }));
     surface.scale.setScalar(spec.size); surface.rotation.z = .16;
     group.add(surface); system.add(group);
+    // An illuminated atmospheric rim follows the sphere in view space.
+    const atmosphere = new THREE.Mesh(sphere, new THREE.ShaderMaterial({
+      uniforms: { tint: { value: new THREE.Color(spec.neon) }, strength: { value: .75 } },
+      vertexShader: `varying vec3 vNormal; varying vec3 vEye;
+        void main() { vec4 mv = modelViewMatrix * vec4(position, 1.0);
+          vNormal = normalize(normalMatrix * normal); vEye = normalize(-mv.xyz);
+          gl_Position = projectionMatrix * mv; }`,
+      fragmentShader: `uniform vec3 tint; uniform float strength; varying vec3 vNormal; varying vec3 vEye;
+        void main() { float rim = pow(1.0 - max(dot(normalize(vNormal), normalize(vEye)), 0.0), 2.2);
+          gl_FragColor = vec4(tint, rim * strength); }`,
+      transparent: true, blending: THREE.AdditiveBlending, depthWrite: false
+    }));
+    atmosphere.scale.setScalar(spec.size * 1.075); group.add(atmosphere);
+    const halo = new THREE.Sprite(new THREE.SpriteMaterial({ map: auraTexture,
+      color: spec.neon, transparent: true, opacity: .45, blending: THREE.AdditiveBlending,
+      depthWrite: false, toneMapped: false }));
+    halo.scale.setScalar(spec.size * 5); group.add(halo);
     if (spec.kind === 'gas') {
       const rings = new THREE.Group(); rings.rotation.x = Math.PI / 2 - .3; rings.rotation.y = .25;
-      for (const [inner, outer, color, opacity] of [[1.35, 1.62, 0xb9a08b, .75], [1.68, 1.98, 0xe1c399, .88], [2.03, 2.2, 0x89795f, .65]]) {
-        rings.add(new THREE.Mesh(new THREE.RingGeometry(inner, outer, 96), new THREE.MeshStandardMaterial({ color, side: THREE.DoubleSide, transparent: true, opacity, roughness: 1 })));
+      for (const [inner, outer, color, opacity] of [[1.35, 1.62, 0xffa340, .8], [1.68, 1.98, 0xffdf61, .95], [2.03, 2.2, 0xff55cf, .75]]) {
+        rings.add(new THREE.Mesh(new THREE.RingGeometry(inner, outer, 96), new THREE.MeshBasicMaterial({ color, side: THREE.DoubleSide, transparent: true, opacity, toneMapped: false })));
       }
       group.add(rings);
     }
@@ -102,8 +128,8 @@ export function mountPlanets(root) {
       const angle = i / 160 * Math.PI * 2;
       return new THREE.Vector3(Math.cos(angle) * spec.orbit, 0, Math.sin(angle) * spec.orbit);
     });
-    system.add(new THREE.LineLoop(new THREE.BufferGeometry().setFromPoints(points), new THREE.LineBasicMaterial({ color: spec.kind === 'gas' ? 0xffd36c : 0x7999c8, transparent: true, opacity: .24 })));
-    return { ...spec, group, surface };
+    system.add(new THREE.LineLoop(new THREE.BufferGeometry().setFromPoints(points), new THREE.LineBasicMaterial({ color: spec.neon, transparent: true, opacity: .4, toneMapped: false })));
+    return { ...spec, group, surface, atmosphere, halo };
   });
 
   let seed = 77;
@@ -115,7 +141,19 @@ export function mountPlanets(root) {
     positions[i * 3 + 2] = -25 - random() * 35;
   }
   const stars = new THREE.BufferGeometry(); stars.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-  scene.add(new THREE.Points(stars, new THREE.PointsMaterial({ color: 0xb2cfff, size: .055, transparent: true, opacity: .8, sizeAttenuation: true })));
+  const starfield = new THREE.Points(stars, new THREE.ShaderMaterial({
+    uniforms: { time: { value: 0 } },
+    vertexShader: `uniform float time; varying float brightness;
+      void main() { vec4 mv = modelViewMatrix * vec4(position, 1.0);
+        brightness = .35 + .65 * pow(.5 + .5 * sin(time * 1.2 + position.x * 4.0 + position.y * 2.0), 3.0);
+        gl_PointSize = clamp(85.0 / -mv.z, 1.0, 3.2);
+        gl_Position = projectionMatrix * mv; }`,
+    fragmentShader: `varying float brightness;
+      void main() { float d = length(gl_PointCoord - .5) * 2.0;
+        gl_FragColor = vec4(.55, .83, 1.0, (1.0 - smoothstep(.1, 1.0, d)) * brightness); }`,
+    transparent: true, depthWrite: false, blending: THREE.AdditiveBlending
+  }));
+  scene.add(starfield);
 
   let paused = motion.matches, visible = false, lost = false;
   let yaw = 0, elevation = .68, zoom = 1, elapsed = 0, frame = 0, previous = 0;
@@ -131,8 +169,16 @@ export function mountPlanets(root) {
       const a = p.phase + elapsed * p.speed;
       p.group.position.set(Math.cos(a) * p.orbit, 0, Math.sin(a) * p.orbit);
       p.surface.rotation.y = elapsed * .16;
+      // Staggered, smooth 3.5-second light pulses; pause freezes every effect.
+      const pulse = .5 + .5 * Math.sin(elapsed * 1.8 + p.phase * 2);
+      p.surface.material.emissiveIntensity = .18 + pulse * .3;
+      p.atmosphere.material.uniforms.strength.value = .5 + pulse * .45;
+      p.halo.material.opacity = .26 + pulse * .36;
+      p.halo.scale.setScalar(p.size * (4.8 + pulse * .6));
     });
     sun.rotation.y = elapsed * .05;
+    glow.material.opacity = .65 + .25 * Math.sin(elapsed * 1.1);
+    starfield.material.uniforms.time.value = elapsed;
     updateCamera(); renderer.render(scene, camera);
   }
   function tick(now) {

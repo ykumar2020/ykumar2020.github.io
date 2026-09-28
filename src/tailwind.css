@@ -220,7 +220,7 @@
   .toast { @apply fixed bottom-6 left-1/2 z-50 w-max max-w-[90vw] -translate-x-1/2 rounded-lg border border-signal/60 bg-panel px-5 py-3 text-xs text-starlight shadow-xl; }
   .planetarium { pointer-events: none; }
   .planet-viewport { @apply fixed inset-0 -z-10 h-full w-full overflow-hidden; }
-  .planet-viewport canvas { @apply absolute inset-0 block; opacity: .64; }
+  .planet-viewport canvas { @apply absolute inset-0 block; opacity: .78; }
   .planet-viewport::after { content: ""; @apply pointer-events-none absolute inset-0; background: linear-gradient(90deg, #090b1273, #090b1230 50%, #090b123d); }
   .planet-fallback { @apply absolute inset-0 h-full w-full object-cover opacity-40; }
   [data-state="ready"] .planet-fallback { @apply hidden; }
@@ -260,3 +260,6 @@
 main { text-shadow: 0 1px 6px #090b12, 0 0 18px #090b1280; }
 
 @media (max-width: 360px) { .brand { gap: .5rem; font-size: 12px; } .brand-mark { font-size: 28px; } .brand-sub { display: none; } }
+
+.portrait-slide-wide { background: radial-gradient(ellipse at 70% 35%, #303d37, #111520 72%); }
+.portrait-slide-wide img { object-fit: contain; }

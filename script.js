@@ -90,7 +90,7 @@ if (planetRoot) {
   }, 150);
 }
 
-// Three-photo flip carousel. Content remains static when motion is reduced.
+// Photo flip carousel. Content remains static when motion is reduced.
 const photoCarousel = document.querySelector('#photo-carousel');
 if (photoCarousel) {
   const slides = [...photoCarousel.querySelectorAll('.portrait-slide')];
@@ -140,8 +140,8 @@ if (photoCarousel) {
       newSlide.hidden = false;
       current = next;
       photoCarousel.dataset.index = String(current);
-      counter.textContent = String(current + 1).padStart(2, '0') + ' / 03';
-      if (manual) liveStatus.textContent = 'Photo ' + (current + 1) + ' of 3. ' + img.alt;
+      counter.textContent = String(current + 1).padStart(2, '0') + ' / ' + String(slides.length).padStart(2, '0');
+      if (manual) liveStatus.textContent = 'Photo ' + (current + 1) + ' of ' + slides.length + '. ' + img.alt;
       if (!reducedMotion.matches) await flip(newSlide, -88, 0);
     } catch {
       if (manual) liveStatus.textContent = 'This photo could not load. Please try another photo.';
