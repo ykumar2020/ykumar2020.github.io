@@ -220,7 +220,7 @@
   .toast { @apply fixed bottom-6 left-1/2 z-50 w-max max-w-[90vw] -translate-x-1/2 rounded-lg border border-signal/60 bg-panel px-5 py-3 text-xs text-starlight shadow-xl; }
   .planetarium { pointer-events: none; }
   .planet-viewport { @apply fixed inset-0 -z-10 h-full w-full overflow-hidden; }
-  .planet-viewport canvas { @apply absolute inset-0 block; opacity: .78; }
+  .planet-viewport canvas { @apply absolute inset-0 block; opacity: .9; }
   .planet-viewport::after { content: ""; @apply pointer-events-none absolute inset-0; background: linear-gradient(90deg, #090b1273, #090b1230 50%, #090b123d); }
   .planet-fallback { @apply absolute inset-0 h-full w-full object-cover opacity-40; }
   [data-state="ready"] .planet-fallback { @apply hidden; }
@@ -238,7 +238,7 @@
 
 }
 
-/* Decorative space scene; motion is brief, optional, and never hides content. */
+/* Continuous, optional ASI-inspired ambience behind the full document. */
 .cosmos { background: radial-gradient(ellipse at 80% 45%, #203a8229, transparent 52%), radial-gradient(ellipse at 15% 10%, #ffe0520d, transparent 55%); position: fixed; inset: 0; height: 100%; overflow: hidden; pointer-events: none; z-index: -2; }
 .cosmos::before { content: ""; position: absolute; inset: 0; opacity: .35; background-image: radial-gradient(1px 1px at 12% 30%, #fff 90%, transparent), radial-gradient(1px 1px at 66% 16%, #fff 90%, transparent), radial-gradient(1px 1px at 35% 70%, #91d9ff 90%, transparent), radial-gradient(1px 1px at 89% 56%, #ffe052 90%, transparent); background-size: 210px 220px, 340px 310px, 170px 290px, 420px 340px; }
 .cosmos::after { content: ""; position: absolute; inset: 0; background: none; }

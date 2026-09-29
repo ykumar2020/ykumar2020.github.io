@@ -83,7 +83,7 @@ if ('IntersectionObserver' in window) {
 const planetRoot = document.querySelector('#planetarium');
 if (planetRoot) {
   setTimeout(() => {
-    import('./assets/planets.js').then(module => module.mountPlanets(planetRoot)).catch(() => {
+    import('./assets/planets.js?v=20260929-asi').then(module => module.mountPlanets(planetRoot)).catch(() => {
       planetRoot.dataset.state = 'fallback';
       planetRoot.querySelector('.planet-controls').hidden = true;
     });

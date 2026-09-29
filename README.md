@@ -33,9 +33,11 @@ Portrait source: the owner's supplied photo, IMG_2946 (1).jpeg, updated Septembe
 
 This is a personal site. Institutional logos are not used. Contact is the public university email.
 
-## Interactive planets
+## Intelligence field
 
-`src/planets.js` builds a fictional four-planet scene with Three.js; `npm run build:planets` bundles it into `assets/planets.js` with esbuild. The bundle loads after the first paint and renders behind the entire website in a fixed, edge-to-edge viewport. It stays visible while scrolling through every section. Planet textures are generated procedurally; no third-party assets or requests are needed. Rendering stops when the tab is hidden, runs at up to 30 fps, and caps resolution at pixel ratio 1.5 or two million pixels. Reduced-motion preference starts the scene paused. A floating control panel provides pause/play, rotation, zoom, and reset. The background never captures pointer or scroll events, so page links and touch scrolling remain usable. A static SVG remains available without JavaScript or WebGL. The scene is explicitly artistic, not to scale.
+`src/intelligence-field.js` creates a procedural Three.js visual metaphor for distributed intelligence, exported through `src/planets.js` and bundled into `assets/planets.js`. Five translucent violet/cyan energy spheres drift independently along slow bounded paths with smooth reversals. There is no central planet or solar orbit. Fractal cloud shaders, luminous cores, fine filaments, surface particles, and brief signals between nearby spheres provide the ASI-inspired appearance. This is artwork, not a scientific depiction of ASI.
+
+The fixed edge-to-edge canvas covers every section and never captures clicks or scrolling. Mobile displays use three smaller spheres. Rendering caps at 30 fps, pixel ratio 1.5 and 1.6 million pixels. Hidden tabs stop rendering. Reduced-motion preference starts everything paused; pause, field-position, size and reset controls remain available. A matching static SVG appears without JavaScript or WebGL and after context loss. All textures and effects are generated locally; there are no extra remote assets.
 
 ## Photo carousel
 
@@ -49,7 +51,7 @@ Orbitron variable font gives the name and section headings a futuristic characte
 
 The carousel includes six supplied photographs. Added IMG_9760.jpeg (atrium), IMG_3802.jpeg (MIT sign), and IMG_0793.jpeg (research posters). Original image content is preserved, orientation normalized, and camera metadata omitted. The landscape MIT photo uses contain framing to retain both the sign and Julie. Slide counts and announcements derive from the slide collection.
 
-The full-page Three.js scene now uses cyan, pink, gold, and violet emissive planets, atmospheric rim shaders, additive halos, luminous rings, and individually twinkling stars. Planet brightness follows staggered smooth 3.5-second pulses. Pause and reduced-motion settings freeze all pulsation and orbital motion together.
+The September 29 intelligence-field revision replaces the earlier emissive planets and rings with free-floating plasma spheres. Pause and reduced-motion settings freeze the field, filaments, signal particles and star twinkles together.
 
 ## Skills cube and star twinkles
 
