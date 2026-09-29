@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import {createHeroDisc, mountGraphicsGallery} from './graphics-work.js';
 
 const CYAN=0x00f0ff, AMBER=0xff9900;
 const TOPICS=['Trustworthy AI','Agentic AI','Multimodal AI','Education','AI Systems','Algorithms'];
@@ -91,8 +92,13 @@ export function mountAcademicVisuals(){
   stage('grid-scene',s=>{
     s.camera.position.set(0,6.8,15);s.camera.lookAt(0,0,-14);
     s.scene.fog=new THREE.FogExp2(0x05070b,.025);
-    const grid=new THREE.GridHelper(160,80,0x1fe8f4,0x0c5461);grid.position.z=-36;
-    grid.material.transparent=true;grid.material.opacity=.65;s.scene.add(grid);
+    const grid=new THREE.GridHelper(160,80,0x9cffff,0x00b5ca);grid.position.z=-36;
+    grid.material.transparent=true;grid.material.opacity=.85;s.scene.add(grid);
+    // Long emissive routes make the grid read as a luminous environment.
+    for(const x of [-12,-6,6,12]){
+      const route=new THREE.Mesh(new THREE.BoxGeometry(.065,.02,100),new THREE.MeshBasicMaterial({color:x<0?0x00f0ff:0xff9900}));route.position.set(x,.04,-32);s.scene.add(route);
+      const glow=new THREE.Mesh(new THREE.PlaneGeometry(.38,100),new THREE.MeshBasicMaterial({color:x<0?0x00f0ff:0xff9900,transparent:true,opacity:.12,depthWrite:false,blending:THREE.AdditiveBlending}));glow.rotation.x=-Math.PI/2;glow.position.copy(route.position);s.scene.add(glow);
+    }
     const horizon=new THREE.Mesh(new THREE.PlaneGeometry(160,.055),new THREE.MeshBasicMaterial({color:CYAN,transparent:true,opacity:.6}));
     horizon.position.set(0,.04,-47);horizon.rotation.x=-Math.PI/2;s.scene.add(horizon);
     const packets=[];
@@ -105,6 +111,16 @@ export function mountAcademicVisuals(){
     document.querySelector('.hero-shell').addEventListener('pointerleave',()=>{targetX=targetY=0;});
     s.update=(time=t)=>{t=time;packets.forEach((p,i)=>{p.position.z=((t*1.8+i*7)%96)-84;p.material.opacity=.35+.25*Math.sin(t*.8+i);});s.camera.position.x+=(targetX-s.camera.position.x)*.025;s.camera.position.y+=(6.8+targetY-s.camera.position.y)*.025;s.camera.lookAt(0,0,-14);};
   });
+
+  stage('hero-art-scene',s=>{
+    s.camera.position.set(0,0,3.4);s.camera.lookAt(0,0,0);
+    const disc=createHeroDisc(s.scene);let t=0,px=0,py=0;
+    s.onResize=(w,h)=>{s.camera.position.z=Math.max(3.4,1.35/(Math.tan(Math.PI/9)*(w/h)));};
+    s.host.addEventListener('pointermove',e=>{if(paused||!fine.matches)return;const b=s.host.getBoundingClientRect();px=((e.clientX-b.left)/b.width-.5)*.25;py=((e.clientY-b.top)/b.height-.5)*.2;});
+    s.host.addEventListener('pointerleave',()=>{px=py=0;});
+    s.update=(time=t)=>{t=time;disc.rotation.set(.4+py,.25+px+Math.sin(t*.16)*.18,t*.06);};
+  });
+  mountGraphicsGallery(stage,inspect);
 
   const node=stage('node-scene',s=>{
     s.camera.position.set(0,.1,7.4);s.camera.lookAt(0,0,0);

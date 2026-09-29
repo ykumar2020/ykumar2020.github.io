@@ -72,3 +72,21 @@ python tests/check_academic_site.py
 The test uses installed Chrome and saves screenshots and reports in ignored `qa/`. It checks publication filters and source record counts, clipboard/BibTeX, network selection and empty states, geometry controls, 320?1440px layouts, reduced motion, render rate, offscreen suspension, context loss/recovery, no-JavaScript content, print completeness and browser errors. It uses axe-core 4.10.3 for automated WCAG A/AA screening, cached locally under `qa/`; axe is not shipped to visitors. Automated checks do not constitute a full accessibility certification. Keyboard and visual checks supplement them.
 
 Before publishing, also inspect the hero, research and publication views at desktop and mobile widths. Confirm GitHub Pages reports the new commit as built and open the live site to check asset versions and runtime behavior.
+
+
+## Owner graphics gallery (September 29 update)
+
+The hero now features an illuminated torus derived from the owner's HW5 parametric construction. The original six-photo carousel is retained in About. Brighter cyan grid routes, amber light paths, a circular identity mark and illuminated edges strengthen the TRON-inspired visual identity without animating publication text.
+
+`src/graphics-work.js` contains browser adaptations of five supplied projects and the saved ray-tracing preview. `src/tron-studio.css` contains this visual layer. The shared stage scheduler retains the 30 fps cap, 1.5 pixel-ratio cap, reduced-motion still state, offscreen suspension and context-loss fallback. Only one project is active in the gallery's WebGL renderer.
+
+- HW5 torus: 64 by 40 subdivisions; 5,120 triangles; 2,665 vertex records with 15,360 indices, or 15,360 non-indexed vertex records. Original radius and periodic RGB formulas retained; checker preview instead of a missing external texture.
+- HW4 swirl sphere: original latitude/longitude samples and GLSL color/mask/reveal formulas, with manual point density. Time starts after the reveal so the still preview remains visible.
+- HW3 recursive graphics: Sierpinski tetrahedron, Koch outline and bounded branching fern study. The original marks the fern WIP. The browser uses a normal-color surface and gold wireframe for the tetrahedron, a boundary outline for Koch, and a simplified line-based fern.
+- HW2 orbital transforms: source periods and eccentric-radius equations, stylized material colors, exaggerated dimensions. The browser omits source image textures, spin and inclination details; it is not a complete simulation or an ephemeris.
+- HW1 collisions: a 16-ball deterministic collision/particle excerpt. The complete original Processing game contains parameter controls, gradual spawning and the Golden Snitch; these are not claimed as implemented in the compact browser excerpt.
+- Ray tracing: the linked public Colab notebook was downloaded and inspected, not executed. The six-second silent 960 by 540 H.264 preview is an existing local `motion_test_bezier.mp4` render, not a rerun of the notebook snapshot. Original CC0 foundation-code credits are retained.
+
+`graphics/source-manifest.json` records input/source hashes. Source-only ZIPs preserve selected original code bytes, including comments and attributions. Native build products, logs, binaries, unrelated photographs and large texture bundles are excluded. The notebook snapshot is preserved as supplied. Fallback PNGs are screenshots of the browser-rendered default studies, not images synthesized independently of the code.
+
+Additional verification: `python tests/check_graphics.py` checks all 15 study/mode combinations, mesh/sample counts, video load/play/pause, source downloads, responsive overflow, reduced motion, offscreen rendering and static fallback. The saved video was also fully decoded with FFmpeg. Run it alongside the general academic-site test before publishing changes.

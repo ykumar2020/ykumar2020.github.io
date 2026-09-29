@@ -1,5 +1,6 @@
 @import "tailwindcss" source(none);
 @import "./cyber.css";
+@import "./tron-studio.css";
 @source "../template.html";
 @source "../index.html";
 @source "../404.html";

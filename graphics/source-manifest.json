@@ -1,0 +1,35 @@
+[
+  {
+    "input": "hw5-JK.zip",
+    "input_sha256": "2c6ff18696dce5007cd1bc886b6f3a3d9335bd1a39d24fae8e545afa679dc8b2",
+    "published": "torus-source.zip",
+    "selection": "Source code only; build products and media excluded. Original selected file bytes retained."
+  },
+  {
+    "input": "julie_hw4.zip",
+    "input_sha256": "01cc93562fda729acf31d084ec89ec3a623b6a60deefc8411a833f6c484ed780",
+    "published": "swirl-source.zip",
+    "selection": "Source code only; build products and media excluded. Original selected file bytes retained."
+  },
+  {
+    "input": "JK_HW2 (1).zip",
+    "input_sha256": "2d75e27fc465f4d7ff7f3c8b4c579f7ef49d24b43f3cd95bc2cf07bb19865341",
+    "published": "solar-system-source.zip",
+    "selection": "Source code only; build products and media excluded. Original selected file bytes retained."
+  },
+  {
+    "input": "JulieK_HW1.pde",
+    "published": "collision-fireworks.pde",
+    "sha256": "46eca4bbe97bf0c4da372f40eceb989e351706cc1956dba5823acac30f358ec2"
+  },
+  {
+    "input": "hw3_JK_pde.pde",
+    "published": "recursive-fractals.pde",
+    "sha256": "78511852ba95e7994d11edeab4c223109fbe8b903fae68ddd050b4238d320103"
+  },
+  {
+    "input": "https://colab.research.google.com/drive/19o2yg5X8a--gTWolkI2SMQD2h-O9rJ0W",
+    "published": "raytrace-notebook.ipynb",
+    "sha256": "b5ddaccf24449d6912f51df1b609859140f59ce45667fcda49062f9d83a21cf2"
+  }
+]

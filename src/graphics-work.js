@@ -1,0 +1,145 @@
+import * as THREE from 'three';
+
+// Browser adaptations of Julie Kumar's supplied Processing / C++ graphics studies.
+// Original files and their attribution comments are retained in graphics/sources.
+export const WORKS={
+  torus:{title:'One torus. Four ways to see it.',tag:'05 / C++ · OpenGL · Parametric geometry',description:'A surface built from two angles. Compare the triangle wireframe, interpolated vertex colors with and without an index buffer, and a checker texture.',note:'Browser adaptation of Torus.cpp and torus_demo.cc. The source radii, 64 × 40 subdivision grid, periodic RGB formula and vertex-lighting calculation are retained. The supplied project uses a checkerboard when its texture file is absent.',source:'graphics/sources/torus-source.zip',label:'Download C++ source',options:[['wire','Wireframe'],['nonindexed','Gouraud · non-indexed'],['indexed','Gouraud · indexed'],['texture','Checker texture']]},
+  swirl:{title:'A sphere written in light.',tag:'04 / C++ · OpenGL · GLSL',description:'Latitude and longitude become a living color field. Change point density to reveal how sampling changes the surface, while the original swirl shader varies color over time.',note:'Browser adaptation of SwirlSphere and swirl.frag. Preserves the spherical point construction, sinusoidal RGB channels, grid mask and hashed reveal. Density is manually controlled here instead of increasing automatically.',source:'graphics/sources/swirl-source.zip',label:'Download C++ / GLSL source',options:[['30','30 × 60 points'],['90','90 × 180 points'],['150','150 × 300 points']]},
+  fractal:{title:'Small rules. Intricate worlds.',tag:'03 / Processing · Recursion · 3D',description:'Inspect the Sierpiński tetrahedron, Koch snowflake, and branching fern study. Each repeated rule grows a different geometric structure.',note:'Browser adaptation of the three acts in hw3_JK_pde.pde. Recursion is bounded for browser performance. The fern is a branching construction; the source identifies it as a work in progress, not a finished Barnsley IFS implementation.',source:'graphics/sources/recursive-fractals.pde',label:'Download Processing source',options:[['pyramid','Sierpiński tetrahedron'],['snowflake','Koch snowflake'],['fern','Branching fern · WIP']]},
+  solar:{title:'Motion within motion.',tag:'02 / Processing · Hierarchical transforms',description:'Follow Mercury, Venus, Earth and the Moon. The Earth–Moon hierarchy combines revolution with local motion; speed controls expose the different periods.',note:'Stylized browser adaptation of JK_HW2.pde. Uses the source periods and eccentric-orbit formulas with exaggerated object sizes and distances. Smooth materials replace the original image textures. This is a teaching model, not an ephemeris or a scale model.',source:'graphics/sources/solar-system-source.zip',label:'Download Processing source',options:[['2','2 simulated days / second'],['20','20 simulated days / second'],['60','60 simulated days / second']]},
+  fireworks:{title:'Collision becomes color.',tag:'01 / Processing · Collision detection · Particles',description:'Neon balls rebound from the boundary. When two touch, both disappear into rainbow particles. Restart the excerpt to replay the collision sequence.',note:'Browser excerpt from JulieK_HW1.pde: ball collisions and particle bursts. This compact preview starts with 16 balls; the full source also includes gradual spawning, configuration and the steering Golden Snitch game.',source:'graphics/sources/collision-fireworks.pde',label:'Download full Processing game',options:[['normal','Normal speed'],['slow','Slow motion']]},
+  raytrace:{title:'Light, traced one ray at a time.',tag:'06 / C++ · Ray tracing · Colab',description:'A saved Bézier camera preview from my ray-tracing project. The linked notebook provides a C++ renderer with sphere materials, a BVH, OpenMP, camera-path controls and FFmpeg output.',note:'Saved project render, not a fresh execution of the linked notebook. The notebook retains Peter Shirley / Ray Tracing in One Weekend attribution and CC0 notices in its foundation code. Video is silent; use the native player to play, pause or scrub.',source:'https://colab.research.google.com/drive/19o2yg5X8a--gTWolkI2SMQD2h-O9rJ0W?usp=sharing',label:'Open my Colab notebook',options:[]}
+};
+
+export function torusGeometry(indexed=true){
+  const positions=[],colors=[],uvs=[],indices=[];
+  for(let i=0;i<=64;i++)for(let j=0;j<=40;j++){
+    const u=i/64*Math.PI*2,v=j/40*Math.PI*2,R=.72,r=.24;
+    positions.push((R+r*Math.cos(v))*Math.cos(u),(R+r*Math.cos(v))*Math.sin(u),r*Math.sin(v));
+    colors.push(.55+.45*Math.cos(u),.55+.45*Math.cos(v+2.0943951),.55+.45*Math.cos(u+v+4.1887902));uvs.push(i/64,j/40);
+  }
+  for(let i=0;i<64;i++)for(let j=0;j<40;j++){const a=i*41+j,b=(i+1)*41+j;indices.push(a,b,a+1,a+1,b,b+1);}
+  const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));g.setAttribute('color',new THREE.Float32BufferAttribute(colors,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(uvs,2));g.setIndex(indices);g.computeVertexNormals();
+  if(indexed)return g;const expanded=g.toNonIndexed();g.dispose();return expanded;
+}
+
+export function createHeroDisc(scene){
+  const group=new THREE.Group();scene.add(group);
+  const g=torusGeometry();
+  const mesh=new THREE.Mesh(g,new THREE.MeshBasicMaterial({color:0x07121b}));group.add(mesh);
+  const lattice=new THREE.LineSegments(new THREE.WireframeGeometry(g),new THREE.LineBasicMaterial({color:0x00eeff,transparent:true,opacity:.22}));group.add(lattice);
+  for(const radius of [.49,.72,.95]){
+    const curve=new THREE.EllipseCurve(0,0,radius,radius,0,Math.PI*2);
+    const points=curve.getPoints(160).map(p=>new THREE.Vector3(p.x,p.y,.12));
+    for(const [size,opacity] of [[.017,1],[.041,.13],[.075,.04]]){
+      const path=new THREE.CatmullRomCurve3(points,true);
+      group.add(new THREE.Mesh(new THREE.TubeGeometry(path,160,size,5,true),new THREE.MeshBasicMaterial({color:radius===.72?0xff9900:0x00f0ff,transparent:opacity<1,opacity,blending:THREE.AdditiveBlending,depthWrite:false})));
+    }
+  }
+  const ticks=[];
+  for(let i=0;i<64;i++){const a=i/64*Math.PI*2;for(const r of [1.08,1.08+(i%4===0?.075:.027)])ticks.push(Math.cos(a)*r,Math.sin(a)*r,0);}
+  const geom=new THREE.BufferGeometry();geom.setAttribute('position',new THREE.Float32BufferAttribute(ticks,3));group.add(new THREE.LineSegments(geom,new THREE.LineBasicMaterial({color:0x65bbc8})));
+  return group;
+}
+
+export function mountGraphicsGallery(stage,inspect){
+  const root=document.querySelector('#graphics');if(!root)return;
+  let current='torus',option='wire',controller;
+  const buttons=[...root.querySelectorAll('[data-work]')],select=root.querySelector('#graphics-mode'),video=root.querySelector('video');
+  const s=stage('graphics-scene',s=>{
+    s.camera.position.set(0,0,4.1);s.camera.lookAt(0,0,0);s.group=new THREE.Group();s.scene.add(s.group);
+    s.onResize=(w,h)=>{s.camera.position.z=Math.max(4.1,2.2/(Math.tan(Math.PI/9)*(w/h)));};
+    let t=0;s.update=(time=t)=>{const dt=Math.max(0,Math.min(time-t,.06));t=time;const r=s.userRotation||{x:.12,y:-.28};if(current!=='fireworks')s.group.rotation.set(r.x+.22,r.y+t*.09,0);else s.group.rotation.set(0,0,0);controller?.update(t,dt);};
+    inspect(s);
+  });
+  function build(){
+    if(!s)return;
+    s.group.traverse(o=>{o.geometry?.dispose();o.material?.dispose();});s.group.clear();
+    controller=createWork(current,option,s.group);
+    root.querySelector('#graphics-readout').textContent=controller?.readout||'';
+    s.host.dataset.work=current;s.host.dataset.mode=option;s.update();s.resize();
+  }
+  function choose(key){
+    current=key;const w=WORKS[key];video.pause();
+    buttons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.work===key)));
+    root.querySelector('#graphics-title').textContent=w.title;root.querySelector('#graphics-tag').textContent=w.tag;
+    root.querySelector('#graphics-description').textContent=w.description;root.querySelector('#graphics-note').textContent=w.note;
+    const link=root.querySelector('#graphics-source');link.href=w.source;link.textContent=w.label;
+    select.replaceChildren(...w.options.map(([value,label])=>new Option(label,value)));option=w.options[0]?.[0];
+    select.parentElement.hidden=!w.options.length;
+    root.querySelector('#graphics-scene').hidden=key==='raytrace';root.querySelector('#raytrace-preview').hidden=key!=='raytrace';
+    if(key!=='raytrace')root.querySelector('#graphics-scene .scene-fallback').src=`assets/graphics/${key}-preview.png`;
+    root.querySelector('[data-controls=graphics-scene]').hidden=!s||key==='raytrace';
+    root.querySelectorAll('[data-controls=graphics-scene] [data-turn]').forEach(b=>b.hidden=key==='fireworks');
+    root.querySelector('#graphics-restart').hidden=key!=='fireworks';
+    root.querySelector('#graphics-readout').textContent='';
+    if(key!=='raytrace')build();
+    root.querySelector('#graphics-scene').setAttribute('aria-label',w.title+' '+w.description);
+  }
+  buttons.forEach(b=>b.addEventListener('click',()=>choose(b.dataset.work)));
+  select.addEventListener('change',()=>{option=select.value;build();});
+  root.querySelector('#graphics-restart').addEventListener('click',build);
+  new IntersectionObserver(([e])=>{if(!e.isIntersecting)video.pause();},{threshold:.05}).observe(video);
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)video.pause();});
+  root.querySelector('.graphics-controls').hidden=!s;
+  s?.canvas.addEventListener('webglcontextlost',()=>{root.querySelector('.graphics-controls').hidden=true;});
+  s?.canvas.addEventListener('webglcontextrestored',()=>{root.querySelector('.graphics-controls').hidden=false;});
+  choose('torus');
+}
+
+function createWork(key,mode,group){
+  if(key==='torus'){
+    const g=torusGeometry(mode!=='nonindexed');
+    let material;
+    if(mode==='wire')material=new THREE.MeshBasicMaterial({color:0x00f0ff,wireframe:true});
+    else if(mode==='texture')material=new THREE.ShaderMaterial({side:THREE.DoubleSide,vertexShader:'varying vec2 vUv; void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',fragmentShader:'varying vec2 vUv;void main(){float a=mod(floor(vUv.x*16.)+floor(vUv.y*8.),2.);gl_FragColor=vec4(mix(vec3(.035,.065,.09),vec3(.1,.85,.95),a),1.);}' });
+    else material=new THREE.ShaderMaterial({vertexColors:true,side:THREE.DoubleSide,vertexShader:'varying vec3 lit;void main(){vec3 n=normalize(normalMatrix*normal);float d=max(dot(n,normalize(vec3(.6,-.85,-.5))),0.);lit=color*(.25+.75*d);gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',fragmentShader:'varying vec3 lit;void main(){gl_FragColor=vec4(lit,1.);}' });
+    group.add(new THREE.Mesh(g,material));return{update(){},readout:`5,120 triangles · ${g.attributes.position.count.toLocaleString()} vertex records · ${g.index?'15,360 indices':'no index buffer'}`};
+  }
+  if(key==='swirl'){
+    const lat=Number(mode),lon=lat*2,p=[];
+    for(let j=1;j<lat;j++){const a=-Math.PI/2+j*Math.PI/lat;for(let i=0;i<lon;i++){const b=i*2*Math.PI/lon;p.push(Math.cos(a)*Math.cos(b),Math.cos(a)*Math.sin(b),Math.sin(a));}}p.push(0,0,-1,0,0,1);
+    const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(p,3));
+    const material=new THREE.ShaderMaterial({uniforms:{time:{value:14},complexity:{value:lat/400},size:{value:lat===30?5:3}},vertexShader:'varying vec3 vPos;uniform float size;void main(){vPos=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);gl_PointSize=size;}',fragmentShader:`varying vec3 vPos;uniform float time,complexity;
+      float hash(vec2 p){return fract(sin(dot(p,vec2(12.9898,78.233)))*43758.5453);}
+      void main(){if(length(gl_PointCoord-.5)>.5)discard;float theta=atan(vPos.y,vPos.x);float phi=acos(clamp(vPos.z/length(vPos),-1.,1.));float freq=15.+complexity*25.;float mask=smoothstep(0.,.15,abs(sin(phi*freq)))*smoothstep(0.,.15,abs(sin(theta*freq)));float r=.5+.5*sin(vPos.x*10.*complexity+time);float g=.5+.5*sin(vPos.y*15.*complexity+time*1.2);float b=.5+.5*sin(vPos.z*20.*complexity+time*1.5);float glow=step(.5,complexity)*abs(sin(time*2.5+vPos.y*5.));float h=hash(floor(vec2(theta,phi)*(freq/3.14159)));float reveal=smoothstep(h*10.,h*10.+2.,time);gl_FragColor=vec4(vec3(r+glow,g,b+glow*.5)*mask*reveal,1.);}`});
+    group.add(new THREE.Points(g,material));return{update(t){material.uniforms.time.value=t+14;},readout:`${(p.length/3).toLocaleString()} spherical samples · original GLSL color formulas`};
+  }
+  if(key==='fractal'){
+    const points=[];
+    if(mode==='pyramid'){
+      function recur(v,n){if(!n){for(const f of [[0,1,2],[0,1,3],[0,2,3],[1,2,3]])for(const k of f)points.push(...v[k]);return;}for(let k=0;k<4;k++)recur(v.map((p,i)=>i===k?p:p.map((x,j)=>(x+v[k][j])/2)),n-1);}
+      recur([[0,1,0],[-1,-1,1],[1,-1,1],[0,-1,-1]],4);
+      const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(points,3));g.computeVertexNormals();group.add(new THREE.Mesh(g,new THREE.MeshNormalMaterial({side:THREE.DoubleSide})));
+      group.add(new THREE.LineSegments(new THREE.WireframeGeometry(g),new THREE.LineBasicMaterial({color:0xffcf55,transparent:true,opacity:.65})));
+    }else if(mode==='snowflake'){
+      function edge(a,b,n){if(!n){points.push(...a,0,...b,0);return;}const d=[(b[0]-a[0])/3,(b[1]-a[1])/3],p=[a[0]+d[0],a[1]+d[1]],r=[a[0]+2*d[0],a[1]+2*d[1]],q=[p[0]+d[0]*.5-d[1]*.8660254,p[1]+d[0]*.8660254+d[1]*.5];edge(a,p,n-1);edge(p,q,n-1);edge(q,r,n-1);edge(r,b,n-1);}
+      const v=[[0,1.15],[.9959,-.575],[-.9959,-.575]];for(let i=0;i<3;i++)edge(v[i],v[(i+1)%3],4);
+      const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(points,3));group.add(new THREE.LineSegments(g,new THREE.LineBasicMaterial({color:0x91efff})));
+    }else{
+      function fern(x,y,a,h,n){if(!n)return;const xx=x+Math.sin(a)*h*.15,yy=y+Math.cos(a)*h*.15;points.push(x,y,0,xx,yy,0);fern(xx,yy,a+.035,h*.85,n-1);fern(xx,yy,a+.785,h*.35,n-1);fern(xx,yy,a-.785,h*.35,n-1);fern(xx,yy,a+.017,h*.1,n-1);}
+      fern(0,-1.1,0,3.5,7);const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(points,3));group.add(new THREE.LineSegments(g,new THREE.LineBasicMaterial({color:0x66ffb6})));
+    }
+    return{update(){},readout:mode==='pyramid'?'Level 4 · 256 tetrahedra':mode==='snowflake'?'Level 4 · 768 boundary segments':'Level 7 · recursive branching study'};
+  }
+  if(key==='solar'){
+    const orbits=[{name:'Mercury',a:.65,e:.2056,period:87.97,size:.044,color:0xa5b1c2},{name:'Venus',a:1.05,e:0,period:224.7,size:.08,color:0xffc58d},{name:'Earth',a:1.6,e:.0167,period:365.26,size:.087,color:0x48c6ff}];
+    const sun=new THREE.Mesh(new THREE.SphereGeometry(.2,24,16),new THREE.MeshBasicMaterial({color:0xffb126}));group.add(sun);
+    for(const [i,o] of orbits.entries()){
+      const path=[];for(let j=0;j<=150;j++){const a=j/150*Math.PI*2,r=o.a*(1-o.e*o.e)/(1+o.e*Math.cos(a));path.push(new THREE.Vector3(Math.cos(a)*r,Math.sin(a)*r,0));}
+      group.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(path),new THREE.LineBasicMaterial({color:0x2b7d8d})));o.mesh=new THREE.Mesh(new THREE.SphereGeometry(o.size,20,12),new THREE.MeshBasicMaterial({color:o.color}));group.add(o.mesh);o.offset=i*1.8;
+    }
+    const moon=new THREE.Mesh(new THREE.SphereGeometry(.027,12,8),new THREE.MeshBasicMaterial({color:0xdce5ed}));group.add(moon);
+    return{update(t){const days=t*Number(mode);orbits.forEach(o=>{const a=days*2*Math.PI/o.period+o.offset,r=o.a*(1-o.e*o.e)/(1+o.e*Math.cos(a));o.mesh.position.set(Math.cos(a)*r,Math.sin(a)*r,0);});const earth=orbits[2].mesh.position,a=days*2*Math.PI/27.32;moon.position.copy(earth).add(new THREE.Vector3(Math.cos(a)*.23,Math.sin(a)*.23,0));},readout:'Sun · Mercury · Venus · Earth + Moon | sizes and distances exaggerated'};
+  }
+  // The bounded HW1 excerpt shares its collision predicate and disappearing-ball rule.
+  if(key==='fireworks'){
+    const balls=[],bursts=[];let seed=2026;const rand=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;};
+    for(let i=0;i<16;i++){const radius=.035+rand()*.035,color=new THREE.Color().setHSL(rand(),1,.6);const mesh=new THREE.Mesh(new THREE.CircleGeometry(radius,16),new THREE.MeshBasicMaterial({color}));mesh.position.set((rand()-.5)*2.5,(rand()-.5)*1.5,0);group.add(mesh);balls.push({mesh,r:radius,v:new THREE.Vector2((rand()-.5)*.8,(rand()-.5)*.8),alive:true});}
+    function explode(ball){ball.alive=false;ball.mesh.visible=false;for(let i=0;i<38;i++){const angle=i/38*Math.PI*2,mesh=new THREE.Mesh(new THREE.CircleGeometry(.012,5),new THREE.MeshBasicMaterial({color:new THREE.Color().setHSL(i/38,1,.6),transparent:true,blending:THREE.AdditiveBlending}));mesh.position.copy(ball.mesh.position);group.add(mesh);bursts.push({mesh,v:new THREE.Vector2(Math.cos(angle)*(.3+rand()),Math.sin(angle)*(.3+rand())),life:1.5});}}
+    return{update(t,dt){dt*=mode==='slow'?.3:1;for(const b of balls){if(!b.alive)continue;b.mesh.position.x+=b.v.x*dt;b.mesh.position.y+=b.v.y*dt;if(Math.abs(b.mesh.position.x)>1.45-b.r){b.mesh.position.x=Math.sign(b.mesh.position.x)*(1.45-b.r);b.v.x*=-1;}if(Math.abs(b.mesh.position.y)>.85-b.r){b.mesh.position.y=Math.sign(b.mesh.position.y)*(.85-b.r);b.v.y*=-1;}}
+      for(let i=0;i<balls.length;i++)for(let j=i+1;j<balls.length;j++){const a=balls[i],b=balls[j];if(a.alive&&b.alive&&a.mesh.position.distanceToSquared(b.mesh.position)<=(a.r+b.r)**2){explode(a);explode(b);}}
+      for(let i=bursts.length-1;i>=0;i--){const p=bursts[i];p.life-=dt;p.v.y-=dt*.35;p.mesh.position.x+=p.v.x*dt;p.mesh.position.y+=p.v.y*dt;p.mesh.material.opacity=Math.max(0,p.life/1.5);if(p.life<=0){group.remove(p.mesh);p.mesh.geometry.dispose();p.mesh.material.dispose();bursts.splice(i,1);}}},readout:'16-ball collision excerpt · disappearing balls + rainbow particles'};
+  }
+  return{update(){},readout:''};
+}
