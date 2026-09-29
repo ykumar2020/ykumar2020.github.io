@@ -1,13 +1,14 @@
 @import "tailwindcss" source(none);
 @import "./cyber.css";
 @import "./tron-studio.css";
+@import "./redshift.css";
 @source "../template.html";
 @source "../index.html";
 @source "../404.html";
 @theme {
   --color-space: #05070B;
   --color-panel: #0D131F;
-  --color-signal: #00F0FF;
+  --color-signal: #FF929E;
   --color-amber: #FF9900;
   --color-violet: #8A2BE2;
   --color-starlight: #E2E8F0;

@@ -76,7 +76,7 @@ Before publishing, also inspect the hero, research and publication views at desk
 
 ## Owner graphics gallery (September 29 update)
 
-The hero now features an illuminated torus derived from the owner's HW5 parametric construction. The original six-photo carousel is retained in About. Brighter cyan grid routes, amber light paths, a circular identity mark and illuminated edges strengthen the TRON-inspired visual identity without animating publication text.
+The graphics gallery includes an illuminated torus derived from the owner's HW5 parametric construction. The original six-photo carousel is retained in About. Brighter cyan grid routes, amber light paths, a circular identity mark and illuminated edges strengthen the TRON-inspired visual identity without animating publication text.
 
 `src/graphics-work.js` contains browser adaptations of five supplied projects and the saved ray-tracing preview. `src/tron-studio.css` contains this visual layer. The shared stage scheduler retains the 30 fps cap, 1.5 pixel-ratio cap, reduced-motion still state, offscreen suspension and context-loss fallback. Only one project is active in the gallery's WebGL renderer.
 
@@ -90,3 +90,8 @@ The hero now features an illuminated torus derived from the owner's HW5 parametr
 `graphics/source-manifest.json` records input/source hashes. Source-only ZIPs preserve selected original code bytes, including comments and attributions. Native build products, logs, binaries, unrelated photographs and large texture bundles are excluded. The notebook snapshot is preserved as supplied. Fallback PNGs are screenshots of the browser-rendered default studies, not images synthesized independently of the code.
 
 Additional verification: `python tests/check_graphics.py` checks all 15 study/mode combinations, mesh/sample counts, video load/play/pause, source downloads, responsive overflow, reduced motion, offscreen rendering and static fallback. The saved video was also fully decoded with FFmpeg. Run it alongside the general academic-site test before publishing changes.
+
+
+## Redshift / The Loom
+
+The hero now presents an original speculative ASI artwork in `src/asi-loom.js`: a slowly weaving particle field, a dark faceted core, branching signal paths and asymmetrical arcs. It is explicitly labeled a visual metaphor, not a scientific model or actual AI telemetry. The scene uses 13,500 particles on desktop and 6,500 on mobile, GPU vertex animation and instanced outer fragments. `src/redshift.css` supplies red neon decoration and high-contrast pale coral interface text; original graphics-gallery colors are preserved. The shared 30 fps / 1.5 pixel-ratio caps, offscreen suspension, pause control and reduced-motion still frame apply. `assets/asi-loom-fallback.svg` is the no-WebGL fallback.

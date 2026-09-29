@@ -85,7 +85,7 @@ if ('IntersectionObserver' in window) {
 
 // The visuals enhance the document; scholarly content never depends on WebGL.
 let visuals;
-const visualReady = import('./assets/planets.js?v=20260929-studio').then(module => {
+const visualReady = import('./assets/planets.js?v=20260929-redshift').then(module => {
   visuals = module.mountAcademicVisuals();
   return visuals;
 }).catch(() => null);

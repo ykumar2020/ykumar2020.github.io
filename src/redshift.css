@@ -1,0 +1,25 @@
+/* Redshift: crimson light for decoration, pale coral for readable interface text. */
+:root{--cyan:#ff929e;--amber:#ffb09c}
+.site-header{border-bottom-color:#ae263c;box-shadow:0 1px 18px #ff234425}
+.brand-mark{border-color:#ff344c;box-shadow:0 0 18px #ff234443,inset 0 0 12px #ff23441a}
+.hero-shell{background:radial-gradient(ellipse at 78% 45%,#650d2459,transparent 57%);border-bottom-color:#e72b47;box-shadow:0 10px 50px #ff234410}
+.hero-name{color:#fff4f4;text-shadow:0 0 35px #ff344c24}.hero-name .name-point{color:#ff4c61;text-shadow:0 0 24px #ff234480}
+.hero .eyebrow,.hero-headline em,.section-top h2 em,.section-heading h2 em{color:#ff9faa}
+.hero .primary{box-shadow:0 0 24px #ff234435}.primary:hover{background:#ffd5da}
+.hero-art:before{background:radial-gradient(ellipse,#ff234426,transparent 70%)}
+.hero-art-heading{color:#e9abb4;border-color:#943344}.hero-art-heading span:last-child{color:#ffbaa8}
+.hero-art figcaption>span{color:#ffb8c1}.hero-art .text-link{color:#ffb8aa}.asi-caption{margin:0 0 16px;color:#b8c2cf}
+.hero-shell:after{background:#ff344c;box-shadow:0 0 22px #ff2344}
+.grid-fallback{background:repeating-linear-gradient(0deg,#ff23444d 0 1px,transparent 1px 60px),repeating-linear-gradient(90deg,#ff23444d 0 1px,transparent 1px 60px)}
+.credential-strip{border-bottom-color:#57303f;background:linear-gradient(90deg,#1b0e19,#0d131f)}
+.section-top:before{background:#ff344c;box-shadow:0 0 15px #ff234475}
+.research-section{background:linear-gradient(120deg,#140d17f5,#0d131ff5)}.skills-visual{box-shadow:0 0 34px #ff234410}
+.node-stage{background:radial-gradient(ellipse,#29111e,transparent 65%)}
+.skill-selectors button[aria-pressed=true]{background:#301520}
+.graphics-section{border-color:#703143;background:radial-gradient(ellipse at 20% 40%,#4d102866,transparent 60%),#09090f}
+.work-selectors button[aria-pressed=true]{border-color:#ff677b;background:#341421;color:#ffbcc4;box-shadow:inset 0 2px #ff344c,0 0 20px #ff23441a}
+.work-selectors button:hover{border-color:#ffc1cb}.graphics-copy .eyebrow{color:#ff9faa}
+.graphics-source-index a{color:#ffc1cb}.graphics-studio{border-color:#643448}.graphics-display{background:radial-gradient(ellipse,#25132099,transparent 65%)}
+.ambient-circuits{background:linear-gradient(90deg,transparent 49.8%,#85203622 50%,transparent 50.2%),radial-gradient(ellipse at 85% 20%,#47102444,transparent 55%);background-size:240px 100%,100% 100%}
+.status-dot{box-shadow:0 0 14px #ff344c70}
+@media print{.hero-shell:after,.section-top:before{display:none}}
