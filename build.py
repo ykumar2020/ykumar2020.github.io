@@ -1,18 +1,33 @@
 """Render the publication list into static HTML; no runtime dependencies."""
 from pathlib import Path
-import html, json
+import html, json, re
 root=Path(__file__).parent
 data=json.loads((root/'data/publications.json').read_text(encoding='utf-8'))
 cards=[]
+def bib_escape(value):
+    replacements={'\\':r'\textbackslash{}','&':r'\&','%':r'\%','_':r'\_','#':r'\#','$':r'\$','{':r'\{','}':r'\}'}
+    return ''.join(replacements.get(c,c) for c in str(value))
+
+def bibtex(p):
+    # Generic misc entries avoid inventing a journal/type for incomplete CV records.
+    names=re.split(r',\s*(?:and\s+)?|\s+and\s+',p['authors'])
+    author=' and '.join('others' if n.strip()=='et al.' else bib_escape(n.strip()) for n in names if n.strip())
+    fields={'author':author,'title':'{'+bib_escape(p['title'])+'}','year':str(p['year']),
+            'howpublished':bib_escape(p['venue']),'note':bib_escape(p['status'])}
+    if p.get('url'): fields['url']=bib_escape(p['url'])
+    return '@misc{kumar-'+p['id']+',\n'+',\n'.join('  '+k+' = {'+v+'}' for k,v in fields.items())+'\n}'
+
 for i,p in enumerate(data):
     e=lambda key:html.escape(str(p[key]),quote=True)
     link=f'<a class="paper-link" href="{e("url")}" target="_blank" rel="noopener noreferrer">{e("linkLabel")} <span aria-hidden="true">↗</span></a>' if p['url'] else '<span class="paper-pending">No public link listed</span>'
     note=f'<p class="paper-note">{html.escape(p["note"])}</p>' if p.get('note') else ''
     related=''.join(f'<a class="paper-link" href="{html.escape(r["url"],quote=True)}" target="_blank" rel="noopener noreferrer">{html.escape(r["label"])} ↗</a>' for r in p.get('related',[]))
     citation=f'{p["authors"]}. ({p["year"]}). {p["title"]}. {p["venue"]}. {p["status"]}. {p["url"]}'.strip()
+    bib=html.escape(bibtex(p))
+    drawer=f'<details class="bibtex-drawer"><summary>BibTeX</summary><p>Exported from the listed metadata. Publication type and missing fields are not inferred.</p><pre tabindex="0" aria-label="BibTeX for {e("title")}"><code>{bib}</code></pre></details>'
     cards.append(f'''<article class="paper" id="{e('id')}" data-topic="{e('topic')}" data-year="{p['year']}" data-status="{e('status')}">
 <div class="paper-year">{p['year']}<span>{e('status')}</span></div>
-<div class="paper-body"><p class="paper-topic">{e('topic')}</p><h3>{e('title')}</h3><p class="paper-authors">{e('authors')}</p><p class="paper-venue">{e('venue')}</p>{note}<div class="paper-actions">{link}{related}<button class="copy-citation" type="button" data-citation="{html.escape(citation,quote=True)}" aria-label="Copy citation for {e('title')}">Copy citation</button></div></div>
+<div class="paper-body"><p class="paper-topic">{e('topic')}</p><h3>{e('title')}</h3><p class="paper-authors">{e('authors')}</p><p class="paper-venue">{e('venue')}</p>{note}<div class="paper-actions">{link}{related}<button class="copy-citation" type="button" data-citation="{html.escape(citation,quote=True)}" aria-label="Copy citation for {e('title')}">Copy citation</button></div>{drawer}</div>
 </article>''')
 template=(root/'template.html').read_text(encoding='utf-8')
 years=sorted({p['year'] for p in data},reverse=True)

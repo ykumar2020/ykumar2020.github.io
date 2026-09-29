@@ -30,6 +30,10 @@ function updatePapers() {
   showAll.hidden = matches.length <= visibleLimit;
   showAll.textContent = 'Show all ' + matches.length + ' matching records';
   document.querySelector('#no-results').hidden = matches.length > 0;
+  if (window.academicNetworkReady) {
+    if(networkMode) { count.textContent=matches.length+' matching bibliography records in the constellation'; loadMore.hidden=true; showAll.hidden=true; }
+    syncNetwork(matches);
+  }
 }
 document.querySelector('.publication-tools').hidden = false; count.hidden = false;
 filters.forEach(button => button.addEventListener('click', () => {
@@ -79,16 +83,12 @@ if ('IntersectionObserver' in window) {
   document.querySelectorAll('main section[id]').forEach(section => observer.observe(section));
 }
 
-// The full-viewport background loads after the first paint, independent of scroll.
-const planetRoot = document.querySelector('#planetarium');
-if (planetRoot) {
-  setTimeout(() => {
-    import('./assets/planets.js?v=20260929-asi').then(module => module.mountPlanets(planetRoot)).catch(() => {
-      planetRoot.dataset.state = 'fallback';
-      planetRoot.querySelector('.planet-controls').hidden = true;
-    });
-  }, 150);
-}
+// The visuals enhance the document; scholarly content never depends on WebGL.
+let visuals;
+const visualReady = import('./assets/planets.js?v=20260929-grid').then(module => {
+  visuals = module.mountAcademicVisuals();
+  return visuals;
+}).catch(() => null);
 
 // Photo flip carousel. Content remains static when motion is reduced.
 const photoCarousel = document.querySelector('#photo-carousel');
@@ -179,52 +179,48 @@ if (photoCarousel) {
 }
 
 
-// Rotate the expertise cube, keeping its explanations accessible outside 3D space.
-const skillsRoot = document.querySelector('#skills-cube');
-if (skillsRoot) {
-  const cube = skillsRoot.querySelector('.skills-cube');
-  const details = [...skillsRoot.querySelectorAll('.skill-detail')];
-  const selectors = [...skillsRoot.querySelectorAll('[data-skill-select]')];
-  const pause = skillsRoot.querySelector('[data-cube="pause"]');
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
-  const angles = [[-14,-25],[-14,-115],[-14,-205],[-14,-295],[-104,0],[76,0]];
-  let current = 0, paused = reduce.matches, visible = false, hovered = false, focused = false, timer;
-  function schedule() {
-    clearTimeout(timer);
-    pause.textContent = paused ? 'Play cube' : 'Pause cube';
-    pause.setAttribute('aria-pressed', String(paused));
-    if (!paused && visible && !hovered && !focused && !document.hidden) timer = setTimeout(() => select(current+1,false),5500);
-  }
-  function select(index, manual=true) {
-    current = (index+details.length)%details.length;
-    if (manual) paused=true;
-    const [x,y]=angles[current];
-    cube.style.transform=`rotateX(${x}deg) rotateY(${y}deg)`;
-    details.forEach((item,i)=>item.hidden=i!==current);
-    selectors.forEach((button,i)=>button.setAttribute('aria-pressed',String(i===current)));
-    skillsRoot.dataset.face=String(current);
-    if (manual) skillsRoot.querySelector('.cube-status').textContent=details[current].querySelector('h3').textContent;
-    schedule();
-  }
-  skillsRoot.querySelector('.cube-controls').hidden=false;
-  skillsRoot.querySelector('.skill-selectors').hidden=false;
-  skillsRoot.addEventListener('click',event=>{
-    const chosen=event.target.closest('[data-skill-select]');
-    if(chosen) select(Number(chosen.dataset.skillSelect));
-    const action=event.target.closest('[data-cube]')?.dataset.cube;
-    if(action==='next') select(current+1);
-    if(action==='previous') select(current-1);
-    if(action==='pause') { paused=!paused; schedule(); }
-  });
-  skillsRoot.addEventListener('keydown',event=>{
-    if(event.key==='ArrowRight'||event.key==='ArrowLeft') { event.preventDefault(); select(current+(event.key==='ArrowRight'?1:-1)); }
-  });
-  skillsRoot.addEventListener('pointerenter',e=>{if(e.pointerType!=='touch'){hovered=true;schedule();}});
-  skillsRoot.addEventListener('pointerleave',()=>{hovered=false;schedule();});
-  skillsRoot.addEventListener('focusin',()=>{focused=true;schedule();});
-  skillsRoot.addEventListener('focusout',e=>{focused=skillsRoot.contains(e.relatedTarget);schedule();});
-  document.addEventListener('visibilitychange',schedule);
-  reduce.addEventListener('change',()=>{paused=reduce.matches;schedule();});
-  new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;schedule();},{threshold:.2}).observe(skillsRoot);
-  select(0,false);
+// Research text is available without a canvas or JavaScript.
+const research = document.querySelector('#research-node');
+const domains = [...research.querySelectorAll('.skill-detail')];
+const domainButtons = [...research.querySelectorAll('[data-skill-select]')];
+research.querySelector('.skill-selectors').hidden = false;
+function selectDomain(index) {
+  domains.forEach((item,i)=>item.hidden=i!==index);
+  domainButtons.forEach((button,i)=>button.setAttribute('aria-pressed',String(i===index)));
+  research.querySelector('.research-status').textContent=domains[index].querySelector('h3').textContent;
+  visuals?.setDomain(index);
 }
+domainButtons.forEach(button=>button.addEventListener('click',()=>selectDomain(Number(button.dataset.skillSelect))));
+selectDomain(0);
+
+// The optional network uses the same filtered records as the chronological list.
+let networkMode=false;
+const networkPanel=document.querySelector('#knowledge-panel');
+const recordSelect=document.querySelector('#network-record');
+const viewButtons=[...document.querySelectorAll('[data-publication-view]')];
+document.querySelector('.publication-view-controls').hidden=false;
+function showNetworkRecord(id) {
+  const original=papers.find(p=>p.id===id), detail=document.querySelector('#network-detail');
+  detail.replaceChildren();
+  if(!original) { detail.textContent='No matching records. Change the filters above.'; return; }
+  const copy=original.cloneNode(true); copy.removeAttribute('id'); copy.hidden=false;
+  copy.querySelectorAll('.copy-citation').forEach(b=>b.remove());
+  detail.append(copy); recordSelect.value=id; visuals?.selectRecord(id);
+}
+function syncNetwork(matches) {
+  if(!networkMode) return;
+  const previous=recordSelect.value;
+  recordSelect.replaceChildren(...matches.map(p=>{const o=document.createElement('option');o.value=p.id;o.textContent=p.dataset.year+' · '+p.querySelector('h3').textContent;return o;}));
+  showNetworkRecord(matches.some(p=>p.id===previous)?previous:matches[0]?.id);
+  visualReady.then(v=>v?.setRecords(matches.map(p=>({id:p.id,topic:p.dataset.topic,title:p.querySelector('h3').textContent,year:p.dataset.year})),id=>showNetworkRecord(id)));
+}
+viewButtons.forEach(button=>button.addEventListener('click',()=>{
+  networkMode=button.dataset.publicationView==='network';
+  networkPanel.hidden=!networkMode;
+  document.querySelector('#publication-list').hidden=networkMode;
+  viewButtons.forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
+  updatePapers();
+}));
+recordSelect.addEventListener('change',()=>showNetworkRecord(recordSelect.value));
+
+window.academicNetworkReady=true;

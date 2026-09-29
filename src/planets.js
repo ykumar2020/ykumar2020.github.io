@@ -1,1 +1,1 @@
-export { mountPlanets } from './intelligence-field.js';
+export { mountAcademicVisuals } from './academic-visuals.js';

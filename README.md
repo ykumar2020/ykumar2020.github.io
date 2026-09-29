@@ -1,58 +1,74 @@
-# Julie Kumar — academic website
+# Julie Kumar ? Cyber-Academic Grid
 
 Live site: https://ykumar2020.github.io/
 
-A responsive academic portfolio built with Tailwind CSS 4, semantic HTML, and small vanilla JavaScript enhancements. The dark space theme uses gold, coral, and blue accents inspired by Lightning CSS. All styling is compiled locally; there is no browser-side Tailwind CDN or runtime framework.
+A static academic portfolio built with Tailwind CSS 4, semantic HTML, vanilla JavaScript, and Three.js. The cybernetic visual identity uses obsidian, cyan and amber while keeping publication text on quiet, high-contrast surfaces. GitHub Pages serves the root of `main`.
 
-## Edit and preview
+## Build and preview
 
-- Edit template.html for biography, research, teaching, experience, and service.
-- Edit data/publications.json for the complete bibliography. Preserve accepted/published status and publisher links.
-- Install Node.js 22+ and Python 3, then run `npm ci` once.
-- Run `npm run build` to regenerate index.html and compile/minify styles.css. Commit both outputs together with source changes.
-- Run python -m http.server 8091 and open http://localhost:8091/.
-- Edit `src/tailwind.css` for Tailwind theme tokens and component utilities, and script.js for filters/navigation. Do not edit generated styles.css directly.
-- `npm run watch:css` rebuilds styles during design work; `npm run preview` serves the site locally.
-- Replace documents/Yulia-Kumar-CV.pdf when the CV changes. Keep personal contact details appropriate for public release.
+Requirements: Node.js 22+ and Python 3.
 
-GitHub Pages serves the root of the main branch. The .nojekyll file disables Jekyll processing. Pushing main updates the site.
+```sh
+npm ci
+npm run build
+npm run preview
+```
 
-## Included behavior
+Open http://localhost:8091/. Commit generated `index.html`, `styles.css`, and `assets/planets.js` along with their sources. Pushing `main` publishes through GitHub Pages.
 
-Mobile navigation; keyboard focus and skip link; native expandable teaching sections; research filters, text search, and progressive publication loading; citation copy; reduced-motion support; print styles; metadata, sitemap, favicon, and social preview. The full bibliography remains in HTML and is readable without JavaScript.
+## Design system and templates
 
-## Content and assets
+- `src/tailwind.css`: Tailwind configuration and palette tokens.
+- `src/cyber.css`: modular CSS variables, layout, glass panels, chamfers, corner accents, responsive rules and print styles.
+- `template.html`: hero, credentials, biography, research, teaching and service templates. Edit this rather than generated `index.html`.
+- `build.py`: publication component renderer, including status badges, source links and expandable BibTeX.
+- `data/publications.json`: authoritative input for the 77 bibliography records.
+- `script.js`: progressive enhancement for navigation, photos, research domains, filters and the optional network.
 
-Content is based on the owner-supplied 2026 CV, 2025 non-teaching effectiveness statement, and NSF synergistic activities statement. Education uses the newer CV's 2026 M.S. listing and explicitly marks the ECE Ph.D. as in progress.
+Reusable surfaces: `.glass-panel` uses `rgba(13,19,31,.85)` with 12px blur; `.chamfer` applies a 45-degree clip; `.cyber-frame` provides cyan/amber corner strokes. Focus outlines are preserved on interactive project links. Use `--cyan`, `--amber`, `--violet`, `--ink`, `--muted` and `--border` for new components. Body and publication text use a system sans-serif at 16px or above. Self-hosted Orbitron supplies display headings; Space Grotesk supplies labels and secondary headings. Font licenses are in `assets/fonts`.
 
-The website uses the preferred display name Julie Kumar. Publications, the CV, and structured academic identity retain Yulia Kumar; structured data also records Julie as the alternate name.
+## Drop-in Three.js module
 
-The supplied CV lists accepted 2026 papers; these are not represented as already published. All 77 CV entries are included, with additional preprint-version links from ORCID and citation details checked against DOI metadata where available. Year and status filters and a show-all control make the catalog accessible. Bibliography records include related versions and are not a count of distinct studies or a citation metric. Google Scholar was rate-limited during the September 28 check. The internal non-teaching statement is not published as a document.
+`src/academic-visuals.js` exports `mountAcademicVisuals()`. `src/planets.js` is the bundle entry point (the legacy filename is retained for deployment compatibility). After building:
 
-Portrait source: the owner's supplied photo, IMG_2946 (1).jpeg, updated September 28, 2026. The web asset preserves the photograph, applies its recorded orientation, and is resized and compressed for loading speed with camera metadata omitted. CSS frames the photograph responsively. Original project illustrations are CSS/SVG diagrams and are decorative rather than experimental results.
+```js
+import { mountAcademicVisuals } from './assets/planets.js';
+const visuals = mountAcademicVisuals();
+visuals.setDomain(0);
+```
 
-This is a personal site. Institutional logos are not used. Contact is the public university email.
+The matching HTML hosts and controls are included in `template.html`: `#grid-scene`, `#node-scene`, `#motion-toggle`, and optional `#network-scene`. The default script already mounts the module; do not mount it twice. `setRecords(records, onSelect)` updates the optional network, and `selectRecord(id)` highlights a record. Records require `id`, `topic`, `title` and `year`; supported topics match the bibliography filters.
 
-## Intelligence field
+- Hero: perspective cyan grid, slow data packets and gentle fine-pointer parallax.
+- Research: draggable wireframe with a branching amber axis; rotate/reset buttons provide a keyboard alternative. It is illustrative geometry, not a computed medial-axis result or experimental evidence.
+- Publications: an optional lazily created 3D topic constellation, with an equivalent record selector and chronological list. Lines encode topic membership, never citations, influence or semantic similarity. The filters and selected record are shared between views.
+- Each canvas has a 30 fps maximum and pixel ratio `Math.min(devicePixelRatio, 1.5)`.
+- IntersectionObserver uses threshold 0.05. Offscreen scenes and hidden tabs cancel the animation callback entirely.
+- Reduced motion starts with a still frame. Explicit resume is available; preference changes update all scene controls. No continuous rendering is scheduled while paused. Resizing and deliberate inspection can draw a new still.
+- Context loss displays CSS/SVG fallbacks and restoration reinstates the renderer. No-JavaScript readers see the static grid, mesh and complete academic content.
 
-`src/intelligence-field.js` creates a procedural Three.js visual metaphor for distributed intelligence, exported through `src/planets.js` and bundled into `assets/planets.js`. Five translucent violet/cyan energy spheres drift independently along slow bounded paths with smooth reversals. There is no central planet or solar orbit. Fractal cloud shaders, luminous cores, fine filaments, surface particles, and brief signals between nearby spheres provide the ASI-inspired appearance. This is artwork, not a scientific depiction of ASI.
+There are no analytics, remote runtime libraries, external font requests or postprocessing passes. The old `src/intelligence-field.js` and plasma SVGs remain as historical source assets; they are not imported or loaded by the redesigned site.
 
-The fixed edge-to-edge canvas covers every section and never captures clicks or scrolling. Mobile displays use three smaller spheres. Rendering caps at 30 fps, pixel ratio 1.5 and 1.6 million pixels. Hidden tabs stop rendering. Reduced-motion preference starts everything paused; pause, field-position, size and reset controls remain available. A matching static SVG appears without JavaScript or WebGL and after context loss. All textures and effects are generated locally; there are no extra remote assets.
+## Academic content integrity
 
-## Photo carousel
+All 77 CV entries are preserved, including posters, preprints and incomplete work. The record count is not a count of unique studies. Accepted work remains distinct from published work. Public links use only the existing recorded destinations; unavailable PDFs or code are not invented. The bibliography retains the academic name Yulia Kumar and earlier publications under Yulia Rossikova, while the site displays the preferred name Julie Kumar.
 
-The homepage rotates through the owner-supplied IMG_2946 (1).jpeg, IMG_0013.jpeg, and IMG_5495.jpeg photographs. The 3:4 frame preserves the portrait composition. WebP assets apply EXIF orientation and omit camera metadata. A two-stage 3D flip runs every eight seconds, with previous/next and play/pause controls. Hover, focus, off-screen position, and hidden tabs suspend autoplay. Manual navigation pauses autoplay; reduced-motion preference starts paused and removes flipping. The initial photo remains readable without JavaScript. The social preview retains the first photo.
+BibTeX drawers export generic `@misc` entries from known metadata. This deliberately avoids guessing whether a CV entry is a journal article or conference paper. The drawer states that missing fields and publication types are not inferred. Use the publisher's official export when more complete metadata is needed.
 
-## Typography
+Biography, education, appointments and service are based on the owner-supplied 2026 CV, 2025 non-teaching evidence and NSF synergistic activities document. The ECE Ph.D. is explicitly in progress; the existing Ph.D. in Finance is retained. The private non-teaching evidence document is not published. Credentials use text badges rather than institutional logos.
 
-Orbitron variable font gives the name and section headings a futuristic character; Space Grotesk provides readable body text and secondary headings. Both WOFF2 files are self-hosted in `assets/fonts/`, with their SIL Open Font License files, and preloaded on the homepage. Source: the Google Fonts repository, `ofl/orbitron` and `ofl/spacegrotesk`.
+## Photos and progressive enhancement
 
-## Neon scene and expanded photos
+All six previously supplied photographs are preserved. The technology-exhibition portrait now opens the carousel. The original image pixels remain unchanged apart from the previously generated orientation/resize/compression; no synthetic edits are applied. The photo carousel pauses on hover, keyboard focus, offscreen position and hidden tabs. Manual navigation pauses autoplay, and reduced motion removes the flip effect and starts paused. The portrait remains readable without JavaScript.
 
-The carousel includes six supplied photographs. Added IMG_9760.jpeg (atrium), IMG_3802.jpeg (MIT sign), and IMG_0793.jpeg (research posters). Original image content is preserved, orientation normalized, and camera metadata omitted. The landscape MIT photo uses contain framing to retain both the sign and Julie. Slide counts and announcements derive from the slide collection.
+## Verification
 
-The September 29 intelligence-field revision replaces the earlier emissive planets and rings with free-floating plasma spheres. Pause and reduced-motion settings freeze the field, filaments, signal particles and star twinkles together.
+With the preview server running, install Python `playwright` and `requests`, then run:
 
-## Skills cube and star twinkles
+```sh
+python tests/check_academic_site.py
+```
 
-The research-area cards are replaced by a six-face CSS 3D cube with icons, skills, and accompanying explanations. Automatic turns occur every 5.5 seconds while visible; hover, keyboard focus, hidden tabs, and reduced-motion preference suspend automatic rotation. Previous/next, direct skill selection, arrow keys, and pause/play work without dragging. All six descriptions remain readable without JavaScript and in print. The starfield includes larger shader glints and staggered CSS sparkles tied to the background pause control.
+The test uses installed Chrome and saves screenshots and reports in ignored `qa/`. It checks publication filters and source record counts, clipboard/BibTeX, network selection and empty states, geometry controls, 320?1440px layouts, reduced motion, render rate, offscreen suspension, context loss/recovery, no-JavaScript content, print completeness and browser errors. It uses axe-core 4.10.3 for automated WCAG A/AA screening, cached locally under `qa/`; axe is not shipped to visitors. Automated checks do not constitute a full accessibility certification. Keyboard and visual checks supplement them.
+
+Before publishing, also inspect the hero, research and publication views at desktop and mobile widths. Confirm GitHub Pages reports the new commit as built and open the live site to check asset versions and runtime behavior.
