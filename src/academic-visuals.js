@@ -4,7 +4,7 @@ import {mountGraphicsGallery} from './graphics-work.js';
 import {createASILoom} from './asi-loom.js';
 const CYAN=0xff344b, AMBER=0xff8066;
 const TOPICS=['Trustworthy AI','Agentic AI','Multimodal AI','Education','AI Systems','Algorithms'];
-const COLORS=[0x00f0ff,0xffb347,0xbfa1ff,0x7ff0ba,0xff92ba,0xa6c8ff];
+const COLORS=[0xff324c,0xff705a,0xffa3ae,0xc94660,0xffc6bf,0xe57287];
 
 /** Drop-in entry point. Static HTML and CSS remain the no-WebGL fallback. */
 export function mountAcademicVisuals(){
@@ -133,19 +133,19 @@ export function mountAcademicVisuals(){
       v.setXYZ(i,x*radial,y*1.8,z*radial);
     }
     geometry.computeVertexNormals();
-    const surface=new THREE.Mesh(geometry,new THREE.MeshBasicMaterial({color:0x062e3b,transparent:true,opacity:.2,side:THREE.DoubleSide,depthWrite:false}));group.add(surface);
+    const surface=new THREE.Mesh(geometry,new THREE.MeshBasicMaterial({color:0x3b0617,transparent:true,opacity:.2,side:THREE.DoubleSide,depthWrite:false}));group.add(surface);
     const wire=new THREE.LineSegments(new THREE.WireframeGeometry(geometry),new THREE.LineBasicMaterial({color:CYAN,transparent:true,opacity:.43}));group.add(wire);
-    const points=new THREE.Points(geometry,new THREE.PointsMaterial({color:0xa4faff,size:.025,transparent:true,opacity:.65}));group.add(points);
+    const points=new THREE.Points(geometry,new THREE.PointsMaterial({color:0xffb8bf,size:.025,transparent:true,opacity:.65}));group.add(points);
     const axisPoints=[new THREE.Vector3(0,-1.65,0),new THREE.Vector3(.16,-.75,0),new THREE.Vector3(-.12,.2,.08),new THREE.Vector3(.04,1.55,0)];
     const axisCurve=new THREE.CatmullRomCurve3(axisPoints);
     group.add(new THREE.Mesh(new THREE.TubeGeometry(axisCurve,64,.014,6,false),new THREE.MeshBasicMaterial({color:AMBER})));
     for(let i=0;i<7;i++){
       const y=-1.25+i*.4,origin=axisCurve.getPoint(i/8+.08);
       const theta=i*2.4,end=new THREE.Vector3(Math.cos(theta)*.82,y+.15,Math.sin(theta)*.82);
-      group.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints([origin,end]),new THREE.LineBasicMaterial({color:0xffb657,transparent:true,opacity:.7})));
+      group.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints([origin,end]),new THREE.LineBasicMaterial({color:0xff7b6b,transparent:true,opacity:.7})));
       const marker=new THREE.Mesh(new THREE.SphereGeometry(.035,8,6),new THREE.MeshBasicMaterial({color:AMBER}));marker.position.copy(origin);group.add(marker);
     }
-    const ring=new THREE.Mesh(new THREE.TorusGeometry(2.2,.006,4,120),new THREE.MeshBasicMaterial({color:0x256274}));ring.rotation.x=Math.PI/2;ring.position.y=-1.9;s.scene.add(ring);
+    const ring=new THREE.Mesh(new THREE.TorusGeometry(2.2,.006,4,120),new THREE.MeshBasicMaterial({color:0x742536}));ring.rotation.x=Math.PI/2;ring.position.y=-1.9;s.scene.add(ring);
     let t=0;const parallax=new THREE.Vector2();
     s.canvas.addEventListener('pointermove',e=>{if(paused||!fine.matches||e.buttons)return;const r=s.canvas.getBoundingClientRect();parallax.set((e.clientX-r.left)/r.width-.5,(e.clientY-r.top)/r.height-.5);});
     s.canvas.addEventListener('pointerleave',()=>parallax.set(0,0));
@@ -177,11 +177,11 @@ export function mountAcademicVisuals(){
       const color=COLORS[topicIndex],angle=topicIndex/6*Math.PI*2;
       const center=new THREE.Vector3(Math.cos(angle)*2.9,Math.sin(angle)*1.85,Math.sin(angle*2)*.65);
       const hub=new THREE.Mesh(new THREE.OctahedronGeometry(.16),new THREE.MeshBasicMaterial({color,wireframe:true}));hub.position.copy(center);network.group.add(hub);
-      const span=document.createElement('span'),dot=document.createElement('i');dot.style.setProperty('--topic-color','#'+color.toString(16).padStart(6,'0'));dot.setAttribute('aria-hidden','true');span.append(dot,document.createTextNode(topic+' · '+cluster.length));legend.append(span);
+      const span=document.createElement('span'),dot=document.createElement('i');dot.style.setProperty('--topic-color','#'+color.toString(16).padStart(6,'0'));dot.setAttribute('aria-hidden','true');span.append(dot,document.createTextNode(topic+' · '+['sphere','cube','tetrahedron','octahedron','icosahedron','cone'][topicIndex]+' · '+cluster.length));legend.append(span);
       cluster.forEach((record,i)=>{
         const a=i*2.399963,rr=.48+Math.sqrt(i)*.14;
         const position=center.clone().add(new THREE.Vector3(Math.cos(a)*rr,Math.sin(a)*rr,Math.sin(i*1.7)*.55));
-        const point=new THREE.Mesh(new THREE.SphereGeometry(.085,8,6),new THREE.MeshBasicMaterial({color}));point.position.copy(position);point.userData={id:record.id,color};network.group.add(point);network.nodes.push(point);
+        const point=new THREE.Mesh([()=>new THREE.SphereGeometry(.085,8,6),()=>new THREE.BoxGeometry(.14,.14,.14),()=>new THREE.TetrahedronGeometry(.12),()=>new THREE.OctahedronGeometry(.12),()=>new THREE.IcosahedronGeometry(.1),()=>new THREE.ConeGeometry(.09,.18,6)][topicIndex](),new THREE.MeshBasicMaterial({color}));point.position.copy(position);point.userData={id:record.id,color};network.group.add(point);network.nodes.push(point);
         const line=new THREE.Line(new THREE.BufferGeometry().setFromPoints([center,position]),new THREE.LineBasicMaterial({color,transparent:true,opacity:.3}));network.group.add(line);
       });
     });

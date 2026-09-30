@@ -31,7 +31,7 @@ function updatePapers() {
   showAll.textContent = 'Show all ' + matches.length + ' matching records';
   document.querySelector('#no-results').hidden = matches.length > 0;
   if (window.academicNetworkReady) {
-    if(networkMode) { count.textContent=matches.length+' matching bibliography records in the constellation'; loadMore.hidden=true; showAll.hidden=true; }
+
     syncNetwork(matches);
   }
 }
@@ -85,7 +85,7 @@ if ('IntersectionObserver' in window) {
 
 // The visuals enhance the document; scholarly content never depends on WebGL.
 let visuals;
-const visualReady = import('./assets/planets.js?v=20260929-redshift').then(module => {
+const visualReady = import('./assets/planets.js?v=20260929-open-gallery').then(module => {
   visuals = module.mountAcademicVisuals();
   return visuals;
 }).catch(() => null);
@@ -183,9 +183,9 @@ if (photoCarousel) {
 const research = document.querySelector('#research-node');
 const domains = [...research.querySelectorAll('.skill-detail')];
 const domainButtons = [...research.querySelectorAll('[data-skill-select]')];
-research.querySelector('.skill-selectors').hidden = false;
+
 function selectDomain(index) {
-  domains.forEach((item,i)=>item.hidden=i!==index);
+  domains.forEach(item=>item.hidden=false);
   domainButtons.forEach((button,i)=>button.setAttribute('aria-pressed',String(i===index)));
   research.querySelector('.research-status').textContent=domains[index].querySelector('h3').textContent;
   visuals?.setDomain(index);
@@ -194,11 +194,11 @@ domainButtons.forEach(button=>button.addEventListener('click',()=>selectDomain(N
 selectDomain(0);
 
 // The optional network uses the same filtered records as the chronological list.
-let networkMode=false;
+let networkMode=true;
 const networkPanel=document.querySelector('#knowledge-panel');
 const recordSelect=document.querySelector('#network-record');
 const viewButtons=[...document.querySelectorAll('[data-publication-view]')];
-document.querySelector('.publication-view-controls').hidden=false;
+
 function showNetworkRecord(id) {
   const original=papers.find(p=>p.id===id), detail=document.querySelector('#network-detail');
   detail.replaceChildren();
@@ -224,3 +224,4 @@ viewButtons.forEach(button=>button.addEventListener('click',()=>{
 recordSelect.addEventListener('change',()=>showNetworkRecord(recordSelect.value));
 
 window.academicNetworkReady=true;
+updatePapers();

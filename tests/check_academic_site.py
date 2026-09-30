@@ -25,7 +25,7 @@ with sync_playwright() as p:
     assert 'Julie' in page.locator('h1').inner_text() and 'Kumar' in page.locator('h1').inner_text()
     assert page.locator('#publication-list .paper').count()==77
     assert page.locator('#publication-list .paper:visible').count()==6
-    assert page.locator('.bibtex-drawer').count()==77
+    assert page.locator('#publication-list .bibtex-drawer').count()==77
     frames=page.locator('#grid-scene').get_attribute('data-frames');page.wait_for_timeout(400)
     assert page.locator('#grid-scene').get_attribute('data-frames')==frames,'Reduced-motion grid keeps rendering'
     page.locator('#grid-scene').screenshot(path=str(OUT/'grid-still.png'))
@@ -49,7 +49,6 @@ with sync_playwright() as p:
     page.locator('#show-all-publications').click();assert page.locator('#publication-list .paper:visible').count()==77
     report['checks']+=['Topic, search, year and status filters','Pagination and complete bibliography','Citation clipboard and expandable BibTeX']
 
-    page.locator('[data-publication-view=network]').click()
     page.wait_for_function("document.querySelector('#network-scene').dataset.records==='77'")
     assert page.locator('#network-record option').count()==77
     page.locator('#network-record').select_option('cv-03')
@@ -70,7 +69,7 @@ with sync_playwright() as p:
     before=page.locator('#node-scene canvas').screenshot()
     page.locator('[data-controls=node-scene] [data-turn=right]').click()
     after=page.locator('#node-scene canvas').screenshot();assert before!=after
-    page.locator('[data-skill-select="2"]').click();assert page.locator('.skill-detail:visible h3').inner_text()=='Multimodal & visual AI'
+    assert page.locator('.skill-detail:visible').count()==6
     page.screenshot(path=str(OUT/'cyber-research.png'))
     page.locator('[data-controls=node-scene] [data-motion-toggle]').click()
     page.wait_for_timeout(300)
@@ -93,7 +92,6 @@ with sync_playwright() as p:
             page.locator('.menu-toggle').click();assert page.locator('.menu-toggle').get_attribute('aria-expanded')=='true'
             page.keyboard.press('Escape');assert page.locator('.menu-toggle').get_attribute('aria-expanded')=='false'
             assert page.evaluate("document.activeElement===document.querySelector('.menu-toggle')")
-            page.locator('[data-publication-view=network]').click()
             page.locator('#knowledge-panel').scroll_into_view_if_needed();page.wait_for_timeout(200)
             page.screenshot(path=str(OUT/'cyber-network-mobile.png'))
             assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
@@ -122,8 +120,7 @@ with sync_playwright() as p:
     if not axe.exists():
         response=requests.get('https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.10.3/axe.min.js',timeout=30);response.raise_for_status();axe.write_text(response.text,encoding='utf8')
     page.goto(BASE,wait_until='networkidle');page.add_script_tag(path=str(axe))
-    for view in ['list','network']:
-        if view=='network':page.locator('[data-publication-view=network]').click();page.wait_for_timeout(300)
+    for view in ['open-gallery']:
         audit=page.evaluate('async()=>await axe.run(document,{runOnly:{type:"tag",values:["wcag2a","wcag2aa","wcag21aa","wcag22aa"]}})')
         (OUT/f'cyber-axe-{view}.json').write_text(json.dumps(audit,indent=2),encoding='utf8')
         report['accessibility_violations'] += [{'view':view,'id':v['id'],'help':v['help'],'targets':[n['target'] for n in v['nodes']]} for v in audit['violations']]
