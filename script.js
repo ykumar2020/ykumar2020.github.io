@@ -86,7 +86,7 @@ if ('IntersectionObserver' in window) {
 
 // The visuals enhance the document; scholarly content never depends on WebGL.
 let visuals;
-const visualReady = import('./assets/planets.js?v=20260930-bma-free-v1').then(module => {
+const visualReady = import('./assets/planets.js?v=20260930-carousel-fast-v1').then(module => {
   visuals = module.mountAcademicVisuals();
   return visuals;
 }).catch(() => null);
@@ -108,6 +108,9 @@ if (photoCarousel) {
     button.addEventListener('click',()=>showPhoto(index));segments.append(button);return button;
   });
   segments.hidden=false;
+  const photoInterval = 3000;
+  photoCarousel.style.setProperty('--photo-interval', photoInterval + 'ms');
+  segments.style.setProperty('--photo-count', String(slides.length));
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   let current = 0, busy = false, paused = reducedMotion.matches;
   let hovered = false, focused = false, visible = true, timer;
@@ -124,7 +127,7 @@ if (photoCarousel) {
     if (!paused && !hovered && !focused && visible && !document.hidden && !busy) {
       void ticks[current].offsetWidth;
       ticks[current].classList.add('is-filling');
-      timer = setTimeout(() => showPhoto(current + 1, false), 8000);
+      timer = setTimeout(() => showPhoto(current + 1, false), photoInterval);
     }
   }
 
@@ -132,7 +135,7 @@ if (photoCarousel) {
     const animation = element.animate([
       { transform: `rotateY(${from}deg)`, opacity: Math.abs(from) > 0 ? .55 : 1 },
       { transform: `rotateY(${to}deg)`, opacity: Math.abs(to) > 0 ? .55 : 1 }
-    ], { duration: 280, easing: 'ease-in-out', fill: 'both' });
+    ], { duration: 160, easing: 'ease-in-out', fill: 'both' });
     animations.push(animation);
     try { await animation.finished; } catch { /* Reduced-motion changes can cancel a flip. */ }
     return animation;

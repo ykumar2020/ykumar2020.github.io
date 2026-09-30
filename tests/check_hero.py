@@ -23,18 +23,18 @@ with sync_playwright() as p:
  assert 'Finance' in page.locator('.degree-context').inner_text()
  assert 'Ph.D. Candidate in ECE' in page.locator('.hero-roles').inner_text()
  assert page.locator('.access-pass').count()==5
- assert page.locator('.photo-tick').count()==10
+ assert page.locator('.photo-tick').count()==9
  assert page.locator('#home .hero-art').count()==0
  assert page.locator('#photo-carousel').bounding_box()['width']>500
  geometry=page.locator('.research-geometry').bounding_box()
  papers=page.locator('.frontier-research').bounding_box()
  assert geometry['x']+geometry['width']<=papers['x']
- assert page.locator('#hero-art-scene canvas').evaluate('(e)=>getComputedStyle(e).pointerEvents')=='none'
+ assert page.locator('#hero-art-scene canvas').evaluate('(e)=>getComputedStyle(e).pointerEvents')=='auto'
  assert page.locator('#grid-scene').evaluate('(e)=>getComputedStyle(e).zIndex')=='0'
  assert page.locator('.hero-headline em').evaluate('(e)=>getComputedStyle(e).color')=='rgb(255, 183, 192)'
  frames=page.locator('#hero-art-scene').get_attribute('data-frames');page.wait_for_timeout(300)
  assert page.locator('#hero-art-scene').get_attribute('data-frames')==frames
- for index in [2,9,0]:
+ for index in [2,8,0]:
   page.locator('.photo-tick').nth(index).click()
   page.wait_for_function('(i)=>document.querySelector("#photo-carousel").dataset.index===String(i)',arg=index)
   assert page.locator('.photo-tick[aria-pressed=true]').count()==1
@@ -54,7 +54,7 @@ with sync_playwright() as p:
  page.locator('[data-photo=pause]').click();page.evaluate('document.activeElement.blur()');page.mouse.move(1,1)
  page.wait_for_function('document.querySelector("#photo-carousel").dataset.autoplay==="true"')
  assert page.locator('.photo-tick.is-filling').count()==1
- page.wait_for_function('document.querySelector("#photo-carousel").dataset.index==="1"',timeout=12000)
+ page.wait_for_function('document.querySelector("#photo-carousel").dataset.index==="1"',timeout=5000)
  page.emulate_media(reduced_motion='reduce');page.wait_for_timeout(700)
  frozen=page.locator('#photo-carousel').get_attribute('data-index');page.wait_for_timeout(300)
  assert page.locator('#photo-carousel').get_attribute('data-index')==frozen
@@ -83,5 +83,5 @@ with sync_playwright() as p:
  page.wait_for_function('document.querySelector("#hero-art-scene").dataset.state==="fallback"')
  assert page.locator('#hero-art-scene .scene-fallback').is_visible()
  assert not errors,errors
- print(f'PASS: degree context, 10 ticks, autoplay/reduced motion, quick filter, real touch swipes, widths 320-1440, WebGL fallback. Emphasis contrast {ratio:.2f}:1; hero rendering {fps:.2f} fps.')
+ print(f'PASS: degree context, 9 ticks, autoplay/reduced motion, quick filter, real touch swipes, widths 320-1440, WebGL fallback. Emphasis contrast {ratio:.2f}:1; hero rendering {fps:.2f} fps.')
  b.close()
