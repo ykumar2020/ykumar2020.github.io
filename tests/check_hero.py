@@ -15,6 +15,11 @@ with sync_playwright() as p:
  page.on('pageerror',lambda e:errors.append(str(e)))
  page.goto(BASE,wait_until='networkidle')
  page.wait_for_function('document.querySelector("#hero-art-scene").dataset.state==="ready"')
+ assert page.locator('#geometry-lab').count()==1
+ assert page.locator('#geometry-lab #hero-art-scene').count()==1
+ assert page.locator('#hero-art-scene canvas').count()==1
+ assert page.locator('#live-workbench #geometry-scene').count()==0
+ assert not page.locator('#hero-art-scene .scene-fallback').is_visible()
  assert 'Finance' in page.locator('.degree-context').inner_text()
  assert 'Ph.D. Candidate in ECE' in page.locator('.hero-roles').inner_text()
  assert page.locator('.access-pass').count()==5
