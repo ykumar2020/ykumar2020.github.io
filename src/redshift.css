@@ -131,3 +131,15 @@
 .credential-strip .professional-service span{font-size:.8125rem;color:#c7d1de}
 @media(max-width:767px){.affiliation-logos{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.affiliation{padding:16px 10px 12px}.affiliation p{font-size:.875rem}.affiliation-mark{height:64px}.affiliation-mark img{max-width:100%}.affiliation-mark-seal img{width:60px;height:60px}.credential-strip>.wrap{display:block}}
 @media print{.credential-strip{print-color-adjust:exact;-webkit-print-color-adjust:exact}.affiliation{background:#090e18!important}.affiliation p{color:#e2e8f0!important}}
+
+/* Research photographs have captions below the image, leaving faces and posters clear. */
+.photo-caption{min-height:44px;margin:14px 0 0;text-align:center;font-size:.875rem;line-height:1.5;color:#f1dfe5;display:flex;align-items:center;justify-content:center}
+.hero .photo-controls{margin-top:8px}.portrait-frame:after{background:none}
+.frontier-research{margin-bottom:48px}.frontier-research>.eyebrow{margin-bottom:18px}
+.frontier-papers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px}
+.frontier-paper{min-width:0;padding:30px;background:linear-gradient(135deg,#281321,#0d131f 65%);border:1px solid #945063;border-top:3px solid #ff778e;box-shadow:0 0 28px #ff234410}
+.frontier-paper>.eyebrow{font-size:.75rem;color:#ffb3c0;margin-bottom:16px}.frontier-paper h3{font:500 1.4rem/1.5 var(--font-tech);margin-bottom:18px}.frontier-paper h3 a{color:#fff0f4}.frontier-paper h3 a:hover{text-decoration:underline}
+.frontier-meta,.frontier-authors{font-size:.875rem;line-height:1.65;color:#c6cbd6;margin-bottom:12px}.frontier-summary{font-size:1rem;line-height:1.8;color:#e2e8f0;margin:20px 0}.frontier-paper>.text-link{color:#ffbec9}
+.frontier-context{font-size:1rem;line-height:1.8;max-width:1000px;color:#c7d1de;margin:24px 0 0}
+@media(max-width:767px){.frontier-papers{grid-template-columns:1fr}.frontier-paper{padding:22px}.frontier-paper h3{font-size:1.2rem}}
+@media print{.frontier-papers{display:block}.frontier-paper{break-inside:avoid;margin-bottom:16px;border:1px solid #555}}

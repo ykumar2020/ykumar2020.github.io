@@ -30,6 +30,18 @@ for i,p in enumerate(data):
 <div class="paper-body"><p class="paper-topic">{e('topic')}</p><h3>{e('title')}</h3><p class="paper-authors">{e('authors')}</p><p class="paper-venue">{e('venue')}</p>{note}<div class="paper-actions">{link}{related}<button class="copy-citation" type="button" data-citation="{html.escape(citation,quote=True)}" aria-label="Copy citation for {e('title')}">Copy citation</button></div>{drawer}</div>
 </article>''')
 template=(root/'template.html').read_text(encoding='utf-8')
+# Featured summaries are editorial; titles, authors, dates and links use the bibliography.
+frontier_summaries={
+ 'cv-10':('ASI / Risks & human oversight','Analyzes AGI and ASI risk scenarios, the role of human oversight, and vulnerabilities in safeguards. The work connects present-day adversarial testing with preparation for more capable systems.'),
+ 'cv-38':('AGI / Capability evaluation','Introduces testFAILS-2 to evaluate AI systems across dimensions such as multimodality, accessibility, cost, and agent capabilities. The review examines progress and limitations in the pursuit of AGI.')
+}
+frontier=[]
+for ident,(label,summary) in frontier_summaries.items():
+    p=next(p for p in data if p['id']==ident)
+    esc=lambda value:html.escape(str(value),quote=True)
+    frontier.append(f'''<article class="frontier-paper" data-publication="{ident}"><p class="eyebrow">{esc(label)}</p><h3><a href="{esc(p['url'])}" target="_blank" rel="noopener">{esc(p['title'])}</a></h3><p class="frontier-meta">{p['year']} &middot; {esc(p['status'])} &middot; {esc(p['venue'])}</p><p class="frontier-authors">{esc(p['authors'])}</p><p class="frontier-summary">{esc(summary)}</p><a class="text-link" href="{esc(p['url'])}" target="_blank" rel="noopener">{esc(p['linkLabel'])} &#8599;</a></article>''')
+template=template.replace('<!-- FRONTIER_PAPERS -->','\n'.join(frontier))
+
 years=sorted({p['year'] for p in data},reverse=True)
 year_options=''.join(f'<option value="{y}">{y}</option>' for y in years)
 status_options=''.join(f'<option>{html.escape(s)}</option>' for s in ['Published','Accepted','To appear','Poster','Preprint','Work in progress','CV listing'] if any(p['status']==s for p in data))

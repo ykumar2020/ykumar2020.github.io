@@ -85,7 +85,7 @@ if ('IntersectionObserver' in window) {
 
 // The visuals enhance the document; scholarly content never depends on WebGL.
 let visuals;
-const visualReady = import('./assets/planets.js?v=20260930-jose-scholar').then(module => {
+const visualReady = import('./assets/planets.js?v=20260930-asi-research').then(module => {
   visuals = module.mountAcademicVisuals();
   return visuals;
 }).catch(() => null);
@@ -98,6 +98,7 @@ if (photoCarousel) {
   const pauseButton = controls.querySelector('[data-photo="pause"]');
   const counter = photoCarousel.querySelector('.photo-count');
   const liveStatus = photoCarousel.querySelector('.photo-status');
+  const photoCaption = photoCarousel.querySelector('.photo-caption');
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   let current = 0, busy = false, paused = reducedMotion.matches;
   let hovered = false, focused = false, visible = true, timer;
@@ -139,6 +140,7 @@ if (photoCarousel) {
       oldSlide.hidden = true;
       newSlide.hidden = false;
       current = next;
+      if (photoCaption) photoCaption.textContent = newSlide.dataset.caption;
       photoCarousel.dataset.index = String(current);
       counter.textContent = String(current + 1).padStart(2, '0') + ' / ' + String(slides.length).padStart(2, '0');
       if (manual) liveStatus.textContent = 'Photo ' + (current + 1) + ' of ' + slides.length + '. ' + img.alt;

@@ -10,7 +10,7 @@ with sync_playwright() as p:
  page.on('pageerror',lambda e:errors.append(str(e)));page.on('console',lambda e:errors.append(e.text) if e.type=='error' else None)
  page.goto(BASE,wait_until='networkidle');page.wait_for_function("document.querySelector('#hero-art-scene').dataset.state==='ready'")
  assert page.locator('#home #photo-carousel').count()==1
- assert page.locator('#home .portrait-slide').count()==6
+ assert page.locator('#home .portrait-slide').count()==10
  assert page.locator('#photo-carousel').bounding_box()['y']<600
  page.locator('[data-photo=next]').click();page.wait_for_function("document.querySelector('#photo-carousel').dataset.index==='1'")
  assert page.locator('.portrait-slide:not([hidden])').count()==1

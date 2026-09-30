@@ -1,0 +1,34 @@
+[
+  {
+    "source": "IMG_0133.jpeg",
+    "file": "assets/julie-amigo.webp",
+    "width": 1600,
+    "height": 1200,
+    "sourceSha256": "3a5298b74762a65bfe28537e494d41f083006652301f2076cee25f759967f65c",
+    "treatment": "EXIF orientation normalized and compressed for web display; no crop or retouching."
+  },
+  {
+    "source": "IMG_6429.jpeg",
+    "file": "assets/julie-princeton.webp",
+    "width": 1200,
+    "height": 1600,
+    "sourceSha256": "3ce09065c70505f18fe19880d6ed3f490b54b2b4dc53f1320a36c6a71ee1ecc1",
+    "treatment": "EXIF orientation normalized and compressed for web display; no crop or retouching."
+  },
+  {
+    "source": "IMG_3408.JPG",
+    "file": "assets/julie-awards.webp",
+    "width": 480,
+    "height": 640,
+    "sourceSha256": "23fe0338e225e340fae763717ac25784e43afc0f29cf35fe60b5e2de3fc6b3bc",
+    "treatment": "EXIF orientation normalized and compressed for web display; no crop or retouching."
+  },
+  {
+    "source": "IMG_0811.jpeg",
+    "file": "assets/julie-research-team.webp",
+    "width": 1200,
+    "height": 1600,
+    "sourceSha256": "1acd97ad8bc2d9bbefdc753a00f9d2952eed36eb2e10d4a89ea3a956bf89465a",
+    "treatment": "EXIF orientation normalized and compressed for web display; no crop or retouching."
+  }
+]

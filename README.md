@@ -141,3 +141,10 @@ No duplicate publication records were added. The existing SolicitationWizard rec
 The opening affiliation strip uses official Kean and Rutgers white wordmarks, the NSF seal, and the NCWIT color wordmark, linked to their organizations and accompanied by Julie's specific roles. `assets/logos/sources.json` records the official download URLs and SHA-256 hashes. Assets remain unmodified, with contain sizing and no tinting, cropping, rotation, or animation. IEEE membership and AAAI committee service remain text labels.
 
 Jose Serra's collaborator details now link to the Google Scholar profile supplied by Julie (NpJefRUAAAAJ). The collaborator builder preserves reviewed Scholar links and their provenance on regeneration. Both the profile and portrait endpoint returned HTTP 429 during this update, so Jose retains initials rather than an unverified photo.
+
+
+## AGI / ASI research and photo update
+
+The first three carousel photographs are MIT, Princeton, and AMIGO, followed by the awards and research-team photographs and five existing images (10 total). New photographs are EXIF-oriented and web-compressed without retouching or cropping; source hashes and dimensions are in `data/photo-updates.json`. Location captions describe photographs, not institutional affiliations.
+
+The hero emphasizes preparation for superintelligence through evaluation, human oversight, and education. Two featured papers lead Research, using metadata from the existing bibliography: `cv-10` (2026 AGI/ASI existential-risk analysis) and `cv-38` (2024 testFAILS-2 review). Summaries were checked against the Kean and Rutgers institutional records: https://researchers.kean.edu/en/publications/a-systematic-analysis-ofagi-andasi-existential-risk-scenarios/ and https://www.researchwithrutgers.org/en/publications/a-comprehensive-review-of-ai-advancement-using-testfails-and-test/ . The text presents ASI readiness as a research direction, not an assertion of demonstrated ASI. The September 29 U.S. executive-branch terminology order does not change historical publication titles or the site's technical distinctions between AI, AGI, and ASI.
