@@ -151,12 +151,12 @@
         "AI Systems",
         "Agentic AI"
       ],
+      "scholar": "https://scholar.google.com/citations?user=KX0EE1MAAAAJ&hl=en",
       "image": "assets/collaborators/juan-jenny-li.png",
       "profile": "https://www.kean.edu/directory/juan-li",
       "imageSource": "https://www.kean.edu/sites/default/files/styles/small_4x3/public/2025-10/Screenshot%202025-10-04%20221706.png?h=d9265ea7&itok=TsED0fk4",
       "photoAttribution": "Official university profile",
-      "sha256": "f80df99d4cce131ec940cb88edb55b9c35adcd397f8ad3cb157baa876fa9a9cd",
-      "scholar": "https://scholar.google.com/citations?user=KX0EE1MAAAAJ&hl=en"
+      "sha256": "f80df99d4cce131ec940cb88edb55b9c35adcd397f8ad3cb157baa876fa9a9cd"
     },
     {
       "id": "dov-kruger",
@@ -505,7 +505,9 @@
         "AI Systems"
       ],
       "featured": true,
-      "identitySource": "https://par.nsf.gov/servlets/purl/10351915"
+      "identitySource": "https://par.nsf.gov/servlets/purl/10351915",
+      "scholar": "https://scholar.google.com/citations?user=NpJefRUAAAAJ&hl=en",
+      "scholarSource": "Profile supplied by Julie Kumar in the website update request."
     },
     {
       "id": "k-august",

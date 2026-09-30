@@ -139,3 +139,5 @@ No duplicate publication records were added. The existing SolicitationWizard rec
 ## Official affiliation logos
 
 The opening affiliation strip uses official Kean and Rutgers white wordmarks, the NSF seal, and the NCWIT color wordmark, linked to their organizations and accompanied by Julie's specific roles. `assets/logos/sources.json` records the official download URLs and SHA-256 hashes. Assets remain unmodified, with contain sizing and no tinting, cropping, rotation, or animation. IEEE membership and AAAI committee service remain text labels.
+
+Jose Serra's collaborator details now link to the Google Scholar profile supplied by Julie (NpJefRUAAAAJ). The collaborator builder preserves reviewed Scholar links and their provenance on regeneration. Both the profile and portrait endpoint returned HTTP 429 during this update, so Jose retains initials rather than an unverified photo.

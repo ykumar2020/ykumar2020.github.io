@@ -6,7 +6,7 @@ groups=existing['aliases']
 photos={p['id']:{k:p[k] for k in ['image','profile','imageSource'] if k in p} for p in existing['people'] if 'image' in p}
 norm=lambda n:' '.join(n.replace('\xa0',' ').split())
 alias={norm(n):name for name,variants in groups.items() for n in [name]+variants}
-reviewed={p['id']:{k:p[k] for k in ['featured','identitySource'] if k in p} for p in existing['people']}
+reviewed={p['id']:{k:p[k] for k in ['featured','identitySource','scholar','scholarSource'] if k in p} for p in existing['people']}
 people={};skipped=[]
 for p in pubs:
  names=[alias.get(norm(n),norm(n)) for n in re.split(r',\s*(?:and\s+)?|\s+and\s+',p['authors'])]

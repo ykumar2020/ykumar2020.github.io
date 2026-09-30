@@ -22,6 +22,7 @@ with sync_playwright() as p:
  page.locator('#collaborator-select').select_option('jose-serra')
  assert page.locator('#collaborator-detail li').count()==3
  assert page.locator('#collaborator-detail h4').inner_text()=='Jose Serra'
+ assert page.locator('#collaborator-detail a',has_text='Google Scholar profile').get_attribute('href')=='https://scholar.google.com/citations?user=NpJefRUAAAAJ&hl=en'
  assert page.locator('.collaborator-face[data-person] img').count()==7
  assert page.locator('.collaborator-face img').evaluate_all('(xs)=>xs.every(x=>x.complete&&x.naturalWidth>0)')
  page.locator('#collaborator-select').select_option('dov-kruger');assert page.locator('#collaborator-detail h4').inner_text()=='Dov Kruger'
