@@ -20,5 +20,6 @@ export function createCapsuleLab(scene){
     ball.scale.setScalar(radius);ball.position.y=center.position.y=position;skeleton.visible=show;
   }
   set();
-  return {group,set,update(t,rotation={x:.1,y:0}){group.rotation.set(rotation.x,t*.065+rotation.y,.13);}};
+  const spin=new THREE.Quaternion(),up=new THREE.Vector3(0,1,0);
+  return {group,set,update(t,rotation){spin.setFromAxisAngle(up,t*.065);group.quaternion.copy(rotation).multiply(spin);}};
 }

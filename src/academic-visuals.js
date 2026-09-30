@@ -6,6 +6,7 @@ import {mountConnectomeImages} from './connectome-images.js';
 import {createCollaborationNetwork} from './collaboration-network.js';
 
 import {createCapsuleLab} from './capsule-lab.js';
+import {inspectBma} from './bma-controls.js';
 import {mountResearchWorkbench} from './research-workbench.js';
 const CYAN=0xff344b, AMBER=0xff8066;
 
@@ -119,11 +120,11 @@ export function mountAcademicVisuals(){
   stage('hero-art-scene',s=>{
     s.camera.position.set(0,0,5.8);s.camera.lookAt(0,0,0);
     const loom=createCapsuleLab(s.scene);let t=0;
-    s.group=loom.group;inspect(s);
+    s.group=loom.group;inspectBma(s);
     function shape(){const radius=Number(document.querySelector('#bma-radius').value),center=Number(document.querySelector('#bma-center').value);loom.set(radius,center,document.querySelector('#hero-skeleton').checked);document.querySelector('#bma-radius-value').textContent=radius.toFixed(2);document.querySelector('#bma-center-value').textContent=center.toFixed(2);s.host.dataset.radius=String(radius);s.host.dataset.center=String(center);s.draw();}
     for(const id of ['hero-skeleton','bma-radius','bma-center'])document.getElementById(id).addEventListener('input',shape);
     s.onResize=(w,h)=>{s.camera.position.z=Math.max(5.8,2.15/(Math.tan(Math.PI/9)*(w/h)));};
-    s.update=(time=t)=>{t=time;loom.update(t,s.userRotation);};shape();
+    s.update=(time=t)=>{t=time;loom.update(t,s.viewQuaternion);};shape();
 
   });
   mountSingularity(stage,inspect);

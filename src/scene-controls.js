@@ -33,6 +33,10 @@ export function attachSceneControls(api,controls,isPaused,setPaused){
   canvas.setAttribute('aria-label',host.dataset.work==='fireworks'?'Interactive particles. Click or press Enter to add a burst; plus and minus zoom; Space pauses. Controls follow.':'Interactive view. Arrow keys rotate or tilt; plus and minus zoom; Space pauses; Home resets. Controls follow.');
   const hint=document.createElement('p');hint.className='scene-interaction-hint';hint.textContent=host.dataset.work==='fireworks'?'Click to add a burst. Use Add burst below with a keyboard.':'Drag to inspect · Arrow keys to rotate · Space to pause · Home to reset';
   controls.after(hint);
+  if(host.id==='hero-art-scene'){
+   hint.textContent='Full 360° rotation: drag in any direction · Arrow keys rotate · Q / E roll · Home resets. On mobile, turn on Touch rotation for vertical drags; turn it off to scroll over the model.';
+   canvas.setAttribute('aria-label','BMA with unrestricted rotation. Arrow keys rotate; Q and E roll; plus and minus zoom; Space pauses; Home resets. Touch rotation toggle and other controls follow.');
+  }
   canvas.addEventListener('keydown',e=>{
    const direction={ArrowLeft:'left',ArrowRight:'right',ArrowUp:'up',ArrowDown:'down',Home:'reset'}[e.key];
    if(direction){const button=controls.querySelector(`[data-turn="${direction}"],[data-tilt="${direction}"]`);if(button){e.preventDefault();button.click();}}
