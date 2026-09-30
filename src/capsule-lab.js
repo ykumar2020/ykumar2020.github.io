@@ -1,11 +1,11 @@
 import * as THREE from 'three';
 export function createCapsuleLab(scene){
   const group=new THREE.Group();scene.add(group);
-  const surface=new THREE.Points(new THREE.BufferGeometry(),new THREE.PointsMaterial({color:0x9966ff,size:.025}));group.add(surface);
+  const surface=new THREE.Points(new THREE.BufferGeometry(),new THREE.PointsMaterial({color:0xff6678,size:.025}));group.add(surface);
   const skeleton=new THREE.Group();group.add(skeleton);
-  const axis=new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0,-1.1,0),new THREE.Vector3(0,1.1,0)]),new THREE.LineBasicMaterial({color:0xdb6dff}));skeleton.add(axis);
-  const ball=new THREE.Mesh(new THREE.SphereGeometry(1,16,10),new THREE.MeshBasicMaterial({color:0xdb6dff,wireframe:true,transparent:true,opacity:.38}));skeleton.add(ball);
-  const center=new THREE.Mesh(new THREE.SphereGeometry(.055,10,8),new THREE.MeshBasicMaterial({color:0xf4d3ff}));skeleton.add(center);
+  const axis=new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0,-1.1,0),new THREE.Vector3(0,1.1,0)]),new THREE.LineBasicMaterial({color:0xffc36d}));skeleton.add(axis);
+  const ball=new THREE.Mesh(new THREE.SphereGeometry(1,16,10),new THREE.MeshBasicMaterial({color:0xffc36d,wireframe:true,transparent:true,opacity:.38}));skeleton.add(ball);
+  const center=new THREE.Mesh(new THREE.SphereGeometry(.055,10,8),new THREE.MeshBasicMaterial({color:0xffefd3}));skeleton.add(center);
   function set(radius=.6,position=0,show=true){
     const xyz=[];
     for(let j=0;j<=32;j++)for(let i=0;i<48;i++){

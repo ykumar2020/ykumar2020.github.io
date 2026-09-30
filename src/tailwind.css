@@ -9,14 +9,14 @@
 @source "../index.html";
 @source "../404.html";
 @theme {
-  --color-space: #07050b;
-  --color-panel: #130d1f;
-  --color-signal: #c892ff;
-  --color-amber: #d24dff;
-  --color-violet: #8f62ea;
-  --color-starlight: #e7e2f0;
-  --color-muted: #b8aecd;
-  --color-line: #41345c;
+  --color-space: #05070B;
+  --color-panel: #0D131F;
+  --color-signal: #FF929E;
+  --color-amber: #FF9900;
+  --color-violet: #e22b41;
+  --color-starlight: #f0e2e4;
+  --color-muted: #cdaeb2;
+  --color-line: #5c3439;
   --font-sans: Inter, system-ui, sans-serif;
   --font-display: Orbitron, "Space Grotesk", sans-serif;
   --font-mono: Consolas, monospace;

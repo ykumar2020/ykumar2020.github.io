@@ -1,12 +1,12 @@
 {
   "accessed": "2026-09-29",
-  "treatment": "Source files unchanged; red palette and synthetic relief applied only in the browser. Not a volumetric reconstruction.",
+  "treatment": "Reference images are displayed unchanged, without any red/purple tint. Independent 3D surface subsets and color policy are documented in meshes.json.",
   "images": [
     {
       "key": "human",
       "file": "human-cortex.png",
       "title": "A fragment of human cortex",
-      "desc": "Excitatory neurons from a small piece of human cortex. In the source image, color encodes depth from the cortical surface; the red presentation replaces that color encoding.",
+      "desc": "Excitatory neurons from a small piece of human cortex; source colors encode depth from the cortical surface.",
       "credit": "Google Research and Lichtman Lab, Harvard University. Rendering: D. Berger, Harvard University.",
       "links": [
         [

@@ -16,7 +16,7 @@ export function createHeroWireframe(scene){
     }
   }
   const geometry=new THREE.BufferGeometry();geometry.setAttribute('position',new THREE.Float32BufferAttribute(edges,3));
-  const material=new THREE.LineBasicMaterial({color:0x00f0ff,transparent:true,opacity:.48});
+  const material=new THREE.LineBasicMaterial({color:0xff001f,transparent:true,opacity:.48});
   group.add(new THREE.LineSegments(geometry,material));
   const axisGeometry=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0,-1.95,0),new THREE.Vector3(0,1.95,0)]);
   group.add(new THREE.Line(axisGeometry,new THREE.LineBasicMaterial({color:0xffb85c,transparent:true,opacity:.8})));

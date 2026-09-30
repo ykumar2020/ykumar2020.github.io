@@ -62,7 +62,7 @@ export function createCollaborationNetwork(stage){
       const end=new THREE.Vector3(x,y,.1*Math.sin(i));face(person,end);
       const start=new THREE.Vector3(mobile.matches?0:side*.5,mobile.matches?-3.4:(1.5-row)*.14,0),bend=new THREE.Vector3(mobile.matches?0:side*2.5,y*.8,.25);
       const curve=new THREE.QuadraticBezierCurve3(start,bend,end);
-      const line=new THREE.Line(new THREE.BufferGeometry().setFromPoints(curve.getPoints(32)),new THREE.LineBasicMaterial({color:0xa64dff,transparent:true,opacity:.6}));scene.group.add(line);
+      const line=new THREE.Line(new THREE.BufferGeometry().setFromPoints(curve.getPoints(32)),new THREE.LineBasicMaterial({color:0xff4b67,transparent:true,opacity:.6}));scene.group.add(line);
       const topic=el('span',person.topics.map(t=>short[t]).join(' · '),'collaboration-edge-label');topic.title=person.topics.join(', ');label(topic,new THREE.Vector3(mobile.matches?0:side*2.65,mobile.matches?0:y*.82,.3));
     });
     scene.resize();scene.update();scene.draw();highlight(activePaper);showDetail();

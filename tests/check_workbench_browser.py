@@ -36,15 +36,10 @@ with sync_playwright() as p:
     page.locator('#attention-input').fill('')
     assert page.locator('#attention-query-result').inner_text()==''
     page.locator('#attention-input').fill('trust AI')
-    for host in ['attention-scene','medial-scene']:
-        page.locator('#'+host).scroll_into_view_if_needed()
-        assert page.locator('#'+host).get_attribute('data-state')=='ready'
-    page.locator('#medial-radius').fill('0.8')
-    assert '0.200 units' in page.locator('#medial-values').inner_text()
-    before=page.locator('#medial-scene').screenshot()
-    page.locator('#medial-toggle').uncheck()
-    assert before!=page.locator('#medial-scene').screenshot()
-    page.locator('#medial-toggle').check()
+    page.locator('#attention-scene').scroll_into_view_if_needed()
+    assert page.locator('#attention-scene').get_attribute('data-state')=='ready'
+    assert page.locator('#medial-scene').count()==0
+    assert page.locator('#hero-art-scene').count()==1
     assert page.locator('#benchmark-table tbody tr').count()==5
     page.locator('#benchmark-language').select_option('All')
     assert page.locator('#benchmark-table tbody tr').count()==15
@@ -62,7 +57,6 @@ with sync_playwright() as p:
     page.wait_for_function('document.querySelectorAll("#benchmark-table tbody tr").length===15')
     page.locator('#benchmark-language').select_option('English')
     page.locator('#attention-lab').screenshot(path=str(ROOT/'qa/workbench-attention.png'))
-    page.locator('#geometry-lab').screenshot(path=str(ROOT/'qa/workbench-geometry.png'))
     page.locator('#benchmark-lab').screenshot(path=str(ROOT/'qa/workbench-benchmark.png'))
     for width in [320,390,768]:
         page.set_viewport_size({'width':width,'height':900})

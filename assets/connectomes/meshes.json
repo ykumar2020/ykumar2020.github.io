@@ -1,0 +1,278 @@
+{
+  "generatedAt": "2026-09-30T14:22:29.503736+00:00",
+  "method": "Public EM-derived triangulated surfaces. Downloaded LOD 2 (or the coarsest available if fewer LODs). Coincident vertices merged, then quadric decimation toward 30000 faces per cell. No skeleton extrusion or image-derived depth.",
+  "limitations": "Simplification can erase spines, boutons and fine branches. Display colors are decorative, not cell type or activity measurements. Subsets do not reproduce either original media illustration. Coordinates are jointly centered and uniformly scaled within each dataset; relative positions are preserved.",
+  "packages": {
+    "cloud-volume": "12.15.1",
+    "trimesh": "5.1.0",
+    "fast-simplification": "0.2.0"
+  },
+  "datasets": [
+    {
+      "key": "human",
+      "dataset": "H01 proofread_104 / 20210601",
+      "url": "https://storage.googleapis.com/h01-release/data/20210601/proofread_104",
+      "selection": "Eight smallest segment IDs in the official 104-cell library state; a deterministic illustration, not a representative tissue sample.",
+      "credit": "Google Research Connectomics and Lichtman Lab, Harvard University; Shapson-Coe et al., Science (2024).",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourcePage": "https://h01-release.storage.googleapis.com/data.html",
+      "selectionSource": "https://storage.googleapis.com/h01-release/assets/neuroglancer_states/20210601/proofread104_library.json",
+      "selectionSha256": "26017168e1db069cd19efd0af3be74ce9a357dedd76fe198025f35438e0a99f2",
+      "file": "human-neurons.glb",
+      "bytes": 5976796,
+      "sha256": "e8990bd9a8dfaafda12e5a012b7b57ce0b3ca257c8da5d590419bcc4ab6c294f",
+      "centerNanometers": [
+        2652928.766119039,
+        632862.2468967438,
+        87339.26538560278
+      ],
+      "displayUnitsPerNanometer": 5.113420561770174e-06,
+      "cells": [
+        {
+          "id": "546925828",
+          "label": "H01 cell 546925828",
+          "lod": 2,
+          "downloadedVertices": 58662,
+          "downloadedFaces": 111439,
+          "displayVertices": 15636,
+          "displayFaces": 30000,
+          "downloadedGeometrySha256": "26fb5bd0d8a6036c7c97a45874829b83d0208dded0761bbbb82ab83b43e7fa0e",
+          "displayColor": "#00cfff"
+        },
+        {
+          "id": "547114083",
+          "label": "H01 cell 547114083",
+          "lod": 2,
+          "downloadedVertices": 105638,
+          "downloadedFaces": 201982,
+          "displayVertices": 16231,
+          "displayFaces": 30000,
+          "downloadedGeometrySha256": "1fcb18c5f5c0c8d1b679f284c81b3377d0ee095cde7a96887affbaf6628b7877",
+          "displayColor": "#ff52c8"
+        },
+        {
+          "id": "620880207",
+          "label": "H01 cell 620880207",
+          "lod": 2,
+          "downloadedVertices": 307230,
+          "downloadedFaces": 582817,
+          "displayVertices": 16395,
+          "displayFaces": 29999,
+          "downloadedGeometrySha256": "472d2ff0b4026fd7429981ef428fde19b4d8fd08b34db8d9ceb0ec8b5a6f3b4c",
+          "displayColor": "#8def6b"
+        },
+        {
+          "id": "678539249",
+          "label": "H01 cell 678539249",
+          "lod": 2,
+          "downloadedVertices": 28506,
+          "downloadedFaces": 54206,
+          "displayVertices": 15123,
+          "displayFaces": 29999,
+          "downloadedGeometrySha256": "292ba710e8b4c3bbdbf291646d5e88de26e9bb51626501ccbccdd6980b4f14c2",
+          "displayColor": "#ffe35c"
+        },
+        {
+          "id": "751294744",
+          "label": "H01 cell 751294744",
+          "lod": 2,
+          "downloadedVertices": 166031,
+          "downloadedFaces": 317930,
+          "displayVertices": 16684,
+          "displayFaces": 29999,
+          "downloadedGeometrySha256": "0cbcdedaf51b73161c4f6d5412076465a38b044df2e8f047d16b59e38dd1df22",
+          "displayColor": "#ff765e"
+        },
+        {
+          "id": "810151953",
+          "label": "H01 cell 810151953",
+          "lod": 2,
+          "downloadedVertices": 58555,
+          "downloadedFaces": 111321,
+          "displayVertices": 15505,
+          "displayFaces": 29999,
+          "downloadedGeometrySha256": "120f3099d466fc7c32adac8b4237b4604ca1e94e0ae7275ddf2fa6c4d497d7ea",
+          "displayColor": "#6b9fff"
+        },
+        {
+          "id": "810970127",
+          "label": "H01 cell 810970127",
+          "lod": 2,
+          "downloadedVertices": 184292,
+          "downloadedFaces": 352459,
+          "displayVertices": 16430,
+          "displayFaces": 29999,
+          "downloadedGeometrySha256": "22e872898b5e421af1458ad9748b692b09d00100363d09cc3cd75c3b9fa4c057",
+          "displayColor": "#bc77ff"
+        },
+        {
+          "id": "883843993",
+          "label": "H01 cell 883843993",
+          "lod": 2,
+          "downloadedVertices": 148070,
+          "downloadedFaces": 281802,
+          "displayVertices": 16683,
+          "displayFaces": 29999,
+          "downloadedGeometrySha256": "947d24a48ea82cef1072b8afc58bc4b886afc92c04668dce9cac794b5187f3fc",
+          "displayColor": "#58f1c9"
+        }
+      ]
+    },
+    {
+      "key": "fly",
+      "dataset": "FlyWire FAFB / materialization 783",
+      "url": "https://storage.googleapis.com/flywire_v141_m783",
+      "selection": "The bilateral HSE, HSN, HSS, VS1, VS2 and VS3 cells in the published annotation table. Not the 50-largest-neurons media selection.",
+      "credit": "FlyWire Consortium, Murthy and Seung Labs, Princeton University; Dorkenwald et al. and Schlegel et al., Nature (2024).",
+      "license": "CC BY-NC 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "sourcePage": "https://flywire.ai/guidelines",
+      "selectionSource": "https://raw.githubusercontent.com/flyconnectome/flywire_annotations/main/supplemental_files/Supplemental_file1_neuron_annotations.tsv",
+      "selectionSha256": "b214970b55d2fbe0853bba536fdcb9e28730f4eb7ab06f600491df795da683cd",
+      "file": "fly-neurons.glb",
+      "bytes": 8807532,
+      "sha256": "2fb70f782d1880bf0b8c1ce60d27be9a589f5d205f6d37a70b8939197d5ae780",
+      "centerNanometers": [
+        527118.8017446273,
+        268682.98219879146,
+        217513.44528417138
+      ],
+      "displayUnitsPerNanometer": 7.827818886829905e-06,
+      "cells": [
+        {
+          "id": "720575940629153020",
+          "label": "HSE / left",
+          "lod": 2,
+          "downloadedVertices": 377665,
+          "downloadedFaces": 723982,
+          "displayVertices": 15729,
+          "displayFaces": 30000,
+          "downloadedGeometrySha256": "da99d7126ea7f5a8701e6a5cbdc96470e6f9baf2a86665d0050694727a17f211",
+          "displayColor": "#00cfff"
+        },
+        {
+          "id": "720575940629148007",
+          "label": "HSE / right",
+          "lod": 2,
+          "downloadedVertices": 378605,
+          "downloadedFaces": 727828,
+          "displayVertices": 15699,
+          "displayFaces": 30000,
+          "downloadedGeometrySha256": "ef8a99bf9daceba4fa3496a1c7b5a83dd44c531e6fbad2afa0e9513a07fd752c",
+          "displayColor": "#ff52c8"
+        },
+        {
+          "id": "720575940628031249",
+          "label": "HSN / left",
+          "lod": 2,
+          "downloadedVertices": 325382,
+          "downloadedFaces": 630602,
+          "displayVertices": 15131,
+          "displayFaces": 30000,
+          "downloadedGeometrySha256": "b0474232da08746160fd7011811ec9315064a7ebbeddbe14a7f5e72b6acff402",
+          "displayColor": "#8def6b"
+        },
+        {
+          "id": "720575940615933919",
+          "label": "HSN / right",
+          "lod": 2,
+          "downloadedVertices": 373082,
+          "downloadedFaces": 711732,
+          "displayVertices": 15903,
+          "displayFaces": 30000,
+          "downloadedGeometrySha256": "4ca7de9beac422ed4ad658103660065125a829449f6a4fc0cbc1e5de98fd8c34",
+          "displayColor": "#ffe35c"
+        },
+        {
+          "id": "720575940622312965",
+          "label": "HSS / left",
+          "lod": 2,
+          "downloadedVertices": 360788,
+          "downloadedFaces": 686496,
+          "displayVertices": 16091,
+          "displayFaces": 30000,
+          "downloadedGeometrySha256": "45f00e1db41b022cdbc29bbe3e907a901d9ad51fa290ecaa1bfb7e810be93095",
+          "displayColor": "#ff765e"
+        },
+        {
+          "id": "720575940628743496",
+          "label": "HSS / right",
+          "lod": 2,
+          "downloadedVertices": 315705,
+          "downloadedFaces": 598326,
+          "displayVertices": 15105,
+          "displayFaces": 30000,
+          "downloadedGeometrySha256": "fbf910bb5497cd24ecbcfc69f0197c15947fa1e13f9aa455e5625407bd8374ed",
+          "displayColor": "#6b9fff"
+        },
+        {
+          "id": "720575940626477498",
+          "label": "VS1 / left",
+          "lod": 2,
+          "downloadedVertices": 404065,
+          "downloadedFaces": 783108,
+          "displayVertices": 15077,
+          "displayFaces": 29999,
+          "downloadedGeometrySha256": "6a0433cf3c494c0652aa85ad2f8d7a3433b1aa333dcceec832ed1f2b695423d1",
+          "displayColor": "#bc77ff"
+        },
+        {
+          "id": "720575940619878961",
+          "label": "VS1 / right",
+          "lod": 2,
+          "downloadedVertices": 416154,
+          "downloadedFaces": 805384,
+          "displayVertices": 15165,
+          "displayFaces": 30000,
+          "downloadedGeometrySha256": "4898c77a0123195561babf87403429644c16316a9f2cb88cc2a0c99cfac6fcdf",
+          "displayColor": "#58f1c9"
+        },
+        {
+          "id": "720575940640722851",
+          "label": "VS2 / left",
+          "lod": 2,
+          "downloadedVertices": 373821,
+          "downloadedFaces": 724298,
+          "displayVertices": 15700,
+          "displayFaces": 29999,
+          "downloadedGeometrySha256": "f79bf646a040e7f262f5dd022b9c13331c1a5e42f77b7af6f5f2e72549aed8c5",
+          "displayColor": "#ffa649"
+        },
+        {
+          "id": "720575940613126835",
+          "label": "VS2 / right",
+          "lod": 2,
+          "downloadedVertices": 367123,
+          "downloadedFaces": 712672,
+          "displayVertices": 15683,
+          "displayFaces": 30000,
+          "downloadedGeometrySha256": "005945b267836d4b816567321ac325125fdd1e0faefc767952b3ffa7ee47820b",
+          "displayColor": "#f48caf"
+        },
+        {
+          "id": "720575940622831740",
+          "label": "VS3 / left",
+          "lod": 2,
+          "downloadedVertices": 261776,
+          "downloadedFaces": 508622,
+          "displayVertices": 15585,
+          "displayFaces": 30000,
+          "downloadedGeometrySha256": "dd36e07fbc4025dc203b3596e7535f75a4b9238cabdd55454186779f0d4191a0",
+          "displayColor": "#acdeff"
+        },
+        {
+          "id": "720575940641812699",
+          "label": "VS3 / right",
+          "lod": 2,
+          "downloadedVertices": 293899,
+          "downloadedFaces": 575112,
+          "displayVertices": 15592,
+          "displayFaces": 30000,
+          "downloadedGeometrySha256": "cbf2adf5d35fe027201142b208565161d1580e8349b84a1279b888ebe17907be",
+          "displayColor": "#b9ee6a"
+        }
+      ]
+    }
+  ]
+}

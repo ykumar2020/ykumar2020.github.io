@@ -6,7 +6,7 @@ import {createCollaborationNetwork} from './collaboration-network.js';
 
 import {createCapsuleLab} from './capsule-lab.js';
 import {mountResearchWorkbench} from './research-workbench.js';
-const CYAN=0xa64dff, AMBER=0xb266ff;
+const CYAN=0xff344b, AMBER=0xff8066;
 
 /** Drop-in entry point. Static HTML and CSS remain the no-WebGL fallback. */
 export function mountAcademicVisuals(){
@@ -27,7 +27,7 @@ export function mountAcademicVisuals(){
     try{renderer=new THREE.WebGLRenderer({alpha:true,antialias:true,powerPreference:'low-power'});}
     catch{host.dataset.state='fallback';return null;}
     renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.5));
-    renderer.setClearColor(0x07050b,0);
+    renderer.setClearColor(0x05070b,0);
     const canvas=renderer.domElement;canvas.setAttribute('aria-hidden','true');host.append(canvas);
     const scene=new THREE.Scene(), camera=new THREE.PerspectiveCamera(40,1,.1,180);
     let visible=false,lost=false,raf=0,last=0,time=0,frames=0;
@@ -94,13 +94,13 @@ export function mountAcademicVisuals(){
 
   stage('grid-scene',s=>{
     s.camera.position.set(0,6.8,15);s.camera.lookAt(0,0,-14);
-    s.scene.fog=new THREE.FogExp2(0x07050b,.025);
-    const grid=new THREE.GridHelper(160,80,0xb871ff,0x4a177d);grid.position.z=-36;
+    s.scene.fog=new THREE.FogExp2(0x05070b,.025);
+    const grid=new THREE.GridHelper(160,80,0xff7180,0x7d172b);grid.position.z=-36;
     grid.material.transparent=true;grid.material.opacity=.85;s.scene.add(grid);
     // Long emissive routes make the grid read as a luminous environment.
     for(const x of [-12,-6,6,12]){
-      const route=new THREE.Mesh(new THREE.BoxGeometry(.065,.02,100),new THREE.MeshBasicMaterial({color:x<0?0xa64dff:0xa64dff}));route.position.set(x,.04,-32);s.scene.add(route);
-      const glow=new THREE.Mesh(new THREE.PlaneGeometry(.38,100),new THREE.MeshBasicMaterial({color:x<0?0xa64dff:0xa64dff,transparent:true,opacity:.12,depthWrite:false,blending:THREE.AdditiveBlending}));glow.rotation.x=-Math.PI/2;glow.position.copy(route.position);s.scene.add(glow);
+      const route=new THREE.Mesh(new THREE.BoxGeometry(.065,.02,100),new THREE.MeshBasicMaterial({color:x<0?0xff1838:0xff442c}));route.position.set(x,.04,-32);s.scene.add(route);
+      const glow=new THREE.Mesh(new THREE.PlaneGeometry(.38,100),new THREE.MeshBasicMaterial({color:x<0?0xff1838:0xff442c,transparent:true,opacity:.12,depthWrite:false,blending:THREE.AdditiveBlending}));glow.rotation.x=-Math.PI/2;glow.position.copy(route.position);s.scene.add(glow);
     }
     const horizon=new THREE.Mesh(new THREE.PlaneGeometry(160,.055),new THREE.MeshBasicMaterial({color:CYAN,transparent:true,opacity:.6}));
     horizon.position.set(0,.04,-47);horizon.rotation.x=-Math.PI/2;s.scene.add(horizon);

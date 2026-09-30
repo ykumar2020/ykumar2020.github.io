@@ -7,7 +7,7 @@ ROOT=Path(__file__).resolve().parents[1]
 def luminance(rgb):
  c=[v/255 for v in rgb];c=[v/12.92 if v<=.04045 else ((v+.055)/1.055)**2.4 for v in c]
  return .2126*c[0]+.7152*c[1]+.0722*c[2]
-ratio=(luminance((216,180,254))+.05)/(luminance((13,19,31))+.05)
+ratio=(luminance((255,183,192))+.05)/(luminance((13,19,31))+.05)
 assert ratio>=7
 with sync_playwright() as p:
  b=p.chromium.launch(channel='chrome',headless=True,args=['--enable-unsafe-swiftshader'])
@@ -26,7 +26,7 @@ with sync_playwright() as p:
  assert geometry['x']+geometry['width']<=papers['x']
  assert page.locator('#hero-art-scene canvas').evaluate('(e)=>getComputedStyle(e).pointerEvents')=='none'
  assert page.locator('#grid-scene').evaluate('(e)=>getComputedStyle(e).zIndex')=='0'
- assert page.locator('.hero-headline em').evaluate('(e)=>getComputedStyle(e).color')=='rgb(216, 180, 254)'
+ assert page.locator('.hero-headline em').evaluate('(e)=>getComputedStyle(e).color')=='rgb(255, 183, 192)'
  frames=page.locator('#hero-art-scene').get_attribute('data-frames');page.wait_for_timeout(300)
  assert page.locator('#hero-art-scene').get_attribute('data-frames')==frames
  for index in [2,9,0]:

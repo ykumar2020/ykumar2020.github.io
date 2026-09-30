@@ -1,4 +1,4 @@
-﻿"""Open gallery regression: all studies embedded, independent controls and purple fallbacks."""
+﻿"""Open gallery regression: all studies embedded, independent controls and red fallbacks."""
 from pathlib import Path
 import json,sys,zipfile
 from playwright.sync_api import sync_playwright
@@ -29,7 +29,7 @@ with sync_playwright() as p:
    if key=='swirl':assert f'{(int(mode)-1)*int(mode)*2+2:,}' in text
   if select.count():select.select_option({'torus':'wire','swirl':'90','solar':'20'}[key])
   page.wait_for_timeout(250);n=host.get_attribute('data-frames');page.wait_for_timeout(200);assert n==host.get_attribute('data-frames')
-  # Save the actual default purple rendering as its own static fallback.
+  # Save the actual default red rendering as its own static fallback.
   host.locator('canvas').screenshot(path=str(ROOT/f'assets/graphics/{sid}-red.png'))
   report['studies'].append([sid,options])
  host=page.locator('#work-swirl-90');host.scroll_into_view_if_needed()

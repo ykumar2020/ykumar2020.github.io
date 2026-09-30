@@ -70,10 +70,10 @@ export function mountPlanets(root) {
   const random=()=>{seed=(seed*16807)%2147483647;return (seed-1)/2147483646;};
   const geometry=new THREE.SphereGeometry(1,48,32);
   const specifications=[
-    {size:2.05,x:.78,y:.27,tint:0xbb73ff,speed:.017},
-    {size:1.45,x:.17,y:.73,tint:0x55dcff,speed:.021},
-    {size:1.12,x:.86,y:.85,tint:0xcf88ff,speed:.015},
-    {size:.96,x:.24,y:.2,tint:0x679fff,speed:.019},
+    {size:2.05,x:.78,y:.27,tint:0xff7384,speed:.017},
+    {size:1.45,x:.17,y:.73,tint:0xff5569,speed:.021},
+    {size:1.12,x:.86,y:.85,tint:0xff8896,speed:.015},
+    {size:.96,x:.24,y:.2,tint:0xff6779,speed:.019},
     {size:.70,x:.57,y:.57,tint:0xffa5e5,speed:.024}
   ];
   const fields=specifications.map((spec,index)=>{
@@ -91,7 +91,7 @@ export function mountPlanets(root) {
         const a=k/96*Math.PI*2,latitude=.15*Math.sin(a*3+j)+.18*Math.sin(a*5-j);
         points.push(new THREE.Vector3(Math.cos(a)*Math.cos(latitude),Math.sin(latitude),Math.sin(a)*Math.cos(latitude)).multiplyScalar(1.012));
       }
-      const line=new THREE.LineLoop(new THREE.BufferGeometry().setFromPoints(points),new THREE.LineBasicMaterial({color:j%2?0xbc91ff:0x8deeff,transparent:true,opacity:.20,blending:THREE.AdditiveBlending,depthWrite:false}));
+      const line=new THREE.LineLoop(new THREE.BufferGeometry().setFromPoints(points),new THREE.LineBasicMaterial({color:j%2?0xff919e:0xff8d9b,transparent:true,opacity:.20,blending:THREE.AdditiveBlending,depthWrite:false}));
       line.rotation.set(j*.81+.2,j*.53,.48+j*.9);group.add(line);filaments.push(line);
     }
     const positions=new Float32Array(140*3);
@@ -113,8 +113,8 @@ export function mountPlanets(root) {
   const links=[];
   for(let a=0;a<fields.length;a++)for(let b=a+1;b<fields.length;b++){
     const points=new Float32Array(25*3),g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.BufferAttribute(points,3));
-    const line=new THREE.Line(g,new THREE.LineBasicMaterial({color:0x9773fa,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false}));
-    const signal=glow(0xc3c3ff,.22,0);scene.add(line,signal);links.push({a,b,line,signal});
+    const line=new THREE.Line(g,new THREE.LineBasicMaterial({color:0xfa7383,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false}));
+    const signal=glow(0xffc3ca,.22,0);scene.add(line,signal);links.push({a,b,line,signal});
   }
   const starPositions=new Float32Array(320*3);
   for(let i=0;i<320;i++)starPositions.set([(random()-.5)*65,(random()-.5)*25,-8-random()*10],i*3);

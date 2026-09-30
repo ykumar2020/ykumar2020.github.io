@@ -1,8 +1,6 @@
 import {validateBenchmark} from '../labs/benchmark-core.mjs';
 import * as THREE from 'three';
 import {attentionExperiment} from '../labs/attention-core.mjs';
-import {capsuleMetrics} from '../labs/geometry-core.mjs';
-import {createCapsuleLab} from './capsule-lab.js';
 const $=id=>document.getElementById(id);
 const node=(tag,text)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;return e;};
 function download(value,name){const u=URL.createObjectURL(new Blob([JSON.stringify(value,null,2)],{type:'application/json'})),a=node('a');a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);}
@@ -14,7 +12,7 @@ export function mountResearchWorkbench(stage,inspect){
   const tokenLabel=(c,i)=>`${i+1}: ${c===' '?'space':c}`;
   attentionScene=stage('attention-scene',s=>{
     s.camera.position.set(0,6,7);s.camera.lookAt(0,0,0);s.group=new THREE.Group();s.scene.add(s.group);
-    const light=new THREE.HemisphereLight(0xffffff,0x1e1333,2);s.scene.add(light);
+    const light=new THREE.HemisphereLight(0xffffff,0x132333,2);s.scene.add(light);
     let t=0;inspect(s);s.update=(time=t)=>{t=time;s.group.rotation.y=s.userRotation.y;};
   });
   function renderAttention(){
@@ -27,18 +25,14 @@ export function mountResearchWorkbench(stage,inspect){
     const result=trace.layers[layer],n=tokens.length;
     const heat=table(['Query / key',...tokens.map(tokenLabel)],result.attention.map((r,i)=>[tokenLabel(tokens[i],i),...r.map(v=>v.toFixed(3))]));
     heat.setAttribute('aria-label',`Layer ${layer+1} causal self-attention probabilities`);
-    heat.querySelectorAll('tbody tr').forEach((tr,i)=>tr.querySelectorAll('td').forEach((td,j)=>{const p=result.attention[i][j];td.style.background=j>i?'#0d0915':`rgb(${Math.round(22+p*58)},${Math.round(15+p*25)},${Math.round(35+p*90)})`;td.title=`Query ${i+1}, key ${j+1}: ${p.toFixed(6)}${j>i?' (future position masked)':''}`;}));holder.append(heat);
+    heat.querySelectorAll('tbody tr').forEach((tr,i)=>tr.querySelectorAll('td').forEach((td,j)=>{const p=result.attention[i][j];td.style.background=j>i?'#090d15':`rgb(${Math.round(12+p*20)},${Math.round(25+p*72)},${Math.round(40+p*78)})`;td.title=`Query ${i+1}, key ${j+1}: ${p.toFixed(6)}${j>i?' (future position masked)':''}`;}));holder.append(heat);
     const probs=result.attention[selected];$('attention-query-result').textContent=`Query ${tokenLabel(tokens[selected],selected)}: sum of attention weights = ${probs.reduce((a,b)=>a+b,0).toFixed(6)}. Future keys receive zero weight.`;
     for(const matrix of ['Q','K','V']){const section=node('div');section.append(node('h5',`${matrix} = normalized input × W${matrix}`),table(['Token',...Array.from({length:8},(_,i)=>`d${i+1}`)],result[matrix].map((r,i)=>[tokenLabel(tokens[i],i),...r.map(v=>v.toFixed(3))])));$('attention-matrices').append(section);}
     if(attentionScene){barMesh=new THREE.InstancedMesh(new THREE.BoxGeometry(.9,1,.9),new THREE.MeshStandardMaterial({roughness:.5}),n*n);const dummy=new THREE.Object3D();
-      result.attention.forEach((r,i)=>r.forEach((v,j)=>{dummy.position.set((j-(n-1)/2)*3.7/n,v*.8,(i-(n-1)/2)*3.7/n);dummy.scale.set(3.7/n,Math.max(.012,v*1.6),3.7/n);dummy.updateMatrix();barMesh.setMatrixAt(i*n+j,dummy.matrix);barMesh.setColorAt(i*n+j,new THREE.Color(j>i?0x221835:0x884dff));}));attentionScene.group.add(barMesh);attentionScene.draw();}
+      result.attention.forEach((r,i)=>r.forEach((v,j)=>{dummy.position.set((j-(n-1)/2)*3.7/n,v*.8,(i-(n-1)/2)*3.7/n);dummy.scale.set(3.7/n,Math.max(.012,v*1.6),3.7/n);dummy.updateMatrix();barMesh.setMatrixAt(i*n+j,dummy.matrix);barMesh.setColorAt(i*n+j,new THREE.Color(j>i?0x182435:0xea001c));}));attentionScene.group.add(barMesh);attentionScene.draw();}
   }
   [input,layerPicker,queryPicker].forEach(e=>e.addEventListener(e===input?'input':'change',renderAttention));$('attention-export').onclick=()=>download(trace,'attention-trace.json');renderAttention();
 
-  let shape,shapeStage;shapeStage=stage('medial-scene',s=>{s.camera.position.set(0,.1,6.6);shape=createCapsuleLab(s.scene);s.group=shape.group;inspect(s);let t=0;s.update=(time=t)=>{t=time;shape.update(t,s.userRotation);};});
-  function renderGeometry(){const r=Number($('medial-radius').value),y=Number($('medial-ball').value),m=capsuleMetrics(r);shape?.set(r,y,$('medial-toggle').checked);shapeStage?.draw();$('medial-radius-value').textContent=r.toFixed(2)+' units';$('medial-ball-value').textContent=y.toFixed(2)+' units';$('medial-values').textContent=`Axis length: ${m.axisLength.toFixed(2)} units. Volume: ${m.volume.toFixed(3)} cubic units. Hausdorff distance to the reference capsule (radius 0.60): ${m.hausdorff.toFixed(3)} units.`;}
-  ['medial-radius','medial-ball','medial-toggle'].forEach(id=>$(id).addEventListener('input',renderGeometry));renderGeometry();
-  $('medial-export').onclick=()=>download({kind:'analytic capsule, not an authentication prediction',...capsuleMetrics(Number($('medial-radius').value)),ballCenter:[0,Number($('medial-ball').value),0]},'medial-axis-trace.json');
   mountBenchmarks();
   fetch('data/workbench-checks.json').then(r=>{if(!r.ok)throw Error();return r.json();}).then(report=>{
     $('workbench-checks').textContent=`Local calculation checks: ${report.passed}/${report.total} passed. Run: ${report.testedAt}. These checks cover the browser demos, not the linked papers or production security.`;
@@ -54,12 +48,12 @@ function mountBenchmarks(){
     const ns='http://www.w3.org/2000/svg',svg=document.createElementNS(ns,'svg');svg.setAttribute('viewBox','0 0 720 380');svg.setAttribute('role','img');svg.setAttribute('aria-label','Recorded latency versus ARSS. Lower ARSS means less severe responses; lower latency means faster responses. Exact values follow in the table.');
     function el(tag,attrs,text){const e=document.createElementNS(ns,tag);Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,v));if(text)e.textContent=text;svg.append(e);return e;}
     const max=Math.max(10,...rows.map(r=>r.latencySeconds))*1.1;const x=v=>60+v/max*610,y=v=>310-v/6*270;
-    for(let v=0;v<=6;v++){el('line',{x1:60,y1:y(v),x2:670,y2:y(v),stroke:'#41345c'});el('text',{x:42,y:y(v)+5,fill:'#e7e2f0','font-size':14},String(v));}
-    for(let i=0;i<=4;i++){const v=max*i/4;el('text',{x:x(v),y:333,fill:'#e7e2f0','font-size':13,'text-anchor':'middle'},v.toFixed(0));}
-    el('text',{x:360,y:370,fill:'#e7e2f0','font-size':16,'text-anchor':'middle'},'Mean latency (seconds)');el('text',{x:60,y:22,fill:'#e28cff','font-size':15},'ARSS 0–6 · higher = less secure');
+    for(let v=0;v<=6;v++){el('line',{x1:60,y1:y(v),x2:670,y2:y(v),stroke:'#5c3439'});el('text',{x:42,y:y(v)+5,fill:'#f0e2e4','font-size':14},String(v));}
+    for(let i=0;i<=4;i++){const v=max*i/4;el('text',{x:x(v),y:333,fill:'#f0e2e4','font-size':13,'text-anchor':'middle'},v.toFixed(0));}
+    el('text',{x:360,y:370,fill:'#f0e2e4','font-size':16,'text-anchor':'middle'},'Mean latency (seconds)');el('text',{x:60,y:22,fill:'#ffc18c','font-size':15},'ARSS 0–6 · higher = less secure');
     const labelPositions=[];
-    const color={English:'#b48fff',Spanish:'#da6bff',Chinese:'#c58cff'};
-    rows.forEach(r=>{const dot=el(r.language==='Spanish'?'rect':'circle',r.language==='Spanish'?{x:x(r.latencySeconds)-5,y:y(r.arss)-5,width:10,height:10,fill:color[r.language]}:{cx:x(r.latencySeconds),cy:y(r.arss),r:r.language==='Chinese'?7:5,fill:r.language==='Chinese'?'none':color[r.language],stroke:color[r.language],'stroke-width':2});const t=document.createElementNS(ns,'title');t.textContent=`${r.model} · ${r.language}: ARSS ${r.arss}, ${r.latencySeconds}s, refusal ${r.refusalPercent}%`;dot.append(t);if(rows.length<=5){const lx=x(r.latencySeconds)+10;let ly=y(r.arss)-8;while(labelPositions.some(p=>Math.abs(p.x-lx)<110&&Math.abs(p.y-ly)<18))ly+=18;labelPositions.push({x:lx,y:ly});if(Math.abs(ly-y(r.arss))>12)el('line',{x1:x(r.latencySeconds),y1:y(r.arss),x2:lx,y2:ly-4,stroke:color[r.language]});el('text',{x:lx,y:ly,fill:'#e7e2f0','font-size':12},r.model);}});
+    const color={English:'#ff8f9c',Spanish:'#ffb76b',Chinese:'#ff8ca3'};
+    rows.forEach(r=>{const dot=el(r.language==='Spanish'?'rect':'circle',r.language==='Spanish'?{x:x(r.latencySeconds)-5,y:y(r.arss)-5,width:10,height:10,fill:color[r.language]}:{cx:x(r.latencySeconds),cy:y(r.arss),r:r.language==='Chinese'?7:5,fill:r.language==='Chinese'?'none':color[r.language],stroke:color[r.language],'stroke-width':2});const t=document.createElementNS(ns,'title');t.textContent=`${r.model} · ${r.language}: ARSS ${r.arss}, ${r.latencySeconds}s, refusal ${r.refusalPercent}%`;dot.append(t);if(rows.length<=5){const lx=x(r.latencySeconds)+10;let ly=y(r.arss)-8;while(labelPositions.some(p=>Math.abs(p.x-lx)<110&&Math.abs(p.y-ly)<18))ly+=18;labelPositions.push({x:lx,y:ly});if(Math.abs(ly-y(r.arss))>12)el('line',{x1:x(r.latencySeconds),y1:y(r.arss),x2:lx,y2:ly-4,stroke:color[r.language]});el('text',{x:lx,y:ly,fill:'#f0e2e4','font-size':12},r.model);}});
     $('benchmark-chart').replaceChildren(svg);
   }
   async function load(){try{const r=await fetch('data/drag-pilot.json',{cache:'no-store'});if(!r.ok)throw Error('Snapshot unavailable.');data=validateBenchmark(await r.json());imported=false;$('benchmark-error').textContent='';render();}catch(e){$('benchmark-error').textContent=e.message;}}
