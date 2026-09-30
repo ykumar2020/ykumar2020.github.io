@@ -1,5 +1,6 @@
 {
-  "testedAt": "2026-09-30T11:44:20.306Z",
+  "testedAt": "2026-09-30T11:51:50.578Z",
+  "hashEncoding": "UTF-8 with LF-normalized line endings",
   "scope": "Demo calculations and import validation only; not paper reproduction or production safety certification",
   "total": 14,
   "passed": 14,
@@ -64,9 +65,9 @@
   "sha256": {
     "labs/attention-core.mjs": "069aa6c47d9282a7fdea61e357b15ebf09407927c8095186c3791262d78be737",
     "labs/poison-core.mjs": "f4a5adee0c6b2a7ff5241d8e5edcd87882de47d7e56f192c929b28f7467a6cf2",
-    "labs/geometry-core.mjs": "13b6dc2b9fe3e38e3583bb3d865ef87148cfff6ae032e81444795287770b8836",
-    "labs/benchmark-core.mjs": "8dcf2fa25c9001ab5915a56e7f52fb4377645dac7553cbc8dbb296d5de15803f",
-    "data/drag-pilot.json": "e147b7c4d641e827d4ff0220c7d98505febcb57e9f966457b9a9cf68d396bcef",
-    "tests/check_workbench.mjs": "d0199b783ee4158e6ff1ffa9419e8b7568d1fdca27acc58e090d95a3638ed110"
+    "labs/geometry-core.mjs": "2796f89c3469b5c540c65d05a16b4b08e1ce7fe50c83abdc9fa040c2cfabba06",
+    "labs/benchmark-core.mjs": "7f0172d9918bbe7b78b488336888c51bdd8027ce48af3f0ada047f2023c554b6",
+    "data/drag-pilot.json": "7c8f6c3cc4dc6a62f3f7609119e1877bab9d000f2f31020e9b122ad0639de313",
+    "tests/check_workbench.mjs": "5469284f350612705156b8b23963b6795d4da4003374ff96a4226ffa79538ec5"
   }
 }

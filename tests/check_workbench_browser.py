@@ -1,4 +1,4 @@
-﻿"""Browser integration checks for the inline research workbench."""
+"""Browser integration checks for the inline research workbench."""
 import json
 from pathlib import Path
 from playwright.sync_api import sync_playwright
@@ -74,5 +74,3 @@ with sync_playwright() as p:
     assert not errors,errors
     browser.close()
 print('Workbench browser checks passed: controls, exports, import rejection, safe text, responsive layout and axe A/AA.')
-
-
