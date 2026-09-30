@@ -86,7 +86,7 @@ if ('IntersectionObserver' in window) {
 
 // The visuals enhance the document; scholarly content never depends on WebGL.
 let visuals;
-const visualReady = import('./assets/planets.js?v=20260930-carousel-fast-v1').then(module => {
+const visualReady = import('./assets/planets.js?v=20260930-collisions-v1').then(module => {
   visuals = module.mountAcademicVisuals();
   return visuals;
 }).catch(() => null);
