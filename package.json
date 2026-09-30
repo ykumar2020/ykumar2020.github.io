@@ -3,12 +3,11 @@
   "version": "1.0.0",
   "description": "Julie Kumar academic portfolio, built with Tailwind CSS",
   "scripts": {
-    "build": "python build.py && npm run build:css && npm run build:planets && npm run build:nova",
+    "build": "python build.py && npm run build:css && npm run build:planets",
     "build:css": "tailwindcss -i ./src/tailwind.css -o ./styles.css --minify",
     "watch:css": "tailwindcss -i ./src/tailwind.css -o ./styles.css --watch",
     "preview": "python -m http.server 8091 --bind 127.0.0.1",
-    "build:planets": "esbuild src/planets.js --bundle --minify --format=esm --target=es2020 --outfile=assets/planets.js",
-    "build:nova": "esbuild src/nova-preview.js --bundle --minify --format=esm --target=es2020 --outfile=labs/nova/preview.js"
+    "build:planets": "esbuild src/planets.js --bundle --minify --format=esm --target=es2020 --outfile=assets/planets.js"
   },
   "repository": {
     "type": "git",
