@@ -278,3 +278,7 @@ document.querySelectorAll('[data-paper-jump]').forEach(a=>a.addEventListener('cl
  e.preventDefault();resetResearchFilters();setResearchFocus('All');visibleLimit=papers.length;updatePapers();
  const paper=document.getElementById(a.dataset.paperJump);if(paper){paper.scrollIntoView({block:'start'});const title=paper.querySelector('h3');title.tabIndex=-1;title.focus({preventScroll:true});}
 }));
+
+// Pause the embedded teaching voice when its section is no longer visible.
+const julieDemo=document.querySelector("#julie-demo");
+if(julieDemo)new IntersectionObserver(([entry])=>{if(!entry.isIntersecting)julieDemo.contentWindow?.postMessage({type:"julie:pause"},location.origin);},{threshold:.05}).observe(julieDemo);
