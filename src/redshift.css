@@ -51,3 +51,20 @@
 @media(max-width:1100px){.hero{grid-template-columns:1.2fr 1fr}.hero>.hero-portrait{max-width:300px}.hero-art{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;align-items:center;margin:0}.hero-art-heading{grid-column:1/-1}.hero-art figcaption{text-align:left;padding:20px}#hero-art-scene{height:330px}.hero h1{font-size:4rem}}
 @media(max-width:767px){.hero{display:flex;flex-direction:column;gap:26px;padding-top:32px}.hero>.hero-portrait{order:0;max-width:270px}.hero-copy{order:1;width:100%}.hero-art{order:2;display:block;width:100%}.hero-art figcaption{text-align:center}.hero h1{font-size:3.4rem}.hero-art-heading{font-size:.6rem}.embedded-gallery{grid-template-columns:1fr}.embedded-heading,.embedded-copy{padding-left:18px;padding-right:18px}.embedded-scene{height:330px}.skills-visual{position:static}.hero .portrait-label{font-size:.7rem}.hero .portrait-coordinate{font-size:.45rem}}
 @media print{.embedded-gallery{display:block}.embedded-scene,.embedded-work video,.embedded-mode,.scene-controls{display:none!important}.embedded-work{break-inside:avoid}.hero>.hero-portrait{display:none}.skills-visual{position:static}}
+.connectomes-section{border-block:1px solid #6b293b;background:radial-gradient(ellipse at 50% 40%,#400d2055,transparent 70%)}
+.connectome-gallery{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.connectome-study{min-width:0;background:#0b0e17;border:1px solid #6b3446}
+.connectome-heading{padding:26px 26px 0}.connectome-heading h3{font:500 1.45rem/1.4 var(--font-tech);margin-top:12px}
+.connectome-scene{position:relative;height:390px;overflow:hidden;background:radial-gradient(ellipse,#2d0a174d,transparent 70%)}
+.connectome-scene canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:pan-y;cursor:grab}
+.connectome-scene canvas:active{cursor:grabbing}.connectome-scene>.scene-fallback{object-fit:contain}
+.connectome-settings{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:16px 26px 22px;border-bottom:1px solid #392432}
+.connectome-settings label{font-size:.875rem;display:grid;gap:8px}.connectome-settings label:first-child{grid-column:1/-1}
+.connectome-settings select{background:#090b13;color:#e2e8f0;border:1px solid #88606a;padding:10px;min-height:44px;width:100%}
+.connectome-settings input{accent-color:#ff7185;width:100%;min-height:30px}
+.connectome-copy{padding:24px 26px}.connectome-copy>p{margin-bottom:18px;color:#c7d1de}
+.connectome-copy .image-treatment{font-size:.875rem;border-left:2px solid #ff7185;padding-left:12px}
+.connectome-copy .image-credit{font-size:.8rem;color:#b7c2d0}.connectome-links{display:flex;flex-wrap:wrap;gap:12px 20px;font-size:.85rem}.connectome-links a{color:#ffb4c0;text-decoration:underline}
+@media(max-width:900px){.connectome-gallery{grid-template-columns:1fr}.connectome-scene{height:430px}}
+@media(max-width:480px){.connectome-scene{height:270px}.connectome-heading,.connectome-copy{padding:22px 18px}.connectome-heading{padding-bottom:0}.connectome-settings{padding:12px 18px 20px}}
+@media print{.connectome-gallery{display:block}.connectome-scene canvas,.connectome-settings{display:none!important}.connectome-scene>.scene-fallback{display:block!important;filter:none}.connectome-study{break-inside:avoid}}

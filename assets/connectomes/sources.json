@@ -1,0 +1,48 @@
+{
+  "accessed": "2026-09-29",
+  "treatment": "Source files unchanged; red palette and synthetic relief applied only in the browser. Not a volumetric reconstruction.",
+  "images": [
+    {
+      "key": "human",
+      "file": "human-cortex.png",
+      "title": "A fragment of human cortex",
+      "desc": "Excitatory neurons from a small piece of human cortex. In the source image, color encodes depth from the cortical surface; the red presentation replaces that color encoding.",
+      "credit": "Google Research and Lichtman Lab, Harvard University. Rendering: D. Berger, Harvard University.",
+      "links": [
+        [
+          "Popular Science article",
+          "https://www.popsci.com/science/see-the-most-detailed-map-of-human-brain-matter-ever-created/"
+        ],
+        [
+          "Explore the H01 data",
+          "https://h01-release.storage.googleapis.com/explore.html"
+        ]
+      ],
+      "url": "https://www.popsci.com/wp-content/uploads/2024/05/09/Six-layers-of-excitatory-neurons-colored-by-depth.png?quality=85&w=2000",
+      "sha256": "7c9d9aacb314ce977b93a2f62636014362e2fa2f60c4fcf6a0da00feaa12ef61"
+    },
+    {
+      "key": "fly",
+      "file": "fly-brain.png",
+      "title": "The fly brain's 50 largest neurons",
+      "desc": "Fifty large neurons reveal intricate branches spanning the fruit fly brain. This selected-neuron rendering is distinct from the complete FlyWire connectome.",
+      "credit": "Tyler Sloan and Amy Sterling for FlyWire, Princeton University (Dorkenwald et al., 2024).",
+      "links": [
+        [
+          "New York Times article",
+          "https://www.nytimes.com/2024/10/02/science/fruit-fly-brain-mapped.html"
+        ],
+        [
+          "FlyWire image and credit",
+          "https://flywire.ai/for_media"
+        ],
+        [
+          "Explore FlyWire",
+          "https://flywire.ai/"
+        ]
+      ],
+      "url": "https://flywire.ai/assets/for_media/fw_50_L.png",
+      "sha256": "912e38298fb9c3d272996f12c4396d058f64e939d549efb41173d60cedb5e877"
+    }
+  ]
+}

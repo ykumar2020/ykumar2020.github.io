@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import {mountGraphicsGallery} from './graphics-work.js';
+import {mountConnectomeImages} from './connectome-images.js';
 
 import {createASILoom} from './asi-loom.js';
 const CYAN=0xff344b, AMBER=0xff8066;
@@ -122,6 +123,7 @@ export function mountAcademicVisuals(){
     s.update=(time=t)=>{t=time;loom.update(t,px,py);};
   });
   mountGraphicsGallery(stage,inspect);
+  mountConnectomeImages(stage);
 
   const node=stage('node-scene',s=>{
     s.camera.position.set(0,.1,7.4);s.camera.lookAt(0,0,0);
