@@ -85,7 +85,7 @@ if ('IntersectionObserver' in window) {
 
 // The visuals enhance the document; scholarly content never depends on WebGL.
 let visuals;
-const visualReady = import('./assets/planets.js?v=20260930-hero-hud').then(module => {
+const visualReady = import('./assets/planets.js?v=20260930-live-labs').then(module => {
   visuals = module.mountAcademicVisuals();
   return visuals;
 }).catch(() => null);
@@ -252,4 +252,9 @@ document.querySelector('[data-jump-year]')?.addEventListener('click',()=>{
  document.querySelector('#publication-search').value='';
  document.querySelector('#publication-status').value='';
  const year=document.querySelector('#publication-year');year.value='2026';year.dispatchEvent(new Event('change',{bubbles:true}));
+});
+
+window.addEventListener('message',event=>{
+ const frame=document.querySelector('#attack-frame');
+ if(frame&&event.source===frame.contentWindow&&event.origin===location.origin&&event.data?.type==='lab-height'&&Number.isFinite(event.data.height))frame.style.height=Math.max(450,Math.min(1900,event.data.height+12))+'px';
 });

@@ -4,6 +4,7 @@ import html, json, re
 root=Path(__file__).parent
 data=json.loads((root/'data/publications.json').read_text(encoding='utf-8'))
 cards=[]
+artifacts=json.loads((root/'data/artifacts.json').read_text(encoding='utf8'))
 def bib_escape(value):
     replacements={'\\':r'\textbackslash{}','&':r'\&','%':r'\%','_':r'\_','#':r'\#','$':r'\$','{':r'\{','}':r'\}'}
     return ''.join(replacements.get(c,c) for c in str(value))
@@ -25,11 +26,18 @@ for i,p in enumerate(data):
     citation=f'{p["authors"]}. ({p["year"]}). {p["title"]}. {p["venue"]}. {p["status"]}. {p["url"]}'.strip()
     bib=html.escape(bibtex(p))
     drawer=f'<details class="bibtex-drawer"><summary>BibTeX</summary><p>Exported from the listed metadata. Publication type and missing fields are not inferred.</p><pre tabindex="0" aria-label="BibTeX for {e("title")}"><code>{bib}</code></pre></details>'
+    artifact=artifacts.get(p['id'],{})
+    artifact_links=''.join('<li><a href="'+html.escape(a['url'],quote=True)+'">'+html.escape(a['label'])+'</a></li>' for a in artifact.get('links',[]))
+    artifact_note=artifact.get('note','No public code, dataset, or model weights have been verified for this bibliography record. The publication link and BibTeX citation remain available where listed.')
+    artifact_drawer='<details class="artifact-drawer"><summary>Artifacts &amp; evidence'+(' / '+str(len(artifact['links']))+' links' if artifact_links else '')+'</summary><ul>'+artifact_links+'</ul><p>'+html.escape(artifact_note)+'</p></details>'
     cards.append(f'''<article class="paper" id="{e('id')}" data-topic="{e('topic')}" data-year="{p['year']}" data-status="{e('status')}">
 <div class="paper-year">{p['year']}<span>{e('status')}</span></div>
-<div class="paper-body"><p class="paper-topic">{e('topic')}</p><h3>{e('title')}</h3><p class="paper-authors">{e('authors')}</p><p class="paper-venue">{e('venue')}</p>{note}<div class="paper-actions">{link}{related}<button class="copy-citation" type="button" data-citation="{html.escape(citation,quote=True)}" aria-label="Copy citation for {e('title')}">Copy citation</button></div>{drawer}</div>
+<div class="paper-body"><p class="paper-topic">{e('topic')}</p><h3>{e('title')}</h3><p class="paper-authors">{e('authors')}</p><p class="paper-venue">{e('venue')}</p>{note}<div class="paper-actions">{link}{related}<button class="copy-citation" type="button" data-citation="{html.escape(citation,quote=True)}" aria-label="Copy citation for {e('title')}">Copy citation</button></div>{artifact_drawer}{drawer}</div>
 </article>''')
 template=(root/'template.html').read_text(encoding='utf-8')
+template=template.replace('<!-- LIVE_WORKBENCH -->',(root/'labs/workbench.html').read_text(encoding='utf8'))
+attack=(root/'labs/attack-template.html').read_text(encoding='utf8').replace('/* POISON_CORE */',(root/'labs/poison-core.mjs').read_text(encoding='utf8').replace('export function','function'))
+(root/'labs/attack-inspector.html').write_text(attack,encoding='utf8')
 # Featured summaries are editorial; titles, authors, dates and links use the bibliography.
 frontier_summaries={
  'cv-10':('ASI / Risks & human oversight','Analyzes AGI and ASI risk scenarios, the role of human oversight, and vulnerabilities in safeguards. The work connects present-day adversarial testing with preparation for more capable systems.'),

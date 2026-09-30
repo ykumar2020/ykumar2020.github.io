@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "kind": "author-manuscript pilot snapshot",
+  "sourceTitle": "DRAG 7-page revised manuscript v2, Table 2 (pilot results)",
+  "sourceSha256": "db276ef62004afdcc5c16c22d49d6d44f842c8a4ee3045e577e480b239189739",
+  "runDates": "2025-12-18 to 2025-12-19 (dates reported in manuscript)",
+  "extractedAt": "2026-09-30",
+  "scoreDefinition": "ARSS ranges from 0 to 6; higher means less secure. Deterministic heuristic, not calibrated risk.",
+  "limitations": "Transcribed rounded aggregates; not rerun or audited against prompt-level logs. One 20-prompt batch per configuration; no confidence intervals. Persona strata and refusal/non-refusal averaging denominator are not resolved in the aggregate table. Latency rounded to seconds.",
+  "records": [
+    {
+      "model": "gpt-3.5-turbo",
+      "language": "Chinese",
+      "arss": 1.2,
+      "refusalPercent": 15.0,
+      "latencySeconds": 2.0,
+      "prompts": 20
+    },
+    {
+      "model": "gpt-3.5-turbo",
+      "language": "English",
+      "arss": 1.8,
+      "refusalPercent": 55.0,
+      "latencySeconds": 5.0,
+      "prompts": 20
+    },
+    {
+      "model": "gpt-3.5-turbo",
+      "language": "Spanish",
+      "arss": 1.7,
+      "refusalPercent": 25.0,
+      "latencySeconds": 8.0,
+      "prompts": 20
+    },
+    {
+      "model": "gpt-4o",
+      "language": "Chinese",
+      "arss": 1.3,
+      "refusalPercent": 10.0,
+      "latencySeconds": 8.0,
+      "prompts": 20
+    },
+    {
+      "model": "gpt-4o",
+      "language": "English",
+      "arss": 4.1,
+      "refusalPercent": 30.0,
+      "latencySeconds": 16.0,
+      "prompts": 20
+    },
+    {
+      "model": "gpt-4o",
+      "language": "Spanish",
+      "arss": 2.6,
+      "refusalPercent": 10.0,
+      "latencySeconds": 22.0,
+      "prompts": 20
+    },
+    {
+      "model": "gpt-4o-mini",
+      "language": "Chinese",
+      "arss": 1.8,
+      "refusalPercent": 20.0,
+      "latencySeconds": 7.0,
+      "prompts": 20
+    },
+    {
+      "model": "gpt-4o-mini",
+      "language": "English",
+      "arss": 3.9,
+      "refusalPercent": 35.0,
+      "latencySeconds": 16.0,
+      "prompts": 20
+    },
+    {
+      "model": "gpt-4o-mini",
+      "language": "Spanish",
+      "arss": 2.9,
+      "refusalPercent": 10.0,
+      "latencySeconds": 24.0,
+      "prompts": 20
+    },
+    {
+      "model": "gpt-5",
+      "language": "Chinese",
+      "arss": 1.2,
+      "refusalPercent": 40.0,
+      "latencySeconds": 52.0,
+      "prompts": 20
+    },
+    {
+      "model": "gpt-5",
+      "language": "English",
+      "arss": 4.9,
+      "refusalPercent": 20.0,
+      "latencySeconds": 96.0,
+      "prompts": 20
+    },
+    {
+      "model": "gpt-5",
+      "language": "Spanish",
+      "arss": 1.1,
+      "refusalPercent": 60.0,
+      "latencySeconds": 136.0,
+      "prompts": 20
+    },
+    {
+      "model": "gpt-5.1",
+      "language": "Chinese",
+      "arss": 3.1,
+      "refusalPercent": 0.0,
+      "latencySeconds": 19.0,
+      "prompts": 20
+    },
+    {
+      "model": "gpt-5.1",
+      "language": "English",
+      "arss": 4.7,
+      "refusalPercent": 15.0,
+      "latencySeconds": 27.0,
+      "prompts": 20
+    },
+    {
+      "model": "gpt-5.1",
+      "language": "Spanish",
+      "arss": 1.9,
+      "refusalPercent": 45.0,
+      "latencySeconds": 39.0,
+      "prompts": 20
+    }
+  ]
+}

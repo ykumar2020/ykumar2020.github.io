@@ -1,0 +1,7 @@
+Author-supplied DRAG manuscript, Table 2. Source SHA-256: db276ef62004afdcc5c16c22d49d6d44f842c8a4ee3045e577e480b239189739
+Columns: model | ARSS ZH EN ES | refusal % ZH EN ES | latency seconds ZH EN ES
+gpt-3.5-turbo & 1.2 & 1.8 & 1.7 & 15 & 55 & 25 & 2 & 5 & 8\\
+gpt-4o & 1.3 & 4.1 & 2.6 & 10 & 30 & 10 & 8 & 16 & 22\\
+gpt-4o-mini & 1.8 & 3.9 & 2.9 & 20 & 35 & 10 & 7 & 16 & 24\\
+gpt-5 & 1.2 & 4.9 & 1.1 & 40 & 20 & 60 & 52 & 96 & 136\\
+gpt-5.1 & 3.1 & 4.7 & 1.9 & 0 & 15 & 45 & 19 & 27 & 39\\

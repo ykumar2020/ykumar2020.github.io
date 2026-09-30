@@ -1,0 +1,42 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Training-data poisoning inspector | Julie Kumar</title><style>
+*{box-sizing:border-box}body{margin:0;padding:20px;background:#0d131f;color:#e2e8f0;font:16px/1.6 system-ui,sans-serif}h1{font-size:1.25rem;margin:0 0 8px}p{margin:8px 0}.tag{font:12px/1.5 monospace;color:#9cf4ff}.controls{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0}label{display:grid;gap:8px}input{width:100%;accent-color:#00f0ff;min-height:28px}canvas{display:block;width:100%;height:250px;background:#080c14;border:1px solid #385065}output{display:block;background:#111e2c;padding:12px;border-left:3px solid #ff9a72}output strong{color:#a8faff}button,a{color:#b8f8ff;background:#0d131f;border:1px solid #648a98;padding:10px;min-height:44px;font:inherit;display:inline-block}a{border:0}button{cursor:pointer}.metrics{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}.note{font-size:14px;color:#c5d1de}details{margin-top:12px}summary{cursor:pointer;min-height:44px}a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #00f0ff;outline-offset:3px}@media(max-width:520px){body{padding:12px}.controls,.metrics{grid-template-columns:1fr}canvas{height:210px}}
+</style></head><body>
+<p class="tag">BROWSER EXPERIMENT / SYNTHETIC TRAINING DATA</p><h1>Live attack / defense inspector</h1><p>Move class-B training points toward class A. Compare a mean-centroid classifier with a median-centroid defense on the same fixed query.</p>
+<div class="controls"><label>Perturbation budget &epsilon; <span id="epsilon-value">1.00 coordinate units</span><input id="epsilon" type="range" min="0" max="2" step=".05" value="1"></label><label>Class-B training points poisoned <span id="fraction-value">35%</span><input id="fraction" type="range" min="0" max=".7" step=".05" value=".35"></label></div>
+<canvas id="cloud" role="img" aria-label="Projected synthetic training points: class A cyan, class B amber, poisoned B red; fixed query is a white cross"></canvas>
+<p class="note">Cyan: A &middot; Amber: B &middot; Red: poisoned B &middot; White cross: fixed class-A query. Dashed vertical lines: mean (red) and median (cyan) decision boundaries.</p>
+<div class="metrics" aria-live="polite"><output id="raw"></output><output id="defense"></output></div>
+<p id="outcome"></p><button id="reset" type="button">Reset experiment</button> <button id="export" type="button">Export computed trace</button>
+<details><summary>What is measured?</summary><p class="note">80 points per class; only x determines classification. The attacker shifts the first k class-B training points by -&epsilon; without changing labels. The defense replaces the mean with the median; it does not know which samples were modified. A fixed class-A query at x = -0.12 is evaluated against the midpoint of the two class centers. Displayed class-B probability is sigmoid(20 &times; (query - boundary)): an illustrative score, not a calibrated security-risk estimate. Median defense can fail when contamination dominates. No neural network is trained, and no claim is made about the paper's benchmark performance.</p></details>
+<a href="https://github.com/ykumar2020/datapoisontable" target="_blank" rel="noopener">Related research: Data Poisoning Table &#8599;</a>
+<script>
+function poisonExperiment(epsilon=1,fraction=.35){
+  if(!Number.isFinite(epsilon)||epsilon<0||epsilon>2||!Number.isFinite(fraction)||fraction<0||fraction>.7)throw Error('Invalid experiment controls');
+  const count=80,k=Math.round(count*fraction),query=-.12;
+  const a=Array.from({length:count},(_,i)=>[-.55+.1*Math.sin(i*2.17),.55*Math.sin(i*1.3),.55*Math.cos(i*.79)]);
+  const cleanB=Array.from({length:count},(_,i)=>[.55+.1*Math.cos(i*2.17),.55*Math.cos(i*1.3),.55*Math.sin(i*.79)]);
+  const b=cleanB.map((p,i)=>[p[0]-(i<k?epsilon:0),p[1],p[2]]);
+  const mean=xs=>xs.reduce((s,x)=>s+x,0)/xs.length;
+  const median=xs=>{const s=[...xs].sort((a,b)=>a-b);return (s[39]+s[40])/2;};
+  const boundary=(mean(a.map(p=>p[0]))+mean(b.map(p=>p[0])))/2;
+  const defended=(median(a.map(p=>p[0]))+median(b.map(p=>p[0])))/2;
+  const probability=x=>1/(1+Math.exp(-20*(query-x)));
+  return {epsilon,fraction,poisoned:k,count,query,a,b,cleanB,boundary,defended,meanProbability:probability(boundary),medianProbability:probability(defended)};
+}
+
+const $=id=>document.getElementById(id);let result;
+function render(){result=poisonExperiment(Number($('epsilon').value),Number($('fraction').value));window.experimentResult=result;
+ $('epsilon-value').textContent=result.epsilon.toFixed(2)+' coordinate units';$('fraction-value').textContent=result.poisoned+' / 80 ('+(100*result.fraction).toFixed(0)+'%)';
+ const metric=(id,p,b)=>{$(id).replaceChildren();const title=document.createElement('strong');title.textContent=id==='raw'?'Mean classifier':'Median defense';$(id).append(title,document.createElement('br'),`Class-B probability: ${(p*100).toFixed(1)}%`,document.createElement('br'),`Predicts ${p>=.5?'B (incorrect)':'A (correct)'} | boundary ${b.toFixed(3)}`);};
+ metric('raw',result.meanProbability,result.boundary);metric('defense',result.medianProbability,result.defended);
+ $('outcome').textContent=result.meanProbability>=.5?(result.medianProbability<.5?'Median defense restores the correct label in this experiment.':'Both classifiers fail here: this defense has a contamination limit.'):'The mean classifier still assigns the correct label at this budget.';
+ const c=$('cloud'),dpr=Math.min(devicePixelRatio||1,1.5),w=c.clientWidth,h=c.clientHeight;c.width=w*dpr;c.height=h*dpr;const ctx=c.getContext('2d');ctx.scale(dpr,dpr);ctx.clearRect(0,0,w,h);
+ const xy=p=>[w*.65+p[0]*w*.23,h*.52-p[1]*h*.3+p[2]*h*.08];
+ for(const [b,color] of [[result.boundary,'#ff8496'],[result.defended,'#80f6ff']]){ctx.strokeStyle=color;ctx.setLineDash([4,5]);ctx.beginPath();ctx.moveTo(xy([b,0,0])[0],16);ctx.lineTo(xy([b,0,0])[0],h-16);ctx.stroke();}ctx.setLineDash([]);
+ const dot=(p,color)=>{const [x,y]=xy(p);ctx.fillStyle=color;ctx.beginPath();ctx.arc(x,y,3,0,Math.PI*2);ctx.fill();};result.a.forEach(p=>dot(p,'#80f6ff'));result.b.forEach((p,i)=>dot(p,i<result.poisoned?'#ff6b83':'#ffca7b'));
+ const [qx,qy]=xy([result.query,0,0]);ctx.strokeStyle='white';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(qx-7,qy);ctx.lineTo(qx+7,qy);ctx.moveTo(qx,qy-7);ctx.lineTo(qx,qy+7);ctx.stroke();
+}
+['epsilon','fraction'].forEach(id=>$(id).addEventListener('input',render));new ResizeObserver(render).observe($('cloud'));
+$('reset').onclick=()=>{$('epsilon').value='1';$('fraction').value='.35';render();};$('export').onclick=()=>{const blob=new Blob([JSON.stringify({kind:'synthetic teaching experiment',...result},null,2)],{type:'application/json'}),u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download='poisoning-trace.json';a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);};render();
+new ResizeObserver(()=>{if(parent!==window)parent.postMessage({type:'lab-height',height:document.body.scrollHeight},location.origin);}).observe(document.body);
+</script></body></html>

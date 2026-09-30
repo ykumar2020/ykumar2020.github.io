@@ -3,6 +3,7 @@
 @import "./tron-studio.css";
 @import "./redshift.css";
 @import "./hero-refinements.css";
+@import "./workbench.css";
 @source "../template.html";
 @source "../index.html";
 @source "../404.html";

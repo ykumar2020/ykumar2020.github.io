@@ -1,0 +1,53 @@
+{
+  "cv-03": {
+    "links": [
+      {
+        "label": "Code / attack taxonomy",
+        "url": "https://github.com/ykumar2020/datapoisontable"
+      },
+      {
+        "label": "Reported experiment outputs",
+        "url": "https://github.com/ykumar2020/datapoisontable/tree/main/results"
+      },
+      {
+        "label": "Browser teaching experiment",
+        "url": "labs/attack-inspector.html"
+      }
+    ],
+    "note": "Repository and saved outputs are public; paper experiments were not rerun for this website. Browser demo is a separate illustrative experiment."
+  },
+  "cv-19": {
+    "links": [
+      {
+        "label": "Dataset repository",
+        "url": "https://github.com/ykumar2020/Matreska_Dataset"
+      },
+      {
+        "label": "Research notebooks",
+        "url": "https://github.com/ykumar2020/Matreska"
+      },
+      {
+        "label": "Analytic geometry demo",
+        "url": "#geometry-lab"
+      }
+    ],
+    "note": "Public repository supports the named Matryoshka paper. The website capsule demo is illustrative and does not reproduce the paper's authentication study."
+  },
+  "cv-25": {
+    "links": [
+      {
+        "label": "Pilot metrics / JSON",
+        "url": "data/drag-pilot.json"
+      },
+      {
+        "label": "Source table and hash",
+        "url": "data/drag-source-excerpt.txt"
+      },
+      {
+        "label": "Interactive results",
+        "url": "#benchmark-lab"
+      }
+    ],
+    "note": "Author-manuscript aggregates; no live provider run, confidence interval, or independently verified reproduction is claimed."
+  }
+}

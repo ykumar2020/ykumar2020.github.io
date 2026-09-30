@@ -1,0 +1,16 @@
+model,language,arss,refusalPercent,latencySeconds,prompts
+gpt-3.5-turbo,Chinese,1.2,15.0,2.0,20
+gpt-3.5-turbo,English,1.8,55.0,5.0,20
+gpt-3.5-turbo,Spanish,1.7,25.0,8.0,20
+gpt-4o,Chinese,1.3,10.0,8.0,20
+gpt-4o,English,4.1,30.0,16.0,20
+gpt-4o,Spanish,2.6,10.0,22.0,20
+gpt-4o-mini,Chinese,1.8,20.0,7.0,20
+gpt-4o-mini,English,3.9,35.0,16.0,20
+gpt-4o-mini,Spanish,2.9,10.0,24.0,20
+gpt-5,Chinese,1.2,40.0,52.0,20
+gpt-5,English,4.9,20.0,96.0,20
+gpt-5,Spanish,1.1,60.0,136.0,20
+gpt-5.1,Chinese,3.1,0.0,19.0,20
+gpt-5.1,English,4.7,15.0,27.0,20
+gpt-5.1,Spanish,1.9,45.0,39.0,20

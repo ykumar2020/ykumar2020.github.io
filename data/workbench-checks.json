@@ -1,0 +1,72 @@
+{
+  "testedAt": "2026-09-30T11:44:20.306Z",
+  "scope": "Demo calculations and import validation only; not paper reproduction or production safety certification",
+  "total": 14,
+  "passed": 14,
+  "cases": [
+    {
+      "name": "Stable softmax preserves normalized probabilities for large logits",
+      "passed": true
+    },
+    {
+      "name": "Both attention blocks normalize rows and mask all future positions",
+      "passed": true
+    },
+    {
+      "name": "Appending future tokens cannot alter earlier block outputs",
+      "passed": true
+    },
+    {
+      "name": "Changing input changes projections and second layer is distinct",
+      "passed": true
+    },
+    {
+      "name": "Empty input, Unicode and token cap remain well-defined",
+      "passed": true
+    },
+    {
+      "name": "Exported Q projection matches independent layer-normalization calculation",
+      "passed": true
+    },
+    {
+      "name": "Clean poisoning control classifies the known-A query correctly",
+      "passed": true
+    },
+    {
+      "name": "Minority poisoning flips the mean classifier while median resists",
+      "passed": true
+    },
+    {
+      "name": "Majority contamination defeats the median defense",
+      "passed": true
+    },
+    {
+      "name": "Poisoning controls reject invalid values",
+      "passed": true
+    },
+    {
+      "name": "Capsule volume matches cylinder plus sphere and reference discrepancy",
+      "passed": true
+    },
+    {
+      "name": "Benchmark snapshot has 15 valid unique model-language cells",
+      "passed": true
+    },
+    {
+      "name": "All aggregate values agree with transcribed manuscript table",
+      "passed": true
+    },
+    {
+      "name": "Benchmark import rejects out-of-range and malformed records",
+      "passed": true
+    }
+  ],
+  "sha256": {
+    "labs/attention-core.mjs": "069aa6c47d9282a7fdea61e357b15ebf09407927c8095186c3791262d78be737",
+    "labs/poison-core.mjs": "f4a5adee0c6b2a7ff5241d8e5edcd87882de47d7e56f192c929b28f7467a6cf2",
+    "labs/geometry-core.mjs": "13b6dc2b9fe3e38e3583bb3d865ef87148cfff6ae032e81444795287770b8836",
+    "labs/benchmark-core.mjs": "8dcf2fa25c9001ab5915a56e7f52fb4377645dac7553cbc8dbb296d5de15803f",
+    "data/drag-pilot.json": "e147b7c4d641e827d4ff0220c7d98505febcb57e9f966457b9a9cf68d396bcef",
+    "tests/check_workbench.mjs": "d0199b783ee4158e6ff1ffa9419e8b7568d1fdca27acc58e090d95a3638ed110"
+  }
+}
