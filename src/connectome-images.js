@@ -27,8 +27,8 @@ export function mountConnectomeImages(stage){
           fragmentShader:`uniform sampler2D source;uniform float original,time;varying vec2 imageUV;
           void main(){vec4 pixel=texture2D(source,imageUV);float light=max(pixel.r,max(pixel.g,pixel.b));float mask=smoothstep(.035,.12,light)*pixel.a;if(mask<.015)discard;
           float sweep=pow(.5+.5*sin(imageUV.x*5.+imageUV.y*3.-time*.55),12.);
-          vec3 red=vec3(light,light*.09,light*.2);red+=vec3(.14,.025,.045)*sweep*light;
-          gl_FragColor=vec4(mix(red,pixel.rgb,original),mask);}`});
+          vec3 purple=vec3(light*.65,light*.18,light);purple+=vec3(.10,.025,.16)*sweep*light;
+          gl_FragColor=vec4(mix(purple,pixel.rgb,original),mask);}`});
         const surface=new THREE.Mesh(new THREE.PlaneGeometry(4.6,4.6/ratio,220,150),material);s.group.add(surface);
         // A sparse layer of source-pixel lights makes the depth treatment legible in motion.
         const canvas=document.createElement('canvas');canvas.width=600;canvas.height=Math.round(600/ratio);
@@ -40,10 +40,10 @@ export function mountConnectomeImages(stage){
           points.push((x/canvas.width-.5)*4.6,(.5-y/canvas.height)*4.6/ratio,.22*(light-.3)+.015);
         }
         const geometry=new THREE.BufferGeometry();geometry.setAttribute('position',new THREE.Float32BufferAttribute(points,3));
-        const sparks=new THREE.Points(geometry,new THREE.PointsMaterial({color:0xffb3b8,size:.009,transparent:true,opacity:.32,depthWrite:false,blending:THREE.AdditiveBlending}));s.group.add(sparks);
+        const sparks=new THREE.Points(geometry,new THREE.PointsMaterial({color:0xd9b3ff,size:.009,transparent:true,opacity:.32,depthWrite:false,blending:THREE.AdditiveBlending}));s.group.add(sparks);
         card.querySelector('[data-image-colors]').addEventListener('change',e=>{uniforms.original.value=e.target.value==='source'?1:0;sparks.visible=e.target.value!=='source'&&uniforms.depth.value>0;host.dataset.palette=e.target.value;s.draw();});
         card.querySelector('[data-image-depth]').addEventListener('input',e=>{uniforms.depth.value=Number(e.target.value)/100*.5;sparks.visible=uniforms.depth.value>0&&uniforms.original.value===0;sparks.scale.z=uniforms.depth.value/.22;s.draw();});
-        host.dataset.asset='loaded';host.dataset.palette='red';s.update();s.resize();
+        host.dataset.asset='loaded';host.dataset.palette='purple';s.update();s.resize();
         card.querySelectorAll('.connectome-settings input,.connectome-settings select').forEach(el=>el.disabled=false);
       },undefined,()=>{host.dataset.state='fallback';host.dataset.asset='failed';card.querySelector('[data-controls]').hidden=true;});
       texture.minFilter=THREE.LinearFilter;

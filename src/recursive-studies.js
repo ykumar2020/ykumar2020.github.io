@@ -22,13 +22,13 @@ export function createRecursiveStudy(mode,group){
   const max=mode==='fern'?7:4,uniform={value:1};let phase=max,direction=-1,automatic=true,level=-1;
   const root=new THREE.Group();group.add(root);
   function clear(){root.traverse(o=>{o.geometry?.dispose();o.material?.dispose();});root.clear();}
-  function material(line=false){return new THREE.ShaderMaterial({uniforms:{progress:uniform},side:THREE.DoubleSide,vertexShader:`attribute vec3 target;uniform float progress;varying float light;void main(){vec3 p=mix(position,target,progress);light=.22+.78*abs(dot(normalize(normalMatrix*normal),normalize(vec3(.4,.6,1.))));gl_Position=projectionMatrix*modelViewMatrix*vec4(p,1.);}`,fragmentShader:line?'void main(){gl_FragColor=vec4(1.,.42,.53,1.);}':'varying float light;void main(){gl_FragColor=vec4(vec3(.85,.03,.12)*light,1.);}' });}
+  function material(line=false){return new THREE.ShaderMaterial({uniforms:{progress:uniform},side:THREE.DoubleSide,vertexShader:`attribute vec3 target;uniform float progress;varying float light;void main(){vec3 p=mix(position,target,progress);light=.22+.78*abs(dot(normalize(normalMatrix*normal),normalize(vec3(.4,.6,1.))));gl_Position=projectionMatrix*modelViewMatrix*vec4(p,1.);}`,fragmentShader:line?'void main(){gl_FragColor=vec4(.74,.42,1.,1.);}':'varying float light;void main(){gl_FragColor=vec4(vec3(.55,.08,.95)*light,1.);}' });}
   if(mode==='fern'){
     const pos=[],target=[],birth=[];
     function branch(x,y,a,h,n){if(n>=7)return;const xx=x+Math.sin(a)*h*.15,yy=y+Math.cos(a)*h*.15;pos.push(x,y,0,x,y,0);target.push(x,y,0,xx,yy,0);birth.push(n,n);branch(xx,yy,a+.035,h*.85,n+1);branch(xx,yy,a+.785,h*.35,n+1);branch(xx,yy,a-.785,h*.35,n+1);branch(xx,yy,a+.017,h*.1,n+1);}
     branch(0,-1.1,0,3.5,0);
     const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));g.setAttribute('target',new THREE.Float32BufferAttribute(target,3));g.setAttribute('birth',new THREE.Float32BufferAttribute(birth,1));
-    const m=new THREE.ShaderMaterial({uniforms:{progress:uniform},vertexShader:'attribute vec3 target;attribute float birth;uniform float progress;void main(){float f=clamp(progress-birth,0.,1.);f=f*f*(3.-2.*f);gl_Position=projectionMatrix*modelViewMatrix*vec4(mix(position,target,f),1.);}',fragmentShader:'void main(){gl_FragColor=vec4(1.,.35,.49,1.);}'});
+    const m=new THREE.ShaderMaterial({uniforms:{progress:uniform},vertexShader:'attribute vec3 target;attribute float birth;uniform float progress;void main(){float f=clamp(progress-birth,0.,1.);f=f*f*(3.-2.*f);gl_Position=projectionMatrix*modelViewMatrix*vec4(mix(position,target,f),1.);}',fragmentShader:'void main(){gl_FragColor=vec4(.7,.35,1.,1.);}'});
     const line=new THREE.LineSegments(g,m);line.frustumCulled=false;root.add(line);
   }
   function render(){
