@@ -85,7 +85,7 @@ if ('IntersectionObserver' in window) {
 
 // The visuals enhance the document; scholarly content never depends on WebGL.
 let visuals;
-const visualReady = import('./assets/planets.js?v=20260930-asi-research').then(module => {
+const visualReady = import('./assets/planets.js?v=20260930-hero-hud').then(module => {
   visuals = module.mountAcademicVisuals();
   return visuals;
 }).catch(() => null);
@@ -99,6 +99,14 @@ if (photoCarousel) {
   const counter = photoCarousel.querySelector('.photo-count');
   const liveStatus = photoCarousel.querySelector('.photo-status');
   const photoCaption = photoCarousel.querySelector('.photo-caption');
+  const segments = photoCarousel.querySelector('.photo-segments');
+  const ticks = slides.map((slide,index)=>{
+    const button=document.createElement('button');button.type='button';button.className='photo-tick';
+    button.setAttribute('aria-label',`Show photo ${index+1}: ${slide.dataset.caption}`);
+    button.setAttribute('aria-controls','portrait-gallery');
+    button.addEventListener('click',()=>showPhoto(index));segments.append(button);return button;
+  });
+  segments.hidden=false;
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   let current = 0, busy = false, paused = reducedMotion.matches;
   let hovered = false, focused = false, visible = true, timer;
@@ -110,7 +118,11 @@ if (photoCarousel) {
     pauseButton.setAttribute('aria-label', paused ? 'Play photo rotation' : 'Pause photo rotation');
     pauseButton.setAttribute('aria-pressed', String(paused));
     photoCarousel.dataset.paused = String(paused);
+    ticks.forEach((tick,i)=>{tick.setAttribute('aria-pressed',String(i===current));tick.classList.remove('is-filling');});
+    photoCarousel.dataset.autoplay=String(!paused&&!hovered&&!focused&&visible&&!document.hidden&&!busy);
     if (!paused && !hovered && !focused && visible && !document.hidden && !busy) {
+      void ticks[current].offsetWidth;
+      ticks[current].classList.add('is-filling');
       timer = setTimeout(() => showPhoto(current + 1, false), 8000);
     }
   }
@@ -152,6 +164,12 @@ if (photoCarousel) {
       busy = false; schedulePhoto();
     }
   }
+  // Native vertical scrolling stays available; only completed horizontal swipes navigate.
+  let touchStart=null;
+  const gallery=photoCarousel.querySelector('.portrait-frame');
+  gallery.addEventListener('pointerdown',e=>{if(e.pointerType==='touch')touchStart={x:e.clientX,y:e.clientY};},{passive:true});
+  gallery.addEventListener('pointerup',e=>{if(!touchStart)return;const dx=e.clientX-touchStart.x,dy=e.clientY-touchStart.y;touchStart=null;if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)*1.5)showPhoto(current+(dx<0?1:-1));},{passive:true});
+  gallery.addEventListener('pointercancel',()=>{touchStart=null;},{passive:true});
   controls.hidden = false;
   photoCarousel.dataset.index = '0';
   controls.addEventListener('click', event => {
@@ -227,3 +245,11 @@ recordSelect.addEventListener('change',()=>showNetworkRecord(recordSelect.value)
 
 window.academicNetworkReady=true;
 updatePapers();
+
+// Committee shortcut uses the existing filter, keeping list and network synchronized.
+document.querySelector('[data-jump-year]')?.addEventListener('click',()=>{
+ document.querySelector('[data-filter="All"]').click();
+ document.querySelector('#publication-search').value='';
+ document.querySelector('#publication-status').value='';
+ const year=document.querySelector('#publication-year');year.value='2026';year.dispatchEvent(new Event('change',{bubbles:true}));
+});

@@ -3,7 +3,7 @@ import {mountGraphicsGallery} from './graphics-work.js';
 import {mountConnectomeImages} from './connectome-images.js';
 import {createCollaborationNetwork} from './collaboration-network.js';
 
-import {createASILoom} from './asi-loom.js';
+import {createHeroWireframe} from './hero-wireframe.js';
 const CYAN=0xff344b, AMBER=0xff8066;
 
 /** Drop-in entry point. Static HTML and CSS remain the no-WebGL fallback. */
@@ -115,10 +115,10 @@ export function mountAcademicVisuals(){
 
   stage('hero-art-scene',s=>{
     s.camera.position.set(0,0,5.8);s.camera.lookAt(0,0,0);
-    const loom=createASILoom(s.scene,innerWidth<768);let t=0,px=0,py=0;
+    const loom=createHeroWireframe(s.scene);let t=0,px=0,py=0;
     s.onResize=(w,h)=>{s.camera.position.z=Math.max(5.8,2.15/(Math.tan(Math.PI/9)*(w/h)));};
-    s.host.addEventListener('pointermove',e=>{if(paused||!fine.matches)return;const b=s.host.getBoundingClientRect();px=((e.clientX-b.left)/b.width-.5)*.25;py=((e.clientY-b.top)/b.height-.5)*.2;});
-    s.host.addEventListener('pointerleave',()=>{px=py=0;});
+    document.querySelector('#home').addEventListener('pointermove',e=>{if(paused||!fine.matches)return;const b=document.querySelector('#home').getBoundingClientRect();px=((e.clientX-b.left)/b.width-.5)*.25;py=((e.clientY-b.top)/b.height-.5)*.2;});
+    document.querySelector('#home').addEventListener('pointerleave',()=>{px=py=0;});
     s.update=(time=t)=>{t=time;loom.update(t,px,py);};
   });
   mountGraphicsGallery(stage,inspect);
