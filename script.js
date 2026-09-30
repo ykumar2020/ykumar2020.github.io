@@ -271,6 +271,11 @@ function resetResearchFilters(){
  selectedFocus='All';search.value='';yearFilter.value='';statusFilter.value='';document.querySelector('[data-filter="All"]').click();
 }
 document.querySelectorAll('[data-focus-jump]').forEach(a=>a.addEventListener('click',()=>{resetResearchFilters();setResearchFocus(a.dataset.focusJump);}));
+window.addEventListener('message',event=>{
+ const frame=document.querySelector('#virtual-ta iframe');
+ if(!frame||event.source!==frame.contentWindow||event.origin!==location.origin||event.data?.type!=='nova-preview-height')return;
+ const h=Number(event.data.height);if(Number.isFinite(h)&&h>=400&&h<=1200)frame.style.height=(h+2)+'px';
+});
 document.querySelectorAll('[data-paper-jump]').forEach(a=>a.addEventListener('click',e=>{
  e.preventDefault();resetResearchFilters();setResearchFocus('All');visibleLimit=papers.length;updatePapers();
  const paper=document.getElementById(a.dataset.paperJump);if(paper){paper.scrollIntoView({block:'start'});const title=paper.querySelector('h3');title.tabIndex=-1;title.focus({preventScroll:true});}

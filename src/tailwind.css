@@ -5,6 +5,7 @@
 @import "./hero-refinements.css";
 @import "./workbench.css";
 @import "./singularity.css";
+@import "./nova.css";
 @source "../template.html";
 @source "../index.html";
 @source "../404.html";
