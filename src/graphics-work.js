@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import {createRecursiveStudy} from './recursive-studies.js';
 
 // Browser adaptations of Julie Kumar's supplied Processing / C++ graphics studies.
 // Original files and their attribution comments are retained in graphics/sources.
@@ -52,7 +53,7 @@ export function mountGraphicsGallery(stage,inspect){
       s.camera.position.set(0,0,4.1);s.camera.lookAt(0,0,0);
       s.group=new THREE.Group();s.scene.add(s.group);
       s.onResize=(w,h)=>{s.camera.position.z=Math.max(4.1,2.2/(Math.tan(Math.PI/9)*(w/h)));};
-      let t=0;s.update=(time=t)=>{const dt=Math.max(0,Math.min(time-t,.06));t=time;const r=s.userRotation||{x:.12,y:-.28};s.group.rotation.set(key==='fireworks'?0:r.x+.22,key==='fireworks'?0:r.y+t*.09,0);controller?.update(t,dt);};
+      let t=0;s.update=(time=t)=>{const dt=Math.max(0,Math.min(time-t,.06));t=time;const r=s.userRotation||{x:.12,y:-.28};s.group.rotation.set(key==='fireworks'?0:r.x+.22,key==='fireworks'?0:r.y+(key==='fractal'?0:t*.09),0);controller?.update(t,dt);if(key==='fractal'&&controller){article.querySelector('.graphics-readout').textContent=controller.readout;host.dataset.recursion=controller.phase.toFixed(3);const slider=article.querySelector('[data-recursion-depth]');if(slider&&controller.automatic)slider.value=String(controller.phase);}};
       inspect(s);
     });
     function build(){
@@ -67,6 +68,16 @@ export function mountGraphicsGallery(stage,inspect){
     s?.canvas.addEventListener('webglcontextlost',()=>{if(select)select.disabled=true;});
     s?.canvas.addEventListener('webglcontextrestored',()=>{if(select)select.disabled=false;});
     build();
+    if(key==='fractal'&&s&&controller){
+      const label=document.createElement('label');label.className='embedded-mode';label.textContent='Recursion depth';
+      const slider=document.createElement('input');slider.type='range';slider.min='0';slider.max=controller.max;slider.step='0.01';slider.value=controller.max;slider.dataset.recursionDepth='';label.append(slider);
+      const play=document.createElement('button');play.type='button';play.className='button secondary';play.textContent='Hold recursion';play.setAttribute('aria-pressed','true');
+      slider.addEventListener('input',()=>{controller.setLevel(Number(slider.value));play.textContent='Animate recursion';play.setAttribute('aria-pressed','false');s.update();s.draw();});
+      play.addEventListener('click',()=>{controller.toggle();play.textContent=controller.automatic?'Hold recursion':'Animate recursion';play.setAttribute('aria-pressed',String(controller.automatic));});
+      const controls=document.createElement('div');controls.className='recursion-controls';controls.append(label,play);article.querySelector('.embedded-copy').prepend(controls);
+      s.canvas.addEventListener('webglcontextlost',()=>{slider.disabled=true;play.disabled=true;});
+      s.canvas.addEventListener('webglcontextrestored',()=>{slider.disabled=false;play.disabled=false;});
+    }
     };
     const observer=new IntersectionObserver(([entry])=>{if(entry.isIntersecting){observer.disconnect();initialize();}},{rootMargin:'200px'});observer.observe(host);
   });
@@ -93,23 +104,7 @@ function createWork(key,mode,group){
       void main(){if(length(gl_PointCoord-.5)>.5)discard;float theta=atan(vPos.y,vPos.x);float phi=acos(clamp(vPos.z/length(vPos),-1.,1.));float freq=15.+complexity*25.;float mask=smoothstep(0.,.15,abs(sin(phi*freq)))*smoothstep(0.,.15,abs(sin(theta*freq)));float r=.5+.5*sin(vPos.x*10.*complexity+time);float g=.5+.5*sin(vPos.y*15.*complexity+time*1.2);float b=.5+.5*sin(vPos.z*20.*complexity+time*1.5);float glow=step(.5,complexity)*abs(sin(time*2.5+vPos.y*5.));float h=hash(floor(vec2(theta,phi)*(freq/3.14159)));float reveal=smoothstep(h*10.,h*10.+2.,time);gl_FragColor=vec4(vec3(.4+.6*r+glow,.025+.12*g,.06+.18*b)*mask*reveal,1.);}`});
     group.add(new THREE.Points(g,material));return{update(t){material.uniforms.time.value=t+14;},readout:`${(p.length/3).toLocaleString()} spherical samples · red palette / original sampling and mask`};
   }
-  if(key==='fractal'){
-    const points=[];
-    if(mode==='pyramid'){
-      function recur(v,n){if(!n){for(const f of [[0,1,2],[0,1,3],[0,2,3],[1,2,3]])for(const k of f)points.push(...v[k]);return;}for(let k=0;k<4;k++)recur(v.map((p,i)=>i===k?p:p.map((x,j)=>(x+v[k][j])/2)),n-1);}
-      recur([[0,1,0],[-1,-1,1],[1,-1,1],[0,-1,-1]],4);
-      const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(points,3));g.computeVertexNormals();group.add(new THREE.Mesh(g,new THREE.ShaderMaterial({side:THREE.DoubleSide,vertexShader:'varying float light;void main(){light=.22+.78*abs(dot(normalize(normalMatrix*normal),normalize(vec3(.4,.6,1.))));gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',fragmentShader:'varying float light;void main(){gl_FragColor=vec4(vec3(.8,.025,.09)*light,1.);}'})));
-      group.add(new THREE.LineSegments(new THREE.WireframeGeometry(g),new THREE.LineBasicMaterial({color:0xffa2ad,transparent:true,opacity:.65})));
-    }else if(mode==='snowflake'){
-      function edge(a,b,n){if(!n){points.push(...a,0,...b,0);return;}const d=[(b[0]-a[0])/3,(b[1]-a[1])/3],p=[a[0]+d[0],a[1]+d[1]],r=[a[0]+2*d[0],a[1]+2*d[1]],q=[p[0]+d[0]*.5-d[1]*.8660254,p[1]+d[0]*.8660254+d[1]*.5];edge(a,p,n-1);edge(p,q,n-1);edge(q,r,n-1);edge(r,b,n-1);}
-      const v=[[0,1.15],[.9959,-.575],[-.9959,-.575]];for(let i=0;i<3;i++)edge(v[i],v[(i+1)%3],4);
-      const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(points,3));group.add(new THREE.LineSegments(g,new THREE.LineBasicMaterial({color:0xff98a7})));
-    }else{
-      function fern(x,y,a,h,n){if(!n)return;const xx=x+Math.sin(a)*h*.15,yy=y+Math.cos(a)*h*.15;points.push(x,y,0,xx,yy,0);fern(xx,yy,a+.035,h*.85,n-1);fern(xx,yy,a+.785,h*.35,n-1);fern(xx,yy,a-.785,h*.35,n-1);fern(xx,yy,a+.017,h*.1,n-1);}
-      fern(0,-1.1,0,3.5,7);const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(points,3));group.add(new THREE.LineSegments(g,new THREE.LineBasicMaterial({color:0xff657f})));
-    }
-    return{update(){},readout:mode==='pyramid'?'Level 4 · 256 tetrahedra':mode==='snowflake'?'Level 4 · 768 boundary segments':'Level 7 · recursive branching study'};
-  }
+  if(key==='fractal')return createRecursiveStudy(mode,group);
   if(key==='solar'){
     const orbits=[{name:'Mercury',a:.65,e:.2056,period:87.97,size:.044,color:0xffb4bf},{name:'Venus',a:1.05,e:0,period:224.7,size:.08,color:0xff6076},{name:'Earth',a:1.6,e:.0167,period:365.26,size:.087,color:0xff3752}];
     const sun=new THREE.Mesh(new THREE.SphereGeometry(.2,24,16),new THREE.MeshBasicMaterial({color:0xff243d}));group.add(sun);

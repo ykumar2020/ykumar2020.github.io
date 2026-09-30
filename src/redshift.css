@@ -68,3 +68,38 @@
 @media(max-width:900px){.connectome-gallery{grid-template-columns:1fr}.connectome-scene{height:430px}}
 @media(max-width:480px){.connectome-scene{height:270px}.connectome-heading,.connectome-copy{padding:22px 18px}.connectome-heading{padding-bottom:0}.connectome-settings{padding:12px 18px 20px}}
 @media print{.connectome-gallery{display:block}.connectome-scene canvas,.connectome-settings{display:none!important}.connectome-scene>.scene-fallback{display:block!important;filter:none}.connectome-study{break-inside:avoid}}
+
+/* Coauthor portraits remain natural; red lines encode shared research topics. */
+#network-scene{height:660px;background:radial-gradient(ellipse,#32101f88,transparent 70%)}
+.collaboration-overlay{position:absolute;inset:0;pointer-events:none}
+.collaborator-face,.collaboration-edge-label{position:absolute;transform:translate(-50%,-50%)}
+.collaborator-face{pointer-events:auto;display:grid;justify-items:center;gap:6px;width:130px;padding:8px 4px;background:#0b0d16;border:1px solid transparent;border-radius:8px;z-index:2}
+.face-disc{display:grid;place-items:center;width:70px;height:70px;border-radius:50%;border:2px solid #ff8498;background:#311522;color:#ffe9ed;font-size:1.2rem;overflow:hidden;box-shadow:0 0 18px #ff234432}
+.face-disc img{width:100%;height:100%;object-fit:cover;object-position:50% 25%}
+.face-name{font-size:.82rem;line-height:1.35;color:#f3e8ec;text-align:center}
+.central-person .face-disc{width:84px;height:84px;border-color:#ffd5dc}
+.collaborator-face[aria-pressed=true]{border-color:#ff8fa1;background:#341520}
+.collaborator-face.paper-coauthor .face-disc{box-shadow:0 0 0 3px #0b0d16,0 0 0 5px #ff9eab}
+.collaboration-edge-label{width:170px;padding:6px 8px;text-align:center;font-size:.75rem;line-height:1.45;color:#ffc8d1;background:#100e17ee;border-block:1px solid #673043}
+.collaboration-browser{display:flex;flex-wrap:wrap;gap:16px;align-items:end;padding-top:18px;border-top:1px solid #673043}
+.collaboration-browser label{display:grid;gap:8px;flex:1;min-width:180px;font-size:.9rem}
+.collaboration-browser select{width:100%;max-width:100%;padding:12px;background:#090b13;color:#e2e8f0;border:1px solid #88606a;min-height:44px}
+.collaboration-browser>div{display:flex;gap:8px;flex-wrap:wrap}
+.collaboration-browser button{padding:10px;border:1px solid #88606a;min-height:44px}
+.collaboration-browser button:disabled{opacity:.45;cursor:default}
+#collaboration-count{flex-basis:100%;font-size:.85rem;color:#c5bcc8}
+.collaborator-detail{margin-top:20px;padding:20px;background:#100d17;border-left:2px solid #ff7185}
+.collaborator-detail h4{font-size:1.2rem}.collaborator-detail>p{margin:8px 0;font-size:.9rem}
+.collaborator-detail>a{display:inline-block;margin:8px 20px 12px 0;font-size:.85rem;color:#ffb4c0;text-decoration:underline}
+.collaborator-detail ul{max-height:250px;overflow:auto;overscroll-behavior:contain;padding:4px 12px 4px 0}
+.collaborator-detail li button{text-align:left;font-size:.9rem;line-height:1.5;min-height:44px;padding:10px 4px;width:100%;border-bottom:1px solid #45313c;color:#e2e8f0}
+.collaborator-detail li button:hover{color:#ffb4c0}
+.recursion-controls{display:flex;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:22px}
+.recursion-controls label{display:grid;gap:8px;flex:1;margin:0}.recursion-controls input{width:100%;accent-color:#ff7185;min-height:30px}
+.recursion-controls button{font-size:.8rem;min-height:44px;padding:10px 14px}
+@media(max-width:767px){#network-scene{height:370px;margin-inline:-8px}.collaborator-face{width:90px;padding:6px 2px}.face-disc{width:54px;height:54px}.central-person .face-disc{width:66px;height:66px}.face-name{font-size:.72rem}.collaboration-edge-label{font-size:.68rem;width:96px;padding:4px}.collaborator-detail{padding:14px}}
+
+.collaboration-overlay{z-index:1}
+@media(max-width:767px){#network-scene{height:420px}.collaboration-edge-label{width:190px;font-size:.8rem}.collaborator-face{width:140px}.face-name{font-size:.8rem}}
+
+.collaborator-face[data-person="miguel-a-mosteiro"] .face-disc img{transform:scale(3);transform-origin:62% 18%}

@@ -1,0 +1,1494 @@
+{
+  "source": "data/publications.json",
+  "note": "Edges come from explicitly listed coauthors. Record counts include versions, accepted work and preprints; not a count of distinct studies. Unresolved initial-only names stay separate. Scholar profile access returned HTTP 429; portraits come from credited university profiles.",
+  "profileRequested": "https://scholar.google.com/citations?user=aVmqEKgAAAAJ&hl=en",
+  "verifiedAt": "2026-09-29",
+  "aliases": {
+    "Juan Jenny Li": [
+      "J. J. Li",
+      "J. Jenny Li",
+      "J.Jenny Li",
+      "Jenny Li J"
+    ],
+    "Dov Kruger": [
+      "D. Kruger"
+    ],
+    "Patricia Morreale": [
+      "P. Morreale"
+    ],
+    "Daehan Kwak": [
+      "D. Kwak"
+    ],
+    "Ching-Yu Huang": [],
+    "Miguel A. Mosteiro": [
+      "M. A. Mosteiro"
+    ],
+    "Margaret Burnett": [
+      "M. Burnett"
+    ],
+    "Brendan Hannon": [
+      "B. Hannon"
+    ],
+    "Hemn Barzan Abdalla": [
+      "Hemn Abdalla",
+      "H. Abdalla",
+      "H. B. Abdalla"
+    ],
+    "Jose Marchena": [
+      "J. Marchena"
+    ],
+    "Guohao Yang": [
+      "G. Yang"
+    ],
+    "Anjana Manikandan": [
+      "A. Manikandan"
+    ],
+    "Zachary Gordon": [
+      "Z. Gordon"
+    ],
+    "Justin Delgado": [
+      "J. Delgado"
+    ],
+    "Peter Sorial": [
+      "P. Sorial"
+    ],
+    "Pankati Patel": [
+      "P. Patel"
+    ],
+    "Jean Chu": [
+      "J. Chu"
+    ],
+    "Ethan Kupershtein": [
+      "E. Kupershtein"
+    ],
+    "Wilbert Villalobos": [
+      "W. Villalobos"
+    ],
+    "Patrick Martins": [
+      "P. Martins"
+    ],
+    "Yulia Kumar": [
+      "Y. Kumar",
+      "Y. Rossikova",
+      "Yulia Rossikova"
+    ]
+  },
+  "recordsWithoutExplicitJulie": [
+    "cv-75"
+  ],
+  "people": [
+    {
+      "id": "juan-jenny-li",
+      "name": "Juan Jenny Li",
+      "papers": [
+        "cv-01",
+        "cv-02",
+        "cv-03",
+        "cv-04",
+        "cv-05",
+        "cv-06",
+        "cv-07",
+        "cv-08",
+        "cv-09",
+        "cv-10",
+        "cv-11",
+        "cv-12",
+        "cv-13",
+        "cv-14",
+        "cv-15",
+        "cv-16",
+        "cv-18",
+        "cv-21",
+        "cv-22",
+        "cv-23",
+        "cv-24",
+        "cv-25",
+        "cv-26",
+        "cv-27",
+        "cv-28",
+        "cv-29",
+        "cv-30",
+        "cv-32",
+        "cv-37",
+        "cv-38",
+        "cv-39",
+        "cv-40",
+        "cv-41",
+        "cv-43",
+        "cv-44",
+        "cv-45",
+        "cv-46",
+        "cv-47",
+        "cv-48",
+        "cv-49",
+        "cv-50",
+        "cv-52",
+        "cv-53",
+        "cv-54",
+        "cv-55",
+        "cv-56",
+        "cv-57",
+        "cv-58",
+        "cv-60",
+        "cv-62",
+        "cv-63",
+        "cv-64",
+        "cv-65",
+        "cv-68",
+        "cv-69",
+        "cv-70",
+        "cv-71",
+        "cv-74",
+        "cv-77"
+      ],
+      "topics": [
+        "Education",
+        "Multimodal AI",
+        "Trustworthy AI",
+        "AI Systems",
+        "Agentic AI"
+      ],
+      "image": "assets/collaborators/juan-jenny-li.png",
+      "profile": "https://www.kean.edu/directory/juan-li",
+      "imageSource": "https://www.kean.edu/sites/default/files/styles/small_4x3/public/2025-10/Screenshot%202025-10-04%20221706.png?h=d9265ea7&itok=TsED0fk4",
+      "photoAttribution": "Official university profile",
+      "sha256": "f80df99d4cce131ec940cb88edb55b9c35adcd397f8ad3cb157baa876fa9a9cd",
+      "scholar": "https://scholar.google.com/citations?user=KX0EE1MAAAAJ&hl=en"
+    },
+    {
+      "id": "dov-kruger",
+      "name": "Dov Kruger",
+      "papers": [
+        "cv-01",
+        "cv-02",
+        "cv-03",
+        "cv-04",
+        "cv-05",
+        "cv-06",
+        "cv-07",
+        "cv-08",
+        "cv-09",
+        "cv-10",
+        "cv-11",
+        "cv-12",
+        "cv-13",
+        "cv-14",
+        "cv-15",
+        "cv-16",
+        "cv-17",
+        "cv-18",
+        "cv-21",
+        "cv-22",
+        "cv-23",
+        "cv-24",
+        "cv-25",
+        "cv-26",
+        "cv-27",
+        "cv-28",
+        "cv-29",
+        "cv-30",
+        "cv-32",
+        "cv-33",
+        "cv-34",
+        "cv-38",
+        "cv-41"
+      ],
+      "topics": [
+        "Education",
+        "Multimodal AI",
+        "Trustworthy AI",
+        "AI Systems",
+        "Agentic AI"
+      ],
+      "image": "assets/collaborators/dov-kruger.jpg",
+      "profile": "https://ece.rutgers.edu/dov-kruger",
+      "imageSource": "https://ece.rutgers.edu/sites/default/files/styles/3x4_one_third_full_default_1x/public/2025-04/Dov-headshot20240214s.jpg?h=d70f2ad5&itok=m9auD0ah",
+      "photoAttribution": "Official university profile",
+      "sha256": "85f346e35a32d21d95581f70f5e7c9525c742d2cedc1fad274574c5b520d1976"
+    },
+    {
+      "id": "patricia-morreale",
+      "name": "Patricia Morreale",
+      "papers": [
+        "cv-38",
+        "cv-39",
+        "cv-40",
+        "cv-41",
+        "cv-43",
+        "cv-44",
+        "cv-45",
+        "cv-46",
+        "cv-47",
+        "cv-48",
+        "cv-49",
+        "cv-51",
+        "cv-52",
+        "cv-53",
+        "cv-54",
+        "cv-55",
+        "cv-56",
+        "cv-57",
+        "cv-58",
+        "cv-60",
+        "cv-61",
+        "cv-62",
+        "cv-63",
+        "cv-64",
+        "cv-65",
+        "cv-66",
+        "cv-67",
+        "cv-68",
+        "cv-69",
+        "cv-70",
+        "cv-71",
+        "cv-74",
+        "cv-77"
+      ],
+      "topics": [
+        "Trustworthy AI",
+        "AI Systems",
+        "Multimodal AI",
+        "Education"
+      ],
+      "image": "assets/collaborators/patricia-morreale.jpg",
+      "profile": "https://www.kean.edu/directory/patricia-morreale",
+      "imageSource": "https://www.kean.edu/sites/default/files/styles/small_4x3/public/2020-12/Patricia%20Morreale-0618.jpg?h=b2774bcf&itok=KWq37LMN",
+      "photoAttribution": "Official university profile",
+      "sha256": "f8fd468bada6dfcde4611ddc8ae407e7c1fdbdcc0ab9935fe6c91721d7b170f8"
+    },
+    {
+      "id": "hemn-barzan-abdalla",
+      "name": "Hemn Barzan Abdalla",
+      "papers": [
+        "cv-03",
+        "cv-05",
+        "cv-21",
+        "cv-28",
+        "cv-35",
+        "cv-36",
+        "cv-37",
+        "cv-42"
+      ],
+      "topics": [
+        "Trustworthy AI",
+        "AI Systems"
+      ]
+    },
+    {
+      "id": "jose-marchena",
+      "name": "Jose Marchena",
+      "papers": [
+        "cv-06",
+        "cv-13",
+        "cv-23",
+        "cv-24",
+        "cv-27",
+        "cv-32",
+        "cv-35",
+        "cv-37"
+      ],
+      "topics": [
+        "Agentic AI",
+        "Multimodal AI",
+        "AI Systems"
+      ]
+    },
+    {
+      "id": "brendan-hannon",
+      "name": "Brendan Hannon",
+      "papers": [
+        "cv-43",
+        "cv-49",
+        "cv-53",
+        "cv-55",
+        "cv-57",
+        "cv-59",
+        "cv-60"
+      ],
+      "topics": [
+        "Multimodal AI",
+        "Trustworthy AI",
+        "AI Systems"
+      ]
+    },
+    {
+      "id": "guohao-yang",
+      "name": "Guohao Yang",
+      "papers": [
+        "cv-04",
+        "cv-05",
+        "cv-12",
+        "cv-28",
+        "cv-38",
+        "cv-39",
+        "cv-41"
+      ],
+      "topics": [
+        "Trustworthy AI",
+        "AI Systems"
+      ]
+    },
+    {
+      "id": "s-ghosh",
+      "name": "S. Ghosh",
+      "papers": [
+        "cv-01",
+        "cv-06",
+        "cv-07",
+        "cv-08",
+        "cv-09",
+        "cv-17",
+        "cv-18"
+      ],
+      "topics": [
+        "Education",
+        "Agentic AI"
+      ]
+    },
+    {
+      "id": "anjana-manikandan",
+      "name": "Anjana Manikandan",
+      "papers": [
+        "cv-44",
+        "cv-46",
+        "cv-47",
+        "cv-48",
+        "cv-58"
+      ],
+      "topics": [
+        "Education"
+      ]
+    },
+    {
+      "id": "daehan-kwak",
+      "name": "Daehan Kwak",
+      "papers": [
+        "cv-61",
+        "cv-66",
+        "cv-67",
+        "cv-68",
+        "cv-70"
+      ],
+      "topics": [
+        "Education"
+      ],
+      "image": "assets/collaborators/daehan-kwak.jpg",
+      "profile": "https://www.kean.edu/directory/daehan-kwak",
+      "imageSource": "https://www.kean.edu/sites/default/files/styles/small_4x3/public/2022-07/Kwak-Kean-400x300.jpg?h=3873714b&itok=G223sk1r",
+      "photoAttribution": "Official university profile",
+      "sha256": "329d75c690e629d85a652101c1f24065e6f93fc721f4589f3d1da0cb05bfdd21"
+    },
+    {
+      "id": "jean-chu",
+      "name": "Jean Chu",
+      "papers": [
+        "cv-61",
+        "cv-66",
+        "cv-67",
+        "cv-68",
+        "cv-70"
+      ],
+      "topics": [
+        "Education"
+      ]
+    },
+    {
+      "id": "justin-delgado",
+      "name": "Justin Delgado",
+      "papers": [
+        "cv-45",
+        "cv-53",
+        "cv-54",
+        "cv-56",
+        "cv-62"
+      ],
+      "topics": [
+        "Multimodal AI",
+        "Trustworthy AI",
+        "AI Systems"
+      ]
+    },
+    {
+      "id": "kuan-huang",
+      "name": "Kuan Huang",
+      "papers": [
+        "cv-41",
+        "cv-52",
+        "cv-55",
+        "cv-59"
+      ],
+      "topics": [
+        "Trustworthy AI",
+        "Multimodal AI",
+        "AI Systems"
+      ]
+    },
+    {
+      "id": "zachary-gordon",
+      "name": "Zachary Gordon",
+      "papers": [
+        "cv-51",
+        "cv-52",
+        "cv-53",
+        "cv-60"
+      ],
+      "topics": [
+        "AI Systems",
+        "Multimodal AI",
+        "Trustworthy AI"
+      ]
+    },
+    {
+      "id": "c-paredes",
+      "name": "C. Paredes",
+      "papers": [
+        "cv-25",
+        "cv-38",
+        "cv-39"
+      ],
+      "topics": [
+        "Trustworthy AI"
+      ]
+    },
+    {
+      "id": "d-li",
+      "name": "D. Li",
+      "papers": [
+        "cv-04",
+        "cv-05",
+        "cv-38"
+      ],
+      "topics": [
+        "Trustworthy AI",
+        "AI Systems"
+      ]
+    },
+    {
+      "id": "d-sinnreich-levi",
+      "name": "D. Sinnreich-Levi",
+      "papers": [
+        "cv-07",
+        "cv-08",
+        "cv-09"
+      ],
+      "topics": [
+        "Agentic AI",
+        "Education"
+      ]
+    },
+    {
+      "id": "ethan-kupershtein",
+      "name": "Ethan Kupershtein",
+      "papers": [
+        "cv-46",
+        "cv-53",
+        "cv-58"
+      ],
+      "topics": [
+        "Education",
+        "Trustworthy AI"
+      ]
+    },
+    {
+      "id": "j-serra",
+      "name": "J. Serra",
+      "papers": [
+        "cv-63",
+        "cv-64",
+        "cv-65"
+      ],
+      "topics": [
+        "Trustworthy AI",
+        "AI Systems"
+      ]
+    },
+    {
+      "id": "k-august",
+      "name": "K. August",
+      "papers": [
+        "cv-07",
+        "cv-08",
+        "cv-09"
+      ],
+      "topics": [
+        "Agentic AI",
+        "Education"
+      ]
+    },
+    {
+      "id": "m-striki",
+      "name": "M. Striki",
+      "papers": [
+        "cv-07",
+        "cv-08",
+        "cv-09"
+      ],
+      "topics": [
+        "Agentic AI",
+        "Education"
+      ]
+    },
+    {
+      "id": "miguel-a-mosteiro",
+      "name": "Miguel A. Mosteiro",
+      "papers": [
+        "cv-72",
+        "cv-73",
+        "cv-76"
+      ],
+      "topics": [
+        "Algorithms"
+      ],
+      "image": "assets/collaborators/miguel-mosteiro.jpg",
+      "profile": "https://www.pace.edu/profile/miguel-mosteiro",
+      "imageSource": "https://www.pace.edu/sites/default/files/styles/1_1_720x720/public/2026-09/profile-mmosteiro.jpg?h=4de69ae3&itok=w3YufAmI",
+      "photoAttribution": "Official university profile",
+      "sha256": "571b7669373b4cce1bb3fb1e664c33b94aa3dc1006e121e98bd1d36af0517fef"
+    },
+    {
+      "id": "n-tellez",
+      "name": "N. Tellez",
+      "papers": [
+        "cv-63",
+        "cv-64",
+        "cv-65"
+      ],
+      "topics": [
+        "Trustworthy AI",
+        "AI Systems"
+      ]
+    },
+    {
+      "id": "pankati-patel",
+      "name": "Pankati Patel",
+      "papers": [
+        "cv-61",
+        "cv-66",
+        "cv-67"
+      ],
+      "topics": [
+        "Education"
+      ]
+    },
+    {
+      "id": "peter-sorial",
+      "name": "Peter Sorial",
+      "papers": [
+        "cv-54",
+        "cv-56",
+        "cv-57"
+      ],
+      "topics": [
+        "Trustworthy AI"
+      ]
+    },
+    {
+      "id": "wilbert-villalobos",
+      "name": "Wilbert Villalobos",
+      "papers": [
+        "cv-13",
+        "cv-24",
+        "cv-50"
+      ],
+      "topics": [
+        "Agentic AI",
+        "Multimodal AI"
+      ]
+    },
+    {
+      "id": "a-watson",
+      "name": "A. Watson",
+      "papers": [
+        "cv-40",
+        "cv-45"
+      ],
+      "topics": [
+        "AI Systems",
+        "Multimodal AI"
+      ]
+    },
+    {
+      "id": "ching-yu-huang",
+      "name": "Ching-Yu Huang",
+      "papers": [
+        "cv-68",
+        "cv-70"
+      ],
+      "topics": [
+        "Education"
+      ],
+      "image": "assets/collaborators/ching-yu-huang.jpg",
+      "profile": "https://www.kean.edu/directory/ching-yu-huang",
+      "imageSource": "https://www.kean.edu/sites/default/files/styles/small_4x3/public/2019-01/ching-yu_huang.jpg?h=b2774bcf&itok=8foq2tFc",
+      "photoAttribution": "Official university profile",
+      "sha256": "3be58f5c97f77dadec102a167386dc81aa29af3904a61fe97c0f875ea52582b0"
+    },
+    {
+      "id": "d-lambropoulos",
+      "name": "D. Lambropoulos",
+      "papers": [
+        "cv-16",
+        "cv-18"
+      ],
+      "topics": [
+        "Education"
+      ]
+    },
+    {
+      "id": "m-be",
+      "name": "M. Be",
+      "papers": [
+        "cv-17",
+        "cv-18"
+      ],
+      "topics": [
+        "Education"
+      ]
+    },
+    {
+      "id": "margaret-burnett",
+      "name": "Margaret Burnett",
+      "papers": [
+        "cv-66",
+        "cv-67"
+      ],
+      "topics": [
+        "Education"
+      ],
+      "image": "assets/collaborators/margaret-burnett.jpg",
+      "profile": "https://engineering.oregonstate.edu/about/people/margaret-burnett",
+      "imageSource": "https://engineering.oregonstate.edu/sites/engineering.oregonstate.edu/files/styles/1_1_400x400/public/2023-04/profile-margaret-burnett.jpg?itok=AxHGYXfh",
+      "photoAttribution": "Official university profile",
+      "sha256": "e3633a2ee42af0551e5fa72ddb5368247cda3775729c2ceec9c34e95977b563a"
+    },
+    {
+      "id": "p-w-h-wong",
+      "name": "P. W. H. Wong",
+      "papers": [
+        "cv-73",
+        "cv-76"
+      ],
+      "topics": [
+        "Algorithms"
+      ]
+    },
+    {
+      "id": "patrick-martins",
+      "name": "Patrick Martins",
+      "papers": [
+        "cv-54",
+        "cv-56"
+      ],
+      "topics": [
+        "Trustworthy AI"
+      ]
+    },
+    {
+      "id": "raymond-jiang",
+      "name": "Raymond Jiang",
+      "papers": [
+        "cv-34",
+        "cv-41"
+      ],
+      "topics": [
+        "Trustworthy AI"
+      ]
+    },
+    {
+      "id": "s-guzman",
+      "name": "S. Guzman",
+      "papers": [
+        "cv-06",
+        "cv-35"
+      ],
+      "topics": [
+        "Agentic AI",
+        "AI Systems"
+      ]
+    },
+    {
+      "id": "srotriyo-sengupta",
+      "name": "Srotriyo Sengupta",
+      "papers": [
+        "cv-19",
+        "cv-20"
+      ],
+      "topics": [
+        "Multimodal AI"
+      ]
+    },
+    {
+      "id": "u-ebreso",
+      "name": "U. Ebreso",
+      "papers": [
+        "cv-62",
+        "cv-64"
+      ],
+      "topics": [
+        "AI Systems",
+        "Trustworthy AI"
+      ]
+    },
+    {
+      "id": "v-lawrence",
+      "name": "V. Lawrence",
+      "papers": [
+        "cv-08",
+        "cv-09"
+      ],
+      "topics": [
+        "Education"
+      ]
+    },
+    {
+      "id": "a-abduljabbar",
+      "name": "A. Abduljabbar",
+      "papers": [
+        "cv-69"
+      ],
+      "topics": [
+        "Education"
+      ]
+    },
+    {
+      "id": "a-allaico",
+      "name": "A. Allaico",
+      "papers": [
+        "cv-65"
+      ],
+      "topics": [
+        "AI Systems"
+      ]
+    },
+    {
+      "id": "a-awlla",
+      "name": "A. Awlla",
+      "papers": [
+        "cv-35"
+      ],
+      "topics": [
+        "AI Systems"
+      ]
+    },
+    {
+      "id": "a-d-dhillon",
+      "name": "A. D. Dhillon",
+      "papers": [
+        "cv-18"
+      ],
+      "topics": [
+        "Education"
+      ]
+    },
+    {
+      "id": "a-halper",
+      "name": "A. Halper",
+      "papers": [
+        "cv-73"
+      ],
+      "topics": [
+        "Algorithms"
+      ]
+    },
+    {
+      "id": "a-luna",
+      "name": "A. Luna",
+      "papers": [
+        "cv-03"
+      ],
+      "topics": [
+        "Trustworthy AI"
+      ]
+    },
+    {
+      "id": "a-torres",
+      "name": "A. Torres",
+      "papers": [
+        "cv-71"
+      ],
+      "topics": [
+        "AI Systems"
+      ]
+    },
+    {
+      "id": "andrea-balcacer",
+      "name": "Andrea Balcacer",
+      "papers": [
+        "cv-55"
+      ],
+      "topics": [
+        "Multimodal AI"
+      ]
+    },
+    {
+      "id": "angelo-perez",
+      "name": "Angelo Perez",
+      "papers": [
+        "cv-41"
+      ],
+      "topics": [
+        "Trustworthy AI"
+      ]
+    },
+    {
+      "id": "ardalan-h-awlla",
+      "name": "Ardalan H. Awlla",
+      "papers": [
+        "cv-37"
+      ],
+      "topics": [
+        "AI Systems"
+      ]
+    },
+    {
+      "id": "ardalan-hussein-awlla",
+      "name": "Ardalan Hussein Awlla",
+      "papers": [
+        "cv-42"
+      ],
+      "topics": [
+        "AI Systems"
+      ]
+    },
+    {
+      "id": "austin-halper",
+      "name": "Austin Halper",
+      "papers": [
+        "cv-72"
+      ],
+      "topics": [
+        "Algorithms"
+      ]
+    },
+    {
+      "id": "beining-niu",
+      "name": "Beining Niu",
+      "papers": [
+        "cv-31"
+      ],
+      "topics": [
+        "Multimodal AI"
+      ]
+    },
+    {
+      "id": "c-c-lin",
+      "name": "C. C. Lin",
+      "papers": [
+        "cv-45"
+      ],
+      "topics": [
+        "Multimodal AI"
+      ]
+    },
+    {
+      "id": "d-gayle",
+      "name": "D. Gayle",
+      "papers": [
+        "cv-26"
+      ],
+      "topics": [
+        "Trustworthy AI"
+      ]
+    },
+    {
+      "id": "d-m-ruiz",
+      "name": "D. M. Ruiz",
+      "papers": [
+        "cv-40"
+      ],
+      "topics": [
+        "AI Systems"
+      ]
+    },
+    {
+      "id": "davide-tosi",
+      "name": "Davide Tosi",
+      "papers": [
+        "cv-36"
+      ],
+      "topics": [
+        "AI Systems"
+      ]
+    },
+    {
+      "id": "dejaun-gayle",
+      "name": "Dejaun Gayle",
+      "papers": [
+        "cv-49"
+      ],
+      "topics": [
+        "Trustworthy AI"
+      ]
+    },
+    {
+      "id": "e-landaverde",
+      "name": "E. Landaverde",
+      "papers": [
+        "cv-65"
+      ],
+      "topics": [
+        "AI Systems"
+      ]
+    },
+    {
+      "id": "e-weinman",
+      "name": "E. Weinman",
+      "papers": [
+        "cv-71"
+      ],
+      "topics": [
+        "AI Systems"
+      ]
+    },
+    {
+      "id": "egan-okumu",
+      "name": "Egan Okumu",
+      "papers": [
+        "cv-52"
+      ],
+      "topics": [
+        "Multimodal AI"
+      ]
+    },
+    {
+      "id": "g-garcia-vargas",
+      "name": "G. Garcia-Vargas",
+      "papers": [
+        "cv-22"
+      ],
+      "topics": [
+        "Multimodal AI"
+      ]
+    },
+    {
+      "id": "gavin-wong",
+      "name": "Gavin Wong",
+      "papers": [
+        "cv-30"
+      ],
+      "topics": [
+        "Multimodal AI"
+      ]
+    },
+    {
+      "id": "h-rivera",
+      "name": "H. Rivera",
+      "papers": [
+        "cv-02"
+      ],
+      "topics": [
+        "Multimodal AI"
+      ]
+    },
+    {
+      "id": "i-akinwunmi",
+      "name": "I. Akinwunmi",
+      "papers": [
+        "cv-33"
+      ],
+      "topics": [
+        "Education"
+      ]
+    },
+    {
+      "id": "j-cunha",
+      "name": "J. Cunha",
+      "papers": [
+        "cv-16"
+      ],
+      "topics": [
+        "Education"
+      ]
+    },
+    {
+      "id": "j-hay",
+      "name": "J. Hay",
+      "papers": [
+        "cv-16"
+      ],
+      "topics": [
+        "Education"
+      ]
+    },
+    {
+      "id": "j-komitas",
+      "name": "J. Komitas",
+      "papers": [
+        "cv-18"
+      ],
+      "topics": [
+        "Education"
+      ]
+    },
+    {
+      "id": "j-li",
+      "name": "J. Li",
+      "papers": [
+        "cv-51"
+      ],
+      "topics": [
+        "AI Systems"
+      ]
+    },
+    {
+      "id": "j-loja",
+      "name": "J. Loja",
+      "papers": [
+        "cv-14"
+      ],
+      "topics": [
+        "Education"
+      ]
+    },
+    {
+      "id": "james-mardi",
+      "name": "James Mardi",
+      "papers": [
+        "cv-12"
+      ],
+      "topics": [
+        "Trustworthy AI"
+      ]
+    },
+    {
+      "id": "james-novotny",
+      "name": "James Novotny",
+      "papers": [
+        "cv-61"
+      ],
+      "topics": [
+        "Education"
+      ]
+    },
+    {
+      "id": "joseph-sarnoski",
+      "name": "Joseph Sarnoski",
+      "papers": [
+        "cv-55"
+      ],
+      "topics": [
+        "Multimodal AI"
+      ]
+    },
+    {
+      "id": "k-g-august",
+      "name": "K. G. August",
+      "papers": [
+        "cv-18"
+      ],
+      "topics": [
+        "Education"
+      ]
+    },
+    {
+      "id": "k-huang",
+      "name": "K. Huang",
+      "papers": [
+        "cv-45"
+      ],
+      "topics": [
+        "Multimodal AI"
+      ]
+    },
+    {
+      "id": "k-leonard",
+      "name": "K. Leonard",
+      "papers": [
+        "cv-51"
+      ],
+      "topics": [
+        "AI Systems"
+      ]
+    },
+    {
+      "id": "k-opara",
+      "name": "K. Opara",
+      "papers": [
+        "cv-64"
+      ],
+      "topics": [
+        "Trustworthy AI"
+      ]
+    },
+    {
+      "id": "k-ponze",
+      "name": "K. Ponze",
+      "papers": [
+        "cv-16"
+      ],
+      "topics": [
+        "Education"
+      ]
+    },
+    {
+      "id": "kennedy-ehimwenma",
+      "name": "Kennedy Ehimwenma",
+      "papers": [
+        "cv-21"
+      ],
+      "topics": [
+        "Trustworthy AI"
+      ]
+    },
+    {
+      "id": "l-healy",
+      "name": "L. Healy",
+      "papers": [
+        "cv-69"
+      ],
+      "topics": [
+        "Education"
+      ]
+    },
+    {
+      "id": "l-ness",
+      "name": "L. Ness",
+      "papers": [
+        "cv-51"
+      ],
+      "topics": [
+        "AI Systems"
+      ]
+    },
+    {
+      "id": "lais-castro",
+      "name": "Lais Castro",
+      "papers": [
+        "cv-52"
+      ],
+      "topics": [
+        "Multimodal AI"
+      ]
+    },
+    {
+      "id": "m-cheraghy",
+      "name": "M. Cheraghy",
+      "papers": [
+        "cv-35"
+      ],
+      "topics": [
+        "AI Systems"
+      ]
+    },
+    {
+      "id": "m-elhowary",
+      "name": "M. Elhowary",
+      "papers": [
+        "cv-25"
+      ],
+      "topics": [
+        "Trustworthy AI"
+      ]
+    },
+    {
+      "id": "m-gheisari",
+      "name": "M. Gheisari",
+      "papers": [
+        "cv-35"
+      ],
+      "topics": [
+        "AI Systems"
+      ]
+    },
+    {
+      "id": "m-hagg",
+      "name": "M. Hagg",
+      "papers": [
+        "cv-15"
+      ],
+      "topics": [
+        "Education"
+      ]
+    },
+    {
+      "id": "m-lin",
+      "name": "M. Lin",
+      "papers": [
+        "cv-38"
+      ],
+      "topics": [
+        "Trustworthy AI"
+      ]
+    },
+    {
+      "id": "maryam-cheraghy",
+      "name": "Maryam Cheraghy",
+      "papers": [
+        "cv-42"
+      ],
+      "topics": [
+        "AI Systems"
+      ]
+    },
+    {
+      "id": "mengtian-lin",
+      "name": "Mengtian Lin",
+      "papers": [
+        "cv-31"
+      ],
+      "topics": [
+        "Multimodal AI"
+      ]
+    },
+    {
+      "id": "michael-thompson",
+      "name": "Michael Thompson",
+      "papers": [
+        "cv-59"
+      ],
+      "topics": [
+        "AI Systems"
+      ]
+    },
+    {
+      "id": "n-gupta",
+      "name": "N. Gupta",
+      "papers": [
+        "cv-69"
+      ],
+      "topics": [
+        "Education"
+      ]
+    },
+    {
+      "id": "nidhi-mudholker",
+      "name": "Nidhi Mudholker",
+      "papers": [
+        "cv-31"
+      ],
+      "topics": [
+        "Multimodal AI"
+      ]
+    },
+    {
+      "id": "o-alabi",
+      "name": "O. Alabi",
+      "papers": [
+        "cv-51"
+      ],
+      "topics": [
+        "AI Systems"
+      ]
+    },
+    {
+      "id": "paolien-wang",
+      "name": "Paolien Wang",
+      "papers": [
+        "cv-70"
+      ],
+      "topics": [
+        "Education"
+      ]
+    },
+    {
+      "id": "paoline-wang",
+      "name": "Paoline Wang",
+      "papers": [
+        "cv-68"
+      ],
+      "topics": [
+        "Education"
+      ]
+    },
+    {
+      "id": "prudence-w-h-wong",
+      "name": "Prudence W. H. Wong",
+      "papers": [
+        "cv-72"
+      ],
+      "topics": [
+        "Algorithms"
+      ]
+    },
+    {
+      "id": "r-garcia",
+      "name": "R. Garcia",
+      "papers": [
+        "cv-67"
+      ],
+      "topics": [
+        "Education"
+      ]
+    },
+    {
+      "id": "r-kulesza",
+      "name": "R. Kulesza",
+      "papers": [
+        "cv-71"
+      ],
+      "topics": [
+        "AI Systems"
+      ]
+    },
+    {
+      "id": "r-quezada",
+      "name": "R. Quezada",
+      "papers": [
+        "cv-65"
+      ],
+      "topics": [
+        "AI Systems"
+      ]
+    },
+    {
+      "id": "r-ruiz",
+      "name": "R. Ruiz",
+      "papers": [
+        "cv-71"
+      ],
+      "topics": [
+        "AI Systems"
+      ]
+    },
+    {
+      "id": "r-thandra",
+      "name": "R. Thandra",
+      "papers": [
+        "cv-06"
+      ],
+      "topics": [
+        "Agentic AI"
+      ]
+    },
+    {
+      "id": "rose-garcia",
+      "name": "Rose Garcia",
+      "papers": [
+        "cv-66"
+      ],
+      "topics": [
+        "Education"
+      ]
+    },
+    {
+      "id": "s-aggarewal",
+      "name": "S. Aggarewal",
+      "papers": [
+        "cv-22"
+      ],
+      "topics": [
+        "Multimodal AI"
+      ]
+    },
+    {
+      "id": "s-fortes",
+      "name": "S. Fortes",
+      "papers": [
+        "cv-65"
+      ],
+      "topics": [
+        "AI Systems"
+      ]
+    },
+    {
+      "id": "s-pandey",
+      "name": "S. Pandey",
+      "papers": [
+        "cv-06"
+      ],
+      "topics": [
+        "Agentic AI"
+      ]
+    },
+    {
+      "id": "s-sengupta",
+      "name": "S. Sengupta",
+      "papers": [
+        "cv-03"
+      ],
+      "topics": [
+        "Trustworthy AI"
+      ]
+    },
+    {
+      "id": "s-thomas",
+      "name": "S. Thomas",
+      "papers": [
+        "cv-26"
+      ],
+      "topics": [
+        "Trustworthy AI"
+      ]
+    },
+    {
+      "id": "sarah-t-hug",
+      "name": "Sarah T. Hug",
+      "papers": [
+        "cv-68"
+      ],
+      "topics": [
+        "Education"
+      ]
+    },
+    {
+      "id": "shuting-liu",
+      "name": "Shuting Liu",
+      "papers": [
+        "cv-55"
+      ],
+      "topics": [
+        "Multimodal AI"
+      ]
+    },
+    {
+      "id": "stephany-guzman",
+      "name": "Stephany Guzman",
+      "papers": [
+        "cv-27"
+      ],
+      "topics": [
+        "Agentic AI"
+      ]
+    },
+    {
+      "id": "t-m-willis-iii",
+      "name": "T. M. Willis III",
+      "papers": [
+        "cv-18"
+      ],
+      "topics": [
+        "Education"
+      ]
+    },
+    {
+      "id": "v-b-lawrence",
+      "name": "V. B. Lawrence",
+      "papers": [
+        "cv-18"
+      ],
+      "topics": [
+        "Education"
+      ]
+    },
+    {
+      "id": "wenxiao-li",
+      "name": "Wenxiao Li",
+      "papers": [
+        "cv-59"
+      ],
+      "topics": [
+        "AI Systems"
+      ]
+    },
+    {
+      "id": "y-s-chung",
+      "name": "Y. S. Chung",
+      "papers": [
+        "cv-05"
+      ],
+      "topics": [
+        "AI Systems"
+      ]
+    },
+    {
+      "id": "yue-zhao",
+      "name": "Yue Zhao",
+      "papers": [
+        "cv-36"
+      ],
+      "topics": [
+        "AI Systems"
+      ]
+    }
+  ]
+}

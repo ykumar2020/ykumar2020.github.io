@@ -1,10 +1,10 @@
 import * as THREE from 'three';
 import {mountGraphicsGallery} from './graphics-work.js';
 import {mountConnectomeImages} from './connectome-images.js';
+import {createCollaborationNetwork} from './collaboration-network.js';
 
 import {createASILoom} from './asi-loom.js';
 const CYAN=0xff344b, AMBER=0xff8066;
-const TOPICS=['Trustworthy AI','Agentic AI','Multimodal AI','Education','AI Systems','Algorithms'];
 const COLORS=[0xff324c,0xff705a,0xffa3ae,0xc94660,0xffc6bf,0xe57287];
 
 /** Drop-in entry point. Static HTML and CSS remain the no-WebGL fallback. */
@@ -12,7 +12,7 @@ export function mountAcademicVisuals(){
   const reduce=matchMedia('(prefers-reduced-motion: reduce)');
   const fine=matchMedia('(pointer: fine)');
   const stages=[];
-  let paused=reduce.matches, domain=0, network, activeId;
+  let paused=reduce.matches, domain=0;
   const toggle=document.querySelector('#motion-toggle');
   function updateToggle(){document.querySelectorAll('#motion-toggle,[data-motion-toggle]').forEach(b=>{b.textContent=paused?'Resume ambient motion':'Pause ambient motion';b.setAttribute('aria-pressed',String(paused));});}
   toggle.hidden=false;updateToggle();
@@ -155,40 +155,6 @@ export function mountAcademicVisuals(){
     inspect(s);
   });
 
-  const api={setDomain(index){domain=index;node?.update();node?.draw();},selectRecord(id){activeId=id;network?.highlight(id);},setRecords(records,onPick){
-    if(!network){
-      const s=stage('network-scene',s=>{
-        s.camera.position.set(0,0,11.2);s.camera.lookAt(0,0,0);s.group=new THREE.Group();s.scene.add(s.group);
-        s.onResize=(w,h)=>{s.camera.position.z=Math.max(11.2,5.1/(Math.tan(Math.PI/9)*(w/h)));};
-        let t=0;s.update=(time=t)=>{t=time;const r=s.userRotation||{x:.12,y:-.28};s.group.rotation.set(r.x,r.y+t*.018,0);};inspect(s);
-      });
-      if(!s)return;
-      network=s;network.highlight=(id)=>{for(const n of network.nodes||[]){n.scale.setScalar(n.userData.id===id?1.8:1);n.material.color.setHex(n.userData.id===id?0xffffff:n.userData.color);}network.draw();};
-      network.pick=e=>{
-        const rect=s.canvas.getBoundingClientRect(),mouse=new THREE.Vector2((e.clientX-rect.left)/rect.width*2-1,-(e.clientY-rect.top)/rect.height*2+1);
-        const ray=new THREE.Raycaster();ray.setFromCamera(mouse,s.camera);
-        const hit=ray.intersectObjects(network.nodes||[],false)[0];if(hit)network.onPick?.(hit.object.userData.id);
-      };
-    }
-    network.onPick=onPick;
-    // Dispose replaced geometries/materials when filters change.
-    network.group.traverse(o=>{o.geometry?.dispose();if(o.material) o.material.dispose();});network.group.clear();network.nodes=[];
-    const legend=document.querySelector('#network-legend');legend.replaceChildren();
-    TOPICS.forEach((topic,topicIndex)=>{
-      const cluster=records.filter(r=>r.topic===topic);if(!cluster.length)return;
-      const color=COLORS[topicIndex],angle=topicIndex/6*Math.PI*2;
-      const center=new THREE.Vector3(Math.cos(angle)*2.9,Math.sin(angle)*1.85,Math.sin(angle*2)*.65);
-      const hub=new THREE.Mesh(new THREE.OctahedronGeometry(.16),new THREE.MeshBasicMaterial({color,wireframe:true}));hub.position.copy(center);network.group.add(hub);
-      const span=document.createElement('span'),dot=document.createElement('i');dot.style.setProperty('--topic-color','#'+color.toString(16).padStart(6,'0'));dot.setAttribute('aria-hidden','true');span.append(dot,document.createTextNode(topic+' · '+['sphere','cube','tetrahedron','octahedron','icosahedron','cone'][topicIndex]+' · '+cluster.length));legend.append(span);
-      cluster.forEach((record,i)=>{
-        const a=i*2.399963,rr=.48+Math.sqrt(i)*.14;
-        const position=center.clone().add(new THREE.Vector3(Math.cos(a)*rr,Math.sin(a)*rr,Math.sin(i*1.7)*.55));
-        const point=new THREE.Mesh([()=>new THREE.SphereGeometry(.085,8,6),()=>new THREE.BoxGeometry(.14,.14,.14),()=>new THREE.TetrahedronGeometry(.12),()=>new THREE.OctahedronGeometry(.12),()=>new THREE.IcosahedronGeometry(.1),()=>new THREE.ConeGeometry(.09,.18,6)][topicIndex](),new THREE.MeshBasicMaterial({color}));point.position.copy(position);point.userData={id:record.id,color};network.group.add(point);network.nodes.push(point);
-        const line=new THREE.Line(new THREE.BufferGeometry().setFromPoints([center,position]),new THREE.LineBasicMaterial({color,transparent:true,opacity:.3}));network.group.add(line);
-      });
-    });
-    network.host.dataset.records=String(records.length);
-    network.resize();network.highlight(activeId);network.sync();
-  }};
-  return api;
+  const collaboration=createCollaborationNetwork(stage);
+  return {setDomain(index){domain=index;node?.update();node?.draw();},selectRecord(id){collaboration.highlight(id);},setRecords(records,onPick){collaboration.setRecords(records,onPick);}};
 }
