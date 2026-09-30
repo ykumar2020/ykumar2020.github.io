@@ -183,3 +183,6 @@ Three native expandable threat-model rows cover recursive drift, information asy
 `data/research-focus.json` supplies editorial publication tags. ASI-Risk includes the existential-risk chapter and AGI evaluation review; Recursive-Systems currently selects the compiler-in-the-loop record only. Tags compose with the existing filters and keep the collaborator network synchronized. Paper deep links reset restrictive filters so the requested record is visible.
 
 Checks: `node tests/check_horizon.mjs` exercises authorization/overload boundaries, throughput equations, ungated queue growth, all eight levels and invalid controls. `python tests/check_singularity.py` covers browser controls, downloads, matrix disclosure, filter/network parity, motion behavior, context loss, responsive layout, no-JavaScript content and automated accessibility.
+
+
+Jose Serra now has the exact portrait supplied by Julie in chat on September 30, 2026. It is stored unchanged in `assets/collaborators/jose-serra.png`, with its hash and user-supplied provenance in the collaborator manifest. The network builder preserves this attribution; it is not labeled as an official university photo. His three linked records and supplied Scholar URL are retained.

@@ -1,6 +1,6 @@
 {
   "source": "data/publications.json",
-  "note": "Edges come from explicitly listed coauthors. Record counts include versions, accepted work and preprints; not a count of distinct studies. Unresolved initial-only names stay separate. Scholar profile access returned HTTP 429; portraits come from credited university profiles.",
+  "note": "Edges come from explicitly listed coauthors. Record counts include versions, accepted work and preprints; not a count of distinct studies. Unresolved initial-only names stay separate. Scholar profile access returned HTTP 429; portraits come from credited profiles or images supplied by Julie Kumar; provenance is recorded per person.",
   "profileRequested": "https://scholar.google.com/citations?user=aVmqEKgAAAAJ&hl=en",
   "verifiedAt": "2026-09-29",
   "aliases": {
@@ -507,7 +507,12 @@
       "featured": true,
       "identitySource": "https://par.nsf.gov/servlets/purl/10351915",
       "scholar": "https://scholar.google.com/citations?user=NpJefRUAAAAJ&hl=en",
-      "scholarSource": "Profile supplied by Julie Kumar in the website update request."
+      "scholarSource": "Profile supplied by Julie Kumar in the website update request.",
+      "image": "assets/collaborators/jose-serra.png",
+      "imageSource": "Portrait supplied by Julie Kumar in chat, 2026-09-30",
+      "photoAttribution": "Portrait supplied by Julie Kumar",
+      "portraitUpdatedAt": "2026-09-30",
+      "sha256": "3815028e866354d345fb03d0bd06918e1fc2d0b4383be5cecb0988507e37355d"
     },
     {
       "id": "k-august",

@@ -41,6 +41,7 @@ export function createCollaborationNetwork(stage){
     detail.replaceChildren();const person=people.find(p=>p.id===selected);if(!person){detail.textContent='No explicitly listed coauthors match these filters.';return;}
     const title=el('h4',person.name);detail.append(title,el('p',`${person.papers.length} matching bibliography records · ${person.topics.map(t=>short[t]).join(' / ')}`));
     if(person.profile){const a=el('a','Portrait source / university profile');a.href=person.profile;a.target='_blank';a.rel='noopener';detail.append(a);}
+    else if(person.image) detail.append(el('p',person.photoAttribution||'Portrait attached.'));
     else detail.append(el('p','Initials shown: no verified portrait is attached.'));
     if(person.scholar){const a=el('a','Google Scholar profile');a.href=person.scholar;a.target='_blank';a.rel='noopener';detail.append(a);}
     const list=el('ul');for(const id of person.papers){const record=publications.find(p=>p.id===id);if(!record)continue;const li=el('li'),button=el('button',`${record.year} · ${record.title}`);button.type='button';button.addEventListener('click',()=>{onPick?.(id);highlight(id);});li.append(button);list.append(li);}detail.append(list);
