@@ -120,8 +120,8 @@ export function mountAcademicVisuals(){
     const loom=createCapsuleLab(s.scene);let t=0,px=0,py=0;
     document.querySelector('#hero-skeleton').addEventListener('change',e=>{loom.set(.6,0,e.target.checked);s.draw();});
     s.onResize=(w,h)=>{s.camera.position.z=Math.max(5.8,2.15/(Math.tan(Math.PI/9)*(w/h)));};
-    document.querySelector('#home').addEventListener('pointermove',e=>{if(paused||!fine.matches)return;const b=document.querySelector('#home').getBoundingClientRect();px=((e.clientX-b.left)/b.width-.5)*.25;py=((e.clientY-b.top)/b.height-.5)*.2;});
-    document.querySelector('#home').addEventListener('pointerleave',()=>{px=py=0;});
+    document.querySelector('.research-geometry').addEventListener('pointermove',e=>{if(paused||!fine.matches)return;const b=document.querySelector('.research-geometry').getBoundingClientRect();px=((e.clientX-b.left)/b.width-.5)*.25;py=((e.clientY-b.top)/b.height-.5)*.2;});
+    document.querySelector('.research-geometry').addEventListener('pointerleave',()=>{px=py=0;});
     s.update=(time=t)=>{t=time;loom.update(t,{x:.1+py,y:px});};
   });
   mountSingularity(stage,inspect);

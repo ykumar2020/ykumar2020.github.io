@@ -24,3 +24,19 @@
 @media(max-width:767px){.hero-top-controls{padding-top:10px}.hero-copy{padding:0}.hero-shortcuts{gap:6px 12px}.hero-shortcuts a{min-height:44px}.hero .hero-headline{font-size:1.35rem}.hero-roles{font-size:.75rem}.degree-context{font-size:.7rem}.hero-art-heading{font-size:.55rem}.professional-service{gap:10px}.access-pass{padding:12px}.photo-caption{min-height:48px}}
 @media(prefers-reduced-motion:reduce){.photo-tick.is-filling:after{animation:none;transform:scaleX(1)}.portrait-frame img{transition:none}}
 @media print{.hero-top-controls,.hero-shortcuts,.photo-segments{display:none!important}.hero-copy{background:transparent}.professional-service{display:block}.access-pass{margin-bottom:8px}}
+
+/* The introduction and photographs share the hero; geometry accompanies research. */
+.hero{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(32px,5vw,72px);padding-top:32px;padding-bottom:48px;min-height:0}
+.hero>.hero-portrait{max-width:620px;width:100%;padding:14px 14px 30px}
+.hero .portrait-frame{aspect-ratio:1/1}
+.hero .portrait-frame img{object-fit:contain}
+.research-feature-layout{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.35fr);gap:40px;align-items:start;margin-bottom:48px}
+.research-feature-layout .frontier-research{min-width:0;margin-bottom:0}
+.research-feature-layout .frontier-papers{grid-template-columns:1fr}
+.research-feature-layout .research-geometry{display:block;grid-column:auto;margin:0;align-self:start;padding:24px;background:#130d1f99;border:1px solid #4e3580}
+.research-geometry #hero-art-scene{height:420px}
+.research-geometry figcaption{padding:12px 0 0;text-align:center}
+.research-geometry .hero-art-heading{font-size:.65rem}
+@media(max-width:1023px){.hero{gap:32px}.hero>.hero-portrait{max-width:none}.research-feature-layout{gap:24px;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}.research-feature-layout .research-geometry{padding:16px}.research-geometry #hero-art-scene{height:340px}}
+@media(max-width:767px){.hero{display:flex;gap:32px;padding-top:24px}.hero>.hero-portrait{max-width:540px;order:0;padding:10px 10px 28px}.hero-copy{order:1;max-width:none}.research-feature-layout{grid-template-columns:1fr;gap:28px}.research-geometry #hero-art-scene{height:320px}.research-feature-layout .research-geometry{order:0}.research-feature-layout .frontier-research{order:1}}
+@media print{.research-feature-layout{display:block}.hero{display:block}}

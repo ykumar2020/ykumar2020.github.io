@@ -19,6 +19,11 @@ with sync_playwright() as p:
  assert 'Ph.D. Candidate in ECE' in page.locator('.hero-roles').inner_text()
  assert page.locator('.access-pass').count()==5
  assert page.locator('.photo-tick').count()==10
+ assert page.locator('#home .hero-art').count()==0
+ assert page.locator('#photo-carousel').bounding_box()['width']>500
+ geometry=page.locator('.research-geometry').bounding_box()
+ papers=page.locator('.frontier-research').bounding_box()
+ assert geometry['x']+geometry['width']<=papers['x']
  assert page.locator('#hero-art-scene canvas').evaluate('(e)=>getComputedStyle(e).pointerEvents')=='none'
  assert page.locator('#grid-scene').evaluate('(e)=>getComputedStyle(e).zIndex')=='0'
  assert page.locator('.hero-headline em').evaluate('(e)=>getComputedStyle(e).color')=='rgb(216, 180, 254)'
@@ -36,10 +41,11 @@ with sync_playwright() as p:
  page.screenshot(path=str(ROOT/'qa/hero-hud-desktop.png'))
  page.locator('.credential-strip').screenshot(path=str(ROOT/'qa/hero-access-passes.png'))
  # Resume automatic motion explicitly after starting with reduced motion.
- page.locator('#home').scroll_into_view_if_needed();page.emulate_media(reduced_motion='no-preference')
+ page.locator('#hero-art-scene').scroll_into_view_if_needed();page.emulate_media(reduced_motion='no-preference')
  page.wait_for_timeout(200)
  before=int(page.locator('#hero-art-scene').get_attribute('data-frames'));start=time.monotonic();page.wait_for_timeout(1100)
  fps=(int(page.locator('#hero-art-scene').get_attribute('data-frames'))-before)/(time.monotonic()-start);assert 0<fps<=31
+ page.locator('#home').scroll_into_view_if_needed()
  page.locator('[data-photo=pause]').click();page.evaluate('document.activeElement.blur()');page.mouse.move(1,1)
  page.wait_for_function('document.querySelector("#photo-carousel").dataset.autoplay==="true"')
  assert page.locator('.photo-tick.is-filling').count()==1
