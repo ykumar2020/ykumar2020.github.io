@@ -65,24 +65,25 @@ with sync_playwright() as p:
     page.locator('#knowledge-panel').scroll_into_view_if_needed();page.screenshot(path=str(OUT/'cyber-constellation.png'))
     report['checks']+=['Network filter parity, record selection and empty state']
 
-    page.locator('#node-scene').scroll_into_view_if_needed();page.wait_for_timeout(200)
-    before=page.locator('#node-scene canvas').screenshot()
-    page.locator('[data-controls=node-scene] [data-turn=right]').click()
-    after=page.locator('#node-scene canvas').screenshot();assert before!=after
+    assert page.locator('#node-scene').count()==0
+    page.locator('#brain-fly').scroll_into_view_if_needed();page.wait_for_function("document.querySelector('#brain-fly').dataset.asset==='loaded'")
+    before=page.locator('#brain-fly canvas').screenshot()
+    page.locator('[data-controls=brain-fly] [data-tilt=right]').click()
+    after=page.locator('#brain-fly canvas').screenshot();assert before!=after
     assert page.locator('.skill-detail:visible').count()==6
     page.screenshot(path=str(OUT/'cyber-research.png'))
-    page.locator('[data-controls=node-scene] [data-motion-toggle]').click()
+    page.locator('[data-controls=brain-fly] [data-motion-toggle]').click()
     page.wait_for_timeout(300)
-    n=int(page.locator('#node-scene').get_attribute('data-frames'));start=time.monotonic();page.wait_for_timeout(1100)
-    fps=(int(page.locator('#node-scene').get_attribute('data-frames'))-n)/(time.monotonic()-start)
+    n=int(page.locator('#brain-fly').get_attribute('data-frames'));start=time.monotonic();page.wait_for_timeout(1100)
+    fps=(int(page.locator('#brain-fly').get_attribute('data-frames'))-n)/(time.monotonic()-start)
     assert 0<fps<=31, fps
     page.locator('#contact').scroll_into_view_if_needed();page.wait_for_timeout(250)
-    n=page.locator('#node-scene').get_attribute('data-frames');page.wait_for_timeout(400)
-    assert page.locator('#node-scene').get_attribute('data-frames')==n,'Offscreen canvas keeps rendering'
+    n=page.locator('#brain-fly').get_attribute('data-frames');page.wait_for_timeout(400)
+    assert page.locator('#brain-fly').get_attribute('data-frames')==n,'Offscreen canvas keeps rendering'
     page.locator('#home').scroll_into_view_if_needed();page.wait_for_timeout(200)
     page.locator('#motion-toggle').click()
-    report['measured_node_fps']=round(fps,2)
-    report['checks']+=['Mesh rotation and research domain controls','30 fps render cap','Offscreen WebGL completely stops']
+    report['measured_brain_fps']=round(fps,2)
+    report['checks']+=['Brain rotation controls and visible research domains','30 fps render cap','Offscreen WebGL completely stops']
 
     for width,height in [(1440,1000),(1024,900),(768,1024),(390,844),(320,740)]:
         page.set_viewport_size({'width':width,'height':height});page.evaluate('scrollTo(0,0)');page.wait_for_timeout(200)
@@ -98,11 +99,11 @@ with sync_playwright() as p:
     report['checks']+=['Responsive widths 320–1440px; no horizontal overflow','Mobile navigation, Escape and focus return']
 
     page.set_viewport_size({'width':1440,'height':1000})
-    page.locator('#node-scene').scroll_into_view_if_needed()
-    page.evaluate("window.testLostContext=document.querySelector('#node-scene canvas').getContext('webgl2').getExtension('WEBGL_lose_context');testLostContext.loseContext()")
-    page.wait_for_function("document.querySelector('#node-scene').dataset.state==='fallback'")
-    assert page.locator('#node-scene .scene-fallback').is_visible()
-    page.evaluate('testLostContext.restoreContext()');page.wait_for_function("document.querySelector('#node-scene').dataset.state==='ready'")
+    page.locator('#brain-fly').scroll_into_view_if_needed()
+    page.evaluate("window.testLostContext=document.querySelector('#brain-fly canvas').getContext('webgl2').getExtension('WEBGL_lose_context');testLostContext.loseContext()")
+    page.wait_for_function("document.querySelector('#brain-fly').dataset.state==='fallback'")
+    assert page.locator('#brain-fly .scene-fallback').is_visible()
+    page.evaluate('testLostContext.restoreContext()');page.wait_for_function("document.querySelector('#brain-fly').dataset.state==='ready'")
     report['checks']+=['WebGL context loss fallback and recovery']
     assert not errors,errors
 
@@ -112,8 +113,8 @@ with sync_playwright() as p:
     assert plain.locator('.paper:visible').count()==77
     assert plain.locator('.skill-detail:visible').count()==6
     assert plain.locator('#site-nav').is_visible()
-    assert plain.locator('#node-scene .scene-fallback').is_visible()
-    report['checks']+=['No-JavaScript publications, research text, mobile navigation and static mesh']
+    assert plain.locator('#brain-fly .scene-fallback').is_visible()
+    report['checks']+=['No-JavaScript publications, research text, mobile navigation and static brain image']
 
     # Automated WCAG A/AA audit, list view and optional constellation.
     axe=OUT/'axe.min.js'

@@ -85,7 +85,7 @@ if ('IntersectionObserver' in window) {
 
 // The visuals enhance the document; scholarly content never depends on WebGL.
 let visuals;
-const visualReady = import('./assets/planets.js?v=20260929-collaborators').then(module => {
+const visualReady = import('./assets/planets.js?v=20260930-brain-rotation').then(module => {
   visuals = module.mountAcademicVisuals();
   return visuals;
 }).catch(() => null);
@@ -188,7 +188,7 @@ function selectDomain(index) {
   domains.forEach(item=>item.hidden=false);
   domainButtons.forEach((button,i)=>button.setAttribute('aria-pressed',String(i===index)));
   research.querySelector('.research-status').textContent=domains[index].querySelector('h3').textContent;
-  visuals?.setDomain(index);
+
 }
 domainButtons.forEach(button=>button.addEventListener('click',()=>selectDomain(Number(button.dataset.skillSelect))));
 selectDomain(0);

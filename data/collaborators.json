@@ -71,6 +71,9 @@
       "Y. Kumar",
       "Y. Rossikova",
       "Yulia Rossikova"
+    ],
+    "Jose Serra": [
+      "J. Serra"
     ]
   },
   "recordsWithoutExplicitJulie": [
@@ -490,8 +493,8 @@
       ]
     },
     {
-      "id": "j-serra",
-      "name": "J. Serra",
+      "id": "jose-serra",
+      "name": "Jose Serra",
       "papers": [
         "cv-63",
         "cv-64",
@@ -500,7 +503,9 @@
       "topics": [
         "Trustworthy AI",
         "AI Systems"
-      ]
+      ],
+      "featured": true,
+      "identitySource": "https://par.nsf.gov/servlets/purl/10351915"
     },
     {
       "id": "k-august",

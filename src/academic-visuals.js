@@ -5,14 +5,13 @@ import {createCollaborationNetwork} from './collaboration-network.js';
 
 import {createASILoom} from './asi-loom.js';
 const CYAN=0xff344b, AMBER=0xff8066;
-const COLORS=[0xff324c,0xff705a,0xffa3ae,0xc94660,0xffc6bf,0xe57287];
 
 /** Drop-in entry point. Static HTML and CSS remain the no-WebGL fallback. */
 export function mountAcademicVisuals(){
   const reduce=matchMedia('(prefers-reduced-motion: reduce)');
   const fine=matchMedia('(pointer: fine)');
   const stages=[];
-  let paused=reduce.matches, domain=0;
+  let paused=reduce.matches;
   const toggle=document.querySelector('#motion-toggle');
   function updateToggle(){document.querySelectorAll('#motion-toggle,[data-motion-toggle]').forEach(b=>{b.textContent=paused?'Resume ambient motion':'Pause ambient motion';b.setAttribute('aria-pressed',String(paused));});}
   toggle.hidden=false;updateToggle();
@@ -125,36 +124,6 @@ export function mountAcademicVisuals(){
   mountGraphicsGallery(stage,inspect);
   mountConnectomeImages(stage);
 
-  const node=stage('node-scene',s=>{
-    s.camera.position.set(0,.1,7.4);s.camera.lookAt(0,0,0);
-    const group=new THREE.Group();s.scene.add(group);s.group=group;
-    const geometry=new THREE.SphereGeometry(1,44,32),v=geometry.attributes.position;
-    for(let i=0;i<v.count;i++){
-      const x=v.getX(i),y=v.getY(i),z=v.getZ(i),theta=Math.atan2(z,x);
-      const radial=1.15+.22*Math.cos(y*5)+.13*Math.sin(theta*3+y*2);
-      v.setXYZ(i,x*radial,y*1.8,z*radial);
-    }
-    geometry.computeVertexNormals();
-    const surface=new THREE.Mesh(geometry,new THREE.MeshBasicMaterial({color:0x3b0617,transparent:true,opacity:.2,side:THREE.DoubleSide,depthWrite:false}));group.add(surface);
-    const wire=new THREE.LineSegments(new THREE.WireframeGeometry(geometry),new THREE.LineBasicMaterial({color:CYAN,transparent:true,opacity:.43}));group.add(wire);
-    const points=new THREE.Points(geometry,new THREE.PointsMaterial({color:0xffb8bf,size:.025,transparent:true,opacity:.65}));group.add(points);
-    const axisPoints=[new THREE.Vector3(0,-1.65,0),new THREE.Vector3(.16,-.75,0),new THREE.Vector3(-.12,.2,.08),new THREE.Vector3(.04,1.55,0)];
-    const axisCurve=new THREE.CatmullRomCurve3(axisPoints);
-    group.add(new THREE.Mesh(new THREE.TubeGeometry(axisCurve,64,.014,6,false),new THREE.MeshBasicMaterial({color:AMBER})));
-    for(let i=0;i<7;i++){
-      const y=-1.25+i*.4,origin=axisCurve.getPoint(i/8+.08);
-      const theta=i*2.4,end=new THREE.Vector3(Math.cos(theta)*.82,y+.15,Math.sin(theta)*.82);
-      group.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints([origin,end]),new THREE.LineBasicMaterial({color:0xff7b6b,transparent:true,opacity:.7})));
-      const marker=new THREE.Mesh(new THREE.SphereGeometry(.035,8,6),new THREE.MeshBasicMaterial({color:AMBER}));marker.position.copy(origin);group.add(marker);
-    }
-    const ring=new THREE.Mesh(new THREE.TorusGeometry(2.2,.006,4,120),new THREE.MeshBasicMaterial({color:0x742536}));ring.rotation.x=Math.PI/2;ring.position.y=-1.9;s.scene.add(ring);
-    let t=0;const parallax=new THREE.Vector2();
-    s.canvas.addEventListener('pointermove',e=>{if(paused||!fine.matches||e.buttons)return;const r=s.canvas.getBoundingClientRect();parallax.set((e.clientX-r.left)/r.width-.5,(e.clientY-r.top)/r.height-.5);});
-    s.canvas.addEventListener('pointerleave',()=>parallax.set(0,0));
-    s.update=(time=t)=>{t=time;const r=s.userRotation||{x:.12,y:-.28};group.rotation.set(r.x+(paused?0:parallax.y*.04),r.y+t*.035+(paused?0:parallax.x*.07),0);wire.material.color.setHex(COLORS[domain]);};
-    inspect(s);
-  });
-
   const collaboration=createCollaborationNetwork(stage);
-  return {setDomain(index){domain=index;node?.update();node?.draw();},selectRecord(id){collaboration.highlight(id);},setRecords(records,onPick){collaboration.setRecords(records,onPick);}};
+  return {selectRecord(id){collaboration.highlight(id);},setRecords(records,onPick){collaboration.setRecords(records,onPick);}};
 }

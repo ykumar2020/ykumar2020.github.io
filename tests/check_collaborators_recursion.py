@@ -18,6 +18,10 @@ with sync_playwright() as p:
  page.on('pageerror',lambda e:errors.append(str(e)));page.on('console',lambda e:errors.append(e.text) if e.type=='error' else None)
  page.goto(BASE,wait_until='networkidle');host=page.locator('#network-scene');host.scroll_into_view_if_needed()
  assert host.get_attribute('data-visible-people')=='8'
+ assert page.locator('.collaborator-face[data-person="jose-serra"]').count()==1
+ page.locator('#collaborator-select').select_option('jose-serra')
+ assert page.locator('#collaborator-detail li').count()==3
+ assert page.locator('#collaborator-detail h4').inner_text()=='Jose Serra'
  assert page.locator('.collaborator-face[data-person] img').count()==7
  assert page.locator('.collaborator-face img').evaluate_all('(xs)=>xs.every(x=>x.complete&&x.naturalWidth>0)')
  page.locator('#collaborator-select').select_option('dov-kruger');assert page.locator('#collaborator-detail h4').inner_text()=='Dov Kruger'

@@ -72,7 +72,7 @@ export function createCollaborationNetwork(stage){
   mobile.addEventListener('change',()=>{page=Math.floor(Math.max(0,people.findIndex(p=>p.id===selected))/pageSize());render();});
   return{highlight,setRecords(matches,callback){
     records=matches;onPick=callback;const ids=new Set(matches.map(p=>p.id));
-    people=collaborators.people.map(person=>{const papers=person.papers.filter(id=>ids.has(id));return{...person,papers,topics:[...new Set(papers.map(id=>publications.find(p=>p.id===id)?.topic).filter(Boolean))]};}).filter(p=>p.papers.length).sort((a,b)=>Number(!!b.image)-Number(!!a.image)||b.papers.length-a.papers.length||a.name.localeCompare(b.name));
+    people=collaborators.people.map(person=>{const papers=person.papers.filter(id=>ids.has(id));return{...person,papers,topics:[...new Set(papers.map(id=>publications.find(p=>p.id===id)?.topic).filter(Boolean))]};}).filter(p=>p.papers.length).sort((a,b)=>Number(!!b.image||!!b.featured)-Number(!!a.image||!!a.featured)||b.papers.length-a.papers.length||a.name.localeCompare(b.name));
     if(!people.some(p=>p.id===selected))selected=people[0]?.id||'';
     picker.replaceChildren(...people.map(person=>{const option=el('option',`${person.name} (${person.papers.length})`);option.value=person.id;return option;}));picker.value=selected;
     page=Math.floor(Math.max(0,people.findIndex(p=>p.id===selected))/pageSize());render();

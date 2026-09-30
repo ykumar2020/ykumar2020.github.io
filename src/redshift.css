@@ -103,3 +103,7 @@
 @media(max-width:767px){#network-scene{height:420px}.collaboration-edge-label{width:190px;font-size:.8rem}.collaborator-face{width:140px}.face-name{font-size:.8rem}}
 
 .collaborator-face[data-person="miguel-a-mosteiro"] .face-disc img{transform:scale(3);transform-origin:62% 18%}
+
+/* Research content takes the full width after removing the illustrative mesh. */
+#research-node{display:block}#research-node .skill-details{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 48px}#research-node .skill-detail{padding-bottom:24px;border-bottom:1px solid #43303c}
+@media(max-width:767px){#research-node .skill-details{grid-template-columns:1fr;gap:24px}}

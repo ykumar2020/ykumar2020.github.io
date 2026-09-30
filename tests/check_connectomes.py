@@ -21,6 +21,9 @@ with sync_playwright() as p:
   assert page.request.get('http://127.0.0.1:8091/'+host.get_attribute('data-image')).status==200
  report['checks']+=['Both sources loaded with credits and unchanged-file hashes','Independent tilt, reset, zoom, depth and source-color controls','Reduced-motion still frames']
  host=page.locator('#brain-fly');host.scroll_into_view_if_needed();page.locator('[data-controls=brain-fly] [data-motion-toggle]').click();page.wait_for_timeout(200);n=int(host.get_attribute('data-frames'));t=time.monotonic();first=host.locator('canvas').screenshot();page.wait_for_timeout(1700);fps=(int(host.get_attribute('data-frames'))-n)/(time.monotonic()-t);assert 0<fps<=31;assert first!=host.locator('canvas').screenshot();report['fps']=round(fps,2)
+ angle=float(host.get_attribute('data-rotation'));assert angle>0
+ page.locator('[data-controls=brain-fly] [data-brain-rotate]').click();held=host.get_attribute('data-rotation');page.wait_for_timeout(350);assert held==host.get_attribute('data-rotation')
+ page.locator('[data-controls=brain-fly] [data-brain-rotate]').click();page.wait_for_timeout(350);assert float(host.get_attribute('data-rotation'))>float(held)
  page.locator('#contact').scroll_into_view_if_needed();page.wait_for_timeout(400);n=host.get_attribute('data-frames');page.wait_for_timeout(400);assert n==host.get_attribute('data-frames');page.locator('#motion-toggle').click()
  # Exercise all studies in one page to expose renderer/context conflicts.
  for scene in page.locator('.embedded-scene').all():
@@ -33,5 +36,6 @@ with sync_playwright() as p:
  page.wait_for_function("document.querySelector('#brain-fly').dataset.state==='fallback'");assert host.locator('img').is_visible();assert page.locator('#brain-fly').locator('..').locator('select').is_disabled()
  page.evaluate('lostBrain.restoreContext()');page.wait_for_function("document.querySelector('#brain-fly').dataset.state==='ready'")
  context=b.new_context(java_script_enabled=False);plain=context.new_page();plain.goto('http://127.0.0.1:8091/');assert plain.locator('.connectome-study:visible').count()==2;assert plain.locator('.connectome-scene img:visible').count()==2
- report['checks']+=['Visible animation capped at 30 fps','Offscreen suspension','All embedded renderers coexist','320-1440px layouts','Context-loss fallback and recovery','No-JavaScript images and credits'];b.close()
+ default=b.new_context(reduced_motion='no-preference');dp=default.new_page();dp.goto('http://127.0.0.1:8091/',wait_until='networkidle');dp.locator('#brain-human').scroll_into_view_if_needed();dp.wait_for_function("Number(document.querySelector('#brain-human').dataset.rotation)>.1");assert dp.locator('#brain-human').get_attribute('data-auto-rotate')=='true';default.close()
+ report['checks']+=['Default automatic rotation and local pause/resume','Visible animation capped at 30 fps','Offscreen suspension','All embedded renderers coexist','320-1440px layouts','Context-loss fallback and recovery','No-JavaScript images and credits'];b.close()
 (ROOT/'qa/connectomes-results.json').write_text(json.dumps(report,indent=2));print(json.dumps(report,indent=2));assert not report['errors'];assert not report['violations']

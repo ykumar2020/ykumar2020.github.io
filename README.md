@@ -120,3 +120,10 @@ This is an artistic 2.5D presentation of 2D images: source brightness supplies s
 `data/collaborators.json` records aliases, publication IDs, photo source URLs and hashes. Google Scholar returned HTTP 429 during this update; the seven portraits therefore come from attributed official university profiles, not an asserted Scholar scrape. Unverified portraits use initials. One bibliography record without an explicitly listed Julie/Yulia authorship is excluded from coauthor inference. The graph does not imply collaborations between other people, or equal contribution. Topic labels inherit the bibliography's broad editorial categories.
 
 Run `python tools/build_collaborators.py` after bibliography updates to regenerate links using the reviewed alias and portrait metadata. Run `python tests/check_collaborators_recursion.py` to check data references, photo hashes, responsive graph controls, actual geometric changes, and reduced-motion behavior.
+
+
+## Focused research section and rotating brain displays
+
+Removed the illustrative "Geometry / Structure / Evidence" mesh and its renderer; all six research descriptions remain visible in a two-column text layout. Jose Serra's previously abbreviated `J. Serra` entry now uses his full name and appears in the initial coauthor group, with three supporting records. The full-name match is documented by the author reference on page 1 of https://par.nsf.gov/servlets/purl/10351915. His node uses initials until a verified portrait is available.
+
+The two image relief displays now rotate continuously by default, at one revolution per minute while visible. Each has a local pause/resume rotation button; dragging pauses its automatic rotation, and Reset returns to the front. Global pause, reduced-motion still frames, visibility suspension and the 30 fps cap still apply. These remain image-based artistic reliefs, not reconstructed anatomical volumes; turning them does not reveal measured hidden anatomy.

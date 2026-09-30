@@ -6,6 +6,7 @@ groups=existing['aliases']
 photos={p['id']:{k:p[k] for k in ['image','profile','imageSource'] if k in p} for p in existing['people'] if 'image' in p}
 norm=lambda n:' '.join(n.replace('\xa0',' ').split())
 alias={norm(n):name for name,variants in groups.items() for n in [name]+variants}
+reviewed={p['id']:{k:p[k] for k in ['featured','identitySource'] if k in p} for p in existing['people']}
 people={};skipped=[]
 for p in pubs:
  names=[alias.get(norm(n),norm(n)) for n in re.split(r',\s*(?:and\s+)?|\s+and\s+',p['authors'])]
@@ -16,6 +17,7 @@ for p in pubs:
   d['papers'].append(p['id'])
   if p['topic'] not in d['topics']:d['topics'].append(p['topic'])
 for d in people.values():
+ d.update(reviewed.get(d['id'],{}))
  photoKey=d['id']
  if photoKey in photos:
   d.update(photos[photoKey]);d['photoAttribution']='Official university profile';d['sha256']=hashlib.sha256(Path(d['image']).read_bytes()).hexdigest()

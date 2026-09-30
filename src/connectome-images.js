@@ -6,13 +6,17 @@ export function mountConnectomeImages(stage){
     const observer=new IntersectionObserver(([entry])=>{
       if(!entry.isIntersecting)return;observer.disconnect();
       const card=host.closest('.connectome-study');
-      let uniforms,tiltX=0,tiltY=0,zoom=1,clock=0,drag;
+      let uniforms,tiltX=0,tiltY=0,zoom=1,clock=0,angle=0,rotating=true,drag;
       const s=stage(host.id,s=>{
         s.group=new THREE.Group();s.scene.add(s.group);s.camera.position.set(0,0,5.2);
         s.onResize=(w,h)=>{s.camera.position.z=Math.max(5.2,2.5/(Math.tan(Math.PI/9)*(w/h)))/zoom;};
-        s.update=(time=clock)=>{clock=time;if(uniforms)uniforms.time.value=time;s.group.rotation.set(tiltX+Math.sin(time*.22)*.035,tiltY+Math.sin(time*.16)*.1,0);};
+        s.update=(time=clock)=>{const dt=Math.max(0,Math.min(time-clock,.06));clock=time;if(rotating)angle=(angle+dt*Math.PI/30)%(Math.PI*2);if(uniforms)uniforms.time.value=time;s.group.rotation.set(tiltX,tiltY+angle,0);host.dataset.rotation=angle.toFixed(5);host.dataset.autoRotate=String(rotating);};
       });
       if(!s)return;
+      const spin=document.createElement('button');spin.type='button';spin.dataset.brainRotate='';
+      function updateSpin(){spin.textContent=rotating?'Pause rotation':'Resume rotation';spin.setAttribute('aria-pressed',String(rotating));host.dataset.autoRotate=String(rotating);}
+      updateSpin();card.querySelector('[data-controls]').prepend(spin);
+      spin.addEventListener('click',()=>{rotating=!rotating;updateSpin();});
       const texture=new THREE.TextureLoader().load(host.dataset.image,()=>{
         const ratio=texture.image.width/texture.image.height;
         uniforms={source:{value:texture},time:{value:0},depth:{value:.22},original:{value:0}};
@@ -48,11 +52,11 @@ export function mountConnectomeImages(stage){
         const action=e.target.closest('[data-tilt]')?.dataset.tilt;
         if(action==='left')tiltY=Math.max(-.45,tiltY-.15);
         if(action==='right')tiltY=Math.min(.45,tiltY+.15);
-        if(action==='reset'){tiltX=tiltY=0;zoom=1;card.querySelector('[data-image-zoom]').value='100';}
+        if(action==='reset'){tiltX=tiltY=angle=0;zoom=1;card.querySelector('[data-image-zoom]').value='100';}
         if(action)redraw();
       });
       card.querySelector('[data-image-zoom]').addEventListener('input',e=>{zoom=Number(e.target.value)/100;redraw();});
-      s.canvas.addEventListener('pointerdown',e=>{if(e.button!==0)return;drag={x:e.clientX,y:e.clientY,tx:tiltX,ty:tiltY};});
+      s.canvas.addEventListener('pointerdown',e=>{if(e.button!==0)return;rotating=false;updateSpin();drag={x:e.clientX,y:e.clientY,tx:tiltX,ty:tiltY};});
       s.canvas.addEventListener('pointermove',e=>{
         if(!drag)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y;
         if(e.pointerType==='touch'&&Math.abs(dy)>Math.abs(dx))return;
