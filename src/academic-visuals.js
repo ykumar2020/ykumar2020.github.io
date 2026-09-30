@@ -1,3 +1,4 @@
+import {prepareControls,attachSceneControls} from './scene-controls.js';
 import {mountSingularity} from './singularity.js';
 import * as THREE from 'three';
 import {mountGraphicsGallery} from './graphics-work.js';
@@ -17,12 +18,13 @@ export function mountAcademicVisuals(){
   const toggle=document.querySelector('#motion-toggle');
   function updateToggle(){document.querySelectorAll('#motion-toggle,[data-motion-toggle]').forEach(b=>{b.textContent=paused?'Resume ambient motion':'Pause ambient motion';b.setAttribute('aria-pressed',String(paused));});}
   toggle.hidden=false;updateToggle();
-  toggle.addEventListener('click',()=>{paused=!paused;updateToggle();stages.forEach(s=>s.sync());});
-  reduce.addEventListener('change',()=>{paused=reduce.matches;updateToggle();stages.forEach(s=>s.sync());});
+  toggle.addEventListener('click',()=>{paused=!paused;updateToggle();stages.forEach(s=>{s.motionOverride=null;s.sync();});});
+  reduce.addEventListener('change',()=>{paused=reduce.matches;updateToggle();stages.forEach(s=>{s.motionOverride=null;s.sync();});});
   document.addEventListener('visibilitychange',()=>stages.forEach(s=>s.sync()));
 
   function stage(id,build){
     const host=document.getElementById(id);if(!host)return null;
+    const controls=prepareControls(host);
     let renderer;
     try{renderer=new THREE.WebGLRenderer({alpha:true,antialias:true,powerPreference:'low-power'});}
     catch{host.dataset.state='fallback';return null;}
@@ -31,26 +33,23 @@ export function mountAcademicVisuals(){
     const canvas=renderer.domElement;canvas.setAttribute('aria-hidden','true');host.append(canvas);
     const scene=new THREE.Scene(), camera=new THREE.PerspectiveCamera(40,1,.1,180);
     let visible=false,lost=false,raf=0,last=0,time=0,frames=0;
-    const api={host,canvas,renderer,scene,camera,update:()=>{},sync,draw,resize,group:null};
+    let reflect=()=>{};
+    const api={host,canvas,renderer,scene,camera,update:()=>{},sync,draw,resize,group:null,speed:1,motionOverride:null};
+    const isPaused=()=>api.motionOverride??paused;
     build(api);
-    const controls=document.querySelector(`[data-controls="${id}"]`);
-    if(controls){
-      controls.hidden=false;
-      const motionButton=document.createElement('button');motionButton.type='button';motionButton.dataset.motionToggle='';
-      motionButton.addEventListener('click',()=>{paused=!paused;updateToggle();stages.forEach(s=>s.sync());});
-      controls.append(motionButton);updateToggle();
-    }
+    controls.hidden=false;
+    reflect=attachSceneControls(api,controls,isPaused,value=>{api.motionOverride=value;});
     host.dataset.state='ready';host.dataset.frames='0';
     function draw(){if(lost||document.hidden||!host.clientWidth||!host.clientHeight)return;renderer.render(scene,camera);host.dataset.frames=String(++frames);}
     function animate(now){
-      raf=0;if(!visible||paused||lost||document.hidden)return;
+      raf=0;if(!visible||isPaused()||lost||document.hidden)return;
       const delta=now-last;
-      if(delta>=1000/30){time+=Math.min(delta/1000,.06);last=now;api.update(time);draw();}
+      if(delta>=1000/30){time+=Math.min(delta/1000,.06)*api.speed;last=now;api.update(time);draw();}
       raf=requestAnimationFrame(animate);
     }
     function sync(){
-      if(raf)cancelAnimationFrame(raf);raf=0;
-      const running=visible&&!paused&&!lost&&!document.hidden;
+      if(raf)cancelAnimationFrame(raf);raf=0;reflect();
+      const running=visible&&!isPaused()&&!lost&&!document.hidden;
       host.dataset.motion=running?'playing':'paused';host.dataset.visible=String(visible);
       if(running){last=performance.now();raf=requestAnimationFrame(animate);}
       else if(visible&&!lost&&!document.hidden){api.update(time);draw();}
@@ -72,7 +71,7 @@ export function mountAcademicVisuals(){
     let down=null,moved=false,rx=.12,ry=-.28;
     s.userRotation={x:rx,y:ry};
     const controls=document.querySelector(`[data-controls="${s.host.id}"]`);
-    function move(x,y){s.userRotation.x=THREE.MathUtils.clamp(x,-1.1,1.1);s.userRotation.y=y;s.update();s.draw();}
+    function move(x,y){s.userRotation.x=THREE.MathUtils.clamp(x,-1.1,1.1);s.userRotation.y=y;s.host.dataset.viewRotation=JSON.stringify(s.userRotation);s.update();s.draw();}
     controls?.addEventListener('click',e=>{
       const action=e.target.closest('[data-turn]')?.dataset.turn;
       const r=s.userRotation;
@@ -89,7 +88,8 @@ export function mountAcademicVisuals(){
     });
     s.canvas.addEventListener('pointerup',e=>{if(down&&!moved)s.pick?.(e);down=null;if(s.canvas.hasPointerCapture(e.pointerId))s.canvas.releasePointerCapture(e.pointerId);});
     s.canvas.addEventListener('pointercancel',()=>{down=null;});
-    s.canvas.addEventListener('pointerleave',()=>{if(!moved)down=null;});
+    s.canvas.addEventListener('pointerleave',e=>{if(!s.canvas.hasPointerCapture(e.pointerId))down=null;});
+    s.canvas.addEventListener('lostpointercapture',()=>{down=null;});
   }
 
   stage('grid-scene',s=>{
@@ -109,26 +109,28 @@ export function mountAcademicVisuals(){
       const p=new THREE.Mesh(new THREE.BoxGeometry(.045,.045,1.7+(i%4)*.5),new THREE.MeshBasicMaterial({color:i%7===0?AMBER:CYAN,transparent:true,opacity:.6}));
       p.position.set((i%13-6)*2,.07,-(i*7)%90);s.scene.add(p);packets.push(p);
     }
-    let targetX=0,targetY=0,t=0;
+    let targetX=0,targetY=0,t=0,offsetX=0,offsetY=0;
+    document.querySelector('[data-controls="grid-scene"]').addEventListener('click',e=>{const action=e.target.closest('[data-turn]')?.dataset.turn;if(action==='left')offsetX-=1;if(action==='right')offsetX+=1;if(action==='up')offsetY+=.7;if(action==='down')offsetY-=.7;if(action==='reset')offsetX=offsetY=0;offsetX=THREE.MathUtils.clamp(offsetX,-5,5);offsetY=THREE.MathUtils.clamp(offsetY,-3,3);s.camera.position.x=offsetX;s.camera.position.y=6.8+offsetY;s.host.dataset.viewRotation=JSON.stringify([offsetX,offsetY]);s.update();s.draw();});
     document.querySelector('.hero-shell').addEventListener('pointermove',e=>{if(paused||!fine.matches)return;targetX=(e.clientX/innerWidth-.5)*1.1;targetY=(e.clientY/innerHeight-.5)*.4;});
     document.querySelector('.hero-shell').addEventListener('pointerleave',()=>{targetX=targetY=0;});
-    s.update=(time=t)=>{t=time;packets.forEach((p,i)=>{p.position.z=((t*1.8+i*7)%96)-84;p.material.opacity=.35+.25*Math.sin(t*.8+i);});s.camera.position.x+=(targetX-s.camera.position.x)*.025;s.camera.position.y+=(6.8+targetY-s.camera.position.y)*.025;s.camera.lookAt(0,0,-14);};
+    s.update=(time=t)=>{t=time;packets.forEach((p,i)=>{p.position.z=((t*1.8+i*7)%96)-84;p.material.opacity=.35+.25*Math.sin(t*.8+i);});s.camera.position.x+=(targetX+offsetX-s.camera.position.x)*.025;s.camera.position.y+=(6.8+targetY+offsetY-s.camera.position.y)*.025;s.camera.lookAt(0,0,-14);};
   });
 
   stage('hero-art-scene',s=>{
     s.camera.position.set(0,0,5.8);s.camera.lookAt(0,0,0);
-    const loom=createCapsuleLab(s.scene);let t=0,px=0,py=0;
-    document.querySelector('#hero-skeleton').addEventListener('change',e=>{loom.set(.6,0,e.target.checked);s.draw();});
+    const loom=createCapsuleLab(s.scene);let t=0;
+    s.group=loom.group;inspect(s);
+    function shape(){const radius=Number(document.querySelector('#bma-radius').value),center=Number(document.querySelector('#bma-center').value);loom.set(radius,center,document.querySelector('#hero-skeleton').checked);document.querySelector('#bma-radius-value').textContent=radius.toFixed(2);document.querySelector('#bma-center-value').textContent=center.toFixed(2);s.host.dataset.radius=String(radius);s.host.dataset.center=String(center);s.draw();}
+    for(const id of ['hero-skeleton','bma-radius','bma-center'])document.getElementById(id).addEventListener('input',shape);
     s.onResize=(w,h)=>{s.camera.position.z=Math.max(5.8,2.15/(Math.tan(Math.PI/9)*(w/h)));};
-    document.querySelector('.research-geometry').addEventListener('pointermove',e=>{if(paused||!fine.matches)return;const b=document.querySelector('.research-geometry').getBoundingClientRect();px=((e.clientX-b.left)/b.width-.5)*.25;py=((e.clientY-b.top)/b.height-.5)*.2;});
-    document.querySelector('.research-geometry').addEventListener('pointerleave',()=>{px=py=0;});
-    s.update=(time=t)=>{t=time;loom.update(t,{x:.1+py,y:px});};
+    s.update=(time=t)=>{t=time;loom.update(t,s.userRotation);};shape();
+
   });
   mountSingularity(stage,inspect);
   mountResearchWorkbench(stage,inspect);
   mountGraphicsGallery(stage,inspect);
   mountConnectomeImages(stage);
 
-  const collaboration=createCollaborationNetwork(stage);
+  const collaboration=createCollaborationNetwork(stage,inspect);
   return {selectRecord(id){collaboration.highlight(id);},setRecords(records,onPick){collaboration.setRecords(records,onPick);}};
 }

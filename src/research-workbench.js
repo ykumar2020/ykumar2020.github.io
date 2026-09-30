@@ -13,7 +13,7 @@ export function mountResearchWorkbench(stage,inspect){
   attentionScene=stage('attention-scene',s=>{
     s.camera.position.set(0,6,7);s.camera.lookAt(0,0,0);s.group=new THREE.Group();s.scene.add(s.group);
     const light=new THREE.HemisphereLight(0xffffff,0x132333,2);s.scene.add(light);
-    let t=0;inspect(s);s.update=(time=t)=>{t=time;s.group.rotation.y=s.userRotation.y;};
+    let t=0;inspect(s);s.update=(time=t)=>{t=time;s.group.rotation.set(s.userRotation.x,s.userRotation.y,0);};
   });
   function renderAttention(){
     trace=attentionExperiment(input.value);const {tokens}=trace,layer=Number(layerPicker.value);

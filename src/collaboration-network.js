@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import collaborators from '../data/collaborators.json';
 import publications from '../data/publications.json';
 
-export function createCollaborationNetwork(stage){
+export function createCollaborationNetwork(stage,inspect){
   let scene,records=[],people=[],page=0,selected='',onPick,activePaper;
   const panel=document.querySelector('#knowledge-panel'),host=document.querySelector('#network-scene');
   const picker=panel.querySelector('#collaborator-select'),detail=panel.querySelector('#collaborator-detail');
@@ -21,9 +21,8 @@ export function createCollaborationNetwork(stage){
     scene=stage('network-scene',s=>{
       s.camera.position.set(0,0,11.8);s.group=new THREE.Group();s.scene.add(s.group);
       s.onResize=(w,h)=>{s.camera.position.z=mobile.matches?14:Math.max(11.8,5.8/(Math.tan(Math.PI/9)*(w/h)));position();};
-      let t=0,y=0;
-      s.update=(time=t)=>{t=time;s.group.rotation.y=y+Math.sin(t*.13)*.035;position();};
-      panel.querySelector('[data-controls=network-scene]').addEventListener('click',e=>{const turn=e.target.closest('[data-turn]')?.dataset.turn;if(turn==='left')y=Math.max(-.25,y-.08);if(turn==='right')y=Math.min(.25,y+.08);if(turn==='reset')y=0;if(turn){s.update();s.draw();}});
+      let t=0;inspect(s);
+      s.update=(time=t)=>{t=time;s.group.rotation.set(s.userRotation.x*.35,s.userRotation.y*.5+Math.sin(t*.13)*.035,0);position();};
     });
   }
   function label(element,point){overlay.append(element);labels.push({element,point});return element;}

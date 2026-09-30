@@ -62,9 +62,15 @@ export function mountGraphicsGallery(stage,inspect){
       controller=createWork(key,mode,s.group);article.querySelector('.graphics-readout').textContent=controller.readout;
       host.dataset.mode=mode;s.update();s.resize();
     }
-    const select=article.querySelector('select');
+    const select=article.querySelector('.embedded-mode select');
     if(select){select.disabled=!s;select.addEventListener('change',()=>{mode=select.value;build();});}
     article.querySelector('[data-restart]')?.addEventListener('click',build);
+    if(key==='fireworks'&&s){
+      const burst=(x=0,y=0)=>{controller.burst(x,y);s.update();s.draw();host.dataset.bursts=String(Number(host.dataset.bursts||0)+1);};
+      const add=document.createElement('button');add.type='button';add.textContent='Add burst';add.dataset.addBurst='';article.querySelector('[data-controls]').append(add);add.onclick=()=>burst();
+      s.pick=e=>{const rect=s.canvas.getBoundingClientRect(),ray=new THREE.Raycaster();ray.setFromCamera(new THREE.Vector2((e.clientX-rect.left)/rect.width*2-1,-(e.clientY-rect.top)/rect.height*2+1),s.camera);const p=new THREE.Vector3();if(ray.ray.intersectPlane(new THREE.Plane(new THREE.Vector3(0,0,1),0),p))burst(THREE.MathUtils.clamp(p.x,-1.4,1.4),THREE.MathUtils.clamp(p.y,-.8,.8));};
+      s.canvas.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();burst();}});
+    }
     s?.canvas.addEventListener('webglcontextlost',()=>{if(select)select.disabled=true;});
     s?.canvas.addEventListener('webglcontextrestored',()=>{if(select)select.disabled=false;});
     build();
@@ -82,6 +88,10 @@ export function mountGraphicsGallery(stage,inspect){
     const observer=new IntersectionObserver(([entry])=>{if(entry.isIntersecting){observer.disconnect();initialize();}},{rootMargin:'200px'});observer.observe(host);
   });
   const video=root.querySelector('video');
+  const videoControls=document.createElement('div');videoControls.className='scene-controls';videoControls.setAttribute('role','group');videoControls.setAttribute('aria-label','Saved ray-tracing video controls');
+  const replay=document.createElement('button');replay.type='button';replay.textContent='Restart video';replay.onclick=()=>{video.currentTime=0;video.play().catch(()=>{});};
+  const rateLabel=document.createElement('label');rateLabel.textContent='Playback speed ';const rate=document.createElement('select');rate.setAttribute('aria-label','Ray-tracing playback speed');for(const value of [.5,1,1.5,2]){const o=document.createElement('option');o.value=String(value);o.textContent=value+'x';o.selected=value===1;rate.append(o);}rate.onchange=()=>video.playbackRate=Number(rate.value);rateLabel.append(rate);videoControls.append(replay,rateLabel);video.after(videoControls);
+
   new IntersectionObserver(([e])=>{if(!e.isIntersecting)video.pause();},{threshold:.05}).observe(video);
   document.addEventListener('visibilitychange',()=>{if(document.hidden)video.pause();});
 }
@@ -119,8 +129,8 @@ function createWork(key,mode,group){
   if(key==='fireworks'){
     const balls=[],bursts=[];let seed=2026;const rand=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;};
     for(let i=0;i<16;i++){const radius=.035+rand()*.035,color=new THREE.Color().setHSL(.97+rand()*.045,1,.45+rand()*.25);const mesh=new THREE.Mesh(new THREE.CircleGeometry(radius,16),new THREE.MeshBasicMaterial({color}));mesh.position.set((rand()-.5)*2.5,(rand()-.5)*1.5,0);group.add(mesh);balls.push({mesh,r:radius,v:new THREE.Vector2((rand()-.5)*.8,(rand()-.5)*.8),alive:true});}
-    function explode(ball){ball.alive=false;ball.mesh.visible=false;for(let i=0;i<38;i++){const angle=i/38*Math.PI*2,mesh=new THREE.Mesh(new THREE.CircleGeometry(.012,5),new THREE.MeshBasicMaterial({color:new THREE.Color().setHSL(.97+i/38*.045,1,.5+i/38*.2),transparent:true,blending:THREE.AdditiveBlending}));mesh.position.copy(ball.mesh.position);group.add(mesh);bursts.push({mesh,v:new THREE.Vector2(Math.cos(angle)*(.3+rand()),Math.sin(angle)*(.3+rand())),life:1.5});}}
-    return{update(t,dt){dt*=mode==='slow'?.3:1;for(const b of balls){if(!b.alive)continue;b.mesh.position.x+=b.v.x*dt;b.mesh.position.y+=b.v.y*dt;if(Math.abs(b.mesh.position.x)>1.45-b.r){b.mesh.position.x=Math.sign(b.mesh.position.x)*(1.45-b.r);b.v.x*=-1;}if(Math.abs(b.mesh.position.y)>.85-b.r){b.mesh.position.y=Math.sign(b.mesh.position.y)*(.85-b.r);b.v.y*=-1;}}
+    function explode(ball){ball.alive=false;ball.mesh.visible=false;for(let i=0;i<38;i++){const angle=i/38*Math.PI*2,mesh=new THREE.Mesh(new THREE.CircleGeometry(.012,5),new THREE.MeshBasicMaterial({color:new THREE.Color().setHSL(.97+i/38*.045,1,.5+i/38*.2),transparent:true,blending:THREE.AdditiveBlending}));mesh.position.copy(ball.mesh.position).add(new THREE.Vector3(Math.cos(angle)*.065,Math.sin(angle)*.065,0));group.add(mesh);bursts.push({mesh,v:new THREE.Vector2(Math.cos(angle)*(.3+rand()),Math.sin(angle)*(.3+rand())),life:1.5});}}
+    return{burst(x,y){explode({alive:true,mesh:{position:new THREE.Vector3(x,y,0),visible:true}});},update(t,dt){dt*=mode==='slow'?.3:1;for(const b of balls){if(!b.alive)continue;b.mesh.position.x+=b.v.x*dt;b.mesh.position.y+=b.v.y*dt;if(Math.abs(b.mesh.position.x)>1.45-b.r){b.mesh.position.x=Math.sign(b.mesh.position.x)*(1.45-b.r);b.v.x*=-1;}if(Math.abs(b.mesh.position.y)>.85-b.r){b.mesh.position.y=Math.sign(b.mesh.position.y)*(.85-b.r);b.v.y*=-1;}}
       for(let i=0;i<balls.length;i++)for(let j=i+1;j<balls.length;j++){const a=balls[i],b=balls[j];if(a.alive&&b.alive&&a.mesh.position.distanceToSquared(b.mesh.position)<=(a.r+b.r)**2){explode(a);explode(b);}}
       for(let i=bursts.length-1;i>=0;i--){const p=bursts[i];p.life-=dt;p.v.y-=dt*.35;p.mesh.position.x+=p.v.x*dt;p.mesh.position.y+=p.v.y*dt;p.mesh.material.opacity=Math.max(0,p.life/1.5);if(p.life<=0){group.remove(p.mesh);p.mesh.geometry.dispose();p.mesh.material.dispose();bursts.splice(i,1);}}},readout:'16-ball collision excerpt · disappearing balls + crimson particles'};
   }

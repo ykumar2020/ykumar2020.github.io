@@ -1,0 +1,21 @@
+/* Discoverable controls for every live view; leave vertical touch scrolling free. */
+.scene-controls{align-items:center;gap:8px}
+.scene-controls label{display:flex;align-items:center;gap:8px;flex-wrap:wrap;max-width:100%;font-size:.78rem;color:#ead8de}
+.scene-controls select{color:#ffe6ec;background:#170e16;border:1px solid #8b4758;padding:8px;min-height:44px;font:inherit}
+.scene-controls input[type=range]{width:110px;max-width:100%;min-height:44px;accent-color:#ff8293}
+.scene-controls button{font:inherit;font-size:.78rem}
+.scene-controls button[aria-pressed=true]{border-color:#ff8293}
+.scene-controls :focus-visible,canvas:focus-visible{outline:3px solid #ffc0cc;outline-offset:3px}
+.scene-interaction-hint{color:#ddbdc6;font:.72rem/1.6 var(--font-meta);text-align:center;margin:6px 10px 16px}
+#hero-art-scene canvas{pointer-events:auto;cursor:grab;touch-action:pan-y}
+#hero-art-scene canvas:active{cursor:grabbing}
+.bma-controls{display:grid;gap:8px;margin:14px 0}
+.bma-controls label{display:grid;grid-template-columns:1fr auto;gap:6px;text-align:left;font-size:.8rem;color:#f4dce3}
+.bma-controls input{grid-column:1/-1;width:100%;min-height:36px;accent-color:#ff8293}
+.bma-controls output{font-family:var(--font-meta)}
+.hero-top-controls{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;position:relative;z-index:2}
+.grid-controls{padding:8px 0 20px;justify-content:flex-start;max-width:100%;position:relative;z-index:2}
+.grid-controls>span{font:.7rem var(--font-meta);color:#ffb7c6}
+.grid-controls button,.grid-controls select{background:#100a11e8}
+.grid-controls input{width:90px}
+@media(max-width:767px){.hero-top-controls{justify-content:flex-start}.grid-controls{gap:6px}.grid-controls button{padding:7px 9px;font-size:.7rem}.scene-controls{padding-inline:6px}.scene-interaction-hint{font-size:.68rem}}

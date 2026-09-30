@@ -20,8 +20,9 @@ export function mountConnectomeImages(stage){
    const spin=document.createElement('button');spin.type='button';spin.dataset.brainRotate='';
    function updateSpin(){spin.textContent=rotating?'Pause rotation':'Resume rotation';spin.setAttribute('aria-pressed',String(rotating));host.dataset.autoRotate=String(rotating);}
    updateSpin();card.querySelector('[data-controls]').prepend(spin);
+   for(const [action,label] of [['up','Tilt up'],['down','Tilt down']]){const button=document.createElement('button');button.type='button';button.dataset.tilt=action;button.textContent=label;card.querySelector('[data-controls]').append(button);}
    spin.addEventListener('click',()=>{rotating=!rotating;updateSpin();});
-   function redraw(){s.update();s.resize();}
+   function redraw(){host.dataset.viewRotation=JSON.stringify([tiltX,tiltY]);s.update();s.resize();}
    try{
     const [gltf,manifest]=await Promise.all([new GLTFLoader().loadAsync(host.dataset.mesh),fetch('assets/connectomes/meshes.json').then(r=>{if(!r.ok)throw Error('Manifest unavailable');return r.json();})]);
     const dataset=manifest.datasets.find(d=>d.key===host.dataset.dataset);
@@ -37,7 +38,7 @@ export function mountConnectomeImages(stage){
    }catch(err){host.dataset.state='fallback';host.dataset.asset='failed';card.querySelector('[data-controls]').hidden=true;card.querySelector('[data-mesh-status]').textContent='3D loading unavailable. The reference illustration and downloadable mesh remain available.';}
    card.querySelector('[data-controls]').addEventListener('click',e=>{
     const action=e.target.closest('[data-tilt]')?.dataset.tilt;
-    if(action==='left')tiltY-=.2;if(action==='right')tiltY+=.2;
+    if(action==='left')tiltY-=.2;if(action==='right')tiltY+=.2;if(action==='up')tiltX-=.2;if(action==='down')tiltX+=.2;tiltX=THREE.MathUtils.clamp(tiltX,-1.4,1.4);
     if(action==='reset'){tiltX=tiltY=angle=0;zoom=1;card.querySelector('[data-image-zoom]').value='100';}
     if(action)redraw();
    });

@@ -20,7 +20,7 @@ with sync_playwright() as p:
  for host in page.locator('.embedded-scene').all():
   sid=host.get_attribute('id');key=host.get_attribute('data-work');article=host.locator('..')
   host.scroll_into_view_if_needed();page.wait_for_function('(id)=>document.getElementById(id).dataset.state==="ready"',arg=sid)
-  select=article.locator('select')
+  select=article.locator('.embedded-mode select')
   options=select.locator('option').evaluate_all('(els)=>els.map(e=>e.value)') if select.count() else [host.get_attribute('data-mode')]
   for mode in options:
    if select.count():select.select_option(mode)
@@ -29,14 +29,14 @@ with sync_playwright() as p:
    if key=='swirl':assert f'{(int(mode)-1)*int(mode)*2+2:,}' in text
   if select.count():select.select_option({'torus':'wire','swirl':'90','solar':'20'}[key])
   page.wait_for_timeout(250);n=host.get_attribute('data-frames');page.wait_for_timeout(200);assert n==host.get_attribute('data-frames')
-  # Save the actual default red rendering as its own static fallback.
-  host.locator('canvas').screenshot(path=str(ROOT/f'assets/graphics/{sid}-red.png'))
+  # Capture the default red rendering for QA without changing shipped fallbacks.
+  host.locator('canvas').screenshot(path=str(ROOT/f'qa/{sid}-red.png'))
   report['studies'].append([sid,options])
  host=page.locator('#work-swirl-90');host.scroll_into_view_if_needed()
- page.locator('[data-controls=work-swirl-90] [data-motion-toggle]').click();page.wait_for_timeout(300)
+ page.locator('[data-controls=work-swirl-90] [data-scene-motion]').click();page.wait_for_timeout(300)
  before=host.locator('canvas').screenshot();page.wait_for_timeout(400);assert before!=host.locator('canvas').screenshot()
- page.locator('[data-controls=work-swirl-90] [data-motion-toggle]').click();page.locator('[data-controls=work-swirl-90] [data-turn=right]').click()
- page.locator('[data-controls=work-swirl-90] [data-motion-toggle]').click();page.locator('#contact').scroll_into_view_if_needed();page.wait_for_timeout(300);n=host.get_attribute('data-frames');page.wait_for_timeout(300);assert n==host.get_attribute('data-frames')
+ page.locator('[data-controls=work-swirl-90] [data-scene-motion]').click();page.locator('[data-controls=work-swirl-90] [data-turn=right]').click()
+ page.locator('[data-controls=work-swirl-90] [data-scene-motion]').click();page.locator('#contact').scroll_into_view_if_needed();page.wait_for_timeout(300);n=host.get_attribute('data-frames');page.wait_for_timeout(300);assert n==host.get_attribute('data-frames')
  page.locator('#motion-toggle').click()
  video=page.locator('#graphics video');video.scroll_into_view_if_needed();video.evaluate('(v)=>v.load()');page.wait_for_function("document.querySelector('video').readyState>=2");assert video.evaluate('(v)=>v.duration')>0
  video.evaluate('(v)=>v.play()');page.wait_for_timeout(350);assert video.evaluate('(v)=>v.currentTime')>0
@@ -48,7 +48,7 @@ with sync_playwright() as p:
  page.add_script_tag(path=str(ROOT/'qa/axe.min.js'));audit=page.evaluate('async()=>await axe.run(document,{runOnly:{type:"tag",values:["wcag2a","wcag2aa","wcag21aa","wcag22aa"]}})')
  report['violations']=[{'id':v['id'],'targets':[n['target'] for n in v['nodes']]} for v in audit['violations']]
  host.scroll_into_view_if_needed();page.evaluate("document.querySelector('#work-swirl-90 canvas').getContext('webgl2').getExtension('WEBGL_lose_context').loseContext()")
- page.wait_for_function("document.querySelector('#work-swirl-90').dataset.state==='fallback'");assert host.locator('img').is_visible();assert page.locator('[data-project=swirl] select').is_disabled()
+ page.wait_for_function("document.querySelector('#work-swirl-90').dataset.state==='fallback'");assert host.locator('img').is_visible();assert page.locator('[data-project=swirl] .embedded-mode select').is_disabled()
  for link in page.locator('.graphics-source-index a[href]').evaluate_all('(els)=>els.map(e=>e.getAttribute("href")).filter(h=>!h.startsWith("http"))'):assert page.request.get(BASE+link).status==200
  assert not errors,errors;b.close()
 report['errors']=errors;(ROOT/'qa/graphics-test-results.json').write_text(json.dumps(report,indent=2));print(json.dumps(report,indent=2));assert not report['violations']
