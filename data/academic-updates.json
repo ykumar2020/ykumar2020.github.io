@@ -1,0 +1,23 @@
+{
+  "updated": "2026-09-30",
+  "sources": [
+    {
+      "name": "Copy of Copy of Copy of NSF CSGrad4US Annual Activities Report 1.docx",
+      "sha256": "c2ac722efda7e916671897688b0789d984d3e1e01e97e3122854160fae241730"
+    },
+    {
+      "name": "Evidence for effectiveness of teaching_20261.docx",
+      "sha256": "decd4edf51f5d7157c590255262484e050803a1a2f3b9072035fee416656ba6d"
+    }
+  ],
+  "scope": "Public academic summaries only; original reports are not published. Administrative contact information, grades, financial support details and plans are omitted. April citation counts are not presented as current metrics.",
+  "changes": [
+    "Research and publications before projects; bibliography before coauthor graph.",
+    "Doctoral focus: multimodal ML, compression, distributed AI, accessibility.",
+    "Report-based ISEC, GMiS, DCC and NAIRR highlights.",
+    "Eight curriculum development examples and two virtual labs developed with Dov Kruger.",
+    "Earlier teaching appointments dated from the teaching portfolio.",
+    "cv-23 accepted status attributed to annual report; no duplicate publication records added."
+  ],
+  "publicationReconciliation": "All 23 annual-report publication entries matched existing bibliography records. Later published metadata retained where reports give older accepted/in-press statuses."
+}

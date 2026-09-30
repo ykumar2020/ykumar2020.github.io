@@ -127,3 +127,10 @@ Run `python tools/build_collaborators.py` after bibliography updates to regenera
 Removed the illustrative "Geometry / Structure / Evidence" mesh and its renderer; all six research descriptions remain visible in a two-column text layout. Jose Serra's previously abbreviated `J. Serra` entry now uses his full name and appears in the initial coauthor group, with three supporting records. The full-name match is documented by the author reference on page 1 of https://par.nsf.gov/servlets/purl/10351915. His node uses initials until a verified portrait is available.
 
 The two image relief displays now rotate continuously by default, at one revolution per minute while visible. Each has a local pause/resume rotation button; dragging pauses its automatic rotation, and Reset returns to the front. Global pause, reduced-motion still frames, visibility suspension and the 30 fps cap still apply. These remain image-based artistic reliefs, not reconstructed anatomical volumes; turning them does not reveal measured hidden anatomy.
+
+
+## Research-first academic update (September 30)
+
+The opening profile is followed by research focus and selected works, the full bibliography and collaborator graph, then projects and graphics. About/background follows teaching. Both supplied 2026 reports inform the doctoral-research narrative, conference and mentorship highlights, eight curriculum-development examples, two virtual labs co-developed with Dov Kruger, and earlier teaching dates. `data/academic-updates.json` records source-document hashes and editorial scope. The original DOCX files are not published; personal administrative details are excluded. Reported curriculum changes are not represented as controlled evidence of learning gains, and historical citation counts are not used as current metrics.
+
+No duplicate publication records were added. The existing SolicitationWizard record is now labeled Accepted, attributed explicitly to the annual report; independently verified published statuses are retained where the reports are older.

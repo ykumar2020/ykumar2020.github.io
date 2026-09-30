@@ -21,6 +21,11 @@ with sync_playwright() as p:
     page.on('console',lambda e:errors.append(e.text) if e.type=='error' else None)
     assert page.goto(BASE,wait_until='networkidle').status==200
     page.wait_for_function("document.querySelector('#grid-scene').dataset.state==='ready'")
+    assert page.locator('main > section').evaluate_all('(els)=>els.map(e=>e.id)') == ['research','publications','projects','graphics','connectomes','teaching','about','experience','service','contact']
+    assert page.locator('.research-selected li').count()==6
+    assert page.locator('.teaching-case').count()==8
+    assert page.locator('#publication-list').bounding_box()['y'] < page.locator('#knowledge-panel').bounding_box()['y']
+    report['checks'] += ['Research and bibliography precede projects; six selected works and eight teaching examples']
     assert page.locator('h1').count()==1
     assert 'Julie' in page.locator('h1').inner_text() and 'Kumar' in page.locator('h1').inner_text()
     assert page.locator('#publication-list .paper').count()==77
