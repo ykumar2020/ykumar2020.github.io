@@ -1,3 +1,4 @@
+import {mountSingularity} from './singularity.js';
 import * as THREE from 'three';
 import {mountGraphicsGallery} from './graphics-work.js';
 import {mountConnectomeImages} from './connectome-images.js';
@@ -123,6 +124,7 @@ export function mountAcademicVisuals(){
     document.querySelector('#home').addEventListener('pointerleave',()=>{px=py=0;});
     s.update=(time=t)=>{t=time;loom.update(t,{x:.1+py,y:px});};
   });
+  mountSingularity(stage,inspect);
   mountResearchWorkbench(stage,inspect);
   mountGraphicsGallery(stage,inspect);
   mountConnectomeImages(stage);

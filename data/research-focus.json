@@ -1,0 +1,15 @@
+{
+  "ASI-Risk": {
+    "ids": [
+      "cv-10",
+      "cv-38"
+    ],
+    "scope": "Existential-risk analysis and AGI evaluation context."
+  },
+  "Recursive-Systems": {
+    "ids": [
+      "cv-07"
+    ],
+    "scope": "Compiler feedback and generated-code iteration; not a claim of demonstrated recursive self-improvement."
+  }
+}

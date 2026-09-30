@@ -19,10 +19,11 @@ const yearFilter = document.querySelector('#publication-year');
 const statusFilter = document.querySelector('#publication-status');
 const showAll = document.querySelector('#show-all-publications');
 let selected = 'All';
+let selectedFocus = 'All';
 let visibleLimit = 6;
 function updatePapers() {
   const query = search.value.trim().toLocaleLowerCase();
-  const matches = papers.filter(p => (selected === 'All' || p.dataset.topic === selected) && (!yearFilter.value || p.dataset.year === yearFilter.value) && (!statusFilter.value || p.dataset.status === statusFilter.value) && p.textContent.toLocaleLowerCase().includes(query));
+  const matches = papers.filter(p => (selected === 'All' || p.dataset.topic === selected) && (selectedFocus === 'All' || (p.dataset.focus||'').split(' ').includes(selectedFocus)) && (!yearFilter.value || p.dataset.year === yearFilter.value) && (!statusFilter.value || p.dataset.status === statusFilter.value) && p.textContent.toLocaleLowerCase().includes(query));
   papers.forEach(p => p.hidden = true);
   matches.slice(0, visibleLimit).forEach(p => p.hidden = false);
   count.textContent = 'Showing ' + Math.min(visibleLimit, matches.length) + ' of ' + matches.length + ' bibliography records';
@@ -85,7 +86,7 @@ if ('IntersectionObserver' in window) {
 
 // The visuals enhance the document; scholarly content never depends on WebGL.
 let visuals;
-const visualReady = import('./assets/planets.js?v=20260930-live-labs').then(module => {
+const visualReady = import('./assets/planets.js?v=20260930-singularity').then(module => {
   visuals = module.mountAcademicVisuals();
   return visuals;
 }).catch(() => null);
@@ -248,6 +249,7 @@ updatePapers();
 
 // Committee shortcut uses the existing filter, keeping list and network synchronized.
 document.querySelector('[data-jump-year]')?.addEventListener('click',()=>{
+ setResearchFocus('All');
  document.querySelector('[data-filter="All"]').click();
  document.querySelector('#publication-search').value='';
  document.querySelector('#publication-status').value='';
@@ -258,3 +260,18 @@ window.addEventListener('message',event=>{
  const frame=document.querySelector('#attack-frame');
  if(frame&&event.source===frame.contentWindow&&event.origin===location.origin&&event.data?.type==='lab-height'&&Number.isFinite(event.data.height))frame.style.height=Math.max(450,Math.min(1900,event.data.height+12))+'px';
 });
+
+function setResearchFocus(value){
+ selectedFocus=value;visibleLimit=6;
+ document.querySelectorAll('[data-focus-filter]').forEach(b=>{const active=b.dataset.focusFilter===value;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));});
+ updatePapers();
+}
+document.querySelectorAll('[data-focus-filter]').forEach(b=>b.addEventListener('click',()=>setResearchFocus(b.dataset.focusFilter)));
+function resetResearchFilters(){
+ selectedFocus='All';search.value='';yearFilter.value='';statusFilter.value='';document.querySelector('[data-filter="All"]').click();
+}
+document.querySelectorAll('[data-focus-jump]').forEach(a=>a.addEventListener('click',()=>{resetResearchFilters();setResearchFocus(a.dataset.focusJump);}));
+document.querySelectorAll('[data-paper-jump]').forEach(a=>a.addEventListener('click',e=>{
+ e.preventDefault();resetResearchFilters();setResearchFocus('All');visibleLimit=papers.length;updatePapers();
+ const paper=document.getElementById(a.dataset.paperJump);if(paper){paper.scrollIntoView({block:'start'});const title=paper.querySelector('h3');title.tabIndex=-1;title.focus({preventScroll:true});}
+}));

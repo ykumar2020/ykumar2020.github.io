@@ -1,0 +1,12 @@
+{
+  "checkedAt": "2026-09-30",
+  "foundation": {
+    "publicationId": "cv-10",
+    "record": "https://researchers.kean.edu/en/publications/a-systematic-analysis-ofagi-andasi-existential-risk-scenarios/",
+    "doi": "https://doi.org/10.1007/978-3-032-12313-8_2",
+    "verifiedScope": "Published 2026 chapter, pp. 17-37; abstract discusses uncertain singularity timelines, self-improvement, existential risk and human oversight."
+  },
+  "editorialScope": "Three threat-model sketches and the horizon simulation are new illustrative website content, not the chapter taxonomy, validated defenses, or proof of ASI containment. Compiler record follows supplied CV; public implementation not verified. Related repositories are labeled by scope.",
+  "model": "labs/horizon-core.mjs",
+  "focusMapping": "data/research-focus.json"
+}

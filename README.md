@@ -170,3 +170,16 @@ The hero now uses an analytic capsule and its exact Blum medial axis, replacing 
 - `data/artifacts.json` contains only identified public artifacts. No verified-reproduction or paper-pass-rate badges are inferred. Other records say when artifacts have not been verified. Original private manuscripts and administrative documents are not published.
 
 Run `node tests/check_workbench.mjs` to reproduce 14 named numerical and import-validation cases and regenerate the dated, source-hashed `data/workbench-checks.json`. With the local preview running, `python tests/check_workbench_browser.py` checks controls, trace downloads, safe import handling, mobile widths and automated accessibility. Those checks validate these demonstrations, not research findings or production security. Existing shared WebGL caps (30 fps, DPR 1.5), offscreen freezing, reduced-motion stills and pause controls remain in force.
+
+
+## Singularity and recursive governance
+
+The seventh research pillar frames the Singularity as a hypothetical verification challenge, with a prominent Springer 2026 chapter callout and the `[FOCUS] AGI/ASI Containment & Governance` pass. The institutional abstract supports the chapter context; `data/singularity-provenance.json` records the distinction between the paper and this website's new scenario sketches. No claim of universal provable containment, goal detection, alignment or demonstrated recursive self-improvement is made.
+
+`src/singularity.js` renders a red horizon, an agent tree and high-depth compiler-feedback loops through the existing shared stage (30 fps, DPR 1.5, visibility freezing, pause, reduced motion and WebGL fallback). Scrolling contracts only the visual network; the numeric model changes only through labeled controls. `labs/horizon-core.mjs` uses explicit synthetic assumptions: 2^k agents, one action per agent per eight seconds, one reviewer, and 32 assumed tokens per action. The pre-action gate holds all proposed actions if depth exceeds four or offered arrivals exceed review capacity. The visitor can disable the gate and export the resulting backlog calculation. This does not run agents or a compiler.
+
+Three native expandable threat-model rows cover recursive drift, information asymmetry and epistemic poisoning. Each identifies assumptions, candidate controls, residual risks and related artifacts. Related Matryoshka and poisoning repositories are not represented as validated collusion detectors or AutoNutriFact implementations. Public compiler and AutoNutriFact verification repositories are not claimed.
+
+`data/research-focus.json` supplies editorial publication tags. ASI-Risk includes the existential-risk chapter and AGI evaluation review; Recursive-Systems currently selects the compiler-in-the-loop record only. Tags compose with the existing filters and keep the collaborator network synchronized. Paper deep links reset restrictive filters so the requested record is visible.
+
+Checks: `node tests/check_horizon.mjs` exercises authorization/overload boundaries, throughput equations, ungated queue growth, all eight levels and invalid controls. `python tests/check_singularity.py` covers browser controls, downloads, matrix disclosure, filter/network parity, motion behavior, context loss, responsive layout, no-JavaScript content and automated accessibility.

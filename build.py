@@ -4,6 +4,7 @@ import html, json, re
 root=Path(__file__).parent
 data=json.loads((root/'data/publications.json').read_text(encoding='utf-8'))
 cards=[]
+focus=json.loads((root/'data/research-focus.json').read_text(encoding='utf8'))
 artifacts=json.loads((root/'data/artifacts.json').read_text(encoding='utf8'))
 def bib_escape(value):
     replacements={'\\':r'\textbackslash{}','&':r'\&','%':r'\%','_':r'\_','#':r'\#','$':r'\$','{':r'\{','}':r'\}'}
@@ -19,6 +20,9 @@ def bibtex(p):
     return '@misc{kumar-'+p['id']+',\n'+',\n'.join('  '+k+' = {'+v+'}' for k,v in fields.items())+'\n}'
 
 for i,p in enumerate(data):
+    tags=[tag for tag,entry in focus.items() if p['id'] in entry['ids']]
+    tag_data=' '.join(tags)
+    tag_html='<div class="paper-focus-tags">'+''.join('<span>#'+html.escape(tag)+'</span>' for tag in tags)+'</div>' if tags else ''
     e=lambda key:html.escape(str(p[key]),quote=True)
     link=f'<a class="paper-link" href="{e("url")}" target="_blank" rel="noopener noreferrer">{e("linkLabel")} <span aria-hidden="true">↗</span></a>' if p['url'] else '<span class="paper-pending">No public link listed</span>'
     note=f'<p class="paper-note">{html.escape(p["note"])}</p>' if p.get('note') else ''
@@ -30,11 +34,12 @@ for i,p in enumerate(data):
     artifact_links=''.join('<li><a href="'+html.escape(a['url'],quote=True)+'">'+html.escape(a['label'])+'</a></li>' for a in artifact.get('links',[]))
     artifact_note=artifact.get('note','No public code, dataset, or model weights have been verified for this bibliography record. The publication link and BibTeX citation remain available where listed.')
     artifact_drawer='<details class="artifact-drawer"><summary>Artifacts &amp; evidence'+(' / '+str(len(artifact['links']))+' links' if artifact_links else '')+'</summary><ul>'+artifact_links+'</ul><p>'+html.escape(artifact_note)+'</p></details>'
-    cards.append(f'''<article class="paper" id="{e('id')}" data-topic="{e('topic')}" data-year="{p['year']}" data-status="{e('status')}">
+    cards.append(f'''<article class="paper" id="{e('id')}" data-focus="{tag_data}" data-topic="{e('topic')}" data-year="{p['year']}" data-status="{e('status')}">
 <div class="paper-year">{p['year']}<span>{e('status')}</span></div>
-<div class="paper-body"><p class="paper-topic">{e('topic')}</p><h3>{e('title')}</h3><p class="paper-authors">{e('authors')}</p><p class="paper-venue">{e('venue')}</p>{note}<div class="paper-actions">{link}{related}<button class="copy-citation" type="button" data-citation="{html.escape(citation,quote=True)}" aria-label="Copy citation for {e('title')}">Copy citation</button></div>{artifact_drawer}{drawer}</div>
+<div class="paper-body"><p class="paper-topic">{e('topic')}</p><h3>{e('title')}</h3>{tag_html}<p class="paper-authors">{e('authors')}</p><p class="paper-venue">{e('venue')}</p>{note}<div class="paper-actions">{link}{related}<button class="copy-citation" type="button" data-citation="{html.escape(citation,quote=True)}" aria-label="Copy citation for {e('title')}">Copy citation</button></div>{artifact_drawer}{drawer}</div>
 </article>''')
 template=(root/'template.html').read_text(encoding='utf-8')
+template=template.replace('<!-- SINGULARITY_PILLAR -->',(root/'labs/singularity.html').read_text(encoding='utf8'))
 template=template.replace('<!-- LIVE_WORKBENCH -->',(root/'labs/workbench.html').read_text(encoding='utf8'))
 attack=(root/'labs/attack-template.html').read_text(encoding='utf8').replace('/* POISON_CORE */',(root/'labs/poison-core.mjs').read_text(encoding='utf8').replace('export function','function'))
 (root/'labs/attack-inspector.html').write_text(attack,encoding='utf8')
