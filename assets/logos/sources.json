@@ -1,0 +1,38 @@
+[
+  {
+    "organization": "kean",
+    "file": "kean.svg",
+    "url": "https://www.kean.edu/themes/custom/kean/logo.svg",
+    "source": "https://www.kean.edu/logos",
+    "retrieved": "2026-09-30",
+    "sha256": "e7f54ce740a3e1b90cb60c0a3c6921c02525c2a8efd27d6be93e6c97b4167023",
+    "treatment": "Original source bytes; displayed with contain sizing; no recoloring, crop, rotation or animation."
+  },
+  {
+    "organization": "rutgers",
+    "file": "rutgers.svg",
+    "url": "https://communications.rutgers.edu/sites/default/files/RUTGERS_H_WHITE.svg",
+    "source": "https://communications.rutgers.edu/services-resources/logos-signatures-and-visual-identity",
+    "retrieved": "2026-09-30",
+    "sha256": "de1e4b50e166e7bbbe91e9cf52d604e3a1227f32a9aad288d30e8322efaf4c52",
+    "treatment": "Original source bytes; displayed with contain sizing; no recoloring, crop, rotation or animation."
+  },
+  {
+    "organization": "nsf",
+    "file": "nsf.svg",
+    "url": "https://www.nsf.gov/themes/custom/nsf_theme/components/molecules/logo/logo-vector.svg",
+    "source": "https://www.nsf.gov/",
+    "retrieved": "2026-09-30",
+    "sha256": "9d5ce5ffc4631ad3d64b02709b1dc0b13987952f902ce71b7067c9dfd9713643",
+    "treatment": "Original source bytes; displayed with contain sizing; no recoloring, crop, rotation or animation."
+  },
+  {
+    "organization": "ncwit",
+    "file": "ncwit.svg",
+    "url": "https://ncwit.org/wp-content/uploads/2024/06/NCWITdotOrg_Color.svg",
+    "source": "https://ncwit.org/",
+    "retrieved": "2026-09-30",
+    "sha256": "641011adb614397848d9a1481c27983344bc1bb7769c9b1baecdddfed5e3274f",
+    "treatment": "Original source bytes; displayed with contain sizing; no recoloring, crop, rotation or animation."
+  }
+]

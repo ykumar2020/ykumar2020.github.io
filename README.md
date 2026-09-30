@@ -134,3 +134,8 @@ The two image relief displays now rotate continuously by default, at one revolut
 The opening profile is followed by research focus and selected works, the full bibliography and collaborator graph, then projects and graphics. About/background follows teaching. Both supplied 2026 reports inform the doctoral-research narrative, conference and mentorship highlights, eight curriculum-development examples, two virtual labs co-developed with Dov Kruger, and earlier teaching dates. `data/academic-updates.json` records source-document hashes and editorial scope. The original DOCX files are not published; personal administrative details are excluded. Reported curriculum changes are not represented as controlled evidence of learning gains, and historical citation counts are not used as current metrics.
 
 No duplicate publication records were added. The existing SolicitationWizard record is now labeled Accepted, attributed explicitly to the annual report; independently verified published statuses are retained where the reports are older.
+
+
+## Official affiliation logos
+
+The opening affiliation strip uses official Kean and Rutgers white wordmarks, the NSF seal, and the NCWIT color wordmark, linked to their organizations and accompanied by Julie's specific roles. `assets/logos/sources.json` records the official download URLs and SHA-256 hashes. Assets remain unmodified, with contain sizing and no tinting, cropping, rotation, or animation. IEEE membership and AAAI committee service remain text labels.
