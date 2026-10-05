@@ -1,0 +1,26 @@
+{
+  "model": "gpt-4o-mini-tts",
+  "voice": "marin",
+  "instructions": "A warm, natural university teaching assistant. Calm conversational American English, clear explanation, approximately 150 words per minute. Brief pauses between ideas, no theatrical delivery, no music. Read the supplied lecture script exactly; do not add a greeting or conclusion. Pronounce mathematical notation naturally. Say T S N E for t-SNE and P C A for PCA.",
+  "reference": "Same model, voice and delivery instructions as Visualization_07/Production/narrate.py (Bad Graphs).",
+  "clips": [
+    {
+      "file": "sample-1-marin-4cb6bc68a3db.mp3",
+      "seconds": 16.608,
+      "textHash": "1617c77ab6e409526fc7a3118d9b4fc9e14a573583a1b0b8da8e81211b9e9cb2",
+      "audioHash": "0e715c89e958b1c94eb57b291676870e5fe4ce34f4f60cf4f552651185d4881a"
+    },
+    {
+      "file": "sample-2-marin-d3134b720408.mp3",
+      "seconds": 20.112,
+      "textHash": "27a2077c929e11985e92c315850df31a7014b312bba232ad6a25dd427dda761f",
+      "audioHash": "1dd55206b06d78db6913bbf8b5705633600fcf681a9151fcdfce2e05f2ff5f63"
+    },
+    {
+      "file": "sample-3-marin-a8dab91a0e22.mp3",
+      "seconds": 18.768,
+      "textHash": "7339c10b071a591b9ec1044a91ccebad6c0f4bf6a24fd664bfe80848c15cef4e",
+      "audioHash": "7a581bf969b0e3c49b4989548615d5b0b48e8b25924750888b29348e8e325d78"
+    }
+  ]
+}

@@ -186,3 +186,11 @@ Checks: `node tests/check_horizon.mjs` exercises authorization/overload boundari
 
 
 Jose Serra now has the exact portrait supplied by Julie in chat on September 30, 2026. It is stored unchanged in `assets/collaborators/jose-serra.png`, with its hash and user-supplied provenance in the collaborator manifest. The network builder preserves this attribution; it is not labeled as an official university photo. His three linked records and supplied Scholar URL are retained.
+
+
+Public Julie rehearsal (October 5, 2026): the Give Julie the floor button plays
+three pre-generated Marin recordings matching the Bad Graphs lecture voice.
+The bundled browser code makes no speech-generation or microphone requests and
+has no operating-system voice fallback. Audio and its provenance manifest live
+in julie/voice/. Canonical sources and the export script are in the private
+JulieVirtualTA repository. Run tests/recorded_rehearsal.py to check playback.
