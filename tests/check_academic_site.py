@@ -21,14 +21,22 @@ with sync_playwright() as p:
     page.on('console',lambda e:errors.append(e.text) if e.type=='error' else None)
     assert page.goto(BASE,wait_until='networkidle').status==200
     page.wait_for_function("document.querySelector('#grid-scene').dataset.state==='ready'")
-    assert page.locator('main > section').evaluate_all('(els)=>els.map(e=>e.id)') == ['research','publications','projects','graphics','connectomes','teaching','about','experience','service','contact']
+    assert page.locator('main > section').evaluate_all('(els)=>els.map(e=>e.id)') == ['julie-apps','research','publications','projects','graphics','connectomes','teaching','about','experience','service','contact']
+    assert page.locator('#julie-apps').bounding_box()['y'] < page.locator('#research').bounding_box()['y']
+    assert page.locator('#julie-apps .julie-app-card').count()==4
+    assert page.locator('#julie-apps .julie-app-card').evaluate_all('(xs)=>xs.map(x=>x.href)')==[
+        'https://julie-teaching-studio.ykumar667598.chatgpt.site/',
+        'https://weather-with-julie.vercel.app/',
+        'https://weather-with-julie.vercel.app/news',
+        'https://www.youtube.com/@yuliakumar8682'
+    ]
     assert page.locator('.research-selected li').count()==6
     assert page.locator('.frontier-paper').evaluate_all('(xs)=>xs.map(x=>x.dataset.publication)')==['cv-10','cv-38']
     assert page.locator('.frontier-research').bounding_box()['y'] < page.locator('.research-program').bounding_box()['y']
     assert page.locator('.teaching-case').count()==8
     assert page.locator('#publication-list').bounding_box()['y'] < page.locator('#knowledge-panel').bounding_box()['y']
-    report['checks'] += ['Research and bibliography precede projects; six selected works and eight teaching examples']
-    assert page.locator('.portrait-slide').count()==10
+    report['checks'] += ['Four Julie projects appear immediately before research','Research and bibliography precede projects; six selected works and eight teaching examples']
+    assert page.locator('.portrait-slide').count()==9
     assert page.locator('.portrait-slide img').evaluate_all('(xs)=>xs.slice(0,3).map(i=>i.getAttribute("src"))')==['assets/julie-mit.webp','assets/julie-princeton.webp','assets/julie-amigo.webp']
     assert page.locator('.photo-caption').inner_text()=='MIT \u00b7 Stata Center'
     assert page.locator('h1').count()==1
