@@ -30,16 +30,17 @@ html[data-motion="playing"] .julie-app-card.is-julie-visible .julie-app-visual i
   height: 149px;
   pointer-events: none;
   transform: translate3d(var(--julie-runner-x), 0, 0);
-  transition: transform .12s linear, opacity .25s ease;
+  transition: opacity .25s ease;
   opacity: 0;
   filter: drop-shadow(0 10px 9px #0009) drop-shadow(0 0 8px #ff9bad55);
   contain: layout paint style;
 }
 
-.julie-runner-track.is-ready { opacity: .94; }
-.julie-runner-track.is-resting { opacity: 0; }
+.julie-runner-track.is-ready { opacity: .96; }
 .julie-runner-track[data-direction="left"] .julie-runner-sprite { transform: scaleX(-1); }
 .julie-runner-sprite {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   background-image: url("assets/julie-run-cycle-v1.webp");
@@ -50,20 +51,43 @@ html[data-motion="playing"] .julie-app-card.is-julie-visible .julie-app-visual i
 }
 
 .julie-runner-track.is-running .julie-runner-sprite { animation: julie-run-lean .32s ease-in-out infinite alternate; }
+.julie-runner-track.is-resting { width: 126px; height: 189px; }
+.julie-runner-track.is-resting .julie-runner-sprite { opacity: 0; }
+.julie-greeting { position:absolute; inset:0; opacity:0; transition:opacity .2s ease; }
+.julie-runner-track.is-resting .julie-greeting { opacity:1; }
+.julie-greeting img { display:none; width:100%; height:100%; object-fit:contain; object-position:center bottom; filter:drop-shadow(0 9px 8px #0009); animation:julie-hello 1.25s ease-in-out infinite; transform-origin:50% 100%; }
+.julie-runner-track[data-greeting="one"] .julie-greeting-one,
+.julie-runner-track[data-greeting="two"] .julie-greeting-two { display:block; }
+.julie-hi { position:absolute; right:-2px; top:13px; padding:4px 7px; border:1px solid #ff8da0; border-radius:999px; background:#0b101aeb; color:#fff1f4; font:700 .66rem/1 var(--font-tech); letter-spacing:.08em; box-shadow:0 5px 14px #0008; animation:julie-hi-pop 1.25s ease-in-out infinite; }
 
 @keyframes julie-run-lean {
   from { translate: 0 1px; rotate: -.6deg; }
   to { translate: 0 -1px; rotate: .6deg; }
 }
 
+@keyframes julie-hello {
+  0%,100% { transform:translateY(0) rotate(-.6deg); }
+  45% { transform:translateY(-5px) rotate(1deg); }
+  70% { transform:translateY(-2px) rotate(-.2deg); }
+}
+
+@keyframes julie-hi-pop {
+  0%,100% { transform:scale(.94); opacity:.82; }
+  45% { transform:scale(1.06); opacity:1; }
+}
+
 @media (max-width: 620px) {
   .julie-runner-track { width: 80px; height: 107px; bottom: 7px; }
+  .julie-runner-track.is-resting { width: 92px; height: 138px; }
+  .julie-hi { right:-1px; top:9px; font-size:.58rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .julie-app-visual img,
   .julie-runner-track,
-  .julie-runner-sprite { animation: none !important; transition: none !important; }
+  .julie-runner-sprite,
+  .julie-greeting img,
+  .julie-hi { animation: none !important; transition: none !important; }
   .julie-runner-track { display: none; }
 }
 

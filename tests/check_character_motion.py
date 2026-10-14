@@ -11,17 +11,22 @@ with sync_playwright() as playwright:
     assert page.goto(base, wait_until="domcontentloaded").status == 200
     runner = page.locator(".julie-runner-track")
     page.wait_for_function("document.querySelector('.julie-runner-track').classList.contains('is-ready')")
+    assert runner.evaluate("el => el.classList.contains('is-resting') && Number.parseFloat(getComputedStyle(el).opacity) > .9")
+    assert runner.get_attribute("data-greeting") in ("one", "two")
+    assert page.locator(".julie-greeting img").evaluate_all("xs => xs.every(x => x.complete && x.naturalWidth === 480 && x.naturalHeight === 720)")
     page.locator("#julie-apps").scroll_into_view_if_needed()
     page.wait_for_function("document.querySelectorAll('.julie-app-card.is-julie-visible').length > 0")
     assert "julie-idle-alive" in page.locator(".julie-app-card.is-julie-visible img").first.evaluate("el => getComputedStyle(el).animationName")
-    before = runner.evaluate("el => getComputedStyle(el).getPropertyValue('--julie-runner-x')")
     page.evaluate("scrollTo(0, document.documentElement.scrollHeight * .55)")
-    page.wait_for_timeout(700)
-    after = runner.evaluate("el => getComputedStyle(el).getPropertyValue('--julie-runner-x')")
-    assert before != after, (before, after)
+    page.wait_for_function("document.querySelector('.julie-runner-track').classList.contains('is-running')")
+    page.wait_for_timeout(650)
+    midpoint = runner.evaluate("el => Number.parseFloat(getComputedStyle(el).getPropertyValue('--julie-runner-x'))")
+    assert 100 < midpoint < 1180, midpoint
     assert runner.get_attribute("data-direction") == "right"
-    page.wait_for_timeout(1700)
-    assert runner.evaluate("el => el.classList.contains('is-resting') && getComputedStyle(el).opacity === '0'")
+    page.wait_for_function("document.querySelector('.julie-runner-track').classList.contains('is-resting')", timeout=4000)
+    parked = runner.evaluate("el => Number.parseFloat(getComputedStyle(el).getPropertyValue('--julie-runner-x'))")
+    assert parked > 1100, parked
+    assert runner.evaluate("el => Number.parseFloat(getComputedStyle(el).opacity) > .9")
     assert not errors, errors
 
     reduced_page = browser.new_page(viewport={"width": 1280, "height": 800}, reduced_motion="reduce")
@@ -29,4 +34,4 @@ with sync_playwright() as playwright:
     assert reduced_page.locator(".julie-runner-track").is_hidden()
     browser.close()
 
-print("PASS: Julie idles when visible, runs toward scroll position, and stops for reduced motion.")
+print("PASS: Julie crosses the full viewport on scroll, parks at the side, alternates greetings, and stops for reduced motion.")

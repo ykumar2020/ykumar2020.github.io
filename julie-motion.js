@@ -13,29 +13,35 @@
   const runner = document.createElement('div');
   runner.className = 'julie-runner-track';
   runner.dataset.direction = 'right';
+  runner.dataset.greeting = 'one';
   runner.setAttribute('aria-hidden', 'true');
-  runner.innerHTML = '<div class="julie-runner-sprite"></div>';
+  runner.innerHTML = '<div class="julie-runner-sprite"></div><div class="julie-greeting"><img class="julie-greeting-one" src="assets/julie-greeting-one-hand-v1.webp" alt="" width="480" height="720"><img class="julie-greeting-two" src="assets/julie-greeting-two-hands-v1.webp" alt="" width="480" height="720"><span class="julie-hi">Hi!</span></div>';
   document.body.append(runner);
 
-  const sprite = runner.firstElementChild;
+  const sprite = runner.querySelector('.julie-runner-sprite');
   const framePositions = [
     ['0%', '0%'], ['33.333%', '0%'], ['66.667%', '0%'], ['100%', '0%'],
     ['0%', '100%'], ['33.333%', '100%'], ['66.667%', '100%'], ['100%', '100%']
   ];
   let paused = reduced.matches || document.documentElement.dataset.motion === 'paused';
-  let currentX = -130;
-  let targetX = 18;
+  let currentX = 18;
   let direction = 1;
   let frame = 0;
   let lastFrameAt = 0;
+  let lastTick = 0;
+  let lastScrollY = scrollY;
   let raf = 0;
-  let settleTimer = 0;
-  let running = true;
+  let running = false;
+  let greetingCount = 0;
 
-  function desiredX() {
-    const range = Math.max(1, document.documentElement.scrollHeight - innerHeight);
-    const progress = Math.max(0, Math.min(1, scrollY / range));
-    return 18 + progress * Math.max(0, innerWidth - runner.offsetWidth - 36);
+  function leftPark() { return 18; }
+  function rightPark() { return Math.max(18, innerWidth - runner.offsetWidth - 18); }
+  function offscreenStart() { return direction > 0 ? -runner.offsetWidth - 18 : innerWidth + 18; }
+  function offscreenFinish() { return direction > 0 ? innerWidth + 18 : -runner.offsetWidth - 18; }
+
+  function place(x) {
+    currentX = x;
+    runner.style.setProperty('--julie-runner-x', `${currentX.toFixed(2)}px`);
   }
 
   function setFrame(index) {
@@ -51,33 +57,46 @@
     if (!next) setFrame(0);
   }
 
+  function greet() {
+    greetingCount += 1;
+    runner.dataset.greeting = greetingCount % 2 ? 'one' : 'two';
+    place(direction > 0 ? rightPark() : leftPark());
+    setRunning(false);
+  }
+
+  function startSprint(nextDirection) {
+    direction = nextDirection;
+    runner.dataset.direction = direction < 0 ? 'left' : 'right';
+    place(offscreenStart());
+    setRunning(true);
+    lastTick = 0;
+    if (!raf) raf = requestAnimationFrame(animate);
+  }
+
   function animate(now) {
     raf = 0;
     if (paused || document.hidden) return;
-    const delta = targetX - currentX;
-    if (Math.abs(delta) > .35) {
-      direction = Math.sign(delta) || direction;
-      currentX += delta * .13;
-      setRunning(true);
-      runner.dataset.direction = direction < 0 ? 'left' : 'right';
-      runner.style.setProperty('--julie-runner-x', `${currentX.toFixed(2)}px`);
+    if (running) {
+      const elapsed = lastTick ? Math.min(34, now - lastTick) : 16;
+      lastTick = now;
+      place(currentX + direction * Math.max(.72, innerWidth / 1450) * elapsed);
       if (now - lastFrameAt > 82) {
         frame = (frame + 1) % framePositions.length;
         setFrame(frame);
         lastFrameAt = now;
       }
-      raf = requestAnimationFrame(animate);
-    } else {
-      currentX = targetX;
-      runner.style.setProperty('--julie-runner-x', `${currentX.toFixed(2)}px`);
-      settleTimer = setTimeout(() => setRunning(false), 180);
+      const finished = direction > 0 ? currentX >= offscreenFinish() : currentX <= offscreenFinish();
+      if (finished) greet();
+      else raf = requestAnimationFrame(animate);
     }
   }
 
   function move() {
-    targetX = desiredX();
-    clearTimeout(settleTimer);
-    if (!paused && !raf) raf = requestAnimationFrame(animate);
+    const deltaY = scrollY - lastScrollY;
+    lastScrollY = scrollY;
+    if (paused || Math.abs(deltaY) < 2) return;
+    const nextDirection = deltaY > 0 ? 1 : -1;
+    if (!running || nextDirection !== direction) startSprint(nextDirection);
   }
 
   function setMotion(nextPaused) {
@@ -89,14 +108,14 @@
     } else {
       runner.hidden = false;
       runner.classList.add('is-ready');
-      move();
+      greet();
     }
   }
 
   addEventListener('scroll', move, { passive: true });
-  addEventListener('resize', move, { passive: true });
+  addEventListener('resize', () => { if (!running) place(direction > 0 ? rightPark() : leftPark()); }, { passive: true });
   document.addEventListener('site-motion-change', event => setMotion(Boolean(event.detail?.paused)));
-  document.addEventListener('visibilitychange', () => { if (!document.hidden) move(); });
+  document.addEventListener('visibilitychange', () => { if (!document.hidden && !running) greet(); });
   reduced.addEventListener?.('change', () => setMotion(false));
   setFrame(0);
   setMotion(paused);

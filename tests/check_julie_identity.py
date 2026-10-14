@@ -14,6 +14,7 @@ with sync_playwright() as playwright:
     portraits = page.locator("#julie-apps .julie-app-visual img")
     assert portraits.count() == 4
     assert portraits.evaluate_all("xs => xs.map(x => x.getAttribute('src'))") == ["assets/julie-role-studio-v2.webp", "assets/julie-role-weather-v2.webp", "assets/julie-role-news-v2.webp", "assets/julie-role-learn-v2.webp"]
+    page.wait_for_function("[...document.querySelectorAll('#julie-apps .julie-app-visual img')].every(x => x.complete && x.naturalWidth > 0)")
     assert portraits.evaluate_all("xs => xs.every(x => x.complete && x.naturalWidth > 0 && x.naturalHeight > 0)")
     assert page.locator("#julie-apps .julie-role-glasses").count() == 0
     assert len(set(portraits.evaluate_all("xs => xs.map(x => x.currentSrc)"))) == 4
@@ -21,6 +22,7 @@ with sync_playwright() as playwright:
     assert "wearing glasses" in page.locator("[data-welcome-julie] canvas").get_attribute("aria-label")
     assert page.locator(".julie-runner-track").count() == 1
     assert page.locator(".julie-runner-sprite").evaluate("el => getComputedStyle(el).backgroundImage.includes('julie-run-cycle-v1.webp')")
+    assert page.locator(".julie-greeting img").evaluate_all("xs => xs.map(x => x.getAttribute('src'))") == ["assets/julie-greeting-one-hand-v1.webp", "assets/julie-greeting-two-hands-v1.webp"]
     assert not errors, errors
     if capture:
         output = Path(__file__).resolve().parents[1] / "qa" / "julie-identity.png"
@@ -29,4 +31,4 @@ with sync_playwright() as playwright:
         page.locator(".hero").screenshot(path=str(output.with_name("julie-identity-hero.png")))
     browser.close()
 
-print("PASS: Julie uses four distinct photo-derived wardrobes with integrated proportional glasses.")
+print("PASS: Julie uses four distinct photo-derived wardrobes, integrated glasses, and two loaded greeting poses.")

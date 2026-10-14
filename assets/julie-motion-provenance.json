@@ -1,8 +1,27 @@
 {
-  "asset": "julie-run-cycle-v1.webp",
-  "purpose": "Eight-frame transparent 2D run cycle for scroll-directed website motion",
-  "sourceIdentity": "julie/presenter/neutral.png",
-  "method": "AI-derived illustration using the established Julie presenter as the identity and wardrobe reference; compressed to transparent WebP with FFmpeg",
-  "disclosure": "Illustrative UI animation, not motion capture or a recording of a person",
-  "sha256": "e0ff0de6309afbf47b1cfaa25241d92b10a99cb26cdb6009487bea64bd3f1426"
+  "created": "2026-10-14",
+  "disclosure": "Illustrative UI animation, not motion capture or a recording of a person.",
+  "assets": [
+    {
+      "file": "julie-run-cycle-v1.webp",
+      "purpose": "Eight-frame transparent 2D run cycle for full-viewport scroll traversal",
+      "sourceIdentity": "julie/presenter/neutral.png",
+      "method": "AI-derived illustration compressed to transparent WebP with FFmpeg",
+      "sha256": "e0ff0de6309afbf47b1cfaa25241d92b10a99cb26cdb6009487bea64bd3f1426"
+    },
+    {
+      "file": "julie-greeting-one-hand-v1.webp",
+      "purpose": "Stationary side greeting with one raised hand",
+      "sourceIdentity": "assets/julie-role-studio-v2.webp",
+      "method": "OpenAI built-in reference-guided image generation with transparent background; compressed to transparent WebP with FFmpeg",
+      "sha256": "476776A0F50C7AD9BF01850ADC96248AD08FCF1B7B2A89FABFADADF085287808"
+    },
+    {
+      "file": "julie-greeting-two-hands-v1.webp",
+      "purpose": "Stationary side greeting with two raised hands",
+      "sourceIdentity": "assets/julie-role-studio-v2.webp",
+      "method": "OpenAI built-in reference-guided image generation with transparent background; compressed to transparent WebP with FFmpeg",
+      "sha256": "FCD157355622918A89623E2371029C029326546C39F046753ECDA41767AE2A8C"
+    }
+  ]
 }
