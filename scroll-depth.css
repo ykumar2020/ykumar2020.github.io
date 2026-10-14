@@ -18,6 +18,12 @@ html[data-scroll-depth="reduced"] .scroll-depth-canvas {
   opacity: 0;
 }
 
+html[data-motion="paused"] .depth-plane {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
 html[data-scroll-depth="ready"] .depth-plane {
   --depth-y: 42px;
   --depth-z: -105px;

@@ -38,9 +38,13 @@ with sync_playwright() as playwright:
         output.parent.mkdir(exist_ok=True)
         page.screenshot(path=str(output), full_page=False)
 
-    page.evaluate("document.dispatchEvent(new CustomEvent('site-motion-change', {detail:{paused:true}}))")
+    page.evaluate("""() => {
+      document.documentElement.dataset.motion = 'paused';
+      document.dispatchEvent(new CustomEvent('site-motion-change', {detail:{paused:true}}));
+    }""")
     page.wait_for_timeout(80)
     assert canvas.get_attribute("data-motion") == "paused"
+    assert card.evaluate("el => getComputedStyle(el).transform") == "none"
     assert not errors, errors
 
     context.close()
