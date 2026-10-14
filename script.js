@@ -111,18 +111,26 @@ const visualReady = new Promise(resolve => {
   if ('requestIdleCallback' in window) requestIdleCallback(load, {timeout: 1200}); else setTimeout(load, 1);
 });
 const motionControl = document.querySelector('#motion-toggle');
-let siteMotionPaused = localStorage.getItem('julie-site-motion') !== 'playing';
-function broadcastMotionPreference() {
+const motionPreferenceKey = 'julie-site-motion-v2';
+const siteReducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+let userPausedMotion = localStorage.getItem(motionPreferenceKey) === 'paused';
+let siteMotionPaused = userPausedMotion || siteReducedMotion.matches;
+function broadcastMotionPreference(persist = false) {
   document.documentElement.dataset.motion = siteMotionPaused ? 'paused' : 'playing';
-  localStorage.setItem('julie-site-motion', siteMotionPaused ? 'paused' : 'playing');
+  if (persist) localStorage.setItem(motionPreferenceKey, userPausedMotion ? 'paused' : 'playing');
   document.dispatchEvent(new CustomEvent('site-motion-change', {detail:{paused:siteMotionPaused}}));
   const julieMotion = document.querySelector('[data-welcome-julie] [data-motion]');
   if (julieMotion && (julieMotion.getAttribute('aria-pressed') === 'true') !== siteMotionPaused) julieMotion.click();
 }
 motionControl?.addEventListener('click', () => setTimeout(() => {
-  siteMotionPaused = motionControl.getAttribute('aria-pressed') === 'true';
-  broadcastMotionPreference();
+  userPausedMotion = motionControl.getAttribute('aria-pressed') === 'true';
+  siteMotionPaused = userPausedMotion || siteReducedMotion.matches;
+  broadcastMotionPreference(true);
 }));
+siteReducedMotion.addEventListener('change', () => {
+  siteMotionPaused = userPausedMotion || siteReducedMotion.matches;
+  broadcastMotionPreference();
+});
 visualReady.then(() => {
   const currentlyPaused = motionControl?.getAttribute('aria-pressed') === 'true';
   if (motionControl && currentlyPaused !== siteMotionPaused) motionControl.click();
@@ -150,7 +158,7 @@ if (photoCarousel) {
   photoCarousel.style.setProperty('--photo-interval', photoInterval + 'ms');
   segments.style.setProperty('--photo-count', String(slides.length));
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-  let current = 0, busy = false, paused = true;
+  let current = 0, busy = false, paused = siteMotionPaused;
   let hovered = false, focused = false, visible = true, timer;
   let animations = [];
 
@@ -231,7 +239,8 @@ if (photoCarousel) {
   photoCarousel.addEventListener('focusout', event => { focused = photoCarousel.contains(event.relatedTarget); schedulePhoto(); });
   document.addEventListener('visibilitychange', schedulePhoto);
   reducedMotion.addEventListener('change', () => {
-    if (reducedMotion.matches) { paused = true; animations.forEach(animation => animation.cancel()); }
+    paused = userPausedMotion || reducedMotion.matches;
+    if (reducedMotion.matches) animations.forEach(animation => animation.cancel());
     schedulePhoto();
   });
   document.addEventListener('site-motion-change', event => { paused = event.detail.paused; schedulePhoto(); });

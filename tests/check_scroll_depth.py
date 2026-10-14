@@ -12,7 +12,7 @@ with sync_playwright() as playwright:
     browser = playwright.chromium.launch(channel="chrome", headless=True)
 
     context = browser.new_context(viewport={"width": 1440, "height": 900})
-    context.add_init_script("localStorage.setItem('julie-site-motion', 'playing')")
+    context.add_init_script("localStorage.setItem('julie-site-motion-v2', 'playing')")
     page = context.new_page()
     errors = []
     page.on("pageerror", lambda error: errors.append(str(error)))

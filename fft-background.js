@@ -8,11 +8,12 @@
 
   const sampleCount = 256;
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const initialPaused = localStorage.getItem('julie-site-motion-v2') === 'paused' || reducedMotion.matches;
   let cssWidth = 0;
   let cssHeight = 0;
   let deviceScale = 1;
   let frame = 0;
-  let running = !reducedMotion.matches;
+  let running = !initialPaused;
   let visible = true;
   let phase = 0;
   let lastTime = 0;
@@ -114,6 +115,7 @@
   }
 
   function draw(timestamp, staticFrame = false) {
+    canvas.dataset.frames = String(Number(canvas.dataset.frames || 0) + 1);
     context.clearRect(0, 0, cssWidth, cssHeight);
 
     if (staticFrame || reducedMotion.matches || !running) {
@@ -167,6 +169,7 @@
 
   function updateMotion(paused) {
     running = !paused && !reducedMotion.matches;
+    canvas.dataset.motion = running ? 'playing' : 'paused';
     cancelAnimationFrame(frame);
     frame = 0;
     lastTime = 0;
@@ -189,7 +192,7 @@
     if (!document.hidden && running && visible && !frame) frame = requestAnimationFrame(loop);
   });
   document.addEventListener('site-motion-change', event => updateMotion(event.detail.paused));
-  reducedMotion.addEventListener('change', () => updateMotion(false));
+  reducedMotion.addEventListener('change', () => updateMotion(document.documentElement.dataset.motion === 'paused'));
   resize();
-  updateMotion(false);
+  updateMotion(initialPaused);
 })();

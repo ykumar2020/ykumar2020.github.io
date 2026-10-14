@@ -15,7 +15,7 @@
   ].join(',');
   const planes = [...document.querySelectorAll(depthSelector)];
   const colors = ['#ff5570', '#67d8ff', '#ffbd66'];
-  let userPaused = localStorage.getItem('julie-site-motion') !== 'playing';
+  let userPaused = localStorage.getItem('julie-site-motion-v2') === 'paused';
   let paused = userPaused || reducedMotion.matches;
   let target = scrollFraction();
   let current = target;
