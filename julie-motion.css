@@ -7,7 +7,7 @@
 
 html[data-motion="playing"] .julie-app-card.is-julie-visible .julie-app-visual img:not(.julie-role-glasses),
 html[data-motion="playing"] .julie-app-card.is-julie-visible .julie-app-visual .julie-role-glasses {
-  animation: julie-idle-alive 3.8s ease-in-out infinite;
+  animation: julie-idle-alive 2.7s ease-in-out infinite;
   animation-delay: var(--julie-idle-delay, 0s);
 }
 
@@ -17,9 +17,9 @@ html[data-motion="playing"] .julie-app-card.is-julie-visible .julie-app-visual .
 
 @keyframes julie-idle-alive {
   0%, 100% { transform: translate3d(0, 0, 0) rotate(-.35deg) scale(1); }
-  24% { transform: translate3d(1px, -2px, 0) rotate(.25deg) scale(1.005, 1.002); }
-  52% { transform: translate3d(-1px, -4px, 0) rotate(.65deg) scale(1.008, .998); }
-  76% { transform: translate3d(0, -1px, 0) rotate(0deg) scale(1.003); }
+  24% { transform: translate3d(2px, -3px, 0) rotate(.45deg) scale(1.008, 1.003); }
+  52% { transform: translate3d(-2px, -7px, 0) rotate(1deg) scale(1.014, .996); }
+  76% { transform: translate3d(1px, -2px, 0) rotate(-.15deg) scale(1.006); }
 }
 
 .julie-runner-track {
@@ -39,7 +39,7 @@ html[data-motion="playing"] .julie-app-card.is-julie-visible .julie-app-visual .
 }
 
 .julie-runner-track.is-ready { opacity: .94; }
-.julie-runner-track.is-resting { opacity: .78; }
+.julie-runner-track.is-resting { opacity: 0; }
 .julie-runner-track[data-direction="left"] .julie-runner-sprite { transform: scaleX(-1); }
 .julie-runner-sprite {
   width: 100%;
@@ -52,14 +52,10 @@ html[data-motion="playing"] .julie-app-card.is-julie-visible .julie-app-visual .
 }
 
 .julie-runner-track.is-running .julie-runner-sprite { animation: julie-run-lean .32s ease-in-out infinite alternate; }
-.julie-runner-track.is-resting .julie-runner-sprite { animation: julie-runner-breathe 2.8s ease-in-out infinite; }
 
 @keyframes julie-run-lean {
   from { translate: 0 1px; rotate: -.6deg; }
   to { translate: 0 -1px; rotate: .6deg; }
-}
-@keyframes julie-runner-breathe {
-  50% { translate: 0 -2px; }
 }
 
 @media (max-width: 620px) {

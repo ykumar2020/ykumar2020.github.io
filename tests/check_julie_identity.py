@@ -14,6 +14,7 @@ with sync_playwright() as playwright:
     portraits = page.locator("#julie-apps .julie-app-visual img:not(.julie-role-glasses)")
     glasses = page.locator("#julie-apps .julie-role-glasses")
     assert portraits.count() == glasses.count() == 4
+    assert portraits.evaluate_all("xs => xs.map(x => x.getAttribute('src'))") == ["julie/presenter/present_body.png", "julie/presenter/point_body.png", "julie/presenter/compare_body.png", "julie/presenter/neutral.png"]
     assert portraits.evaluate_all("xs => xs.every(x => x.complete && x.naturalWidth > 0 && x.naturalHeight > 0)")
     assert glasses.evaluate_all("xs => xs.every(x => x.complete && x.naturalWidth > 0 && x.naturalHeight > 0)")
     boxes = page.evaluate("""() => [...document.querySelectorAll('#julie-apps .julie-app-visual')].map(card => {

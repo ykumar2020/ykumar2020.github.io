@@ -25,7 +25,7 @@ with sync_playwright() as p:
     assert page.locator('main > section').evaluate_all('(els)=>els.map(e=>e.id)') == ['julie-apps','lego-julie','flagships','research','publications','projects','graphics','connectomes','teaching','about','experience','service','work-with-me','contact']
     assert page.locator('#julie-apps').bounding_box()['y'] < page.locator('#research').bounding_box()['y']
     assert page.locator('#julie-apps .julie-app-card').count()==4
-    assert page.locator('#julie-apps .julie-app-visual img:not(.julie-role-glasses)').evaluate_all('(xs)=>xs.map(x=>x.getAttribute("src"))')==['julie/presenter/neutral.png']*4
+    assert page.locator('#julie-apps .julie-app-visual img:not(.julie-role-glasses)').evaluate_all('(xs)=>xs.map(x=>x.getAttribute("src"))')==['julie/presenter/present_body.png','julie/presenter/point_body.png','julie/presenter/compare_body.png','julie/presenter/neutral.png']
     assert page.locator('#julie-apps .julie-app-visual img:not(.julie-role-glasses)').evaluate_all('(xs)=>xs.every(x=>x.complete && x.naturalWidth===1086 && x.naturalHeight===1448)')
     assert page.locator('#julie-apps .julie-role-glasses').count()==4
     assert page.locator('.julie-runner-track').count()==1

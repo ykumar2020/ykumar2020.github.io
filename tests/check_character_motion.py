@@ -20,6 +20,8 @@ with sync_playwright() as playwright:
     after = runner.evaluate("el => getComputedStyle(el).getPropertyValue('--julie-runner-x')")
     assert before != after, (before, after)
     assert runner.get_attribute("data-direction") == "right"
+    page.wait_for_timeout(1700)
+    assert runner.evaluate("el => el.classList.contains('is-resting') && getComputedStyle(el).opacity === '0'")
     assert not errors, errors
 
     reduced_page = browser.new_page(viewport={"width": 1280, "height": 800}, reduced_motion="reduce")
