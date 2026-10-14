@@ -1,7 +1,7 @@
 .julie-purpose-actions{display:flex;flex-wrap:wrap;gap:8px 16px;margin:14px 0 2px;font-size:.78rem;line-height:1.5}
 .julie-purpose-actions a{display:inline-flex;align-items:center;min-height:44px;color:#ffd2d8;text-decoration:underline;text-underline-offset:4px}
 .flagship-section{background:linear-gradient(180deg,#090c13,#100b12)}
-.flagship-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.flagship-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
 .flagship-card{border:1px solid #653845;background:#100f18;padding:28px;box-shadow:0 18px 50px #0004}
 .flagship-card h3{font:600 1.25rem/1.45 var(--font-tech);margin:12px 0 24px;color:#fff4f5}
 .flagship-card dl{margin:0;display:grid;gap:7px}

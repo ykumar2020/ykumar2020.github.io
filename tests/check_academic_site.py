@@ -24,7 +24,7 @@ with sync_playwright() as p:
     assert page.locator('main > section').evaluate_all('(els)=>els.map(e=>e.id)') == ['julie-apps','flagships','research','publications','projects','graphics','connectomes','teaching','about','experience','service','work-with-me','contact']
     assert page.locator('#julie-apps').bounding_box()['y'] < page.locator('#research').bounding_box()['y']
     assert page.locator('#julie-apps .julie-app-card').count()==4
-    assert page.locator('#flagships .flagship-card').count()==3
+    assert page.locator('#flagships .flagship-card').count()==4
     assert page.locator('#work-with-me .opportunity-grid article').count()==3
     assert page.locator('#julie-apps .julie-app-card').evaluate_all('(xs)=>xs.map(x=>x.href)')==[
         'https://julie-teaching-studio.ykumar667598.chatgpt.site/',
@@ -37,7 +37,7 @@ with sync_playwright() as p:
     assert page.locator('.frontier-research').bounding_box()['y'] < page.locator('.research-program').bounding_box()['y']
     assert page.locator('.teaching-case').count()==8
     assert page.locator('#publication-list').bounding_box()['y'] < page.locator('#knowledge-panel').bounding_box()['y']
-    report['checks'] += ['Four Julie projects appear immediately before research','Research and bibliography precede projects; six selected works and eight teaching examples']
+    report['checks'] += ['Four Julie projects appear immediately before research','Four evidence-bounded flagship case studies appear before research','Research and bibliography precede projects; six selected works and eight teaching examples']
     assert page.locator('.portrait-slide').count()==9
     assert page.locator('.portrait-slide img').evaluate_all('(xs)=>xs.slice(0,3).map(i=>i.getAttribute("src"))')==['assets/julie-amigo.webp','assets/julie-research-team.webp','assets/julie-awards.webp']
     assert page.locator('.photo-caption').inner_text()=='AMIGO \u00b7 Emotionally aware AI'

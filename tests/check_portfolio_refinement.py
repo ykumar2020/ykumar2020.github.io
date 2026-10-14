@@ -15,9 +15,9 @@ with sync_playwright() as playwright:
 
     assert "trustworthy AI systems" in page.locator(".hero-headline").inner_text()
     assert page.locator(".julie-purpose-actions a").count() == 3
-    assert page.locator("#flagships .flagship-card").count() == 3
+    assert page.locator("#flagships .flagship-card").count() == 4
     terms = page.locator("#flagships dt").all_text_contents()
-    assert len(terms) == 12 and terms[:4] == [
+    assert len(terms) == 16 and terms[:4] == [
         "Problem", "My contribution", "Supported result", "Limitation",
     ]
     assert page.locator("#work-with-me .opportunity-grid article").count() == 3
