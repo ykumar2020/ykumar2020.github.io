@@ -21,9 +21,11 @@ with sync_playwright() as p:
     page.on('console',lambda e:errors.append(e.text) if e.type=='error' else None)
     assert page.goto(BASE,wait_until='networkidle').status==200
     page.wait_for_function("document.querySelector('#grid-scene').dataset.state==='ready'")
-    assert page.locator('main > section').evaluate_all('(els)=>els.map(e=>e.id)') == ['julie-apps','research','publications','projects','graphics','connectomes','teaching','about','experience','service','contact']
+    assert page.locator('main > section').evaluate_all('(els)=>els.map(e=>e.id)') == ['julie-apps','flagships','research','publications','projects','graphics','connectomes','teaching','about','experience','service','work-with-me','contact']
     assert page.locator('#julie-apps').bounding_box()['y'] < page.locator('#research').bounding_box()['y']
     assert page.locator('#julie-apps .julie-app-card').count()==4
+    assert page.locator('#flagships .flagship-card').count()==3
+    assert page.locator('#work-with-me .opportunity-grid article').count()==3
     assert page.locator('#julie-apps .julie-app-card').evaluate_all('(xs)=>xs.map(x=>x.href)')==[
         'https://julie-teaching-studio.ykumar667598.chatgpt.site/',
         'https://weather-with-julie.vercel.app/',
@@ -37,25 +39,28 @@ with sync_playwright() as p:
     assert page.locator('#publication-list').bounding_box()['y'] < page.locator('#knowledge-panel').bounding_box()['y']
     report['checks'] += ['Four Julie projects appear immediately before research','Research and bibliography precede projects; six selected works and eight teaching examples']
     assert page.locator('.portrait-slide').count()==9
-    assert page.locator('.portrait-slide img').evaluate_all('(xs)=>xs.slice(0,3).map(i=>i.getAttribute("src"))')==['assets/julie-mit.webp','assets/julie-princeton.webp','assets/julie-amigo.webp']
-    assert page.locator('.photo-caption').inner_text()=='MIT \u00b7 Stata Center'
+    assert page.locator('.portrait-slide img').evaluate_all('(xs)=>xs.slice(0,3).map(i=>i.getAttribute("src"))')==['assets/julie-amigo.webp','assets/julie-research-team.webp','assets/julie-awards.webp']
+    assert page.locator('.photo-caption').inner_text()=='AMIGO \u00b7 Emotionally aware AI'
     assert page.locator('h1').count()==1
     assert 'Julie' in page.locator('h1').inner_text() and 'Kumar' in page.locator('h1').inner_text()
-    assert page.locator('#publication-list .paper').count()==77
+    assert page.locator('#publication-list .paper').count()==76
     assert page.locator('#publication-list .paper:visible').count()==6
-    assert page.locator('#publication-list .bibtex-drawer').count()==77
+    assert page.locator('#publication-list .bibtex-drawer').count()==76
+    assert page.locator('#cv-19 .earlier-versions').count()==1
     frames=page.locator('#grid-scene').get_attribute('data-frames');page.wait_for_timeout(400)
     assert page.locator('#grid-scene').get_attribute('data-frames')==frames,'Reduced-motion grid keeps rendering'
     page.locator('#grid-scene').screenshot(path=str(OUT/'grid-still.png'))
     page.screenshot(path=str(OUT/'cyber-home.png'))
-    report['checks']+=['All 77 records and BibTeX drawers','Reduced motion stops continuous rendering']
+    report['checks']+=['77 records grouped into 76 research works with BibTeX drawers','Reduced motion stops continuous rendering']
 
     page.locator('#load-more').click();assert page.locator('#publication-list .paper:visible').count()==12
     for topic in ['Trustworthy AI','Agentic AI','Multimodal AI','Education','AI Systems','Algorithms']:
         page.locator(f'[data-filter="{topic}"]').click()
         assert all(t==topic for t in page.locator('#publication-list .paper:visible').evaluate_all('(els)=>els.map(e=>e.dataset.topic)'))
+        assert f'topic={topic.replace(" ", "+")}' in page.url
     page.locator('[data-filter=All]').click()
-    page.locator('#publication-search').fill('Matryoshka');assert page.locator('#publication-list .paper:visible').count()==2
+    page.locator('#publication-search').fill('Matryoshka');assert page.locator('#publication-list .paper:visible').count()==1
+    assert 'q=Matryoshka' in page.url
     page.locator('.copy-citation:visible').first.click();assert 'Matryoshka' in page.evaluate('navigator.clipboard.readText()')
     page.locator('.bibtex-drawer:visible summary').first.click()
     assert '@misc{' in page.locator('.bibtex-drawer pre:visible').first.inner_text()
@@ -63,12 +68,13 @@ with sync_playwright() as p:
     page.locator('#publication-search').fill('')
     page.locator('#publication-year').select_option('2015');assert page.locator('#publication-list .paper:visible').count()==2
     page.locator('#publication-status').select_option('Poster');assert page.locator('#publication-list .paper:visible').count()==1
+    shared=page.url;page.reload(wait_until='networkidle');assert page.locator('#publication-year').input_value()=='2015' and page.locator('#publication-status').input_value()=='Poster'
     page.locator('#publication-year').select_option('');page.locator('#publication-status').select_option('')
-    page.locator('#show-all-publications').click();assert page.locator('#publication-list .paper:visible').count()==77
+    page.locator('#show-all-publications').click();assert page.locator('#publication-list .paper:visible').count()==76
     report['checks']+=['Topic, search, year and status filters','Pagination and complete bibliography','Citation clipboard and expandable BibTeX']
 
-    page.wait_for_function("document.querySelector('#network-scene').dataset.records==='77'")
-    assert page.locator('#network-record option').count()==77
+    page.wait_for_function("document.querySelector('#network-scene').dataset.records==='76'")
+    assert page.locator('#network-record option').count()==76
     page.locator('#network-record').select_option('cv-03')
     assert 'Periodic Table' in page.locator('#network-detail h3').inner_text()
     page.locator('[data-filter="Agentic AI"]').click()
@@ -79,7 +85,7 @@ with sync_playwright() as p:
     assert page.locator('#network-record option').count()==0
     assert page.locator('#no-results').is_visible()
     page.locator('#publication-search').fill('');page.locator('[data-filter=All]').click()
-    page.wait_for_function("document.querySelector('#network-scene').dataset.records==='77'")
+    page.wait_for_function("document.querySelector('#network-scene').dataset.records==='76'")
     page.locator('#knowledge-panel').scroll_into_view_if_needed();page.screenshot(path=str(OUT/'cyber-constellation.png'))
     report['checks']+=['Network filter parity, record selection and empty state']
 
@@ -90,7 +96,7 @@ with sync_playwright() as p:
     after=page.locator('#brain-fly canvas').screenshot();assert before!=after
     assert page.locator('.skill-detail:visible').count()==6
     page.screenshot(path=str(OUT/'cyber-research.png'))
-    page.locator('[data-controls=brain-fly] [data-motion-toggle]').click()
+    page.evaluate("document.querySelector('#motion-toggle').click()")
     page.wait_for_timeout(300)
     n=int(page.locator('#brain-fly').get_attribute('data-frames'));start=time.monotonic();page.wait_for_timeout(1100)
     fps=(int(page.locator('#brain-fly').get_attribute('data-frames'))-n)/(time.monotonic()-start)
@@ -128,7 +134,7 @@ with sync_playwright() as p:
     # No-JS readers receive the complete static scholarly document.
     nojs=browser.new_context(java_script_enabled=False,viewport={'width':390,'height':844})
     plain=nojs.new_page();plain.goto(BASE)
-    assert plain.locator('.paper:visible').count()==77
+    assert plain.locator('.paper:visible').count()==76
     assert plain.locator('.skill-detail:visible').count()==6
     assert plain.locator('#site-nav').is_visible()
     assert plain.locator('#brain-fly .scene-fallback').is_visible()
@@ -143,7 +149,7 @@ with sync_playwright() as p:
         audit=page.evaluate('async()=>await axe.run(document,{runOnly:{type:"tag",values:["wcag2a","wcag2aa","wcag21aa","wcag22aa"]}})')
         (OUT/f'cyber-axe-{view}.json').write_text(json.dumps(audit,indent=2),encoding='utf8')
         report['accessibility_violations'] += [{'view':view,'id':v['id'],'help':v['help'],'targets':[n['target'] for n in v['nodes']]} for v in audit['violations']]
-    page.emulate_media(media='print');assert page.locator('#publication-list .paper:visible').count()==77
+    page.emulate_media(media='print');assert page.locator('#publication-list .paper:visible').count()==76
     report['checks']+=['Print exposes complete bibliography','No browser script or shader errors']
     browser.close()
 (OUT/'cyber-test-results.json').write_text(json.dumps(report,indent=2),encoding='utf8')

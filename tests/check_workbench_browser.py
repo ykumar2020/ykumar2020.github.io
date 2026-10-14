@@ -10,7 +10,7 @@ with sync_playwright() as p:
     page.on('pageerror',lambda e:errors.append(str(e)))
     page.goto('http://127.0.0.1:8091/',wait_until='networkidle')
     page.wait_for_function('document.querySelector("#benchmark-table tbody tr")')
-    assert page.locator('#publication-list .artifact-drawer').count()==77
+    assert page.locator('#publication-list .artifact-drawer').count()==76
     assert '14/14' in page.locator('#workbench-checks').inner_text()
     page.locator('#attack-frame').scroll_into_view_if_needed()
     f=page.frame_locator('#attack-frame')

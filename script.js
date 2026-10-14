@@ -21,6 +21,22 @@ const showAll = document.querySelector('#show-all-publications');
 let selected = 'All';
 let selectedFocus = 'All';
 let visibleLimit = 6;
+const filterParams = new URLSearchParams(location.search);
+const topicValues = ['All', ...filters.map(button => button.dataset.filter)];
+if (topicValues.includes(filterParams.get('topic'))) selected = filterParams.get('topic');
+if ([...document.querySelectorAll('[data-focus-filter]')].some(button => button.dataset.focusFilter === filterParams.get('focus'))) selectedFocus = filterParams.get('focus');
+if ([...yearFilter.options].some(option => option.value === filterParams.get('year'))) yearFilter.value = filterParams.get('year');
+if ([...statusFilter.options].some(option => option.value === filterParams.get('status'))) statusFilter.value = filterParams.get('status');
+search.value = (filterParams.get('q') || '').slice(0, 120);
+function saveFilterState() {
+  const params = new URLSearchParams();
+  if (selected !== 'All') params.set('topic', selected);
+  if (selectedFocus !== 'All') params.set('focus', selectedFocus);
+  if (yearFilter.value) params.set('year', yearFilter.value);
+  if (statusFilter.value) params.set('status', statusFilter.value);
+  if (search.value.trim()) params.set('q', search.value.trim());
+  history.replaceState(null, '', location.pathname + (params.size ? '?' + params : '') + location.hash);
+}
 function updatePapers() {
   const query = search.value.trim().toLocaleLowerCase();
   const matches = papers.filter(p => (selected === 'All' || p.dataset.topic === selected) && (selectedFocus === 'All' || (p.dataset.focus||'').split(' ').includes(selectedFocus)) && (!yearFilter.value || p.dataset.year === yearFilter.value) && (!statusFilter.value || p.dataset.status === statusFilter.value) && p.textContent.toLocaleLowerCase().includes(query));
@@ -40,11 +56,12 @@ document.querySelector('.publication-tools').hidden = false; count.hidden = fals
 filters.forEach(button => button.addEventListener('click', () => {
   selected = button.dataset.filter; visibleLimit = 6;
   filters.forEach(item => { item.classList.toggle('active', item === button); item.setAttribute('aria-pressed', String(item === button)); });
-  updatePapers();
+  updatePapers(); saveFilterState();
 }));
-search.addEventListener('input', () => { visibleLimit = 6; updatePapers(); });
-yearFilter.addEventListener('change', () => { visibleLimit = 6; updatePapers(); });
-statusFilter.addEventListener('change', () => { visibleLimit = 6; updatePapers(); });
+filters.forEach(item => { const active=item.dataset.filter===selected; item.classList.toggle('active',active); item.setAttribute('aria-pressed',String(active)); });
+search.addEventListener('input', () => { visibleLimit = 6; updatePapers(); saveFilterState(); });
+yearFilter.addEventListener('change', () => { visibleLimit = 6; updatePapers(); saveFilterState(); });
+statusFilter.addEventListener('change', () => { visibleLimit = 6; updatePapers(); saveFilterState(); });
 showAll.addEventListener('click', () => {
   const before = papers.filter(p => !p.hidden);
   visibleLimit = papers.length; updatePapers();
@@ -86,10 +103,31 @@ if ('IntersectionObserver' in window) {
 
 // The visuals enhance the document; scholarly content never depends on WebGL.
 let visuals;
-const visualReady = import('./assets/planets.js?v=20260930-collisions-v1').then(module => {
-  visuals = module.mountAcademicVisuals();
-  return visuals;
-}).catch(() => null);
+const visualReady = new Promise(resolve => {
+  const load = () => import('./assets/planets.js?v=20260930-collisions-v1').then(module => {
+    visuals = module.mountAcademicVisuals();
+    resolve(visuals);
+  }).catch(() => resolve(null));
+  if ('requestIdleCallback' in window) requestIdleCallback(load, {timeout: 1200}); else setTimeout(load, 1);
+});
+const motionControl = document.querySelector('#motion-toggle');
+let siteMotionPaused = localStorage.getItem('julie-site-motion') !== 'playing';
+function broadcastMotionPreference() {
+  document.documentElement.dataset.motion = siteMotionPaused ? 'paused' : 'playing';
+  localStorage.setItem('julie-site-motion', siteMotionPaused ? 'paused' : 'playing');
+  document.dispatchEvent(new CustomEvent('site-motion-change', {detail:{paused:siteMotionPaused}}));
+  const julieMotion = document.querySelector('[data-welcome-julie] [data-motion]');
+  if (julieMotion && (julieMotion.getAttribute('aria-pressed') === 'true') !== siteMotionPaused) julieMotion.click();
+}
+motionControl?.addEventListener('click', () => setTimeout(() => {
+  siteMotionPaused = motionControl.getAttribute('aria-pressed') === 'true';
+  broadcastMotionPreference();
+}));
+visualReady.then(() => {
+  const currentlyPaused = motionControl?.getAttribute('aria-pressed') === 'true';
+  if (motionControl && currentlyPaused !== siteMotionPaused) motionControl.click();
+  else broadcastMotionPreference();
+});
 
 // Photo flip carousel. Content remains static when motion is reduced.
 const photoCarousel = document.querySelector('#photo-carousel');
@@ -112,7 +150,7 @@ if (photoCarousel) {
   photoCarousel.style.setProperty('--photo-interval', photoInterval + 'ms');
   segments.style.setProperty('--photo-count', String(slides.length));
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-  let current = 0, busy = false, paused = reducedMotion.matches;
+  let current = 0, busy = false, paused = true;
   let hovered = false, focused = false, visible = true, timer;
   let animations = [];
 
@@ -196,6 +234,7 @@ if (photoCarousel) {
     if (reducedMotion.matches) { paused = true; animations.forEach(animation => animation.cancel()); }
     schedulePhoto();
   });
+  document.addEventListener('site-motion-change', event => { paused = event.detail.paused; schedulePhoto(); });
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; schedulePhoto(); }, { threshold: .25 }).observe(photoCarousel);
   }
@@ -267,9 +306,10 @@ window.addEventListener('message',event=>{
 function setResearchFocus(value){
  selectedFocus=value;visibleLimit=6;
  document.querySelectorAll('[data-focus-filter]').forEach(b=>{const active=b.dataset.focusFilter===value;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));});
- updatePapers();
+ updatePapers();saveFilterState();
 }
 document.querySelectorAll('[data-focus-filter]').forEach(b=>b.addEventListener('click',()=>setResearchFocus(b.dataset.focusFilter)));
+setResearchFocus(selectedFocus);
 function resetResearchFilters(){
  selectedFocus='All';search.value='';yearFilter.value='';statusFilter.value='';document.querySelector('[data-filter="All"]').click();
 }
