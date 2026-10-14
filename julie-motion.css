@@ -1,0 +1,81 @@
+/* Julie motion language: a restrained idle loop plus a scroll-directed run cycle. */
+.julie-app-visual img:not(.julie-role-glasses),
+.julie-app-visual .julie-role-glasses {
+  transform-origin: 42% 92%;
+  will-change: transform;
+}
+
+html[data-motion="playing"] .julie-app-card.is-julie-visible .julie-app-visual img:not(.julie-role-glasses),
+html[data-motion="playing"] .julie-app-card.is-julie-visible .julie-app-visual .julie-role-glasses {
+  animation: julie-idle-alive 3.8s ease-in-out infinite;
+  animation-delay: var(--julie-idle-delay, 0s);
+}
+
+.julie-app-card:nth-child(2) { --julie-idle-delay: -.9s; }
+.julie-app-card:nth-child(3) { --julie-idle-delay: -1.8s; }
+.julie-app-card:nth-child(4) { --julie-idle-delay: -2.7s; }
+
+@keyframes julie-idle-alive {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(-.35deg) scale(1); }
+  24% { transform: translate3d(1px, -2px, 0) rotate(.25deg) scale(1.005, 1.002); }
+  52% { transform: translate3d(-1px, -4px, 0) rotate(.65deg) scale(1.008, .998); }
+  76% { transform: translate3d(0, -1px, 0) rotate(0deg) scale(1.003); }
+}
+
+.julie-runner-track {
+  --julie-runner-x: -130px;
+  position: fixed;
+  z-index: 24;
+  left: 0;
+  bottom: max(10px, env(safe-area-inset-bottom));
+  width: 112px;
+  height: 149px;
+  pointer-events: none;
+  transform: translate3d(var(--julie-runner-x), 0, 0);
+  transition: transform .12s linear, opacity .25s ease;
+  opacity: 0;
+  filter: drop-shadow(0 10px 9px #0009) drop-shadow(0 0 8px #ff9bad55);
+  contain: layout paint style;
+}
+
+.julie-runner-track.is-ready { opacity: .94; }
+.julie-runner-track.is-resting { opacity: .78; }
+.julie-runner-track[data-direction="left"] .julie-runner-sprite { transform: scaleX(-1); }
+.julie-runner-sprite {
+  width: 100%;
+  height: 100%;
+  background-image: url("assets/julie-run-cycle-v1.webp");
+  background-repeat: no-repeat;
+  background-size: 400% 200%;
+  background-position: var(--julie-frame-x, 0%) var(--julie-frame-y, 0%);
+  transform-origin: center bottom;
+}
+
+.julie-runner-track.is-running .julie-runner-sprite { animation: julie-run-lean .32s ease-in-out infinite alternate; }
+.julie-runner-track.is-resting .julie-runner-sprite { animation: julie-runner-breathe 2.8s ease-in-out infinite; }
+
+@keyframes julie-run-lean {
+  from { translate: 0 1px; rotate: -.6deg; }
+  to { translate: 0 -1px; rotate: .6deg; }
+}
+@keyframes julie-runner-breathe {
+  50% { translate: 0 -2px; }
+}
+
+@media (max-width: 620px) {
+  .julie-runner-track { width: 80px; height: 107px; bottom: 7px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .julie-app-visual img,
+  .julie-runner-track,
+  .julie-runner-sprite { animation: none !important; transition: none !important; }
+  .julie-runner-track { display: none; }
+}
+
+html[data-motion="paused"] .julie-app-visual img,
+html[data-motion="paused"] .julie-runner-track,
+html[data-motion="paused"] .julie-runner-sprite { animation-play-state: paused !important; }
+html[data-motion="paused"] .julie-runner-track { display: none; }
+
+@media print { .julie-runner-track { display: none !important; } }

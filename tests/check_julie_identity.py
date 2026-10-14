@@ -24,6 +24,8 @@ with sync_playwright() as playwright:
     assert all(max(abs(a-b) for a,b in zip(item["portrait"], item["glasses"])) < 1 for item in boxes), boxes
     assert "julie-glasses-stage.svg" in page.locator(".welcome-character").evaluate("el => getComputedStyle(el, '::after').backgroundImage")
     assert "wearing glasses" in page.locator("[data-welcome-julie] canvas").get_attribute("aria-label")
+    assert page.locator(".julie-runner-track").count() == 1
+    assert page.locator(".julie-runner-sprite").evaluate("el => getComputedStyle(el).backgroundImage.includes('julie-run-cycle-v1.webp')")
     assert not errors, errors
     if capture:
         output = Path(__file__).resolve().parents[1] / "qa" / "julie-identity.png"

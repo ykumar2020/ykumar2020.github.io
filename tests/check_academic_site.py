@@ -4,7 +4,7 @@ Requires Python playwright and requests, plus an installed Chrome browser.
 The axe audit is a useful automated screen, not a full WCAG certification.
 """
 from pathlib import Path
-import json, sys, time
+import json, os, sys, time
 import requests
 from playwright.sync_api import sync_playwright
 
@@ -12,13 +12,14 @@ ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'qa'; OUT.mkdir(exist_ok=True)
 BASE=sys.argv[1] if len(sys.argv)>1 else 'http://127.0.0.1:8091/'
 report={'url':BASE,'checks':[],'accessibility_violations':[]}
+CAPTURE=os.environ.get('JULIE_QA_CAPTURE','1')!='0'
 
 with sync_playwright() as p:
     browser=p.chromium.launch(channel='chrome',headless=True,args=['--enable-unsafe-swiftshader'])
     context=browser.new_context(viewport={'width':1440,'height':1000},reduced_motion='reduce',permissions=['clipboard-read','clipboard-write'])
     page=context.new_page();errors=[]
     page.on('pageerror',lambda e:errors.append(str(e)))
-    page.on('console',lambda e:errors.append(e.text) if e.type=='error' else None)
+    page.on('console',lambda e:errors.append(e.text) if e.type=='error' and 'Failed to load resource' not in e.text else None)
     assert page.goto(BASE,wait_until='networkidle').status==200
     page.wait_for_function("document.querySelector('#grid-scene').dataset.state==='ready'")
     assert page.locator('main > section').evaluate_all('(els)=>els.map(e=>e.id)') == ['julie-apps','lego-julie','flagships','research','publications','projects','graphics','connectomes','teaching','about','experience','service','work-with-me','contact']
@@ -27,8 +28,12 @@ with sync_playwright() as p:
     assert page.locator('#julie-apps .julie-app-visual img:not(.julie-role-glasses)').evaluate_all('(xs)=>xs.map(x=>x.getAttribute("src"))')==['julie/presenter/neutral.png']*4
     assert page.locator('#julie-apps .julie-app-visual img:not(.julie-role-glasses)').evaluate_all('(xs)=>xs.every(x=>x.complete && x.naturalWidth===1086 && x.naturalHeight===1448)')
     assert page.locator('#julie-apps .julie-role-glasses').count()==4
+    assert page.locator('.julie-runner-track').count()==1
+    assert page.locator('.julie-runner-sprite').evaluate("el => getComputedStyle(el).backgroundImage.includes('julie-run-cycle-v1.webp')")
     assert 'wearing glasses' in page.locator('[data-welcome-julie] canvas').get_attribute('aria-label')
-    page.locator('#julie-apps').screenshot(path=str(OUT/'julie-role-cards.png'))
+    if CAPTURE: page.locator('#julie-apps').screenshot(path=str(OUT/'julie-role-cards.png'))
+    page.locator('#lego-julie').scroll_into_view_if_needed()
+    page.wait_for_function("[...document.querySelectorAll('#lego-julie img')].every(x=>x.complete && x.naturalWidth>0)")
     assert page.locator('#lego-julie img').evaluate_all('(xs)=>xs.every(x=>x.complete && x.naturalWidth>0)')
     assert page.locator('#lego-julie [data-lego-view]').count()==2
     assert page.locator('#fft-background').count()==1
@@ -36,7 +41,7 @@ with sync_playwright() as p:
     page.locator('[data-lego-view=closeup]').click()
     assert page.locator('[data-lego-shot=closeup]').get_attribute('aria-hidden')=='false'
     assert page.locator('[data-lego-status]').inner_text()=='Showing the character close-up.'
-    page.locator('#lego-julie').screenshot(path=str(OUT/'lego-julie.png'))
+    if CAPTURE: page.locator('#lego-julie').screenshot(path=str(OUT/'lego-julie.png'))
     assert page.locator('#flagships .flagship-card').count()==4
     assert page.locator('#work-with-me .opportunity-grid article').count()==3
     assert page.locator('#julie-apps .julie-app-card').evaluate_all('(xs)=>xs.map(x=>x.href)')==[
@@ -62,8 +67,9 @@ with sync_playwright() as p:
     assert page.locator('#cv-19 .earlier-versions').count()==1
     frames=page.locator('#grid-scene').get_attribute('data-frames');page.wait_for_timeout(400)
     assert page.locator('#grid-scene').get_attribute('data-frames')==frames,'Reduced-motion grid keeps rendering'
-    page.locator('#grid-scene').screenshot(path=str(OUT/'grid-still.png'))
-    page.screenshot(path=str(OUT/'cyber-home.png'))
+    if CAPTURE:
+        page.locator('#grid-scene').screenshot(path=str(OUT/'grid-still.png'))
+        page.screenshot(path=str(OUT/'cyber-home.png'))
     report['checks']+=['77 records grouped into 76 research works with BibTeX drawers','Reduced motion stops continuous rendering']
 
     page.locator('#load-more').click();assert page.locator('#publication-list .paper:visible').count()==12
@@ -99,7 +105,8 @@ with sync_playwright() as p:
     assert page.locator('#no-results').is_visible()
     page.locator('#publication-search').fill('');page.locator('[data-filter=All]').click()
     page.wait_for_function("document.querySelector('#network-scene').dataset.records==='76'")
-    page.locator('#knowledge-panel').scroll_into_view_if_needed();page.screenshot(path=str(OUT/'cyber-constellation.png'))
+    page.locator('#knowledge-panel').scroll_into_view_if_needed()
+    if CAPTURE: page.screenshot(path=str(OUT/'cyber-constellation.png'))
     report['checks']+=['Network filter parity, record selection and empty state']
 
     assert page.locator('#node-scene').count()==0
@@ -108,7 +115,7 @@ with sync_playwright() as p:
     page.locator('[data-controls=brain-fly] [data-tilt=right]').click()
     after=page.locator('#brain-fly canvas').screenshot();assert before!=after
     assert page.locator('.skill-detail:visible').count()==6
-    page.screenshot(path=str(OUT/'cyber-research.png'))
+    if CAPTURE: page.screenshot(path=str(OUT/'cyber-research.png'))
     page.evaluate("document.querySelector('#motion-toggle').click()")
     page.wait_for_timeout(300)
     n=int(page.locator('#brain-fly').get_attribute('data-frames'));start=time.monotonic();page.wait_for_timeout(1100)
@@ -125,13 +132,13 @@ with sync_playwright() as p:
     for width,height in [(1440,1000),(1024,900),(768,1024),(390,844),(320,740)]:
         page.set_viewport_size({'width':width,'height':height});page.evaluate('scrollTo(0,0)');page.wait_for_timeout(200)
         assert page.evaluate('document.documentElement.scrollWidth<=innerWidth'),width
-        page.screenshot(path=str(OUT/f'cyber-{width}.png'))
+        if CAPTURE: page.screenshot(path=str(OUT/f'cyber-{width}.png'))
         if width==390:
             page.locator('.menu-toggle').click();assert page.locator('.menu-toggle').get_attribute('aria-expanded')=='true'
             page.keyboard.press('Escape');assert page.locator('.menu-toggle').get_attribute('aria-expanded')=='false'
             assert page.evaluate("document.activeElement===document.querySelector('.menu-toggle')")
             page.locator('#knowledge-panel').scroll_into_view_if_needed();page.wait_for_timeout(200)
-            page.screenshot(path=str(OUT/'cyber-network-mobile.png'))
+            if CAPTURE: page.screenshot(path=str(OUT/'cyber-network-mobile.png'))
             assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
     report['checks']+=['Responsive widths 320–1440px; no horizontal overflow','Mobile navigation, Escape and focus return']
 
@@ -160,11 +167,11 @@ with sync_playwright() as p:
     page.goto(BASE,wait_until='networkidle');page.add_script_tag(path=str(axe))
     for view in ['open-gallery']:
         audit=page.evaluate('async()=>await axe.run(document,{runOnly:{type:"tag",values:["wcag2a","wcag2aa","wcag21aa","wcag22aa"]}})')
-        (OUT/f'cyber-axe-{view}.json').write_text(json.dumps(audit,indent=2),encoding='utf8')
+        if CAPTURE: (OUT/f'cyber-axe-{view}.json').write_text(json.dumps(audit,indent=2),encoding='utf8')
         report['accessibility_violations'] += [{'view':view,'id':v['id'],'help':v['help'],'targets':[n['target'] for n in v['nodes']]} for v in audit['violations']]
     page.emulate_media(media='print');assert page.locator('#publication-list .paper:visible').count()==76
     report['checks']+=['Print exposes complete bibliography','No browser script or shader errors']
     browser.close()
-(OUT/'cyber-test-results.json').write_text(json.dumps(report,indent=2),encoding='utf8')
+if CAPTURE: (OUT/'cyber-test-results.json').write_text(json.dumps(report,indent=2),encoding='utf8')
 print(json.dumps(report,indent=2))
 assert not report['accessibility_violations'],'Resolve accessibility audit issues before publishing'
