@@ -1,8 +1,10 @@
 """Focused release check for the October 2026 portfolio improvements."""
+import sys
+
 from playwright.sync_api import sync_playwright
 
 
-BASE = "http://127.0.0.1:8091/"
+BASE = sys.argv[1] if len(sys.argv) > 1 else "http://127.0.0.1:8091/"
 with sync_playwright() as playwright:
     browser = playwright.chromium.launch(channel="chrome", headless=True, args=["--enable-unsafe-swiftshader"])
     context = browser.new_context(viewport={"width": 1440, "height": 1000}, reduced_motion="reduce")
