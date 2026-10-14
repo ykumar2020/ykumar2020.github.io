@@ -1,0 +1,51 @@
+.fft-background {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: .48;
+  mix-blend-mode: screen;
+}
+
+.fft-provenance {
+  position: absolute;
+  right: max(20px, calc((100vw - 1360px) / 2));
+  bottom: 18px;
+  z-index: 5;
+  margin: 0;
+  padding: 7px 10px;
+  border: 1px solid #86515a;
+  background: #080b12bf;
+  color: #e8cbd0;
+  font: .62rem/1.45 var(--font-meta);
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+
+.fft-provenance strong { color: #ffc373; font-weight: 600; }
+.fft-provenance a { color: #ffd5dc; text-underline-offset: 3px; }
+.fft-provenance a:focus-visible { outline: 2px solid #ffd08b; outline-offset: 3px; }
+
+@media (max-width: 767px) {
+  .fft-background { opacity: .38; }
+  .fft-provenance {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    z-index: 2;
+    width: calc(100% - 40px);
+    margin: 0 auto 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fft-background { opacity: .52; }
+}
+
+@media print {
+  .fft-background,
+  .fft-provenance { display: none !important; }
+}

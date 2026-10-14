@@ -19,7 +19,9 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/spacegrotesk-variable.woff2" crossorigin>
   <link rel="stylesheet" href="styles.css?v=20261013-portfolio-v2">
   <link rel="stylesheet" href="lego-julie.css?v=20261014">
+  <link rel="stylesheet" href="fft-background.css?v=20261014">
   <script defer src="script.js?v=20261014-lego-julie"></script>
+  <script defer src="fft-background.js?v=20261014"></script>
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ProfilePage","@id":"https://ykumar2020.github.io/#profile","url":"https://ykumar2020.github.io/","name":"Julie Kumar | Trustworthy AI, Visual Evidence & Computing Education","dateModified":"2026-10-13","mainEntity":{"@id":"https://ykumar2020.github.io/#person"}},{"@type":"Person","@id":"https://ykumar2020.github.io/#person","name":"Yulia Kumar","alternateName":["Julie Kumar","Yulia Rossikova"],"honorificSuffix":"Ph.D.","url":"https://ykumar2020.github.io/","image":"https://ykumar2020.github.io/assets/julie-kumar.webp","jobTitle":"Senior Lecturer","worksFor":{"@type":"CollegeOrUniversity","name":"Kean University"},"sameAs":["https://orcid.org/0000-0002-7621-2734","https://scholar.google.com/citations?user=aVmqEKgAAAAJ&hl=en","https://github.com/ykumar2020","https://www.linkedin.com/in/yulia-kumar-1917275a/"]}]}</script>
 <link rel="stylesheet" href="assets/welcome-julie.css"><script type="module" src="assets/welcome-julie.js"></script></head>
 <body class="relative isolate overflow-x-clip">
@@ -36,6 +38,7 @@
 </header>
 <main id="main">
 <div class="hero-shell"><div class="hero-top-controls wrap"><button type="button" id="motion-toggle" aria-pressed="false" hidden>Pause ambient motion</button></div>
+<canvas class="fft-background" id="fft-background" aria-hidden="true"></canvas>
 <div class="grid-scene" id="grid-scene" aria-hidden="true"><div class="grid-fallback"></div></div>
 <section class="hero wrap" id="home" aria-labelledby="hero-title">
   <div class="hero-copy">
@@ -76,6 +79,7 @@
 
 </section>
 <div class="scene-controls grid-controls wrap" data-controls="grid-scene" aria-label="Hero grid controls" hidden><span>Explore the grid</span><button type="button" data-turn="left">Look left</button><button type="button" data-turn="right">Look right</button><button type="button" data-turn="reset">Reset view</button></div>
+<p class="fft-provenance"><strong>Live Fourier reconstruction</strong> &middot; Original transparent-canvas rendering &middot; <a href="https://www.youtube.com/watch?v=r6sGWTCMz2k" target="_blank" rel="noopener noreferrer">Concept reference &#8599;</a></p>
 <div class="hero-motion wrap"><span>Adversarial evaluation &middot; Auditable evidence &middot; Computing education</span></div>
 </div>
 <div class="credential-strip" role="region" aria-label="Affiliations and professional service"><div class="wrap">
