@@ -21,7 +21,7 @@ with sync_playwright() as p:
     page.on('console',lambda e:errors.append(e.text) if e.type=='error' else None)
     assert page.goto(BASE,wait_until='networkidle').status==200
     page.wait_for_function("document.querySelector('#grid-scene').dataset.state==='ready'")
-    assert page.locator('main > section').evaluate_all('(els)=>els.map(e=>e.id)') == ['julie-apps','flagships','research','publications','projects','graphics','connectomes','teaching','about','experience','service','work-with-me','contact']
+    assert page.locator('main > section').evaluate_all('(els)=>els.map(e=>e.id)') == ['julie-apps','lego-julie','flagships','research','publications','projects','graphics','connectomes','teaching','about','experience','service','work-with-me','contact']
     assert page.locator('#julie-apps').bounding_box()['y'] < page.locator('#research').bounding_box()['y']
     assert page.locator('#julie-apps .julie-app-card').count()==4
     assert page.locator('#julie-apps .julie-app-visual img').evaluate_all('(xs)=>xs.map(x=>x.getAttribute("src"))')==[
@@ -32,6 +32,12 @@ with sync_playwright() as p:
     ]
     assert page.locator('#julie-apps .julie-app-visual img').evaluate_all('(xs)=>xs.every(x=>x.complete && x.naturalWidth===1086 && x.naturalHeight===1448)')
     page.locator('#julie-apps').screenshot(path=str(OUT/'julie-role-cards.png'))
+    assert page.locator('#lego-julie img').evaluate_all('(xs)=>xs.every(x=>x.complete && x.naturalWidth>0)')
+    assert page.locator('#lego-julie [data-lego-view]').count()==2
+    page.locator('[data-lego-view=closeup]').click()
+    assert page.locator('[data-lego-shot=closeup]').get_attribute('aria-hidden')=='false'
+    assert page.locator('[data-lego-status]').inner_text()=='Showing the character close-up.'
+    page.locator('#lego-julie').screenshot(path=str(OUT/'lego-julie.png'))
     assert page.locator('#flagships .flagship-card').count()==4
     assert page.locator('#work-with-me .opportunity-grid article').count()==3
     assert page.locator('#julie-apps .julie-app-card').evaluate_all('(xs)=>xs.map(x=>x.href)')==[
@@ -45,7 +51,7 @@ with sync_playwright() as p:
     assert page.locator('.frontier-research').bounding_box()['y'] < page.locator('.research-program').bounding_box()['y']
     assert page.locator('.teaching-case').count()==8
     assert page.locator('#publication-list').bounding_box()['y'] < page.locator('#knowledge-panel').bounding_box()['y']
-    report['checks'] += ['Four Julie projects use four distinct, loaded role portraits','Four evidence-bounded flagship case studies appear before research','Research and bibliography precede projects; six selected works and eight teaching examples']
+    report['checks'] += ['Four Julie projects use four distinct, loaded role portraits','LEGO Julie uses two real loaded photographs with keyboard-accessible view controls','Four evidence-bounded flagship case studies appear before research','Research and bibliography precede projects; six selected works and eight teaching examples']
     assert page.locator('.portrait-slide').count()==9
     assert page.locator('.portrait-slide img').evaluate_all('(xs)=>xs.slice(0,3).map(i=>i.getAttribute("src"))')==['assets/julie-amigo.webp','assets/julie-research-team.webp','assets/julie-awards.webp']
     assert page.locator('.photo-caption').inner_text()=='AMIGO \u00b7 Emotionally aware AI'

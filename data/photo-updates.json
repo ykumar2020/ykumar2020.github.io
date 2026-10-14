@@ -30,5 +30,21 @@
     "height": 1600,
     "sourceSha256": "1acd97ad8bc2d9bbefdc753a00f9d2952eed36eb2e10d4a89ea3a956bf89465a",
     "treatment": "EXIF orientation normalized and compressed for web display; no crop or retouching."
+  },
+  {
+    "source": "IMG_1071.jpeg",
+    "file": "assets/lego-julie-award.webp",
+    "width": 1200,
+    "height": 1600,
+    "sourceSha256": "0a3ce68443250e8ae6d68bf7596dff73d2804f4f66b9b1015da4d7aefcd310a0",
+    "treatment": "EXIF orientation normalized, resized to a 1600-pixel long edge, and compressed for web display; no crop, synthesis, or retouching."
+  },
+  {
+    "source": "IMG_1070.jpeg",
+    "file": "assets/lego-julie-closeup.webp",
+    "width": 1446,
+    "height": 1600,
+    "sourceSha256": "35e4c385d22d232e50b65f1ea914ce6facb2e4d721e3be2b490a7c9a1646330f",
+    "treatment": "EXIF orientation normalized, resized to a 1600-pixel long edge, and compressed for web display; no crop, synthesis, or retouching."
   }
 ]

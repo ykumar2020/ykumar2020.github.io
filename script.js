@@ -322,3 +322,28 @@ document.querySelectorAll('[data-paper-jump]').forEach(a=>a.addEventListener('cl
 // Pause the embedded teaching voice when its section is no longer visible.
 const julieDemo=document.querySelector("#julie-demo");
 if(julieDemo)new IntersectionObserver(([entry])=>{if(!entry.isIntersecting)julieDemo.contentWindow?.postMessage({type:"julie:pause"},location.origin);},{threshold:.05}).observe(julieDemo);
+
+// LEGO Julie uses two real photographs. Motion changes only their presentation;
+// it never invents unseen views of the physical model.
+const legoGallery=document.querySelector('[data-lego-gallery]');
+if(legoGallery){
+ const stage=legoGallery.querySelector('[data-lego-stage]');
+ const shots=[...legoGallery.querySelectorAll('[data-lego-shot]')];
+ const viewButtons=[...legoGallery.querySelectorAll('[data-lego-view]')];
+ const motionButton=legoGallery.querySelector('[data-lego-motion]');
+ const status=legoGallery.querySelector('[data-lego-status]');
+ const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+ let current=0,paused=reduced.matches,visible=true,timer=0;
+ function schedule(){clearTimeout(timer);legoGallery.dataset.motion=paused?'off':'on';motionButton.textContent=paused?'Resume motion':'Pause motion';motionButton.setAttribute('aria-pressed',String(!paused));if(!paused&&visible&&!document.hidden)timer=setTimeout(()=>show(current+1,false),5200)}
+ function show(index,manual=true){current=(index+shots.length)%shots.length;shots.forEach((shot,i)=>{const active=i===current;shot.classList.toggle('is-active',active);shot.setAttribute('aria-hidden',String(!active))});viewButtons.forEach((button,i)=>button.setAttribute('aria-pressed',String(i===current)));status.textContent=`Showing the ${current?'character close-up':'complete tribute'}.`;if(manual)paused=true;schedule()}
+ viewButtons.forEach((button,i)=>button.addEventListener('click',()=>show(i)));
+ motionButton.addEventListener('click',()=>{paused=!paused;schedule()});
+ stage.addEventListener('keydown',event=>{if(event.key==='ArrowRight'||event.key==='ArrowLeft'){event.preventDefault();show(current+(event.key==='ArrowRight'?1:-1))}});
+ stage.addEventListener('pointermove',event=>{if(reduced.matches)return;const box=stage.getBoundingClientRect(),x=(event.clientX-box.left)/box.width-.5,y=(event.clientY-box.top)/box.height-.5;stage.style.setProperty('--lego-ry',`${x*4}deg`);stage.style.setProperty('--lego-rx',`${y*-4}deg`)});
+ stage.addEventListener('pointerleave',()=>{stage.style.setProperty('--lego-ry','0deg');stage.style.setProperty('--lego-rx','0deg')});
+ document.addEventListener('visibilitychange',schedule);
+ document.addEventListener('site-motion-change',event=>{paused=event.detail.paused;schedule()});
+ reduced.addEventListener('change',()=>{paused=reduced.matches;schedule()});
+ if('IntersectionObserver'in window)new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;schedule()},{threshold:.2}).observe(legoGallery);
+ schedule();
+}
