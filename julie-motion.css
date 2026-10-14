@@ -1,12 +1,10 @@
 /* Julie motion language: a restrained idle loop plus a scroll-directed run cycle. */
-.julie-app-visual img:not(.julie-role-glasses),
-.julie-app-visual .julie-role-glasses {
+.julie-app-visual img {
   transform-origin: 42% 92%;
   will-change: transform;
 }
 
-html[data-motion="playing"] .julie-app-card.is-julie-visible .julie-app-visual img:not(.julie-role-glasses),
-html[data-motion="playing"] .julie-app-card.is-julie-visible .julie-app-visual .julie-role-glasses {
+html[data-motion="playing"] .julie-app-card.is-julie-visible .julie-app-visual img {
   animation: julie-idle-alive 2.7s ease-in-out infinite;
   animation-delay: var(--julie-idle-delay, 0s);
 }

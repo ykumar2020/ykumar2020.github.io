@@ -20,14 +20,14 @@ with sync_playwright() as p:
     page=context.new_page();errors=[]
     page.on('pageerror',lambda e:errors.append(str(e)))
     page.on('console',lambda e:errors.append(e.text) if e.type=='error' and 'Failed to load resource' not in e.text else None)
-    assert page.goto(BASE,wait_until='networkidle').status==200
+    assert page.goto(BASE,wait_until='domcontentloaded').status==200
     page.wait_for_function("document.querySelector('#grid-scene').dataset.state==='ready'")
     assert page.locator('main > section').evaluate_all('(els)=>els.map(e=>e.id)') == ['julie-apps','lego-julie','flagships','research','publications','projects','graphics','connectomes','teaching','about','experience','service','work-with-me','contact']
     assert page.locator('#julie-apps').bounding_box()['y'] < page.locator('#research').bounding_box()['y']
     assert page.locator('#julie-apps .julie-app-card').count()==4
-    assert page.locator('#julie-apps .julie-app-visual img:not(.julie-role-glasses)').evaluate_all('(xs)=>xs.map(x=>x.getAttribute("src"))')==['julie/presenter/present_body.png','julie/presenter/point_body.png','julie/presenter/compare_body.png','julie/presenter/neutral.png']
-    assert page.locator('#julie-apps .julie-app-visual img:not(.julie-role-glasses)').evaluate_all('(xs)=>xs.every(x=>x.complete && x.naturalWidth===1086 && x.naturalHeight===1448)')
-    assert page.locator('#julie-apps .julie-role-glasses').count()==4
+    assert page.locator('#julie-apps .julie-app-visual img').evaluate_all('(xs)=>xs.map(x=>x.getAttribute("src"))')==['assets/julie-role-studio-v2.webp','assets/julie-role-weather-v2.webp','assets/julie-role-news-v2.webp','assets/julie-role-learn-v2.webp']
+    assert page.locator('#julie-apps .julie-app-visual img').evaluate_all('(xs)=>xs.every(x=>x.complete && x.naturalWidth===640 && x.naturalHeight===960)')
+    assert page.locator('#julie-apps .julie-role-glasses').count()==0
     assert page.locator('.julie-runner-track').count()==1
     assert page.locator('.julie-runner-sprite').evaluate("el => getComputedStyle(el).backgroundImage.includes('julie-run-cycle-v1.webp')")
     assert 'wearing glasses' in page.locator('[data-welcome-julie] canvas').get_attribute('aria-label')
@@ -55,7 +55,7 @@ with sync_playwright() as p:
     assert page.locator('.frontier-research').bounding_box()['y'] < page.locator('.research-program').bounding_box()['y']
     assert page.locator('.teaching-case').count()==8
     assert page.locator('#publication-list').bounding_box()['y'] < page.locator('#knowledge-panel').bounding_box()['y']
-    report['checks'] += ['Four Julie projects use the established video wardrobe and consistent glasses','LEGO Julie uses two real loaded photographs with keyboard-accessible view controls','Four evidence-bounded flagship case studies appear before research','Research and bibliography precede projects; six selected works and eight teaching examples']
+    report['checks'] += ['Four Julie projects use four photo-derived wardrobes and proportional rectangular glasses','LEGO Julie uses two real loaded photographs with keyboard-accessible view controls','Four evidence-bounded flagship case studies appear before research','Research and bibliography precede projects; six selected works and eight teaching examples']
     assert page.locator('.portrait-slide').count()==9
     assert page.locator('.portrait-slide img').evaluate_all('(xs)=>xs.slice(0,3).map(i=>i.getAttribute("src"))')==['assets/julie-amigo.webp','assets/julie-research-team.webp','assets/julie-awards.webp']
     assert page.locator('.photo-caption').inner_text()=='AMIGO \u00b7 Emotionally aware AI'

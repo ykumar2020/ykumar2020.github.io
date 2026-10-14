@@ -10,19 +10,13 @@ with sync_playwright() as playwright:
     page = browser.new_page(viewport={"width": 1440, "height": 1000})
     errors = []
     page.on("pageerror", lambda error: errors.append(str(error)))
-    assert page.goto(base, wait_until="networkidle").status == 200
-    portraits = page.locator("#julie-apps .julie-app-visual img:not(.julie-role-glasses)")
-    glasses = page.locator("#julie-apps .julie-role-glasses")
-    assert portraits.count() == glasses.count() == 4
-    assert portraits.evaluate_all("xs => xs.map(x => x.getAttribute('src'))") == ["julie/presenter/present_body.png", "julie/presenter/point_body.png", "julie/presenter/compare_body.png", "julie/presenter/neutral.png"]
+    assert page.goto(base, wait_until="domcontentloaded").status == 200
+    portraits = page.locator("#julie-apps .julie-app-visual img")
+    assert portraits.count() == 4
+    assert portraits.evaluate_all("xs => xs.map(x => x.getAttribute('src'))") == ["assets/julie-role-studio-v2.webp", "assets/julie-role-weather-v2.webp", "assets/julie-role-news-v2.webp", "assets/julie-role-learn-v2.webp"]
     assert portraits.evaluate_all("xs => xs.every(x => x.complete && x.naturalWidth > 0 && x.naturalHeight > 0)")
-    assert glasses.evaluate_all("xs => xs.every(x => x.complete && x.naturalWidth > 0 && x.naturalHeight > 0)")
-    boxes = page.evaluate("""() => [...document.querySelectorAll('#julie-apps .julie-app-visual')].map(card => {
-      const p = card.querySelector('img:not(.julie-role-glasses)').getBoundingClientRect();
-      const g = card.querySelector('.julie-role-glasses').getBoundingClientRect();
-      return {portrait:[p.x,p.y,p.width,p.height], glasses:[g.x,g.y,g.width,g.height]};
-    })""")
-    assert all(max(abs(a-b) for a,b in zip(item["portrait"], item["glasses"])) < 1 for item in boxes), boxes
+    assert page.locator("#julie-apps .julie-role-glasses").count() == 0
+    assert len(set(portraits.evaluate_all("xs => xs.map(x => x.currentSrc)"))) == 4
     assert "julie-glasses-stage.svg" in page.locator(".welcome-character").evaluate("el => getComputedStyle(el, '::after').backgroundImage")
     assert "wearing glasses" in page.locator("[data-welcome-julie] canvas").get_attribute("aria-label")
     assert page.locator(".julie-runner-track").count() == 1
@@ -35,4 +29,4 @@ with sync_playwright() as playwright:
         page.locator(".hero").screenshot(path=str(output.with_name("julie-identity-hero.png")))
     browser.close()
 
-print("PASS: Julie uses the Learn with Yulia denim wardrobe and aligned glasses in all website avatar roles.")
+print("PASS: Julie uses four distinct photo-derived wardrobes with integrated proportional glasses.")

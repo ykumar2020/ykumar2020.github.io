@@ -1,0 +1,42 @@
+{
+  "created": "2026-10-14",
+  "generator": "OpenAI image generation tool",
+  "mode": "reference-guided generation with transparent_background=true",
+  "identity_reference": "../julie/presenter/neutral.png",
+  "disclosure": "These are AI-derived illustrations based on Yulia Kumar's own wardrobe photographs. They are not photographs or motion capture.",
+  "assets": [
+    {
+      "file": "julie-role-studio-v2.webp",
+      "role": "live teaching agent",
+      "wardrobe_reference": "julie-amigo.webp",
+      "wardrobe": "teal cable-knit turtleneck sweater",
+      "hair": "shoulder-length layered bob",
+      "sha256": "31A37648A1BE094A57B29D3EDC1706A74D8D9DBE78734FE04E5D35DB275CDF1B"
+    },
+    {
+      "file": "julie-role-weather-v2.webp",
+      "role": "weather guide",
+      "wardrobe_reference": "julie-research-team.webp",
+      "wardrobe": "navy dress with sheer floral overlay and white boots",
+      "hair": "chin-length bob",
+      "sha256": "9D99C8584349E6AF2A3136E78846A5269391593AADBA5378DAE4D56BCD6499DC"
+    },
+    {
+      "file": "julie-role-news-v2.webp",
+      "role": "news reporter",
+      "wardrobe_reference": "julie-princeton.webp",
+      "wardrobe": "raspberry-red professional blazer and red blouse",
+      "hair": "side-parted layered bob",
+      "sha256": "9B6CC4D96E3FB306657BFC90CDC417BC3831AD211ED0BE48F4540A4B0996FB05"
+    },
+    {
+      "file": "julie-role-learn-v2.webp",
+      "role": "computing teaching assistant",
+      "wardrobe_reference": "julie-conference.webp",
+      "wardrobe": "black blazer over tan-and-black patterned blouse",
+      "hair": "low ponytail with side-swept fringe",
+      "sha256": "8AE08C76F9DC318FCF032CE079F6B81B2F1446FF9F22A9D7EEFFBAB690E3CDE1"
+    }
+  ],
+  "shared_prompt": "Create a polished transparent-background full-body website-card illustration preserving the established Julie identity and rendering style. Reproduce the selected real outfit and normal proportional thin rectangular prescription glasses from the wardrobe photograph; no oversized or novelty frames. Use the named role, hairstyle, and pose. No text, logo, props, background, halo, glow, vignette, or shadow panel."
+}
