@@ -19,11 +19,11 @@ with sync_playwright() as playwright:
     assert "julie-idle-alive" in page.locator(".julie-app-card.is-julie-visible img").first.evaluate("el => getComputedStyle(el).animationName")
     page.evaluate("scrollTo(0, document.documentElement.scrollHeight * .55)")
     page.wait_for_function("document.querySelector('.julie-runner-track').classList.contains('is-running')")
-    page.wait_for_timeout(650)
+    page.wait_for_timeout(1400)
     midpoint = runner.evaluate("el => Number.parseFloat(getComputedStyle(el).getPropertyValue('--julie-runner-x'))")
     assert 100 < midpoint < 1180, midpoint
     assert runner.get_attribute("data-direction") == "right"
-    page.wait_for_function("document.querySelector('.julie-runner-track').classList.contains('is-resting')", timeout=4000)
+    page.wait_for_function("document.querySelector('.julie-runner-track').classList.contains('is-resting')", timeout=7000)
     parked = runner.evaluate("el => Number.parseFloat(getComputedStyle(el).getPropertyValue('--julie-runner-x'))")
     assert parked > 1100, parked
     assert runner.evaluate("el => Number.parseFloat(getComputedStyle(el).opacity) > .9")

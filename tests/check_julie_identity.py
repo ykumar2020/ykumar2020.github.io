@@ -18,7 +18,9 @@ with sync_playwright() as playwright:
     assert portraits.evaluate_all("xs => xs.every(x => x.complete && x.naturalWidth > 0 && x.naturalHeight > 0)")
     assert page.locator("#julie-apps .julie-role-glasses").count() == 0
     assert len(set(portraits.evaluate_all("xs => xs.map(x => x.currentSrc)"))) == 4
-    assert "julie-glasses-stage.svg" in page.locator(".welcome-character").evaluate("el => getComputedStyle(el, '::after').backgroundImage")
+    glasses_layer = page.locator(".welcome-character").evaluate("el => getComputedStyle(el, '::after')")
+    assert "julie-glasses-role.svg" in glasses_layer["backgroundImage"]
+    assert glasses_layer["backgroundSize"] == "100% 100%"
     assert "wearing glasses" in page.locator("[data-welcome-julie] canvas").get_attribute("aria-label")
     assert page.locator(".julie-runner-track").count() == 1
     assert page.locator(".julie-runner-sprite").evaluate("el => getComputedStyle(el).backgroundImage.includes('julie-run-cycle-v1.webp')")

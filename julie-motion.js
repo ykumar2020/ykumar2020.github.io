@@ -33,6 +33,7 @@
   let raf = 0;
   let running = false;
   let greetingCount = 0;
+  const sprintDurationMs = 5500;
 
   function leftPark() { return 18; }
   function rightPark() { return Math.max(18, innerWidth - runner.offsetWidth - 18); }
@@ -79,8 +80,9 @@
     if (running) {
       const elapsed = lastTick ? Math.min(34, now - lastTick) : 16;
       lastTick = now;
-      place(currentX + direction * Math.max(.72, innerWidth / 1450) * elapsed);
-      if (now - lastFrameAt > 82) {
+      const sprintDistance = innerWidth + (runner.offsetWidth * 2) + 36;
+      place(currentX + direction * (sprintDistance / sprintDurationMs) * elapsed);
+      if (now - lastFrameAt > 118) {
         frame = (frame + 1) % framePositions.length;
         setFrame(frame);
         lastFrameAt = now;
