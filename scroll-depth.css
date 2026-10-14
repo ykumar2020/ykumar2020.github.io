@@ -1,0 +1,74 @@
+.scroll-depth-canvas {
+  position: fixed;
+  z-index: 12;
+  top: 84px;
+  right: 0;
+  width: min(46vw, 680px);
+  height: calc(100vh - 84px);
+  pointer-events: none;
+  opacity: .62;
+  mix-blend-mode: screen;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 34%, #000 92%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 34%, #000 92%, transparent 100%);
+  transition: opacity .35s ease;
+}
+
+html[data-motion="paused"] .scroll-depth-canvas,
+html[data-scroll-depth="reduced"] .scroll-depth-canvas {
+  opacity: 0;
+}
+
+html[data-scroll-depth="ready"] .depth-plane {
+  --depth-y: 42px;
+  --depth-z: -105px;
+  --depth-rx: 7deg;
+  --depth-ry: 0deg;
+  opacity: .22;
+  transform: perspective(1100px) translate3d(0, var(--depth-y), var(--depth-z)) rotateX(var(--depth-rx)) rotateY(var(--depth-ry));
+  transform-origin: 50% 50%;
+  transition: opacity .75s cubic-bezier(.2,.7,.2,1), transform .85s cubic-bezier(.2,.7,.2,1), border-color .3s ease, box-shadow .3s ease;
+  will-change: transform, opacity;
+}
+
+html[data-scroll-depth="ready"] .depth-plane.depth-visible {
+  --depth-y: 0px;
+  --depth-z: 0px;
+  --depth-rx: 0deg;
+  --depth-ry: calc(var(--depth-side, 1) * var(--depth-scroll-tilt, 0deg));
+  opacity: 1;
+}
+
+.section-top.depth-plane,
+.section-heading.depth-plane,
+.project-heading.depth-plane {
+  transform-origin: 12% 50%;
+}
+
+@media (max-width: 900px) {
+  .scroll-depth-canvas { width: 52vw; opacity: .42; }
+  html[data-scroll-depth="ready"] .depth-plane {
+    --depth-y: 28px;
+    --depth-z: -55px;
+    --depth-rx: 4deg;
+  }
+}
+
+@media (max-width: 600px) {
+  .scroll-depth-canvas { width: 70vw; opacity: .28; }
+  html[data-scroll-depth="ready"] .depth-plane.depth-visible { --depth-ry: 0deg; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-depth-canvas { display: none; }
+  html[data-scroll-depth="ready"] .depth-plane,
+  html[data-scroll-depth="ready"] .depth-plane.depth-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+@media print {
+  .scroll-depth-canvas { display: none !important; }
+  .depth-plane { opacity: 1 !important; transform: none !important; }
+}

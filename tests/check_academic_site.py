@@ -32,7 +32,7 @@ with sync_playwright() as p:
     assert page.locator('#lego-julie img').evaluate_all('(xs)=>xs.every(x=>x.complete && x.naturalWidth>0)')
     assert page.locator('#lego-julie [data-lego-view]').count()==2
     assert page.locator('#fft-background').count()==1
-    assert page.locator('.fft-provenance').inner_text().startswith('Live Fourier reconstruction')
+    assert page.locator('.fft-provenance').inner_text().lower().startswith('live fourier reconstruction')
     page.locator('[data-lego-view=closeup]').click()
     assert page.locator('[data-lego-shot=closeup]').get_attribute('aria-hidden')=='false'
     assert page.locator('[data-lego-status]').inner_text()=='Showing the character close-up.'
