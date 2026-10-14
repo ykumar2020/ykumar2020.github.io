@@ -24,13 +24,10 @@ with sync_playwright() as p:
     assert page.locator('main > section').evaluate_all('(els)=>els.map(e=>e.id)') == ['julie-apps','lego-julie','flagships','research','publications','projects','graphics','connectomes','teaching','about','experience','service','work-with-me','contact']
     assert page.locator('#julie-apps').bounding_box()['y'] < page.locator('#research').bounding_box()['y']
     assert page.locator('#julie-apps .julie-app-card').count()==4
-    assert page.locator('#julie-apps .julie-app-visual img').evaluate_all('(xs)=>xs.map(x=>x.getAttribute("src"))')==[
-        'julie/presenter/studio-role.png',
-        'julie/presenter/weather-role.png',
-        'julie/presenter/news-role.png',
-        'julie/presenter/teaching-role.png'
-    ]
-    assert page.locator('#julie-apps .julie-app-visual img').evaluate_all('(xs)=>xs.every(x=>x.complete && x.naturalWidth===1086 && x.naturalHeight===1448)')
+    assert page.locator('#julie-apps .julie-app-visual img:not(.julie-role-glasses)').evaluate_all('(xs)=>xs.map(x=>x.getAttribute("src"))')==['julie/presenter/neutral.png']*4
+    assert page.locator('#julie-apps .julie-app-visual img:not(.julie-role-glasses)').evaluate_all('(xs)=>xs.every(x=>x.complete && x.naturalWidth===1086 && x.naturalHeight===1448)')
+    assert page.locator('#julie-apps .julie-role-glasses').count()==4
+    assert 'wearing glasses' in page.locator('[data-welcome-julie] canvas').get_attribute('aria-label')
     page.locator('#julie-apps').screenshot(path=str(OUT/'julie-role-cards.png'))
     assert page.locator('#lego-julie img').evaluate_all('(xs)=>xs.every(x=>x.complete && x.naturalWidth>0)')
     assert page.locator('#lego-julie [data-lego-view]').count()==2
@@ -53,7 +50,7 @@ with sync_playwright() as p:
     assert page.locator('.frontier-research').bounding_box()['y'] < page.locator('.research-program').bounding_box()['y']
     assert page.locator('.teaching-case').count()==8
     assert page.locator('#publication-list').bounding_box()['y'] < page.locator('#knowledge-panel').bounding_box()['y']
-    report['checks'] += ['Four Julie projects use four distinct, loaded role portraits','LEGO Julie uses two real loaded photographs with keyboard-accessible view controls','Four evidence-bounded flagship case studies appear before research','Research and bibliography precede projects; six selected works and eight teaching examples']
+    report['checks'] += ['Four Julie projects use the established video wardrobe and consistent glasses','LEGO Julie uses two real loaded photographs with keyboard-accessible view controls','Four evidence-bounded flagship case studies appear before research','Research and bibliography precede projects; six selected works and eight teaching examples']
     assert page.locator('.portrait-slide').count()==9
     assert page.locator('.portrait-slide img').evaluate_all('(xs)=>xs.slice(0,3).map(i=>i.getAttribute("src"))')==['assets/julie-amigo.webp','assets/julie-research-team.webp','assets/julie-awards.webp']
     assert page.locator('.photo-caption').inner_text()=='AMIGO \u00b7 Emotionally aware AI'
