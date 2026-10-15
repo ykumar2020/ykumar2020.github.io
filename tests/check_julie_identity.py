@@ -37,4 +37,4 @@ with sync_playwright() as playwright:
         page.locator(".hero").screenshot(path=str(output.with_name("julie-identity-hero.png")))
     browser.close()
 
-print("PASS: Julie uses four distinct role wardrobes, integrated glasses, and a contextual corner greeting.")
+print("PASS: Julie uses four distinct project visuals and a contextual corner greeting.")

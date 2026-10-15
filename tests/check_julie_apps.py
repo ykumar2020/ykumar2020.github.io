@@ -35,7 +35,8 @@ with sync_playwright() as playwright:
         assert page.locator("main > section").first.get_attribute("id") == "julie-apps"
         assert cards.count() == 4
         assert cards.evaluate_all("xs => xs.map(x => x.href)") == EXPECTED
-        assert section.locator("h2").inner_text().startswith("Agentic applications")
+        assert section.locator("h2").inner_text().startswith("Built by Yulia")
+        assert section.locator(".learn-yulia-feature").is_visible()
         assert page.locator("html").evaluate("el => el.scrollWidth <= el.clientWidth")
         assert not errors
         section.scroll_into_view_if_needed()

@@ -4,6 +4,10 @@ Live site: https://ykumar2020.github.io/
 
 A static academic portfolio built with Tailwind CSS 4, semantic HTML, vanilla JavaScript, and Three.js. The cybernetic visual identity uses obsidian, cyan and amber while keeping publication text on quiet, high-contrast surfaces. GitHub Pages serves the root of `main`.
 
+## Public profile scope
+
+The published page presents work attributable to Yulia Kumar, named collaborators, students, or Yulia-AI. It foregrounds the Learn with Yulia YouTube series, verified teaching applications, authored and coauthored research, the CV-derived bibliography, the evidence-backed collaborator tree, and Yulia's original course projects. Earlier speculative website experiments and externally sourced scientific-image animations remain only as development history; the production build does not publish them as Yulia's research.
+
 ## Build and preview
 
 Requirements: Node.js 22+ and Python 3.

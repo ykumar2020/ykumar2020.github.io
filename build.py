@@ -54,6 +54,9 @@ for i,p in enumerate(data):
 <div class="paper-body"><p class="paper-topic">{e('topic')}</p><h3>{e('title')}</h3>{tag_html}<p class="paper-authors">{e('authors')}</p><p class="paper-venue">{e('venue')}</p>{note}<div class="paper-actions">{link}{related}{artifact_actions}<button class="copy-citation" type="button" data-citation="{html.escape(citation,quote=True)}" aria-label="Copy citation for {e('title')}">Cite</button></div>{earlier}{artifact_drawer}{drawer}</div>
 </article>''')
 template=(root/'template.html').read_text(encoding='utf-8')
+# Keep externally sourced visualization studies in the development archive, but
+# do not publish them as part of Yulia's authored research profile.
+template=re.sub(r'<section class="section connectomes-section".*?</section>\s*(?=<section class="section teaching-section")','',template,flags=re.S)
 template=template.replace('Eight course development examples from my 2026 teaching portfolio. Each describes an instructional change or a concrete learning activity.','Eight course examples from my 2026 teaching portfolio. Each identifies an instructional objective, a representative activity, or an assessment practice; historical offerings retain their dates.')
 template=template.replace('<p class="eyebrow">CPS 2232</p><h4>Data Structures</h4><p>Updated the Java-oriented course using insights from graduate study at Rutgers. Added SESMag activities on socioeconomic inclusiveness and a structured discussion of AI-generated code and ethics.</p>','<p class="eyebrow">CURRENT EXAMPLE / CPS 2233</p><h4>Data Structures &amp; Algorithms</h4><p>Learning objective: select and justify an appropriate data structure. A representative Java lab compares implementation choices; assessment asks students to trace behavior, explain complexity, and reflect on responsible use of AI-generated code.</p>')
 template=template.replace('07 / SINGULARITY &amp; RECURSIVE GOVERNANCE','RESEARCH HORIZON / SINGULARITY &amp; RECURSIVE GOVERNANCE')

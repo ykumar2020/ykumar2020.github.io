@@ -19,13 +19,11 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/spacegrotesk-variable.woff2" crossorigin>
   <link rel="stylesheet" href="styles.css?v=20261013-portfolio-v2">
   <link rel="stylesheet" href="lego-julie.css?v=20261014">
-  <link rel="stylesheet" href="fft-background.css?v=20261014">
   <link rel="stylesheet" href="julie-identity.css?v=20261015-integrated-glasses-v3">
   <link rel="stylesheet" href="julie-motion.css?v=20261015-context-v1">
   <link rel="stylesheet" href="scroll-depth.css?v=20261014">
   <link rel="stylesheet" href="research-artifacts.css?v=20261014">
   <script defer src="script.js?v=20261014-motion-v2"></script>
-  <script defer src="fft-background.js?v=20261014-motion-v2"></script>
   <script defer src="scroll-depth.js?v=20261014-motion-v2"></script>
   <script defer src="julie-motion.js?v=20261015-context-v1"></script>
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ProfilePage","@id":"https://ykumar2020.github.io/#profile","url":"https://ykumar2020.github.io/","name":"Julie Kumar | Trustworthy AI, Visual Evidence & Computing Education","dateModified":"2026-10-13","mainEntity":{"@id":"https://ykumar2020.github.io/#person"}},{"@type":"Person","@id":"https://ykumar2020.github.io/#person","name":"Yulia Kumar","alternateName":["Julie Kumar","Yulia Rossikova"],"honorificSuffix":"Ph.D.","url":"https://ykumar2020.github.io/","image":"https://ykumar2020.github.io/assets/julie-kumar.webp","jobTitle":"Senior Lecturer","worksFor":{"@type":"CollegeOrUniversity","name":"Kean University"},"sameAs":["https://orcid.org/0000-0002-7621-2734","https://scholar.google.com/citations?user=aVmqEKgAAAAJ&hl=en","https://github.com/ykumar2020","https://www.linkedin.com/in/yulia-kumar-1917275a/"]}]}</script>
@@ -45,7 +43,6 @@
 </header>
 <main id="main">
 <div class="hero-shell"><div class="hero-top-controls wrap"><button type="button" id="motion-toggle" aria-pressed="false" hidden>Pause ambient motion</button></div>
-<canvas class="fft-background" id="fft-background" aria-hidden="true"></canvas>
 <div class="grid-scene" id="grid-scene" aria-hidden="true"><div class="grid-fallback"></div></div>
 <section class="hero wrap" id="home" aria-labelledby="hero-title">
   <div class="hero-copy">
@@ -57,7 +54,7 @@
     <p class="hero-description">My work connects adversarial evaluation, auditable multimodal evidence, and computing education. Longer-term AGI and ASI questions remain part of the research program, grounded in present-day systems that can be tested.</p>
     <div class="hero-roles"><span>Senior Lecturer, Kean University</span><span>Ph.D. Candidate in ECE, Rutgers University</span></div>
     <div class="hero-actions"><a class="button primary" href="#flagships">Explore flagship research <span aria-hidden="true">↗</span></a><a class="button secondary" href="documents/Yulia-Kumar-CV.pdf" target="_blank" rel="noopener">View CV <span class="file-type">PDF 2026 <span aria-hidden="true">&#8595;</span></span></a></div>
-    <nav class="hero-shortcuts" aria-label="Quick jumps"><span aria-hidden="true">&gt;</span> Quick jump: <a href="#julie-apps">Julie&rsquo;s agentic apps</a><a href="#publications" data-jump-year="2026">2026 papers</a><a href="#live-workbench">Live verification lab</a><a href="#teaching">Teaching &amp; courses</a></nav>
+    <nav class="hero-shortcuts" aria-label="Quick jumps"><span aria-hidden="true">&gt;</span> Quick jump: <a href="#julie-apps">Teaching projects</a><a href="#publications" data-jump-year="2026">2026 papers</a><a href="#projects">Research tools</a><a href="#teaching">Teaching &amp; courses</a></nav>
     <div class="social-links" aria-label="Academic profiles"><a href="https://scholar.google.com/citations?user=aVmqEKgAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar ↗</a><a href="https://orcid.org/0000-0002-7621-2734" target="_blank" rel="noopener">ORCID ↗</a><a href="https://github.com/ykumar2020" target="_blank" rel="noopener">GitHub ↗</a></div>
   </div>
   <div class="hero-portrait" id="photo-carousel" role="region" aria-roledescription="carousel" aria-label="Photos of Julie Kumar">
@@ -86,7 +83,6 @@
 
 </section>
 <div class="scene-controls grid-controls wrap" data-controls="grid-scene" aria-label="Hero grid controls" hidden><span>Explore the grid</span><button type="button" data-turn="left">Look left</button><button type="button" data-turn="right">Look right</button><button type="button" data-turn="reset">Reset view</button></div>
-<p class="fft-provenance"><strong>Live Fourier reconstruction</strong> &middot; Original transparent-canvas rendering &middot; <a href="https://www.youtube.com/watch?v=r6sGWTCMz2k" target="_blank" rel="noopener noreferrer">Concept reference &#8599;</a></p>
 <div class="hero-motion wrap"><span>Adversarial evaluation &middot; Auditable evidence &middot; Computing education</span></div>
 </div>
 <div class="credential-strip" role="region" aria-label="Affiliations and professional service"><div class="wrap">
@@ -107,23 +103,25 @@
 
 
 <section class="section julie-apps-section" id="julie-apps" aria-labelledby="julie-apps-title"><div class="wrap">
-  <div class="section-top julie-apps-heading"><div><p class="eyebrow">Featured / Julie in action</p><h2 id="julie-apps-title">Agentic applications,<br><em>each with a clear role.</em></h2></div><p class="section-intro">Meet Julie across the projects closest to my teaching practice: guiding a live lesson, explaining real weather evidence, presenting source-linked news, and supporting the Learn with Yulia series.</p></div>
+  <div class="section-top julie-apps-heading"><div><p class="eyebrow">Teaching and public-interest tools</p><h2 id="julie-apps-title">Built by Yulia<br><em>with Yulia-AI.</em></h2></div><p class="section-intro">These public projects extend my teaching into guided lessons, real weather evidence, source-linked news, and reusable computing videos.</p></div>
+  <a class="learn-yulia-feature" href="https://www.youtube.com/@yuliakumar8682" target="_blank" rel="noopener">
+    <img src="assets/julie-role-learn-v2.webp" alt="Julie presenting the Learn with Yulia video series" width="640" height="960">
+    <span class="learn-yulia-copy"><span class="eyebrow">Featured teaching series / YouTube</span><strong>Learn with Yulia</strong><span>Practical computing lessons, worked examples, visual explanations, companion materials, and knowledge checks.</span><b>Visit the channel &#8599;</b></span>
+  </a>
   <div class="julie-app-grid">
-    <a class="julie-app-card studio-app" href="https://julie-teaching-studio.ykumar667598.chatgpt.site" target="_blank" rel="noopener"><div class="julie-app-visual"><img src="assets/julie-role-studio-v2.webp" alt="Julie in her teal teaching sweater and rectangular glasses" width="640" height="960"><span class="app-role">LIVE TEACHING AGENT</span><span class="app-state">VOICE STUDIO</span></div><div class="julie-app-copy"><p class="eyebrow">Interactive teaching</p><h3>Talk with Julie <span aria-hidden="true">↗</span></h3><p>Enter the live teaching studio for guided explanations and an interactive lesson experience.</p><span class="project-action">Open the teaching studio</span></div></a>
-    <a class="julie-app-card weather-app" href="https://weather-with-julie.vercel.app/" target="_blank" rel="noopener"><div class="julie-app-visual"><img src="assets/julie-role-weather-v2.webp" alt="Julie in her navy floral dress and rectangular glasses" loading="lazy" width="640" height="960"><span class="app-role">WEATHER GUIDE</span><span class="app-state">LIVE U.S. DATA</span></div><div class="julie-app-copy"><p class="eyebrow">Weather analytics</p><h3>Weather with Julie <span aria-hidden="true">↗</span></h3><p>Explore real forecasts, observations, maps, verification, and a student chart playground with Julie as the guide.</p><span class="project-action">Open the weather app</span></div></a>
-    <a class="julie-app-card reporter-app" href="https://weather-with-julie.vercel.app/news" target="_blank" rel="noopener"><div class="julie-app-visual"><img src="assets/julie-role-news-v2.webp" alt="Julie in her raspberry business suit and rectangular glasses" loading="lazy" width="640" height="960"><span class="app-role">NEWS REPORTER</span><span class="app-state">SOURCES VISIBLE</span></div><div class="julie-app-copy"><p class="eyebrow">Researched briefing</p><h3>News with Julie <span aria-hidden="true">↗</span></h3><p>Follow local, U.S., and world briefings while keeping the supporting transcripts and sources inspectable.</p><span class="project-action">Open the news reporter</span></div></a>
-    <a class="julie-app-card learn-app" href="https://www.youtube.com/@yuliakumar8682" target="_blank" rel="noopener"><div class="julie-app-visual"><img src="assets/julie-role-learn-v2.webp" alt="Julie in her black blazer, patterned blouse, and rectangular glasses" loading="lazy" width="640" height="960"><span class="app-role">TEACHING ASSISTANT</span><span class="app-state">VIDEO LESSONS</span></div><div class="julie-app-copy"><p class="eyebrow">Computing education</p><h3>Learn with Yulia <span aria-hidden="true">↗</span></h3><p>Watch worked computing lessons with visual explanations and reproducible companion materials.</p><span class="project-action">Visit the YouTube channel</span></div></a>
+    <a class="julie-app-card studio-app" href="https://julie-teaching-studio.ykumar667598.chatgpt.site" target="_blank" rel="noopener"><div class="julie-app-visual"><img src="assets/julie-role-studio-v2.webp" alt="Julie presenting the live teaching studio" width="640" height="960"><span class="app-role">LIVE TEACHING AGENT</span><span class="app-state">VOICE STUDIO</span></div><div class="julie-app-copy"><p class="eyebrow">Interactive teaching</p><h3>Talk with Julie <span aria-hidden="true">↗</span></h3><p>Enter the live teaching studio for guided explanations and an interactive lesson experience.</p><span class="project-action">Open the teaching studio</span></div></a>
+    <a class="julie-app-card weather-app" href="https://weather-with-julie.vercel.app/" target="_blank" rel="noopener"><div class="julie-app-visual"><img src="assets/julie-role-weather-v2.webp" alt="Julie presenting the weather application" loading="lazy" width="640" height="960"><span class="app-role">WEATHER GUIDE</span><span class="app-state">LIVE U.S. DATA</span></div><div class="julie-app-copy"><p class="eyebrow">Weather analytics</p><h3>Weather with Julie <span aria-hidden="true">↗</span></h3><p>Explore real forecasts, observations, maps, verification, and a student chart playground with Julie as the guide.</p><span class="project-action">Open the weather app</span></div></a>
+    <a class="julie-app-card reporter-app" href="https://weather-with-julie.vercel.app/news" target="_blank" rel="noopener"><div class="julie-app-visual"><img src="assets/julie-role-news-v2.webp" alt="Julie presenting the source-linked news application" loading="lazy" width="640" height="960"><span class="app-role">NEWS REPORTER</span><span class="app-state">SOURCES VISIBLE</span></div><div class="julie-app-copy"><p class="eyebrow">Researched briefing</p><h3>News with Julie <span aria-hidden="true">↗</span></h3><p>Follow local, U.S., and world briefings while keeping the supporting transcripts and sources inspectable.</p><span class="project-action">Open the news reporter</span></div></a>
+    <a class="julie-app-card learn-app" href="https://www.youtube.com/@yuliakumar8682" target="_blank" rel="noopener"><div class="julie-app-visual"><img src="assets/julie-role-learn-v2.webp" alt="Julie presenting the Learn with Yulia video series" loading="lazy" width="640" height="960"><span class="app-role">TEACHING ASSISTANT</span><span class="app-state">VIDEO LESSONS</span></div><div class="julie-app-copy"><p class="eyebrow">Computing education</p><h3>Learn with Yulia <span aria-hidden="true">↗</span></h3><p>Watch worked computing lessons with visual explanations and reproducible companion materials.</p><span class="project-action">Visit the YouTube channel</span></div></a>
   </div>
-  <p class="julie-app-boundary"><strong>Visual identity:</strong> Each illustrated role uses a different outfit derived from Yulia's own photographs: a teal teaching sweater, navy floral dress, raspberry business suit, or black blazer with patterned blouse. Julie wears proportional rectangular glasses in every role. The illustrations and run cycle are AI-derived artwork, not photographs or motion capture. <strong>Role boundary:</strong> Julie is my virtual avatar. Each destination states what is automated, what data it uses, and where human teaching or editorial judgment remains.</p>
 </div></section>
 
 <section class="section lego-julie-section" id="lego-julie" aria-labelledby="lego-julie-title"><div class="wrap lego-julie-grid">
   <div class="lego-julie-copy">
-    <p class="eyebrow">A student-made tribute / Two-view motion study</p>
+    <p class="eyebrow">A student-made tribute</p>
     <h2 id="lego-julie-title">LEGO Julie,<br><em>Best Professor Forever.</em></h2>
     <p class="lego-julie-lede">A joyful miniature portrait of teaching: flowers in one hand, a trophy in the other, a tiny computer nearby, and the professor framed behind her.</p>
-    <p>Use the controls to move between the complete award and its character close-up. When motion is enabled, the two photographs crossfade with a restrained camera drift and pointer tilt.</p>
-    <p class="lego-motion-boundary"><strong>Motion boundary:</strong> this animation presents two real photographs; it does not synthesize unseen sides or imply a captured 3D model. A future 360° video can support a genuine draggable turntable.</p>
+    <p>The tribute celebrates the connection between teaching, computing, and student achievement.</p>
   </div>
   <div class="lego-gallery" data-lego-gallery data-motion="on">
     <div class="lego-stage" data-lego-stage tabindex="0" aria-label="Two-view animated photograph of the LEGO Julie award">
@@ -167,8 +165,6 @@
 <p class="frontier-context">AGI concerns broadly capable intelligence across tasks; ASI concerns intelligence exceeding human cognitive capabilities. My focus is preparation: evaluating capabilities and risks, strengthening safeguards, and educating people to question and verify what increasingly capable systems do.</p>
 </div>
 </div>
-<!-- SINGULARITY_PILLAR -->
-<!-- LIVE_WORKBENCH -->
 <div class="research-program"><p class="eyebrow">Doctoral research / Rutgers University</p><p>As an <strong>NSF CSGrad4US Fellow</strong>, I work with <a href="https://ece.rutgers.edu/dov-kruger" target="_blank" rel="noopener">Dov Kruger</a> in Electrical and Computer Engineering, specializing in machine learning. My 2025–2026 work spans compression for AI training, distributed data-poisoning benchmarks, multimodal applications, and accessible STEM learning.</p></div>
 <div class="research-selected"><h3>Selected research works</h3><p class="research-artifact-note">Every preview is extracted from the corresponding authored paper or system artifact. Select the image to open its source.</p><ul>
 <li><figure class="research-artifact"><a href="https://doi.org/10.1109/DCC66757.2026.00071" target="_blank" rel="noopener"><img src="assets/research/cv11-ai-training-compression.png" loading="lazy" width="765" height="990" alt="Published Data Compression for AI Model Training paper with measured three-dimensional object compression results"></a><figcaption><span>Paper artifact</span>Table 1 · measured 3D-object compression results</figcaption></figure><div><p class="eyebrow">2026 / Published</p><h4><a href="https://doi.org/10.1109/DCC66757.2026.00071" target="_blank" rel="noopener">Data Compression for AI Model Training ↗</a></h4><p>Reducing data-processing overhead in AI training.</p></div></li>
@@ -243,7 +239,7 @@
   </ul></details>
 </div></section>
 
-<section class="section connectomes-section" id="connectomes" aria-labelledby="connectomes-title"><div class="wrap"><div class="section-top"><div><p class="eyebrow">Neural architecture / Open research data</p><h2 id="connectomes-title">Biology, rendered<br><em>in three dimensions.</em></h2></div><p class="section-intro">Real neuron surface meshes from H01 and FlyWire, rotating in 3D. These small, credited subsets preserve relative spatial positions. The original scientific illustrations remain below in their unchanged colors.</p></div><div class="connectome-gallery">
+<section class="section connectomes-section" id="connectomes" aria-labelledby="connectomes-title" hidden><div class="wrap"><div class="section-top"><div><p class="eyebrow">Neural architecture / Open research data</p><h2 id="connectomes-title">Biology, rendered<br><em>in three dimensions.</em></h2></div><p class="section-intro">Real neuron surface meshes from H01 and FlyWire, rotating in 3D. These small, credited subsets preserve relative spatial positions. The original scientific illustrations remain below in their unchanged colors.</p></div><div class="connectome-gallery">
 <article class="connectome-study" aria-labelledby="brain-human-title"><div class="connectome-heading"><p class="eyebrow">SURFACE MESHES / H01</p><h3 id="brain-human-title">Eight proofread human cortex cells</h3></div>
 <div id="brain-human" class="connectome-scene" data-dataset="human" data-mesh="assets/connectomes/human-neurons.glb" role="img" aria-label="Interactive 3D surface meshes: Eight proofread human cortex cells"><img class="scene-fallback" src="assets/connectomes/human-mesh-preview.png" loading="lazy" alt="Still view of eight proofread human cortex cells" width="1200" height="800"></div>
 <div class="scene-controls" data-controls="brain-human" aria-label="Rotate human neuron meshes" hidden><button data-tilt="left">Rotate left</button><button data-tilt="right">Rotate right</button><button data-tilt="reset">Reset view</button></div>
