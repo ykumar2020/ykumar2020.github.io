@@ -64,6 +64,10 @@ export function createCollaborationNetwork(_stage, _inspect) {
     return name.split(/\s+/).filter(Boolean).map((part) => part[0]).slice(0, 2).join('');
   }
 
+  function surname(name) {
+    return name.split(/\s+/).filter(Boolean).at(-1).replace(/[^\p{L}'-]/gu, '');
+  }
+
   function nodeSize(count, maximum) {
     const scale = Math.log1p(count) / Math.log1p(Math.max(1, maximum));
     return Math.round(30 + scale * 64);
@@ -100,8 +104,8 @@ export function createCollaborationNetwork(_stage, _inspect) {
     links.append(line);
   }
 
-  function addFace(person, point, maximum, center = false) {
-    const button = el('button', null, `collaborator-face${center ? ' central-person' : ''}`);
+  function addFace(person, point, maximum, center = false, ambiguous = false) {
+    const button = el('button', null, `collaborator-face${center ? ' central-person' : ''}${ambiguous ? ' ambiguous-initials' : ''}`);
     const disc = el('span', null, 'face-disc');
     const size = center ? 112 : nodeSize(person.papers.length, maximum);
     button.type = 'button';
@@ -123,7 +127,9 @@ export function createCollaborationNetwork(_stage, _inspect) {
       disc.textContent = initials(person.name);
     }
 
-    button.append(disc, el('span', person.name, 'face-name'), el('span', center ? 'Central author' : `${person.papers.length} shared`, 'face-count'));
+    button.append(disc);
+    if (ambiguous) button.append(el('span', surname(person.name), 'face-key'));
+    button.append(el('span', person.name, 'face-name'), el('span', center ? 'Central author' : `${person.papers.length} shared`, 'face-count'));
     if (center) {
       button.setAttribute('aria-label', 'Julie Kumar, central author');
       button.addEventListener('click', () => document.querySelector('#home').scrollIntoView({behavior: 'smooth'}));
@@ -152,8 +158,22 @@ export function createCollaborationNetwork(_stage, _inspect) {
     detail.append(el('h4', person.name), el('p', `${person.papers.length} matching bibliography records · ${person.topics.map((topic) => short[topic]).join(' / ')}`));
     selectionLabel.textContent = `${person.name} · ${person.papers.length} shared records · ${person.topics.map((topic) => short[topic]).join(' / ')}`;
 
-    if (person.profile) {
-      const profile = el('a', 'Official profile / portrait source ↗');
+    if (person.scholar) {
+      const scholar = el('a', 'Primary Google Scholar profile ↗');
+      scholar.href = person.scholar;
+      scholar.target = '_blank';
+      scholar.rel = 'noopener';
+      detail.append(scholar);
+    } else {
+      const scholar = el('a', 'Search public scholarly records for this name ↗');
+      scholar.href = publicSearch(person);
+      scholar.target = '_blank';
+      scholar.rel = 'noopener';
+      detail.append(scholar, el('p', 'Name search provided for discovery; it is not asserted as a verified identity profile.', 'identity-boundary'));
+    }
+
+    if (person.profile && person.profile !== person.scholar) {
+      const profile = el('a', 'Additional official profile / portrait source ↗');
       profile.href = person.profile;
       profile.target = '_blank';
       profile.rel = 'noopener';
@@ -163,13 +183,6 @@ export function createCollaborationNetwork(_stage, _inspect) {
     } else {
       detail.append(el('p', 'Initials shown because no identity-verified public portrait is attached.'));
     }
-
-    const scholar = el('a', person.scholar ? 'Google Scholar profile ↗' : 'Search public scholarly records for this name ↗');
-    scholar.href = person.scholar || publicSearch(person);
-    scholar.target = '_blank';
-    scholar.rel = 'noopener';
-    detail.append(scholar);
-    if (!person.scholar) detail.append(el('p', 'Name search provided for discovery; it is not asserted as a verified identity profile.', 'identity-boundary'));
 
     const list = el('ul');
     for (const id of person.papers) {
@@ -216,15 +229,16 @@ export function createCollaborationNetwork(_stage, _inspect) {
     const visible = visiblePeople();
     const maximum = Math.max(1, ...people.map((person) => person.papers.length));
     const positions = radialPositions(visible.length);
+    const initialCounts = visible.reduce((counts, person) => counts.set(initials(person.name), (counts.get(initials(person.name)) || 0) + 1), new Map());
 
     host.dataset.records = String(records.length);
     host.dataset.people = String(people.length);
     host.dataset.visiblePeople = String(visible.length);
-    panel.querySelector('#network-legend').textContent = 'Node area and edge width scale with shared bibliography-record count. Color shows the first matching research topic. Portraits appear only when an attributed public or user-supplied image is recorded.';
+    panel.querySelector('#network-legend').textContent = 'Node area and edge width scale with the combined shared bibliography-record count after aliases are merged. Color shows the first matching research topic. Google Scholar is the primary identity and portrait source; verified public sources are used only as fallback.';
     panel.querySelector('#collaboration-count').textContent = people.length ? `Showing ${visible.length} of ${people.length} coauthor entries in one tree. Use the selector to inspect every person. Counts refer to bibliography records, including versions.` : 'No matching coauthor entries.';
 
     visible.forEach((person, index) => addLine(person, positions[index], maximum));
-    visible.forEach((person, index) => addFace(person, positions[index], maximum));
+    visible.forEach((person, index) => addFace(person, positions[index], maximum, false, initialCounts.get(initials(person.name)) > 1));
     addFace({name: 'Julie Kumar', papers: records, topics: [], image: 'assets/julie-atrium.webp'}, {x: 500, y: 350}, maximum, true);
     highlight(activePaper);
     choose(selected || visible[0]?.id || '');

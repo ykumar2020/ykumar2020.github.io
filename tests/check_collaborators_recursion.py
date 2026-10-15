@@ -4,6 +4,7 @@ import json,hashlib,subprocess,sys
 from playwright.sync_api import sync_playwright
 ROOT=Path(__file__).resolve().parents[1];BASE=sys.argv[1] if len(sys.argv)>1 else 'http://127.0.0.1:8091/'
 manifest=json.loads((ROOT/'data/collaborators.json').read_text(encoding='utf8'))
+scholar=json.loads((ROOT/'data/scholar-collaborators.json').read_text(encoding='utf8'))
 pubs={p['id']:p for p in json.loads((ROOT/'data/publications.json').read_text(encoding='utf8'))}
 assert len({p['id'] for p in manifest['people']})==len(manifest['people'])
 for person in manifest['people']:
@@ -11,8 +12,10 @@ for person in manifest['people']:
  assert set(person['topics'])=={pubs[i]['topic'] for i in person['papers']}
  if 'image' in person:
   assert hashlib.sha256((ROOT/person['image']).read_bytes()).hexdigest()==person['sha256']
-  if person['id']=='jose-serra': assert person['photoAttribution']=='Portrait supplied by Julie Kumar'
-  else: assert person['profile'].startswith('https://') and person['imageSource'].startswith('https://')
+  assert person['imageSource'].startswith('https://')
+  if person['id']=='jose-serra': assert person['photoAttribution']=='Google Scholar profile photo for Jose Serra'
+assert len(scholar['people'])==12
+assert all((ROOT/person['image']).is_file() for person in scholar['people'])
 with sync_playwright() as p:
  b=p.chromium.launch(channel='chrome',headless=True,args=['--enable-unsafe-swiftshader'])
  page=b.new_page(viewport={'width':1440,'height':1000},reduced_motion='reduce');errors=[]
@@ -23,12 +26,19 @@ with sync_playwright() as p:
  assert host.get_attribute('data-people')==str(len(manifest['people']))
  assert page.locator('.collaborator-face[data-person]').count()==100
  assert page.locator('.collaborator-face[data-person="jose-serra"]').count()==1
+ assert page.locator('.collaborator-face[data-person="joseph-sarnoski"]').count()==1
+ assert page.locator('.collaborator-face[data-person="jose-serra"] .face-key').inner_text()=='Serra'
+ assert page.locator('.collaborator-face[data-person="joseph-sarnoski"] .face-key').inner_text()=='Sarnoski'
+ jose_size=float(page.locator('.collaborator-face[data-person="jose-serra"]').evaluate("e=>getComputedStyle(e).getPropertyValue('--node-size').replace('px','')"))
+ joseph_size=float(page.locator('.collaborator-face[data-person="joseph-sarnoski"]').evaluate("e=>getComputedStyle(e).getPropertyValue('--node-size').replace('px','')"))
+ assert jose_size>joseph_size
  page.locator('#collaborator-select').select_option('jose-serra')
  assert page.locator('#collaborator-detail li').count()==3
  assert page.locator('#collaborator-detail h4').inner_text()=='Jose Serra'
- assert page.locator('#collaborator-detail a',has_text='Google Scholar profile').get_attribute('href')=='https://scholar.google.com/citations?user=NpJefRUAAAAJ&hl=en'
+ assert page.locator('#collaborator-detail a',has_text='Primary Google Scholar profile').get_attribute('href')=='https://scholar.google.com/citations?user=NpJefRUAAAAJ&hl=en'
  assert page.locator('.collaborator-face[data-person] img').count()==sum(1 for person in manifest['people'][:100] if person.get('image'))
  assert page.locator('.collaborator-face img').evaluate_all('(xs)=>xs.every(x=>x.complete&&x.naturalWidth>0)')
+ host.screenshot(path=str(ROOT/'qa/collaborators-scholar-jose.png'))
  page.locator('#collaborator-select').select_option('dov-kruger');assert page.locator('#collaborator-detail h4').inner_text()=='Dov Kruger'
  dov=next(p for p in manifest['people'] if p['id']=='dov-kruger')
  assert page.locator('#collaborator-detail li').count()==len(dov['papers'])

@@ -1,8 +1,8 @@
 {
   "source": "data/publications.json",
-  "note": "Edges come from explicitly listed coauthors. Record counts include versions, accepted work and preprints; not a count of distinct studies. Unresolved initial-only names stay separate. Scholar profile access returned HTTP 429; portraits come from credited profiles or images supplied by Julie Kumar; provenance is recorded per person.",
+  "note": "Edges and shared-record counts come from explicitly listed coauthors in the bibliography. Google Scholar is the primary identity, profile, and portrait source when a verified match is available; reviewed institutional or user-supplied sources remain fallbacks. Record counts include versions, accepted work and preprints and are not a count of distinct studies. Unresolved initial-only names stay separate.",
   "profileRequested": "https://scholar.google.com/citations?user=aVmqEKgAAAAJ&hl=en",
-  "verifiedAt": "2026-09-29",
+  "verifiedAt": "2026-10-15",
   "aliases": {
     "Juan Jenny Li": [
       "J. J. Li",
@@ -74,8 +74,12 @@
     ],
     "Jose Serra": [
       "J. Serra"
+    ],
+    "Evan Weinman": [
+      "E. Weinman"
     ]
   },
+  "scholarSnapshot": "data/scholar-collaborators.json",
   "recordsWithoutExplicitJulie": [
     "cv-75"
   ],
@@ -152,11 +156,14 @@
         "Agentic AI"
       ],
       "scholar": "https://scholar.google.com/citations?user=KX0EE1MAAAAJ&hl=en",
-      "image": "assets/collaborators/juan-jenny-li.png",
+      "image": "assets/collaborators/scholar-juan-jenny-li.jpg",
       "profile": "https://www.kean.edu/directory/juan-li",
-      "imageSource": "https://www.kean.edu/sites/default/files/styles/small_4x3/public/2025-10/Screenshot%202025-10-04%20221706.png?h=d9265ea7&itok=TsED0fk4",
-      "photoAttribution": "Official university profile",
-      "sha256": "f80df99d4cce131ec940cb88edb55b9c35adcd397f8ad3cb157baa876fa9a9cd"
+      "imageSource": "https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=KX0EE1MAAAAJ&citpid=1",
+      "photoAttribution": "Google Scholar profile photo for Juan Jenny Li",
+      "sha256": "ff57d3e8c9a22ca852542b4e5ac73e8a049fbb2a1c3c96530954e4da16471d52",
+      "identitySource": "Yulia Kumar Google Scholar public coauthor list",
+      "scholarSource": "https://scholar.google.com/citations?user=aVmqEKgAAAAJ&hl=en",
+      "portraitUpdatedAt": "2026-10-15"
     },
     {
       "id": "dov-kruger",
@@ -203,11 +210,15 @@
         "AI Systems",
         "Agentic AI"
       ],
-      "image": "assets/collaborators/dov-kruger.jpg",
+      "image": "assets/collaborators/scholar-dov-kruger.jpg",
       "profile": "https://ece.rutgers.edu/dov-kruger",
-      "imageSource": "https://ece.rutgers.edu/sites/default/files/styles/3x4_one_third_full_default_1x/public/2025-04/Dov-headshot20240214s.jpg?h=d70f2ad5&itok=m9auD0ah",
-      "photoAttribution": "Official university profile",
-      "sha256": "85f346e35a32d21d95581f70f5e7c9525c742d2cedc1fad274574c5b520d1976"
+      "imageSource": "https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=4sV-a38AAAAJ&citpid=1",
+      "photoAttribution": "Google Scholar profile photo for Dov Kruger",
+      "sha256": "06305d3d5c6501dd7dc631f26a3dc59ba2cd19f1ab5b0c78746dbdeeae5c8f9a",
+      "identitySource": "Yulia Kumar Google Scholar public coauthor list",
+      "scholar": "https://scholar.google.com/citations?user=4sV-a38AAAAJ&hl=en",
+      "scholarSource": "https://scholar.google.com/citations?user=aVmqEKgAAAAJ&hl=en",
+      "portraitUpdatedAt": "2026-10-15"
     },
     {
       "id": "patricia-morreale",
@@ -253,11 +264,15 @@
         "Multimodal AI",
         "Education"
       ],
-      "image": "assets/collaborators/patricia-morreale.jpg",
+      "image": "assets/collaborators/scholar-patricia-morreale.jpg",
       "profile": "https://www.kean.edu/directory/patricia-morreale",
-      "imageSource": "https://www.kean.edu/sites/default/files/styles/small_4x3/public/2020-12/Patricia%20Morreale-0618.jpg?h=b2774bcf&itok=KWq37LMN",
-      "photoAttribution": "Official university profile",
-      "sha256": "f8fd468bada6dfcde4611ddc8ae407e7c1fdbdcc0ab9935fe6c91721d7b170f8"
+      "imageSource": "https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=Zk16uZsAAAAJ&citpid=15",
+      "photoAttribution": "Google Scholar profile photo for Patricia Morreale",
+      "sha256": "81272b5404fd1079089b1867a1b8b1499c856215a9c239407d63d16d834955eb",
+      "identitySource": "Yulia Kumar Google Scholar public coauthor list",
+      "scholar": "https://scholar.google.com/citations?user=Zk16uZsAAAAJ&hl=en",
+      "scholarSource": "https://scholar.google.com/citations?user=aVmqEKgAAAAJ&hl=en",
+      "portraitUpdatedAt": "2026-10-15"
     },
     {
       "id": "hemn-barzan-abdalla",
@@ -387,11 +402,15 @@
       "topics": [
         "Education"
       ],
-      "image": "assets/collaborators/daehan-kwak.jpg",
+      "image": "assets/collaborators/scholar-daehan-kwak.jpg",
       "profile": "https://www.kean.edu/directory/daehan-kwak",
-      "imageSource": "https://www.kean.edu/sites/default/files/styles/small_4x3/public/2022-07/Kwak-Kean-400x300.jpg?h=3873714b&itok=G223sk1r",
-      "photoAttribution": "Official university profile",
-      "sha256": "329d75c690e629d85a652101c1f24065e6f93fc721f4589f3d1da0cb05bfdd21"
+      "imageSource": "https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=ZF9sVaQAAAAJ&citpid=8",
+      "photoAttribution": "Google Scholar profile photo for Daehan Kwak",
+      "sha256": "bb9ae0abc96bbd430ff4cea1f522746c50814ac996bcd2458c8efd93e095adcd",
+      "identitySource": "Yulia Kumar Google Scholar public coauthor list",
+      "scholar": "https://scholar.google.com/citations?user=ZF9sVaQAAAAJ&hl=en",
+      "scholarSource": "https://scholar.google.com/citations?user=aVmqEKgAAAAJ&hl=en",
+      "portraitUpdatedAt": "2026-10-15"
     },
     {
       "id": "jean-chu",
@@ -405,7 +424,15 @@
       ],
       "topics": [
         "Education"
-      ]
+      ],
+      "identitySource": "Yulia Kumar Google Scholar public coauthor list",
+      "scholar": "https://scholar.google.com/citations?user=yFYjqm8AAAAJ&hl=en",
+      "scholarSource": "https://scholar.google.com/citations?user=aVmqEKgAAAAJ&hl=en",
+      "image": "assets/collaborators/scholar-jean-chu.jpg",
+      "imageSource": "https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=yFYjqm8AAAAJ&citpid=1",
+      "photoAttribution": "Google Scholar profile photo for Jean Chu",
+      "portraitUpdatedAt": "2026-10-15",
+      "sha256": "4e76cceabb5900e9a6e05825af8276b71137b5714c0a76afee07a43827e972bf"
     },
     {
       "id": "justin-delgado",
@@ -517,14 +544,14 @@
         "AI Systems"
       ],
       "featured": true,
-      "identitySource": "https://par.nsf.gov/servlets/purl/10351915",
+      "identitySource": "Reviewed direct Google Scholar profile",
       "scholar": "https://scholar.google.com/citations?user=NpJefRUAAAAJ&hl=en",
-      "scholarSource": "Profile supplied by Julie Kumar in the website update request.",
-      "image": "assets/collaborators/jose-serra.png",
-      "imageSource": "Portrait supplied by Julie Kumar in chat, 2026-09-30",
-      "photoAttribution": "Portrait supplied by Julie Kumar",
-      "portraitUpdatedAt": "2026-09-30",
-      "sha256": "3815028e866354d345fb03d0bd06918e1fc2d0b4383be5cecb0988507e37355d"
+      "scholarSource": "https://scholar.google.com/citations?user=aVmqEKgAAAAJ&hl=en",
+      "image": "assets/collaborators/scholar-jose-serra.jpg",
+      "imageSource": "https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=NpJefRUAAAAJ&citpid=3",
+      "photoAttribution": "Google Scholar profile photo for Jose Serra",
+      "portraitUpdatedAt": "2026-10-15",
+      "sha256": "65df5e6b0f68554d6df04a7346ae3a988965445cc11075a0c8d20ad36ad4f6e2"
     },
     {
       "id": "k-august",
@@ -563,11 +590,15 @@
       "topics": [
         "Algorithms"
       ],
-      "image": "assets/collaborators/miguel-mosteiro.jpg",
+      "image": "assets/collaborators/scholar-miguel-a-mosteiro.jpg",
       "profile": "https://www.pace.edu/profile/miguel-mosteiro",
-      "imageSource": "https://www.pace.edu/sites/default/files/styles/1_1_720x720/public/2026-09/profile-mmosteiro.jpg?h=4de69ae3&itok=w3YufAmI",
-      "photoAttribution": "Official university profile",
-      "sha256": "571b7669373b4cce1bb3fb1e664c33b94aa3dc1006e121e98bd1d36af0517fef"
+      "imageSource": "https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=atD6VI4AAAAJ&citpid=2",
+      "photoAttribution": "Google Scholar profile photo for Miguel A. Mosteiro",
+      "sha256": "96c7fea26dfc34b022de1a03f6ec5a75788b6e30a0b433d697e9d41de488b70a",
+      "identitySource": "Yulia Kumar Google Scholar public coauthor list",
+      "scholar": "https://scholar.google.com/citations?user=atD6VI4AAAAJ&hl=en",
+      "scholarSource": "https://scholar.google.com/citations?user=aVmqEKgAAAAJ&hl=en",
+      "portraitUpdatedAt": "2026-10-15"
     },
     {
       "id": "n-tellez",
@@ -592,7 +623,15 @@
       ],
       "topics": [
         "Education"
-      ]
+      ],
+      "identitySource": "Yulia Kumar Google Scholar public coauthor list",
+      "scholar": "https://scholar.google.com/citations?user=xn3d4I8AAAAJ&hl=en",
+      "scholarSource": "https://scholar.google.com/citations?user=aVmqEKgAAAAJ&hl=en",
+      "image": "assets/collaborators/scholar-pankati-patel.jpg",
+      "imageSource": "https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=xn3d4I8AAAAJ&citpid=1",
+      "photoAttribution": "Google Scholar profile photo for Pankati Patel",
+      "portraitUpdatedAt": "2026-10-15",
+      "sha256": "097d6cf915617e4efbbe27acae8e98f6c251f1381091913bae628ec113f5e66f"
     },
     {
       "id": "peter-sorial",
@@ -641,11 +680,15 @@
       "topics": [
         "Education"
       ],
-      "image": "assets/collaborators/ching-yu-huang.jpg",
+      "image": "assets/collaborators/scholar-ching-yu-huang.jpg",
       "profile": "https://www.kean.edu/directory/ching-yu-huang",
-      "imageSource": "https://www.kean.edu/sites/default/files/styles/small_4x3/public/2019-01/ching-yu_huang.jpg?h=b2774bcf&itok=8foq2tFc",
-      "photoAttribution": "Official university profile",
-      "sha256": "3be58f5c97f77dadec102a167386dc81aa29af3904a61fe97c0f875ea52582b0"
+      "imageSource": "https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=gUMq-IcAAAAJ&citpid=1",
+      "photoAttribution": "Google Scholar profile photo for Ching-Yu Huang",
+      "sha256": "86433d7489775217da41f3e51f33acc2952d797a8785315b70765f64c1d4cf85",
+      "identitySource": "Yulia Kumar Google Scholar public coauthor list",
+      "scholar": "https://scholar.google.com/citations?user=gUMq-IcAAAAJ&hl=en",
+      "scholarSource": "https://scholar.google.com/citations?user=aVmqEKgAAAAJ&hl=en",
+      "portraitUpdatedAt": "2026-10-15"
     },
     {
       "id": "d-lambropoulos",
@@ -679,11 +722,15 @@
       "topics": [
         "Education"
       ],
-      "image": "assets/collaborators/margaret-burnett.jpg",
+      "image": "assets/collaborators/scholar-margaret-burnett.jpg",
       "profile": "https://engineering.oregonstate.edu/about/people/margaret-burnett",
-      "imageSource": "https://engineering.oregonstate.edu/sites/engineering.oregonstate.edu/files/styles/1_1_400x400/public/2023-04/profile-margaret-burnett.jpg?itok=AxHGYXfh",
-      "photoAttribution": "Official university profile",
-      "sha256": "e3633a2ee42af0551e5fa72ddb5368247cda3775729c2ceec9c34e95977b563a"
+      "imageSource": "https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=Vc58tYYAAAAJ&citpid=2",
+      "photoAttribution": "Google Scholar profile photo for Margaret Burnett",
+      "sha256": "a161b53ad5a9ecd17a4ab2e2ec94838bdf22eadd1c64a3cd41ce0f22e910fe49",
+      "identitySource": "Yulia Kumar Google Scholar public coauthor list",
+      "scholar": "https://scholar.google.com/citations?user=Vc58tYYAAAAJ&hl=en",
+      "scholarSource": "https://scholar.google.com/citations?user=aVmqEKgAAAAJ&hl=en",
+      "portraitUpdatedAt": "2026-10-15"
     },
     {
       "id": "p-w-h-wong",
@@ -955,16 +1002,6 @@
       ]
     },
     {
-      "id": "e-weinman",
-      "name": "E. Weinman",
-      "papers": [
-        "cv-71"
-      ],
-      "topics": [
-        "AI Systems"
-      ]
-    },
-    {
       "id": "egan-okumu",
       "name": "Egan Okumu",
       "papers": [
@@ -973,6 +1010,24 @@
       "topics": [
         "Multimodal AI"
       ]
+    },
+    {
+      "id": "evan-weinman",
+      "name": "Evan Weinman",
+      "papers": [
+        "cv-71"
+      ],
+      "topics": [
+        "AI Systems"
+      ],
+      "identitySource": "Yulia Kumar Google Scholar public coauthor list",
+      "scholar": "https://scholar.google.com/citations?user=XFDwETgAAAAJ&hl=en",
+      "scholarSource": "https://scholar.google.com/citations?user=aVmqEKgAAAAJ&hl=en",
+      "image": "assets/collaborators/scholar-evan-weinman.jpg",
+      "imageSource": "https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=XFDwETgAAAAJ&citpid=4",
+      "photoAttribution": "Google Scholar profile photo for Evan Weinman",
+      "portraitUpdatedAt": "2026-10-15",
+      "sha256": "d74dc4e0d099b267e3f7120a9387cd384bf8616f8849d154708eca11f895ec23"
     },
     {
       "id": "g-garcia-vargas",
@@ -1322,7 +1377,15 @@
       ],
       "topics": [
         "Algorithms"
-      ]
+      ],
+      "identitySource": "Yulia Kumar Google Scholar public coauthor list",
+      "scholar": "https://scholar.google.com/citations?user=vjIXDW4AAAAJ&hl=en",
+      "scholarSource": "https://scholar.google.com/citations?user=aVmqEKgAAAAJ&hl=en",
+      "image": "assets/collaborators/scholar-prudence-w-h-wong.jpg",
+      "imageSource": "https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=vjIXDW4AAAAJ&citpid=2",
+      "photoAttribution": "Google Scholar profile photo for Prudence W. H. Wong",
+      "portraitUpdatedAt": "2026-10-15",
+      "sha256": "620aeee69821d112815222b9cf58975b4f79b78a1c8ccb2ba0d648d6729d6fe2"
     },
     {
       "id": "r-garcia",

@@ -1,0 +1,152 @@
+{
+  "source": "https://scholar.google.com/citations?user=aVmqEKgAAAAJ&hl=en",
+  "sourceType": "Google Scholar public profile and verified Scholar identities",
+  "fetchedAt": "2026-10-15",
+  "policy": "Scholar is the primary identity and portrait source. No name-search result is accepted without a verified profile match.",
+  "people": [
+    {
+      "canonicalName": "Ching-Yu Huang",
+      "scholarName": "Ching-Yu Huang",
+      "scholarId": "gUMq-IcAAAAJ",
+      "scholar": "https://scholar.google.com/citations?user=gUMq-IcAAAAJ&hl=en",
+      "imageSource": "https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=gUMq-IcAAAAJ&citpid=1",
+      "citpid": "1",
+      "relationSource": "Yulia Kumar Google Scholar public coauthor list",
+      "image": "assets/collaborators/scholar-ching-yu-huang.jpg",
+      "sha256": "86433d7489775217da41f3e51f33acc2952d797a8785315b70765f64c1d4cf85",
+      "photoAttribution": "Google Scholar profile photo for Ching-Yu Huang"
+    },
+    {
+      "canonicalName": "Daehan Kwak",
+      "scholarName": "Daehan Kwak",
+      "scholarId": "ZF9sVaQAAAAJ",
+      "scholar": "https://scholar.google.com/citations?user=ZF9sVaQAAAAJ&hl=en",
+      "imageSource": "https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=ZF9sVaQAAAAJ&citpid=8",
+      "citpid": "8",
+      "relationSource": "Yulia Kumar Google Scholar public coauthor list",
+      "image": "assets/collaborators/scholar-daehan-kwak.jpg",
+      "sha256": "bb9ae0abc96bbd430ff4cea1f522746c50814ac996bcd2458c8efd93e095adcd",
+      "photoAttribution": "Google Scholar profile photo for Daehan Kwak"
+    },
+    {
+      "canonicalName": "Dov Kruger",
+      "scholarName": "Dov Kruger",
+      "scholarId": "4sV-a38AAAAJ",
+      "scholar": "https://scholar.google.com/citations?user=4sV-a38AAAAJ&hl=en",
+      "imageSource": "https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=4sV-a38AAAAJ&citpid=1",
+      "citpid": "1",
+      "relationSource": "Yulia Kumar Google Scholar public coauthor list",
+      "image": "assets/collaborators/scholar-dov-kruger.jpg",
+      "sha256": "06305d3d5c6501dd7dc631f26a3dc59ba2cd19f1ab5b0c78746dbdeeae5c8f9a",
+      "photoAttribution": "Google Scholar profile photo for Dov Kruger"
+    },
+    {
+      "canonicalName": "Evan Weinman",
+      "scholarName": "Evan Weinman",
+      "scholarId": "XFDwETgAAAAJ",
+      "scholar": "https://scholar.google.com/citations?user=XFDwETgAAAAJ&hl=en",
+      "imageSource": "https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=XFDwETgAAAAJ&citpid=4",
+      "citpid": "4",
+      "relationSource": "Yulia Kumar Google Scholar public coauthor list",
+      "image": "assets/collaborators/scholar-evan-weinman.jpg",
+      "sha256": "d74dc4e0d099b267e3f7120a9387cd384bf8616f8849d154708eca11f895ec23",
+      "photoAttribution": "Google Scholar profile photo for Evan Weinman"
+    },
+    {
+      "canonicalName": "Jean Chu",
+      "scholarName": "Jean Chu",
+      "scholarId": "yFYjqm8AAAAJ",
+      "scholar": "https://scholar.google.com/citations?user=yFYjqm8AAAAJ&hl=en",
+      "imageSource": "https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=yFYjqm8AAAAJ&citpid=1",
+      "citpid": "1",
+      "relationSource": "Yulia Kumar Google Scholar public coauthor list",
+      "image": "assets/collaborators/scholar-jean-chu.jpg",
+      "sha256": "4e76cceabb5900e9a6e05825af8276b71137b5714c0a76afee07a43827e972bf",
+      "photoAttribution": "Google Scholar profile photo for Jean Chu"
+    },
+    {
+      "canonicalName": "Jose Serra",
+      "scholarName": "Jose Marchena",
+      "scholarId": "NpJefRUAAAAJ",
+      "scholar": "https://scholar.google.com/citations?user=NpJefRUAAAAJ&hl=en",
+      "imageSource": "https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=NpJefRUAAAAJ&citpid=3",
+      "citpid": "3",
+      "relationSource": "Reviewed direct Google Scholar profile",
+      "image": "assets/collaborators/scholar-jose-serra.jpg",
+      "sha256": "65df5e6b0f68554d6df04a7346ae3a988965445cc11075a0c8d20ad36ad4f6e2",
+      "photoAttribution": "Google Scholar profile photo for Jose Serra"
+    },
+    {
+      "canonicalName": "Juan Jenny Li",
+      "scholarName": "Dr. J. Jenny Li",
+      "scholarId": "KX0EE1MAAAAJ",
+      "scholar": "https://scholar.google.com/citations?user=KX0EE1MAAAAJ&hl=en",
+      "imageSource": "https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=KX0EE1MAAAAJ&citpid=1",
+      "citpid": "1",
+      "relationSource": "Yulia Kumar Google Scholar public coauthor list",
+      "image": "assets/collaborators/scholar-juan-jenny-li.jpg",
+      "sha256": "ff57d3e8c9a22ca852542b4e5ac73e8a049fbb2a1c3c96530954e4da16471d52",
+      "photoAttribution": "Google Scholar profile photo for Juan Jenny Li"
+    },
+    {
+      "canonicalName": "Margaret Burnett",
+      "scholarName": "Margaret Burnett",
+      "scholarId": "Vc58tYYAAAAJ",
+      "scholar": "https://scholar.google.com/citations?user=Vc58tYYAAAAJ&hl=en",
+      "imageSource": "https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=Vc58tYYAAAAJ&citpid=2",
+      "citpid": "2",
+      "relationSource": "Yulia Kumar Google Scholar public coauthor list",
+      "image": "assets/collaborators/scholar-margaret-burnett.jpg",
+      "sha256": "a161b53ad5a9ecd17a4ab2e2ec94838bdf22eadd1c64a3cd41ce0f22e910fe49",
+      "photoAttribution": "Google Scholar profile photo for Margaret Burnett"
+    },
+    {
+      "canonicalName": "Miguel A. Mosteiro",
+      "scholarName": "Miguel A. Mosteiro",
+      "scholarId": "atD6VI4AAAAJ",
+      "scholar": "https://scholar.google.com/citations?user=atD6VI4AAAAJ&hl=en",
+      "imageSource": "https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=atD6VI4AAAAJ&citpid=2",
+      "citpid": "2",
+      "relationSource": "Yulia Kumar Google Scholar public coauthor list",
+      "image": "assets/collaborators/scholar-miguel-a-mosteiro.jpg",
+      "sha256": "96c7fea26dfc34b022de1a03f6ec5a75788b6e30a0b433d697e9d41de488b70a",
+      "photoAttribution": "Google Scholar profile photo for Miguel A. Mosteiro"
+    },
+    {
+      "canonicalName": "Pankati Patel",
+      "scholarName": "Pankati Patel",
+      "scholarId": "xn3d4I8AAAAJ",
+      "scholar": "https://scholar.google.com/citations?user=xn3d4I8AAAAJ&hl=en",
+      "imageSource": "https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=xn3d4I8AAAAJ&citpid=1",
+      "citpid": "1",
+      "relationSource": "Yulia Kumar Google Scholar public coauthor list",
+      "image": "assets/collaborators/scholar-pankati-patel.jpg",
+      "sha256": "097d6cf915617e4efbbe27acae8e98f6c251f1381091913bae628ec113f5e66f",
+      "photoAttribution": "Google Scholar profile photo for Pankati Patel"
+    },
+    {
+      "canonicalName": "Patricia Morreale",
+      "scholarName": "Patricia Morreale",
+      "scholarId": "Zk16uZsAAAAJ",
+      "scholar": "https://scholar.google.com/citations?user=Zk16uZsAAAAJ&hl=en",
+      "imageSource": "https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=Zk16uZsAAAAJ&citpid=15",
+      "citpid": "15",
+      "relationSource": "Yulia Kumar Google Scholar public coauthor list",
+      "image": "assets/collaborators/scholar-patricia-morreale.jpg",
+      "sha256": "81272b5404fd1079089b1867a1b8b1499c856215a9c239407d63d16d834955eb",
+      "photoAttribution": "Google Scholar profile photo for Patricia Morreale"
+    },
+    {
+      "canonicalName": "Prudence W. H. Wong",
+      "scholarName": "Prudence W.H. Wong",
+      "scholarId": "vjIXDW4AAAAJ",
+      "scholar": "https://scholar.google.com/citations?user=vjIXDW4AAAAJ&hl=en",
+      "imageSource": "https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=vjIXDW4AAAAJ&citpid=2",
+      "citpid": "2",
+      "relationSource": "Yulia Kumar Google Scholar public coauthor list",
+      "image": "assets/collaborators/scholar-prudence-w-h-wong.jpg",
+      "sha256": "620aeee69821d112815222b9cf58975b4f79b78a1c8ccb2ba0d648d6729d6fe2",
+      "photoAttribution": "Google Scholar profile photo for Prudence W. H. Wong"
+    }
+  ]
+}

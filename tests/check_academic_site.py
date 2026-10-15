@@ -22,10 +22,11 @@ with sync_playwright() as p:
     page.on('console',lambda e:errors.append(e.text) if e.type=='error' and 'Failed to load resource' not in e.text else None)
     assert page.goto(BASE,wait_until='domcontentloaded').status==200
     page.wait_for_function("document.querySelector('#grid-scene').dataset.state==='ready'")
-    assert page.locator('main > section').evaluate_all('(els)=>els.map(e=>e.id)') == ['julie-apps','lego-julie','flagships','research','publications','projects','graphics','connectomes','teaching','about','experience','service','work-with-me','contact']
+    assert page.locator('main > section').evaluate_all('(els)=>els.map(e=>e.id)') == ['julie-apps','lego-julie','flagships','research','publications','projects','graphics','teaching','about','experience','service','work-with-me','contact']
     assert page.locator('#julie-apps').bounding_box()['y'] < page.locator('#research').bounding_box()['y']
     assert page.locator('#julie-apps .julie-app-card').count()==4
     assert page.locator('#julie-apps .julie-app-visual img').evaluate_all('(xs)=>xs.map(x=>x.getAttribute("src"))')==['assets/julie-role-studio-v2.webp','assets/julie-role-weather-v2.webp','assets/julie-role-news-v2.webp','assets/julie-role-learn-v2.webp']
+    page.wait_for_function("[...document.querySelectorAll('#julie-apps .julie-app-visual img')].every(x=>x.complete && x.naturalWidth>0)")
     assert page.locator('#julie-apps .julie-app-visual img').evaluate_all('(xs)=>xs.every(x=>x.complete && x.naturalWidth===640 && x.naturalHeight===960)')
     assert page.locator('#julie-apps .julie-role-glasses').count()==0
     assert page.locator('.julie-runner-track').count()==1
