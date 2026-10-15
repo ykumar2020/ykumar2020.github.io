@@ -294,7 +294,13 @@
         "Agentic AI",
         "Multimodal AI",
         "AI Systems"
-      ]
+      ],
+      "image": "assets/collaborators/jose-marchena.png",
+      "profile": "https://www.kean.edu/teen-lab/teen-lab-members",
+      "imageSource": "https://www.kean.edu/sites/default/files/styles/mobile_width/public/2026-06/Jose%20Marchena%20Profile.png?itok=4cHoMted",
+      "photoAttribution": "Official Kean University TEEN Lab profile",
+      "portraitUpdatedAt": "2026-10-15",
+      "sha256": "4c3a60f3fde4da6e3c613f60893f3e20cf454f6352f05e46882e166a9dddfe4c"
     },
     {
       "id": "brendan-hannon",
@@ -329,7 +335,13 @@
       "topics": [
         "Trustworthy AI",
         "AI Systems"
-      ]
+      ],
+      "image": "assets/collaborators/guohao-yang.jpg",
+      "profile": "https://www.kean.edu/teen-lab/teen-lab-members",
+      "imageSource": "https://www.kean.edu/sites/default/files/styles/mobile_width/public/2026-06/Guohao_Yang.jpg?itok=5Opxzswf",
+      "photoAttribution": "Official Kean University TEEN Lab profile",
+      "portraitUpdatedAt": "2026-10-15",
+      "sha256": "34a17e6dbdca5edd4e008b613e4ddad9ac3a618de3db784f0fa727985934ee09"
     },
     {
       "id": "s-ghosh",

@@ -18,13 +18,16 @@ with sync_playwright() as p:
  page=b.new_page(viewport={'width':1440,'height':1000},reduced_motion='reduce');errors=[]
  page.on('pageerror',lambda e:errors.append(str(e)));page.on('console',lambda e:errors.append(e.text) if e.type=='error' else None)
  page.goto(BASE,wait_until='networkidle');host=page.locator('#network-scene');host.scroll_into_view_if_needed()
- assert host.get_attribute('data-visible-people')=='8'
+ assert host.get_attribute('data-renderer')=='dom-radial-evidence-tree'
+ assert host.get_attribute('data-visible-people')=='100'
+ assert host.get_attribute('data-people')==str(len(manifest['people']))
+ assert page.locator('.collaborator-face[data-person]').count()==100
  assert page.locator('.collaborator-face[data-person="jose-serra"]').count()==1
  page.locator('#collaborator-select').select_option('jose-serra')
  assert page.locator('#collaborator-detail li').count()==3
  assert page.locator('#collaborator-detail h4').inner_text()=='Jose Serra'
  assert page.locator('#collaborator-detail a',has_text='Google Scholar profile').get_attribute('href')=='https://scholar.google.com/citations?user=NpJefRUAAAAJ&hl=en'
- assert page.locator('.collaborator-face[data-person] img').count()==8
+ assert page.locator('.collaborator-face[data-person] img').count()==sum(1 for person in manifest['people'][:100] if person.get('image'))
  assert page.locator('.collaborator-face img').evaluate_all('(xs)=>xs.every(x=>x.complete&&x.naturalWidth>0)')
  page.locator('#collaborator-select').select_option('dov-kruger');assert page.locator('#collaborator-detail h4').inner_text()=='Dov Kruger'
  dov=next(p for p in manifest['people'] if p['id']=='dov-kruger')
@@ -36,11 +39,9 @@ with sync_playwright() as p:
   assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
   if width<768:
    page.locator('#collaborator-select').select_option('juan-jenny-li')
-   assert page.locator('.collaborator-face').count()==2
-   boxes=page.locator('.collaborator-face,.collaboration-edge-label').evaluate_all('(xs)=>xs.map(x=>{let r=x.getBoundingClientRect();return {l:r.left,r:r.right,t:r.top,b:r.bottom}})')
-   for i,a in enumerate(boxes):
-    for c in boxes[i+1:]:assert not(a['l']<c['r'] and a['r']>c['l'] and a['t']<c['b'] and a['b']>c['t']),boxes
-   page.locator('[data-people=next]').click();assert 'Showing 2' in page.locator('#collaboration-count').inner_text()
+   assert page.locator('.collaborator-face').count()==101
+   assert host.evaluate('(el)=>el.scrollWidth>el.clientWidth')
+   page.locator('[data-people=next]').click();assert 'Showing 100' in page.locator('#collaboration-count').inner_text()
    host.screenshot(path=str(ROOT/f'qa/collaborators-mobile-{width}.png'))
  page.set_viewport_size({'width':1440,'height':1000})
  for mode in ['pyramid','snowflake','fern']:

@@ -3,7 +3,7 @@ import {mountSingularity} from './singularity.js';
 import * as THREE from 'three';
 import {mountGraphicsGallery} from './graphics-work.js';
 import {mountConnectomeImages} from './connectome-images.js';
-import {createCollaborationNetwork} from './collaboration-network.js';
+import {createCollaborationNetwork} from './collaboration-network-v2.js';
 
 import {createCapsuleLab} from './capsule-lab.js';
 import {inspectBma} from './bma-controls.js';
