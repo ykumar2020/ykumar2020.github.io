@@ -17,20 +17,19 @@ function J(r, x = "/presenter/") {
     A = 0,
     S = 0,
     T = [
-      "neutral",
-      "present_body",
+      "neutral-native-glasses-v4",
+      "present_body-native-glasses-v4",
       "present_arm0",
-      "point_body",
+      "point_body-native-glasses-v4",
       "point_arm0",
-      "compare_body",
+      "compare_body-native-glasses-v4",
       "compare_arm0",
       "compare_arm1",
-      "glasses",
     ];
-  for (let t of ["mouth", "eyes"])
+  for (let t of ["mouth"])
     for (let e = 0; e < 12; e++) T.push(t + String(e).padStart(2, "0"));
   ((r.dataset.state = "loading"),
-    (r.dataset.renderer = "layered-lecture-presenter"));
+    (r.dataset.renderer = "native-glasses-lecture-presenter"));
   let w = Promise.all(
     T.map(
       (t) =>
@@ -41,8 +40,7 @@ function J(r, x = "/presenter/") {
           }),
             (b.onerror = () =>
               n(new Error("Presenter asset unavailable: " + t))),
-            (b.src =
-              t === "glasses" ? x + "glasses-v3.svg" : x + t + ".png"));
+            (b.src = x + t + ".png"));
         }),
     ),
   )
@@ -68,7 +66,15 @@ function J(r, x = "/presenter/") {
           ? ["present", "point", "compare"][Math.floor(R / 5) % 3]
           : "neutral";
     (c.clearRect(0, 0, 1086, 1448),
-      c.drawImage(m[k === "neutral" ? "neutral" : k + "_body"], 0, 0),
+      c.drawImage(
+        m[
+          k === "neutral"
+            ? "neutral-native-glasses-v4"
+            : k + "_body-native-glasses-v4"
+        ],
+        0,
+        0,
+      ),
       k !== "neutral" &&
         (k === "compare"
           ? [
@@ -88,15 +94,8 @@ function J(r, x = "/presenter/") {
         }));
     let N = b ? Math.min(1, Math.max(0, a.level) * 3.8) : 0;
     A += (N - A) * 0.55;
-    let P = b ? Math.round(Math.min(1, A) * 11) : 0,
-      H = a.motion ? Math.max(0, 1 - Math.abs((d % 4.7) - 0.15) / 0.15) : 0;
+    let P = b ? Math.round(Math.min(1, A) * 11) : 0;
     (c.drawImage(m["mouth" + String(P).padStart(2, "0")], 482, 332),
-      c.drawImage(
-        m["eyes" + String(Math.round(H * 11)).padStart(2, "0")],
-        394,
-        233,
-      ),
-      c.drawImage(m.glasses, 0, 0),
       u.setTransform(n, 0, 0, n, 0, 0),
       u.clearRect(0, 0, t, e));
     let L = Math.min(t / 1086, (e - 22) / 930) * 0.98,
@@ -204,7 +203,7 @@ if (s) {
     },
     r = s.dataset.assets || "/welcome/",
     x = s.dataset.presenter || "/presenter/";
-  s.innerHTML = `<div class="welcome-stage"><button type="button" class="welcome-character" aria-label="Say hello to Julie"><canvas aria-label="Animated Julie with silver braid, denim jacket, and rectangular glasses"></canvas><img id="avatar-fallback" src="${x}neutral-glasses-v3.png" alt="Julie, the illustrated teaching presenter, wearing rectangular glasses"></button><span class="welcome-orbit" aria-hidden="true"></span></div><div class="welcome-copy"><p class="welcome-eyebrow">MEET JULIE</p><h2>A familiar face.<br>A little curiosity.</h2><p class="welcome-caption" role="status">Hi! Hover or tap to say hello.</p><div class="welcome-actions"><button type="button" data-clip="0">Hear Julie</button><button type="button" data-clip="1">A binary surprise</button><button type="button" data-stop hidden>Stop audio</button></div><div class="welcome-footer"><button type="button" data-motion aria-pressed="false">Pause motion</button><span>Prerecorded voice \xB7 No microphone</span></div><details class="welcome-transcript"><summary>Read the recordings</summary><p><strong>Node.js:</strong> This slide highlights that Node.js runs JavaScript callbacks using an event loop, allowing it to handle operations efficiently. The event loop enables non-blocking input/output, so tasks can complete in the background without stopping other work from continuing.</p><p><strong>A binary surprise:</strong> A sensor sends eight bits: one, zero, zero, one, zero, one, zero, one. What number did it send? As an unsigned value, those bits mean one hundred forty-nine. With eight-bit two\u2019s complement, the very same pattern means negative one hundred seven. Nothing moved. Nothing flipped. We changed the rule used to read the bits. That is why every numerical result needs a representation, not just a string of zeros and ones.</p></details></div>`;
+  s.innerHTML = `<div class="welcome-stage"><button type="button" class="welcome-character" aria-label="Say hello to Julie"><canvas aria-label="Animated Julie with silver braid, denim jacket, and native illustrated eyeglasses"></canvas><img id="avatar-fallback" src="${x}neutral-native-glasses-v4.png" alt="Julie, the illustrated teaching presenter, wearing naturally integrated eyeglasses"></button><span class="welcome-orbit" aria-hidden="true"></span></div><div class="welcome-copy"><p class="welcome-eyebrow">MEET JULIE</p><h2>A familiar face.<br>A little curiosity.</h2><p class="welcome-caption" role="status">Hi! Hover or tap to say hello.</p><div class="welcome-actions"><button type="button" data-clip="0">Hear Julie</button><button type="button" data-clip="1">A binary surprise</button><button type="button" data-stop hidden>Stop audio</button></div><div class="welcome-footer"><button type="button" data-motion aria-pressed="false">Pause motion</button><span>Prerecorded voice \xB7 No microphone</span></div><details class="welcome-transcript"><summary>Read the recordings</summary><p><strong>Node.js:</strong> This slide highlights that Node.js runs JavaScript callbacks using an event loop, allowing it to handle operations efficiently. The event loop enables non-blocking input/output, so tasks can complete in the background without stopping other work from continuing.</p><p><strong>A binary surprise:</strong> A sensor sends eight bits: one, zero, zero, one, zero, one, zero, one. What number did it send? As an unsigned value, those bits mean one hundred forty-nine. With eight-bit two\u2019s complement, the very same pattern means negative one hundred seven. Nothing moved. Nothing flipped. We changed the rule used to read the bits. That is why every numerical result needs a representation, not just a string of zeros and ones.</p></details></div>`;
   let u = s.querySelector("canvas"),
     h = J(u, x),
     m = s.querySelector(".welcome-character"),

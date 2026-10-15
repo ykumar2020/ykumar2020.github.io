@@ -65,6 +65,8 @@ Biography, education, appointments and service are based on the owner-supplied 2
 
 All six previously supplied photographs are preserved. The technology-exhibition portrait now opens the carousel. The original image pixels remain unchanged apart from the previously generated orientation/resize/compression; no synthetic edits are applied. The photo carousel pauses on hover, keyboard focus, offscreen position and hidden tabs. Manual navigation pauses autoplay, and reduced motion removes the flip effect and starts paused. The portrait remains readable without JavaScript.
 
+The animated teaching presenter uses four transparent character poses with eyeglasses painted directly into the artwork. The renderer no longer loads or draws a separate glasses SVG; mouth motion, teaching poses, gentle movement, and the static fallback all use the native-glasses v4 assets documented in `julie/presenter/native-glasses-v4-provenance.json`.
+
 ## Verification
 
 With the preview server running, install Python `playwright` and `requests`, then run:

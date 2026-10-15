@@ -21,20 +21,21 @@ with sync_playwright() as playwright:
     glasses_layer = page.locator(".welcome-character").evaluate("el => getComputedStyle(el, '::after')")
     assert glasses_layer["content"] in ("none", "normal")
     assert glasses_layer["backgroundImage"] == "none"
-    assert page.locator("#avatar-fallback").get_attribute("src").endswith("neutral-glasses-v3.png")
+    assert page.locator("#avatar-fallback").get_attribute("src").endswith("neutral-native-glasses-v4.png")
     page.wait_for_function("document.querySelector('[data-welcome-julie] canvas')?.dataset.state === 'ready'")
-    assert page.locator("[data-welcome-julie] canvas").get_attribute("data-renderer") == "layered-lecture-presenter"
-    assert "wearing glasses" in page.locator("[data-welcome-julie] canvas").get_attribute("aria-label")
+    assert page.locator("[data-welcome-julie] canvas").get_attribute("data-renderer") == "native-glasses-lecture-presenter"
+    assert "native illustrated eyeglasses" in page.locator("[data-welcome-julie] canvas").get_attribute("aria-label")
+    loaded_sources = page.locator("[data-welcome-julie] canvas").evaluate("el => performance.getEntriesByType('resource').map(x => x.name)")
+    assert not any(source.endswith("/julie/presenter/glasses-v3.svg") for source in loaded_sources)
     assert page.locator(".julie-runner-track").count() == 1
     assert page.locator(".julie-runner-sprite").evaluate("el => getComputedStyle(el).backgroundImage.includes('julie-run-cycle-v1.webp')")
     assert page.locator(".julie-context-portrait").get_attribute("src") == "assets/julie-role-studio-v2.webp"
     assert page.locator(".julie-hi").inner_text() == "Hi! Let me know if you need help."
     assert not errors, errors
     if capture:
-        output = Path(__file__).resolve().parents[1] / "qa" / "julie-identity.png"
+        output = Path(__file__).resolve().parents[1] / "qa" / "julie-native-glasses-v4.png"
         output.parent.mkdir(exist_ok=True)
-        page.locator("#julie-apps").screenshot(path=str(output))
-        page.locator(".hero").screenshot(path=str(output.with_name("julie-identity-hero.png")))
+        page.locator("[data-welcome-julie]").screenshot(path=str(output), animations="disabled", timeout=10_000)
     browser.close()
 
 print("PASS: Julie uses four distinct project visuals and a contextual corner greeting.")

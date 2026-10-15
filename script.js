@@ -361,6 +361,6 @@ if(legoGallery){
 // and the role cards; the underlying wardrobe is the Learn with Yulia denim set.
 const welcomeJulie=document.querySelector('[data-welcome-julie]');
 if(welcomeJulie){
- const labelWelcomeJulie=()=>{const canvas=welcomeJulie.querySelector('canvas');if(!canvas)return false;canvas.setAttribute('aria-label','Animated Julie wearing glasses and her Learn with Yulia denim teaching outfit');return true};
+ const labelWelcomeJulie=()=>{const canvas=welcomeJulie.querySelector('canvas');if(!canvas)return false;canvas.setAttribute('aria-label','Animated Julie with native illustrated eyeglasses and her Learn with Yulia denim teaching outfit');return true};
  if(!labelWelcomeJulie()){const observer=new MutationObserver(()=>{if(labelWelcomeJulie())observer.disconnect()});observer.observe(welcomeJulie,{childList:true,subtree:true})}
 }

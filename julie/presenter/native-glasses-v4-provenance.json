@@ -1,0 +1,36 @@
+{
+  "created": "2026-10-15",
+  "method": "OpenAI built-in image generation, identity-preserving edit",
+  "purpose": "Replace the runtime glasses overlay with eyewear painted directly into each animated presenter pose.",
+  "constraints": [
+    "Preserve Julie's identity, hair, outfit, pose, crop, and transparent background.",
+    "Paint thin light-gold eyeglasses naturally on the face, including the bridge and temples.",
+    "Do not load or composite a separate glasses asset at runtime."
+  ],
+  "assets": [
+    {
+      "source": "neutral.png",
+      "source_sha256": "771fcce3bf1921c5fdfd1021baa55b8d4b4c89d40e796a62fe2fd08fae21367a",
+      "output": "neutral-native-glasses-v4.png",
+      "output_sha256": "970245d85a9ac88bfebcc01a3c9f9c47c6c2156228ed10465dcf6aab44e2f99b"
+    },
+    {
+      "source": "present_body.png",
+      "source_sha256": "8920154883ca3b0c117dd22e1b00f75908a730f072c71a53226bac9de14b26ac",
+      "output": "present_body-native-glasses-v4.png",
+      "output_sha256": "d288a1b74cfa908f04dcd5bb8b5c8b0c228b928a3a0d36eb3682b7f7deeb5cad"
+    },
+    {
+      "source": "point_body.png",
+      "source_sha256": "727710123061fb748effa9cf96b467d4c0d13ebaaa5ecc7914e0a6211fe9cc05",
+      "output": "point_body-native-glasses-v4.png",
+      "output_sha256": "30533f1473f93aac8d0fd9dd39e48423f4a2b2feb1cf739d50d00626732e0313"
+    },
+    {
+      "source": "compare_body.png",
+      "source_sha256": "ab8a816a3f57cbe35cbc53aa167cd02a3c53c8904b76cd4c39eb1ba8b323a8c2",
+      "output": "compare_body-native-glasses-v4.png",
+      "output_sha256": "6b7f12cf421c5f8671fbb3b76b981c23776b24e6bc493aae4d559f461874e0cb"
+    }
+  ]
+}

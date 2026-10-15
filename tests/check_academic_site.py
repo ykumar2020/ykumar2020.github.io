@@ -32,7 +32,7 @@ with sync_playwright() as p:
     assert page.locator('.julie-runner-sprite').evaluate("el => getComputedStyle(el).backgroundImage.includes('julie-run-cycle-v1.webp')")
     assert page.locator('.julie-context-portrait').get_attribute('src')=='assets/julie-role-studio-v2.webp'
     assert page.locator('.julie-hi').inner_text()=='Hi! Let me know if you need help.'
-    assert 'wearing glasses' in page.locator('[data-welcome-julie] canvas').get_attribute('aria-label')
+    assert 'native illustrated eyeglasses' in page.locator('[data-welcome-julie] canvas').get_attribute('aria-label')
     if CAPTURE: page.locator('#julie-apps').screenshot(path=str(OUT/'julie-role-cards.png'))
     page.locator('#lego-julie').scroll_into_view_if_needed()
     page.wait_for_function("[...document.querySelectorAll('#lego-julie img')].every(x=>x.complete && x.naturalWidth>0)")
