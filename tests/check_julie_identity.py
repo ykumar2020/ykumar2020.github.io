@@ -19,8 +19,11 @@ with sync_playwright() as playwright:
     assert page.locator("#julie-apps .julie-role-glasses").count() == 0
     assert len(set(portraits.evaluate_all("xs => xs.map(x => x.currentSrc)"))) == 4
     glasses_layer = page.locator(".welcome-character").evaluate("el => getComputedStyle(el, '::after')")
-    assert "julie-glasses-role.svg" in glasses_layer["backgroundImage"]
-    assert glasses_layer["backgroundSize"] == "100% 100%"
+    assert glasses_layer["content"] in ("none", "normal")
+    assert glasses_layer["backgroundImage"] == "none"
+    assert page.locator("#avatar-fallback").get_attribute("src").endswith("neutral-glasses-v3.png")
+    page.wait_for_function("document.querySelector('[data-welcome-julie] canvas')?.dataset.state === 'ready'")
+    assert page.locator("[data-welcome-julie] canvas").get_attribute("data-renderer") == "layered-lecture-presenter"
     assert "wearing glasses" in page.locator("[data-welcome-julie] canvas").get_attribute("aria-label")
     assert page.locator(".julie-runner-track").count() == 1
     assert page.locator(".julie-runner-sprite").evaluate("el => getComputedStyle(el).backgroundImage.includes('julie-run-cycle-v1.webp')")

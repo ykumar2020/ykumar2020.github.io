@@ -1,2 +1,2 @@
-.welcome-character::after{content:"";position:absolute;inset:0;z-index:3;background:url("assets/julie-glasses-role.svg") center/100% 100% no-repeat;pointer-events:none}
+.welcome-character::after{content:none;display:none}
 @media print{.welcome-character::after{display:none}}
