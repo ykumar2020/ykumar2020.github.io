@@ -24,7 +24,8 @@ with sync_playwright() as playwright:
     assert "wearing glasses" in page.locator("[data-welcome-julie] canvas").get_attribute("aria-label")
     assert page.locator(".julie-runner-track").count() == 1
     assert page.locator(".julie-runner-sprite").evaluate("el => getComputedStyle(el).backgroundImage.includes('julie-run-cycle-v1.webp')")
-    assert page.locator(".julie-greeting img").evaluate_all("xs => xs.map(x => x.getAttribute('src'))") == ["assets/julie-greeting-one-hand-v1.webp", "assets/julie-greeting-two-hands-v1.webp"]
+    assert page.locator(".julie-context-portrait").get_attribute("src") == "assets/julie-role-studio-v2.webp"
+    assert page.locator(".julie-hi").inner_text() == "Hi! Let me know if you need help."
     assert not errors, errors
     if capture:
         output = Path(__file__).resolve().parents[1] / "qa" / "julie-identity.png"
@@ -33,4 +34,4 @@ with sync_playwright() as playwright:
         page.locator(".hero").screenshot(path=str(output.with_name("julie-identity-hero.png")))
     browser.close()
 
-print("PASS: Julie uses four distinct photo-derived wardrobes, integrated glasses, and two loaded greeting poses.")
+print("PASS: Julie uses four distinct role wardrobes, integrated glasses, and a contextual corner greeting.")

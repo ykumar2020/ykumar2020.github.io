@@ -32,11 +32,15 @@ html[data-motion="playing"] .julie-app-card.is-julie-visible .julie-app-visual i
   transform: translate3d(var(--julie-runner-x), 0, 0);
   transition: opacity .25s ease;
   opacity: 0;
-  filter: drop-shadow(0 10px 9px #0009) drop-shadow(0 0 8px #ff9bad55);
+  filter: drop-shadow(0 10px 9px #0009) drop-shadow(0 0 8px var(--julie-accent, #ff9bad55));
   contain: layout paint style;
 }
 
 .julie-runner-track.is-ready { opacity: .96; }
+.julie-runner-track[data-role="studio"] { --julie-accent:#55d9d077; }
+.julie-runner-track[data-role="weather"] { --julie-accent:#61bfff77; }
+.julie-runner-track[data-role="news"] { --julie-accent:#ff668b77; }
+.julie-runner-track[data-role="learn"] { --julie-accent:#ffd06a77; }
 .julie-runner-track[data-direction="left"] .julie-runner-sprite { transform: scaleX(-1); }
 .julie-runner-sprite {
   position: absolute;
@@ -56,9 +60,8 @@ html[data-motion="playing"] .julie-app-card.is-julie-visible .julie-app-visual i
 .julie-greeting { position:absolute; inset:0; opacity:0; transition:opacity .2s ease; }
 .julie-runner-track.is-resting .julie-greeting { opacity:1; }
 .julie-greeting img { display:none; width:100%; height:100%; object-fit:contain; object-position:center bottom; filter:drop-shadow(0 9px 8px #0009); animation:julie-hello 1.25s ease-in-out infinite; transform-origin:50% 100%; }
-.julie-runner-track[data-greeting="one"] .julie-greeting-one,
-.julie-runner-track[data-greeting="two"] .julie-greeting-two { display:block; }
-.julie-hi { position:absolute; right:-2px; top:13px; padding:4px 7px; border:1px solid #ff8da0; border-radius:999px; background:#0b101aeb; color:#fff1f4; font:700 .66rem/1 var(--font-tech); letter-spacing:.08em; box-shadow:0 5px 14px #0008; animation:julie-hi-pop 1.25s ease-in-out infinite; }
+.julie-context-portrait { display:block!important; }
+.julie-hi { position:absolute; right:calc(100% - 12px); top:18px; width:max-content; max-width:min(230px,calc(100vw - 175px)); padding:8px 11px; border:1px solid var(--julie-accent,#ff8da0); border-radius:14px 14px 3px 14px; background:#0b101af2; color:#fff1f4; font:700 .7rem/1.35 var(--font-tech); letter-spacing:.025em; text-align:left; text-transform:none; box-shadow:0 5px 14px #0008; animation:julie-hi-pop 1.25s ease-in-out infinite; }
 
 @keyframes julie-run-lean {
   from { translate: 0 1px; rotate: -.6deg; }
@@ -79,7 +82,7 @@ html[data-motion="playing"] .julie-app-card.is-julie-visible .julie-app-visual i
 @media (max-width: 620px) {
   .julie-runner-track { width: 80px; height: 107px; bottom: 7px; }
   .julie-runner-track.is-resting { width: 92px; height: 138px; }
-  .julie-hi { right:-1px; top:9px; font-size:.58rem; }
+  .julie-hi { right:calc(100% - 8px); top:10px; max-width:calc(100vw - 118px); padding:7px 9px; font-size:.58rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -13,12 +13,26 @@
   const runner = document.createElement('div');
   runner.className = 'julie-runner-track';
   runner.dataset.direction = 'right';
-  runner.dataset.greeting = 'one';
   runner.setAttribute('aria-hidden', 'true');
-  runner.innerHTML = '<div class="julie-runner-sprite"></div><div class="julie-greeting"><img class="julie-greeting-one" src="assets/julie-greeting-one-hand-v1.webp" alt="" width="480" height="720"><img class="julie-greeting-two" src="assets/julie-greeting-two-hands-v1.webp" alt="" width="480" height="720"><span class="julie-hi">Hi!</span></div>';
+  runner.innerHTML = '<div class="julie-runner-sprite"></div><div class="julie-greeting"><img class="julie-context-portrait" src="assets/julie-role-studio-v2.webp" alt="" width="640" height="960"><span class="julie-hi">Hi! Let me know if you need help.</span></div>';
   document.body.append(runner);
 
   const sprite = runner.querySelector('.julie-runner-sprite');
+  const contextPortrait = runner.querySelector('.julie-context-portrait');
+  const roleProfiles = {
+    studio: 'assets/julie-role-studio-v2.webp',
+    weather: 'assets/julie-role-weather-v2.webp',
+    news: 'assets/julie-role-news-v2.webp',
+    learn: 'assets/julie-role-learn-v2.webp'
+  };
+  const sectionRoles = {
+    home: 'studio', 'julie-apps': 'studio', 'lego-julie': 'studio',
+    flagships: 'news', research: 'news', publications: 'news', connectomes: 'news',
+    projects: 'weather', graphics: 'weather',
+    teaching: 'learn', about: 'learn', experience: 'learn', service: 'learn',
+    'work-with-me': 'learn', contact: 'learn'
+  };
+  const sections = [...document.querySelectorAll('main section[id]')];
   const framePositions = [
     ['0%', '0%'], ['33.333%', '0%'], ['66.667%', '0%'], ['100%', '0%'],
     ['0%', '100%'], ['33.333%', '100%'], ['66.667%', '100%'], ['100%', '100%']
@@ -32,7 +46,7 @@
   let lastScrollY = scrollY;
   let raf = 0;
   let running = false;
-  let greetingCount = 0;
+  let lastSprintSection = '';
   const sprintDurationMs = 5500;
 
   function leftPark() { return 18; }
@@ -58,16 +72,38 @@
     if (!next) setFrame(0);
   }
 
+  function currentSectionId() {
+    const focusY = innerHeight * .46;
+    let closest = sections[0];
+    let closestDistance = Infinity;
+    for (const section of sections) {
+      const rect = section.getBoundingClientRect();
+      if (rect.top <= focusY && rect.bottom >= focusY) return section.id;
+      const distance = Math.abs((rect.top + rect.bottom) / 2 - focusY);
+      if (distance < closestDistance) {
+        closest = section;
+        closestDistance = distance;
+      }
+    }
+    return closest?.id || 'home';
+  }
+
+  function setContext(sectionId) {
+    const role = sectionRoles[sectionId] || 'studio';
+    runner.dataset.section = sectionId;
+    if (runner.dataset.role === role) return;
+    runner.dataset.role = role;
+    contextPortrait.src = roleProfiles[role];
+  }
+
   function greet() {
-    greetingCount += 1;
-    runner.dataset.greeting = greetingCount % 2 ? 'one' : 'two';
-    place(direction > 0 ? rightPark() : leftPark());
+    place(rightPark());
     setRunning(false);
   }
 
-  function startSprint(nextDirection) {
-    direction = nextDirection;
-    runner.dataset.direction = direction < 0 ? 'left' : 'right';
+  function startSprint() {
+    direction = 1;
+    runner.dataset.direction = 'right';
     place(offscreenStart());
     setRunning(true);
     lastTick = 0;
@@ -97,8 +133,12 @@
     const deltaY = scrollY - lastScrollY;
     lastScrollY = scrollY;
     if (paused || Math.abs(deltaY) < 2) return;
-    const nextDirection = deltaY > 0 ? 1 : -1;
-    if (!running || nextDirection !== direction) startSprint(nextDirection);
+    const sectionId = currentSectionId();
+    setContext(sectionId);
+    if (!running && sectionId !== lastSprintSection) {
+      lastSprintSection = sectionId;
+      startSprint();
+    }
   }
 
   function setMotion(nextPaused) {
@@ -115,10 +155,11 @@
   }
 
   addEventListener('scroll', move, { passive: true });
-  addEventListener('resize', () => { if (!running) place(direction > 0 ? rightPark() : leftPark()); }, { passive: true });
+  addEventListener('resize', () => { if (!running) place(rightPark()); }, { passive: true });
   document.addEventListener('site-motion-change', event => setMotion(Boolean(event.detail?.paused)));
   document.addEventListener('visibilitychange', () => { if (!document.hidden && !running) greet(); });
   reduced.addEventListener?.('change', () => setMotion(false));
+  setContext(currentSectionId());
   setFrame(0);
   setMotion(paused);
 })();

@@ -12,8 +12,9 @@ with sync_playwright() as playwright:
     runner = page.locator(".julie-runner-track")
     page.wait_for_function("document.querySelector('.julie-runner-track').classList.contains('is-ready')")
     assert runner.evaluate("el => el.classList.contains('is-resting') && Number.parseFloat(getComputedStyle(el).opacity) > .9")
-    assert runner.get_attribute("data-greeting") in ("one", "two")
-    assert page.locator(".julie-greeting img").evaluate_all("xs => xs.every(x => x.complete && x.naturalWidth === 480 && x.naturalHeight === 720)")
+    assert runner.get_attribute("data-role") == "studio"
+    assert page.locator(".julie-context-portrait").evaluate("x => x.complete && x.naturalWidth === 640 && x.naturalHeight === 960")
+    assert page.locator(".julie-hi").inner_text() == "Hi! Let me know if you need help."
     page.locator("#julie-apps").scroll_into_view_if_needed()
     page.wait_for_function("document.querySelectorAll('.julie-app-card.is-julie-visible').length > 0")
     assert "julie-idle-alive" in page.locator(".julie-app-card.is-julie-visible img").first.evaluate("el => getComputedStyle(el).animationName")
@@ -27,6 +28,9 @@ with sync_playwright() as playwright:
     parked = runner.evaluate("el => Number.parseFloat(getComputedStyle(el).getPropertyValue('--julie-runner-x'))")
     assert parked > 1100, parked
     assert runner.evaluate("el => Number.parseFloat(getComputedStyle(el).opacity) > .9")
+    page.locator("#research").scroll_into_view_if_needed()
+    page.wait_for_function("document.querySelector('.julie-runner-track').dataset.role === 'news'")
+    assert page.locator(".julie-context-portrait").get_attribute("src") == "assets/julie-role-news-v2.webp"
     assert not errors, errors
 
     reduced_page = browser.new_page(viewport={"width": 1280, "height": 800}, reduced_motion="reduce")
@@ -34,4 +38,4 @@ with sync_playwright() as playwright:
     assert reduced_page.locator(".julie-runner-track").is_hidden()
     browser.close()
 
-print("PASS: Julie crosses the full viewport on scroll, parks at the side, alternates greetings, and stops for reduced motion.")
+print("PASS: Julie runs left-to-right, parks in the corner, changes role by section, offers help, and stops for reduced motion.")
