@@ -150,12 +150,15 @@ export function createCollaborationNetwork(_stage, _inspect) {
     detail.replaceChildren();
     const person = people.find((entry) => entry.id === selected);
     if (!person) {
-      detail.textContent = 'No explicitly listed coauthors match these filters.';
-      selectionLabel.textContent = '';
+      detail.replaceChildren(
+        el('h4', 'Choose a collaborator'),
+        el('p', people.length ? 'Select a portrait, initials, or a name above to see every bibliography record you share.' : 'No explicitly listed coauthors match these filters.'),
+      );
+      selectionLabel.textContent = people.length ? 'Choose a collaborator to reveal all shared papers' : '';
       return;
     }
 
-    detail.append(el('h4', person.name), el('p', `${person.papers.length} matching bibliography records · ${person.topics.map((topic) => short[topic]).join(' / ')}`));
+    detail.append(el('h4', person.name), el('p', `All ${person.papers.length} shared bibliography records · ${person.topics.map((topic) => short[topic]).join(' / ')}`));
     selectionLabel.textContent = `${person.name} · ${person.papers.length} shared records · ${person.topics.map((topic) => short[topic]).join(' / ')}`;
 
     if (person.scholar) {
@@ -241,7 +244,8 @@ export function createCollaborationNetwork(_stage, _inspect) {
     visible.forEach((person, index) => addFace(person, positions[index], maximum, false, initialCounts.get(initials(person.name)) > 1));
     addFace({name: 'Julie Kumar', papers: records, topics: [], image: 'assets/julie-atrium.webp'}, {x: 500, y: 350}, maximum, true);
     highlight(activePaper);
-    choose(selected || visible[0]?.id || '');
+    if (selected) choose(selected);
+    else showDetail();
   }
 
   function highlight(id) {
@@ -258,9 +262,10 @@ export function createCollaborationNetwork(_stage, _inspect) {
   });
   panel.querySelectorAll('[data-people]').forEach((button) => {
     button.addEventListener('click', () => {
-      const index = Math.max(0, people.findIndex((person) => person.id === selected));
+      const index = people.findIndex((person) => person.id === selected);
       const direction = button.dataset.people === 'next' ? 1 : -1;
-      selected = people[(index + direction + people.length) % people.length]?.id || '';
+      const target = index < 0 ? (direction > 0 ? 0 : people.length - 1) : (index + direction + people.length) % people.length;
+      selected = people[target]?.id || '';
       picker.value = selected;
       render();
     });
@@ -271,14 +276,14 @@ export function createCollaborationNetwork(_stage, _inspect) {
     setRecords(matches, callback) {
       records = matches;
       onPick = callback;
-      const ids = new Set(matches.map((publication) => publication.id));
       people = collaborators.people.map((person) => {
-        const papers = person.papers.filter((id) => ids.has(id));
-        return {...person, papers, topics: [...new Set(papers.map((id) => publications.find((publication) => publication.id === id)?.topic).filter(Boolean))]};
-      }).filter((person) => person.papers.length).sort((a, b) => b.papers.length - a.papers.length || Number(Boolean(b.image)) - Number(Boolean(a.image)) || a.name.localeCompare(b.name));
+        return {...person, papers: [...person.papers], topics: [...person.topics]};
+      }).sort((a, b) => b.papers.length - a.papers.length || Number(Boolean(b.image)) - Number(Boolean(a.image)) || a.name.localeCompare(b.name));
 
-      if (!people.some((person) => person.id === selected)) selected = people[0]?.id || '';
-      picker.replaceChildren(...people.map((person) => {
+      if (!people.some((person) => person.id === selected)) selected = '';
+      const prompt = el('option', 'Choose a collaborator…');
+      prompt.value = '';
+      picker.replaceChildren(prompt, ...people.map((person) => {
         const option = el('option', `${person.name} (${person.papers.length})`);
         option.value = person.id;
         return option;

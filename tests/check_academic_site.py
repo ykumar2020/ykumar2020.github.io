@@ -22,7 +22,7 @@ with sync_playwright() as p:
     page.on('console',lambda e:errors.append(e.text) if e.type=='error' and 'Failed to load resource' not in e.text else None)
     assert page.goto(BASE,wait_until='domcontentloaded').status==200
     page.wait_for_function("document.querySelector('#grid-scene').dataset.state==='ready'")
-    assert page.locator('main > section').evaluate_all('(els)=>els.map(e=>e.id)') == ['julie-apps','lego-julie','flagships','research','publications','projects','graphics','teaching','about','experience','service','work-with-me','contact']
+    assert page.locator('main > section').evaluate_all('(els)=>els.map(e=>e.id)') == ['julie-apps','lego-julie','collaborations','flagships','research','publications','projects','graphics','teaching','about','experience','service','work-with-me','contact']
     assert page.locator('#julie-apps').bounding_box()['y'] < page.locator('#research').bounding_box()['y']
     assert page.locator('#julie-apps .julie-app-card').count()==4
     assert page.locator('#julie-apps .julie-app-visual img').evaluate_all('(xs)=>xs.map(x=>x.getAttribute("src"))')==['assets/julie-role-studio-v2.webp','assets/julie-role-weather-v2.webp','assets/julie-role-news-v2.webp','assets/julie-role-learn-v2.webp']
@@ -54,11 +54,13 @@ with sync_playwright() as p:
         'https://www.youtube.com/@yuliakumar8682'
     ]
     assert page.locator('.research-selected li').count()==6
+    assert page.locator('#publication-list').evaluate("e=>getComputedStyle(e).gridTemplateColumns.split(' ').length")==3
+    assert page.locator('.flagship-grid').evaluate("e=>getComputedStyle(e).gridTemplateColumns.split(' ').length")==4
     assert page.locator('.frontier-paper').evaluate_all('(xs)=>xs.map(x=>x.dataset.publication)')==['cv-10','cv-38']
     assert page.locator('.frontier-research').bounding_box()['y'] < page.locator('.research-program').bounding_box()['y']
     assert page.locator('.teaching-case').count()==8
-    assert page.locator('#publication-list').bounding_box()['y'] < page.locator('#knowledge-panel').bounding_box()['y']
-    report['checks'] += ['Four Julie projects use four photo-derived wardrobes and proportional rectangular glasses','LEGO Julie uses two real loaded photographs with keyboard-accessible view controls','Four evidence-bounded flagship case studies appear before research','Research and bibliography precede projects; six selected works and eight teaching examples']
+    assert page.locator('#knowledge-panel').bounding_box()['y'] < page.locator('#flagships').bounding_box()['y'] < page.locator('#publication-list').bounding_box()['y']
+    report['checks'] += ['Four Julie projects use four photo-derived wardrobes and proportional rectangular glasses','LEGO Julie uses two real loaded photographs with keyboard-accessible view controls','Collaborator graph leads compact desktop research cards','Research and bibliography precede projects; six selected works and eight teaching examples']
     assert page.locator('.portrait-slide').count()==9
     assert page.locator('.portrait-slide img').evaluate_all('(xs)=>xs.slice(0,3).map(i=>i.getAttribute("src"))')==['assets/julie-amigo.webp','assets/julie-research-team.webp','assets/julie-awards.webp']
     assert page.locator('.photo-caption').inner_text()=='AMIGO \u00b7 Emotionally aware AI'
@@ -97,11 +99,14 @@ with sync_playwright() as p:
 
     page.wait_for_function("document.querySelector('#network-scene').dataset.records==='76'")
     assert page.locator('#network-record option').count()==76
+    page.locator('#collaborator-select').select_option('dov-kruger')
+    assert page.locator('#collaborator-detail li').count()==33
     page.locator('#network-record').select_option('cv-03')
     assert 'Periodic Table' in page.locator('#network-detail h3').inner_text()
     page.locator('[data-filter="Agentic AI"]').click()
     page.wait_for_function("document.querySelector('#network-scene').dataset.records==='6'")
     assert page.locator('#network-record option').count()==6
+    assert page.locator('#collaborator-detail li').count()==33
     assert page.locator('#network-detail .paper').get_attribute('data-topic')=='Agentic AI'
     page.locator('#publication-search').fill('zz-no-record')
     assert page.locator('#network-record option').count()==0

@@ -37,7 +37,7 @@
     <a class="brand" href="#home" aria-label="Julie Kumar home"><span class="brand-mark">JK<span>.</span></span><span>Julie Kumar<span class="brand-sub">Research &amp; education</span></span></a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="menu-icon" aria-hidden="true">☰</span><span>Menu</span></button>
     <nav id="site-nav" aria-label="Main navigation">
-      <a href="#julie-apps">Julie Apps</a><a href="#flagships">Research</a><a href="#publications">Publications</a><a href="#projects">Projects</a><a href="#teaching">Teaching</a><a href="#about">About</a><a href="#work-with-me">Work with me</a><a class="nav-contact" href="#contact">Let's connect <span aria-hidden="true">↗</span></a>
+      <a href="#julie-apps">Julie Apps</a><a href="#collaborations">Research</a><a href="#publications">Publications</a><a href="#projects">Projects</a><a href="#teaching">Teaching</a><a href="#about">About</a><a href="#work-with-me">Work with me</a><a class="nav-contact" href="#contact">Let's connect <span aria-hidden="true">↗</span></a>
     </nav>
   </div>
 </header>
@@ -97,7 +97,7 @@
     <div class="access-pass"><span>[HONOR]</span><strong>IEEE Senior Member</strong></div>
     <div class="access-pass"><span>[SERVICE]</span><strong>AAAI-26 Program Committee</strong></div>
     <div class="access-pass"><span>[LEADERSHIP]</span><strong>NCWIT North NJ Co-Chair</strong></div>
-    <a class="access-pass focus-pass" href="#research"><span>[FOCUS]</span><strong>Trustworthy AI Evaluation &amp; Human Oversight</strong></a>
+    <a class="access-pass focus-pass" href="#collaborations"><span>[FOCUS]</span><strong>Trustworthy AI Evaluation &amp; Human Oversight</strong></a>
   </div>
 </div></div>
 
@@ -136,6 +136,18 @@
     </div>
     <p class="lego-status" data-lego-status aria-live="polite">Showing the complete tribute.</p>
   </div>
+</div></section>
+
+<section class="section collaboration-section" id="collaborations" aria-labelledby="collaborations-title"><div class="wrap">
+  <div class="section-top"><div><p class="eyebrow">Research collaborators</p><h2 id="collaborations-title">Choose a person.<br><em>See every shared paper.</em></h2></div><p class="section-intro">This evidence-backed graph leads the research area. Select a portrait, initials, or a name to open the complete set of bibliography records shared with that collaborator.</p></div>
+  <section id="knowledge-panel" class="glass-panel research-collaboration-lead" aria-label="Research collaboration network">
+    <div class="network-intro"><h3>People behind the research</h3><p>The tree shows up to 100 coauthors at once. Aliases are merged before sizing, so a larger portrait or initials mean more shared bibliography records; thicker edges mean the same. Google Scholar is the primary identity and portrait source when a verified profile exists.</p></div>
+    <div id="network-scene" role="group" aria-label="Collaboration tree showing up to one hundred coauthors. Node size and edge width represent shared bibliography-record counts. Choose a person to reveal all shared papers."><p class="network-fallback">Loading the evidence-backed collaborator tree. The selector below always provides access to every listed person.</p></div>
+    <div class="scene-controls" data-controls="network-scene" role="group" aria-label="Tilt the collaboration network" hidden><button data-turn="left">Rotate left</button><button data-turn="right">Rotate right</button><button data-turn="reset">Reset view</button></div>
+    <div class="collaboration-browser"><label>Choose a collaborator<select id="collaborator-select"></select></label><div><button data-people="previous">Previous person</button><button data-people="next">Next person</button></div><p id="collaboration-count" aria-live="polite"></p></div><div id="collaborator-detail" class="collaborator-detail"></div><div id="network-legend" class="network-legend" aria-label="Research topics"></div>
+    <label class="network-select" hidden>Explore a bibliography record<select id="network-record"></select></label>
+    <div id="network-detail" aria-live="polite" hidden></div>
+  </section>
 </div></section>
 
 <section class="section flagship-section" id="flagships" aria-labelledby="flagships-title"><div class="wrap">
@@ -1022,14 +1034,6 @@
   <button class="button secondary load-more" type="button" id="load-more" hidden>Show more publications <span aria-hidden="true">↓</span></button>
   <button class="button secondary load-more" type="button" id="show-all-publications" hidden>Show all records</button>
   <p class="publication-note">I use Julie Kumar professionally and publish as Yulia Kumar; earlier work appears under Yulia Rossikova. Records were last reconciled with the 2026 CV, ORCID, DOI, and publisher information on October 13, 2026. Bibliographic records are not a count of distinct studies: earlier versions are grouped where the relationship is known, and accepted or unfinished work remains labeled separately. <a href="data/publications.json" download>Download bibliography data</a>.</p>
-  <section id="knowledge-panel" class="glass-panel" aria-label="Research collaboration network">
-    <div class="network-intro"><h3>People behind the research</h3><p>The tree shows up to 100 coauthors at once. Aliases are merged before sizing, so a larger portrait or initials mean more shared bibliography records; thicker edges mean the same. Google Scholar is the primary identity and portrait source when a verified profile exists. Select any person to inspect the source and supporting publications.</p></div>
-    <div id="network-scene" role="group" aria-label="Collaboration tree showing up to one hundred coauthors. Node size and edge width represent shared bibliography-record counts. The person selector and record list provide the same relationships."><p class="network-fallback">Loading the evidence-backed collaborator tree. The selector below always provides access to every listed person.</p></div>
-    <div class="scene-controls" data-controls="network-scene" role="group" aria-label="Tilt the collaboration network" hidden><button data-turn="left">Rotate left</button><button data-turn="right">Rotate right</button><button data-turn="reset">Reset view</button></div>
-    <div class="collaboration-browser"><label>Find a collaborator<select id="collaborator-select"></select></label><div><button data-people="previous">Previous people</button><button data-people="next">Next people</button></div><p id="collaboration-count" aria-live="polite"></p></div><div id="collaborator-detail" class="collaborator-detail"></div><div id="network-legend" class="network-legend" aria-label="Research topics"></div>
-    <label class="network-select">Explore a matching record<select id="network-record"></select></label>
-    <div id="network-detail" aria-live="polite"></div>
-  </section>
 </section>
 
 <section class="section wrap" id="projects" aria-labelledby="projects-title"><div class="section-top"><div><p class="eyebrow">03 / Projects</p><h2 id="projects-title">Research ideas.<br><em>Working tools.</em></h2></div><p class="section-intro">Explore the applications, teaching materials, and interactive graphics that put these ideas into practice.</p></div>

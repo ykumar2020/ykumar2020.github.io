@@ -24,6 +24,8 @@ with sync_playwright() as p:
  assert host.get_attribute('data-renderer')=='dom-radial-evidence-tree'
  assert host.get_attribute('data-visible-people')=='100'
  assert host.get_attribute('data-people')==str(len(manifest['people']))
+ assert page.locator('#collaborator-select').input_value()==''
+ assert page.locator('#collaborator-detail h4').inner_text()=='Choose a collaborator'
  assert page.locator('.collaborator-face[data-person]').count()==100
  assert page.locator('.collaborator-face[data-person="jose-serra"]').count()==1
  assert page.locator('.collaborator-face[data-person="joseph-sarnoski"]').count()==1
