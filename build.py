@@ -6,6 +6,14 @@ data=json.loads((root/'data/publications.json').read_text(encoding='utf-8'))
 cards=[]
 focus=json.loads((root/'data/research-focus.json').read_text(encoding='utf8'))
 artifacts=json.loads((root/'data/artifacts.json').read_text(encoding='utf8'))
+publication_evidence={
+    'cv-01':'Accepted IEEE ISAIA 2026 record, sixteen-view methodology figure, and a public walkthrough of the running visualization.',
+    'cv-03':'The open repository exposes the taxonomy, experiment outputs, and a separate browser teaching experiment.',
+    'cv-19':'The published article is accompanied by a dataset repository, notebooks, and an independently linked geometry demonstration.',
+    'cv-26':'The AdversaGuard research poster and its SC25 proceedings artifact are publicly inspectable.',
+    'cv-30':'The motion-prediction work appears in the published AAAI 2025 proceedings.',
+    'cv-38':'The published testFAILS-2 article reports the model comparison, votes, scores, and knowledge-cutoff analysis.',
+}
 def bib_escape(value):
     replacements={'\\':r'\textbackslash{}','&':r'\&','%':r'\%','_':r'\_','#':r'\#','$':r'\$','{':r'\{','}':r'\}'}
     return ''.join(replacements.get(c,c) for c in str(value))
@@ -45,13 +53,14 @@ for i,p in enumerate(data):
     artifact_actions=''.join('<a class="paper-link" href="'+html.escape(a['url'],quote=True)+'"'+(' target="_blank" rel="noopener noreferrer"' if a['url'].startswith('http') else '')+'>'+action_kind(a['label'],a['url'])+'</a>' for a in artifact.get('links',[]))
     artifact_note=artifact.get('note','Artifacts not public for this record.')
     artifact_drawer='<details class="artifact-drawer"><summary>Provenance &amp; limitations</summary><p>'+html.escape(artifact_note)+'</p></details>'
+    evidence=f'<p class="paper-impact"><strong>Impact / evidence.</strong> {html.escape(publication_evidence[p["id"]])}</p>' if p['id'] in publication_evidence else ''
     earlier=''
     if p['id']=='cv-19':
         earlier_p=next(item for item in data if item['id']=='cv-20')
         earlier=f'<details class="earlier-versions"><summary>Earlier version (1)</summary><p><strong>{html.escape(earlier_p["title"])}</strong><br>{earlier_p["year"]} &middot; {html.escape(earlier_p["venue"])} &middot; {html.escape(earlier_p["status"])}</p><a class="paper-link" href="{html.escape(earlier_p["url"],quote=True)}" target="_blank" rel="noopener noreferrer">Preprint &#8599;</a></details>'
     cards.append(f'''<article class="paper" id="{e('id')}" data-focus="{tag_data}" data-topic="{e('topic')}" data-year="{p['year']}" data-status="{e('status')}">
 <div class="paper-year">{p['year']}<span>{e('status')}</span></div>
-<div class="paper-body"><p class="paper-topic">{e('topic')}</p><h3>{e('title')}</h3>{tag_html}<p class="paper-authors">{e('authors')}</p><p class="paper-venue">{e('venue')}</p>{note}<div class="paper-actions">{link}{related}{artifact_actions}<button class="copy-citation" type="button" data-citation="{html.escape(citation,quote=True)}" aria-label="Copy citation for {e('title')}">Cite</button></div>{earlier}{artifact_drawer}{drawer}</div>
+<div class="paper-body"><p class="paper-topic">{e('topic')}</p><h3>{e('title')}</h3>{tag_html}<p class="paper-authors">{e('authors')}</p><p class="paper-venue">{e('venue')}</p>{note}{evidence}<div class="paper-actions">{link}{related}{artifact_actions}<button class="copy-citation" type="button" data-citation="{html.escape(citation,quote=True)}" aria-label="Copy citation for {e('title')}">Cite</button></div>{earlier}{artifact_drawer}{drawer}</div>
 </article>''')
 template=(root/'template.html').read_text(encoding='utf-8')
 # Keep externally sourced visualization studies in the development archive, but
