@@ -22,6 +22,9 @@ with sync_playwright() as playwright:
         assert page.locator(".news-list li").count() == 4
         assert page.locator(".recognition-panel li").count() == 4
         assert page.locator("#notes .technical-notes-grid article").count() == 3
+        youtube_links = page.locator('a[href="https://www.youtube.com/@yuliakumar8682"]')
+        assert youtube_links.count() >= 6
+        assert page.locator('script[type="application/ld+json"]').text_content().find("youtube.com/@yuliakumar8682") >= 0
         impact_count = page.locator(".paper-impact").count()
         assert impact_count >= 5, impact_count
         overflow = page.evaluate("document.documentElement.scrollWidth > document.documentElement.clientWidth")

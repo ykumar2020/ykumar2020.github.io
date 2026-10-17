@@ -46,6 +46,13 @@
 .evidence-strip a:hover,
 .technical-notes-grid a:hover { color: #fff; }
 
+.academic-identity-links .youtube-profile-link {
+  margin-top: .25rem;
+  padding-top: .55rem;
+  border-top: 1px solid var(--academic-line);
+  color: #fff;
+}
+
 .academic-overview {
   background:
     radial-gradient(circle at 85% 12%, rgba(41, 183, 255, .09), transparent 30rem),
