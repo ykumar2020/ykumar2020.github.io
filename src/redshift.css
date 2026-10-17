@@ -149,10 +149,11 @@
 }
 
 /* Evidence-backed collaborator tree: DOM/SVG so the network remains visible without WebGL. */
-#network-scene{height:748px;overflow:auto;overscroll-behavior:contain;background:radial-gradient(circle at 50% 50%,#3b1225 0,#17101d 28%,#090d16 72%);position:relative}
+.research-collaboration-lead{min-width:0;max-width:100%;overflow:hidden}
+#network-scene{width:100%;max-width:100%;min-width:0;height:748px;overflow:auto;overscroll-behavior:contain;contain:inline-size paint;background:radial-gradient(circle at 50% 50%,#3b1225 0,#17101d 28%,#090d16 72%);position:relative}
 .collaboration-map{position:relative;width:100%;min-width:1120px;height:700px;overflow:hidden}
 .collaboration-links,.collaboration-overlay{position:absolute;inset:0;width:100%;height:100%}
-.collaboration-links{pointer-events:none;overflow:visible}
+.collaboration-links{pointer-events:none;overflow:hidden}
 .collaboration-links line{transition:stroke-opacity .2s,stroke-width .2s}
 .collaboration-links line.selected-edge{stroke-opacity:1;stroke-width:7}
 .collaboration-overlay{z-index:1;pointer-events:none}

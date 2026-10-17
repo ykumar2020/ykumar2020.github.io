@@ -16,6 +16,12 @@ for person in manifest['people']:
   if person['id']=='jose-serra': assert person['photoAttribution']=='Google Scholar profile photo for Jose Serra'
 assert len(scholar['people'])==12
 assert all((ROOT/person['image']).is_file() for person in scholar['people'])
+people={person['id']:person for person in manifest['people']}
+assert manifest['aliases']['Dejaun Gayle']==['D. Gayle']
+assert manifest['aliases']['Dan Li']==['D. Li']
+assert people['dejaun-gayle']['papers']==['cv-26','cv-49']
+for person_id in ['hemn-barzan-abdalla','dejaun-gayle','brendan-hannon','dan-li','guohao-yang']:
+ assert people[person_id]['image'].startswith('assets/collaborators/user-')
 with sync_playwright() as p:
  b=p.chromium.launch(channel='chrome',headless=True,args=['--enable-unsafe-swiftshader'])
  page=b.new_page(viewport={'width':1440,'height':1000},reduced_motion='reduce');errors=[]
@@ -45,6 +51,9 @@ with sync_playwright() as p:
  dov=next(p for p in manifest['people'] if p['id']=='dov-kruger')
  assert page.locator('#collaborator-detail li').count()==len(dov['papers'])
  page.locator('#collaborator-detail li button').first.click();assert page.locator('.paper-coauthor[data-person="dov-kruger"]').count()==1
+ page.locator('#collaborator-select').select_option('dejaun-gayle')
+ assert page.locator('#collaborator-detail li').count()==2
+ assert page.locator('#collaborator-detail a',has_text='Additional public profile').get_attribute('href')=='https://www.linkedin.com/in/dev-dejaun/'
  host.screenshot(path=str(ROOT/'qa/collaborators-desktop-final.png'))
  for width in [320,390,768]:
   page.set_viewport_size({'width':width,'height':900});host.scroll_into_view_if_needed();page.wait_for_timeout(300)

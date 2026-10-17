@@ -29,6 +29,12 @@
     "Brendan Hannon": [
       "B. Hannon"
     ],
+    "Dejaun Gayle": [
+      "D. Gayle"
+    ],
+    "Dan Li": [
+      "D. Li"
+    ],
     "Hemn Barzan Abdalla": [
       "Hemn Abdalla",
       "H. Abdalla",
@@ -290,7 +296,12 @@
       "topics": [
         "Trustworthy AI",
         "AI Systems"
-      ]
+      ],
+      "image": "assets/collaborators/user-hemn-barzan-abdalla.jpg",
+      "imageSource": "https://ykumar2020.github.io/assets/collaborators/user-hemn-barzan-abdalla.jpg",
+      "photoAttribution": "Portrait supplied by Yulia Kumar for Hemn Barzan Abdalla",
+      "portraitUpdatedAt": "2026-10-17",
+      "sha256": "967d026f095730a07c789780142a0e79f9172cbefacf8be837591226f86c7c9f"
     },
     {
       "id": "jose-marchena",
@@ -333,7 +344,13 @@
         "Multimodal AI",
         "Trustworthy AI",
         "AI Systems"
-      ]
+      ],
+      "image": "assets/collaborators/user-brendan-hannon.jpg",
+      "profile": "https://www.linkedin.com/in/brendan-hannon-7a2026251/",
+      "imageSource": "https://ykumar2020.github.io/assets/collaborators/user-brendan-hannon.jpg",
+      "photoAttribution": "Portrait supplied by Yulia Kumar for Brendan Hannon",
+      "portraitUpdatedAt": "2026-10-17",
+      "sha256": "e648c146838454d782c98e1f9f4c6f02a9ce3521fc27e0b2a1879a211a7e960a"
     },
     {
       "id": "guohao-yang",
@@ -351,12 +368,12 @@
         "Trustworthy AI",
         "AI Systems"
       ],
-      "image": "assets/collaborators/guohao-yang.jpg",
-      "profile": "https://www.kean.edu/teen-lab/teen-lab-members",
-      "imageSource": "https://www.kean.edu/sites/default/files/styles/mobile_width/public/2026-06/Guohao_Yang.jpg?itok=5Opxzswf",
-      "photoAttribution": "Official Kean University TEEN Lab profile",
-      "portraitUpdatedAt": "2026-10-15",
-      "sha256": "34a17e6dbdca5edd4e008b613e4ddad9ac3a618de3db784f0fa727985934ee09"
+      "image": "assets/collaborators/user-guohao-yang.jpg",
+      "profile": "https://www.linkedin.com/in/guohao-yang-3a3a9431a/",
+      "imageSource": "https://ykumar2020.github.io/assets/collaborators/user-guohao-yang.jpg",
+      "photoAttribution": "Portrait supplied by Yulia Kumar for Guohao Yang",
+      "portraitUpdatedAt": "2026-10-17",
+      "sha256": "bf2d5526f0bf9d580f0e54a8448be664eca29d31972fc1927f548c99ec76963b"
     },
     {
       "id": "s-ghosh",
@@ -493,8 +510,8 @@
       ]
     },
     {
-      "id": "d-li",
-      "name": "D. Li",
+      "id": "dan-li",
+      "name": "Dan Li",
       "papers": [
         "cv-04",
         "cv-05",
@@ -503,7 +520,12 @@
       "topics": [
         "Trustworthy AI",
         "AI Systems"
-      ]
+      ],
+      "image": "assets/collaborators/user-dan-li.jpg",
+      "imageSource": "https://ykumar2020.github.io/assets/collaborators/user-dan-li.jpg",
+      "photoAttribution": "Portrait supplied by Yulia Kumar for Dan Li",
+      "portraitUpdatedAt": "2026-10-17",
+      "sha256": "0d0e4adbcb04408ff3e1db4dbd5ebeac0b62ea223700a999e1914ef0cf89cdbe"
     },
     {
       "id": "d-sinnreich-levi",
@@ -952,16 +974,6 @@
       ]
     },
     {
-      "id": "d-gayle",
-      "name": "D. Gayle",
-      "papers": [
-        "cv-26"
-      ],
-      "topics": [
-        "Trustworthy AI"
-      ]
-    },
-    {
       "id": "d-m-ruiz",
       "name": "D. M. Ruiz",
       "papers": [
@@ -985,11 +997,18 @@
       "id": "dejaun-gayle",
       "name": "Dejaun Gayle",
       "papers": [
+        "cv-26",
         "cv-49"
       ],
       "topics": [
         "Trustworthy AI"
-      ]
+      ],
+      "image": "assets/collaborators/user-dejaun-gayle.jpg",
+      "profile": "https://www.linkedin.com/in/dev-dejaun/",
+      "imageSource": "https://ykumar2020.github.io/assets/collaborators/user-dejaun-gayle.jpg",
+      "photoAttribution": "Portrait supplied by Yulia Kumar for Dejaun Gayle",
+      "portraitUpdatedAt": "2026-10-17",
+      "sha256": "9314fe8b49093ca7fda2cc5f6b78836a9854b1c2095833f1bf4c9d64cfdd2fe2"
     },
     {
       "id": "e-landaverde",

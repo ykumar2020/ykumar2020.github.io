@@ -176,7 +176,7 @@ export function createCollaborationNetwork(_stage, _inspect) {
     }
 
     if (person.profile && person.profile !== person.scholar) {
-      const profile = el('a', 'Additional official profile / portrait source ↗');
+      const profile = el('a', 'Additional public profile / portrait source ↗');
       profile.href = person.profile;
       profile.target = '_blank';
       profile.rel = 'noopener';

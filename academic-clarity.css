@@ -53,6 +53,53 @@
   color: #fff;
 }
 
+.youtube-channel-banner {
+  padding: 2.2rem 0;
+  border-bottom: 1px solid var(--academic-line);
+  background:
+    radial-gradient(circle at 12% 50%, rgba(255, 0, 31, .2), transparent 24rem),
+    linear-gradient(100deg, #140b13, #080d17 58%, #11101b);
+}
+
+.youtube-channel-layout {
+  display: grid;
+  grid-template-columns: minmax(180px, .42fr) minmax(0, 1.58fr);
+  align-items: stretch;
+  gap: clamp(1.5rem, 4vw, 3.8rem);
+}
+
+.youtube-channel-portrait {
+  position: relative;
+  min-height: 260px;
+  border: 1px solid #ff365e;
+  background: #0b101b;
+  overflow: hidden;
+}
+
+.youtube-channel-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center 16%; }
+.youtube-channel-portrait > span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 4rem;
+  height: 2.8rem;
+  border-radius: .75rem;
+  background: #ff001f;
+  color: #fff;
+  font-size: 1.45rem;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 2.5rem rgba(255, 0, 31, .55);
+}
+
+.youtube-channel-copy { align-self: center; padding: 1rem 0; }
+.youtube-channel-copy h2 { margin: .7rem 0 1rem; }
+.youtube-channel-copy > p:not(.eyebrow) { max-width: 48rem; color: var(--academic-muted); }
+.youtube-channel-actions { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1.35rem; }
+.youtube-primary { border-color: #ff001f; background: #ff001f; color: #fff; }
+.youtube-primary:hover { background: #fff; color: #090b12; }
+
 .academic-overview {
   background:
     radial-gradient(circle at 85% 12%, rgba(41, 183, 255, .09), transparent 30rem),
@@ -152,6 +199,9 @@
   .evidence-strip span { min-height: auto; }
   .news-list li { grid-template-columns: 3.5rem 1fr; }
   .panel-heading { align-items: start; flex-direction: column; }
+  .youtube-channel-layout { grid-template-columns: 1fr; }
+  .youtube-channel-portrait { min-height: 220px; max-height: 290px; }
+  .youtube-channel-actions .button { width: 100%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
