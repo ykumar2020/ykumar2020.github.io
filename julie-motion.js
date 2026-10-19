@@ -17,11 +17,17 @@
   runner.dataset.castOrder = 'julie,black-cat,grey-cat,julie-cats';
   runner.dataset.runFrames = '24';
   runner.dataset.catFrames = '24';
+  runner.dataset.spriteRenderer = 'canvas-cropped';
+  runner.dataset.spriteState = 'loading';
   runner.setAttribute('aria-hidden', 'true');
-  runner.innerHTML = '<div class="julie-runner-sprite"></div><div class="cat-runner cat-runner-black"></div><div class="cat-runner cat-runner-grey"></div><div class="julie-greeting"><img class="julie-context-portrait" src="assets/julie-role-studio-v2.webp" alt="" width="640" height="960"><span class="julie-hi">Hi! Let me know if you need help.</span></div>';
+  runner.innerHTML = '<canvas class="julie-runner-sprite" width="256" height="256" data-sprite-src="assets/julie-run-cycle-v3.webp"></canvas><canvas class="cat-runner cat-runner-black" width="256" height="256" data-sprite-src="assets/cat-run-cycle-black-v4.webp"></canvas><canvas class="cat-runner cat-runner-grey" width="256" height="256" data-sprite-src="assets/cat-run-cycle-grey-v4.webp"></canvas><div class="julie-greeting"><img class="julie-context-portrait" src="assets/julie-role-studio-v2.webp" alt="" width="640" height="960"><span class="julie-hi">Hi! Let me know if you need help.</span></div>';
   document.body.append(runner);
 
   const sprite = runner.querySelector('.julie-runner-sprite');
+  const blackCatSprite = runner.querySelector('.cat-runner-black');
+  const greyCatSprite = runner.querySelector('.cat-runner-grey');
+  const spriteCanvases = [sprite, blackCatSprite, greyCatSprite];
+  const spriteImages = new Map();
   const contextPortrait = runner.querySelector('.julie-context-portrait');
   const roleProfiles = {
     studio: 'assets/julie-role-studio-v2.webp',
@@ -41,6 +47,47 @@
     `${(index % 6) * 20}%`,
     `${Math.floor(index / 6) * (100 / 3)}%`
   ]);
+
+  function drawFrame(canvas, image, index) {
+    const columns = 6;
+    const rows = 4;
+    const sourceWidth = image.naturalWidth / columns;
+    const sourceHeight = image.naturalHeight / rows;
+    if (!Number.isInteger(sourceWidth) || !Number.isInteger(sourceHeight)) {
+      throw new Error(`Invalid 6x4 sprint sheet: ${image.src}`);
+    }
+    const context = canvas.getContext('2d');
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.drawImage(
+      image,
+      (index % columns) * sourceWidth,
+      Math.floor(index / columns) * sourceHeight,
+      sourceWidth,
+      sourceHeight,
+      0,
+      0,
+      canvas.width,
+      canvas.height
+    );
+    canvas.dataset.frame = String(index);
+  }
+
+  const spriteLoad = Promise.all(spriteCanvases.map(canvas => new Promise((resolve, reject) => {
+    const image = new Image();
+    image.decoding = 'async';
+    image.onload = () => {
+      spriteImages.set(canvas, image);
+      drawFrame(canvas, image, 0);
+      resolve();
+    };
+    image.onerror = () => reject(new Error(`Sprint sprite unavailable: ${canvas.dataset.spriteSrc}`));
+    image.src = canvas.dataset.spriteSrc;
+  }))).then(() => {
+    runner.dataset.spriteState = 'ready';
+    setFrame(frame);
+  }).catch(() => {
+    runner.dataset.spriteState = 'error';
+  });
   let paused = reduced.matches || document.documentElement.dataset.motion === 'paused';
   let currentX = 18;
   let direction = 1;
@@ -71,6 +118,10 @@
     sprite.style.setProperty('--julie-frame-y', y);
     runner.style.setProperty('--cat-frame-x', x);
     runner.style.setProperty('--cat-frame-y', y);
+    spriteCanvases.forEach(canvas => {
+      const image = spriteImages.get(canvas);
+      if (image) drawFrame(canvas, image, index % framePositions.length);
+    });
   }
 
   function setRunning(next) {

@@ -17,9 +17,12 @@ with sync_playwright() as playwright:
     assert runner.get_attribute("data-cast-order") == "julie,black-cat,grey-cat,julie-cats"
     assert runner.get_attribute("data-run-frames") == "24"
     assert runner.get_attribute("data-cat-frames") == "24"
-    assert "julie-run-cycle-v2.webp" in page.locator(".julie-runner-sprite").evaluate("x => getComputedStyle(x).backgroundImage")
-    assert "cat-run-cycle-black-v3.webp" in page.locator(".cat-runner-black").evaluate("x => getComputedStyle(x).backgroundImage")
-    assert "cat-run-cycle-grey-v3.webp" in page.locator(".cat-runner-grey").evaluate("x => getComputedStyle(x).backgroundImage")
+    page.wait_for_function("document.querySelector('.julie-runner-track').dataset.spriteState === 'ready'")
+    assert runner.get_attribute("data-sprite-renderer") == "canvas-cropped"
+    assert page.locator(".julie-runner-sprite").evaluate("x => x.tagName === 'CANVAS' && x.width === 256 && x.height === 256")
+    assert page.locator(".julie-runner-sprite").get_attribute("data-sprite-src") == "assets/julie-run-cycle-v3.webp"
+    assert page.locator(".cat-runner-black").get_attribute("data-sprite-src") == "assets/cat-run-cycle-black-v4.webp"
+    assert page.locator(".cat-runner-grey").get_attribute("data-sprite-src") == "assets/cat-run-cycle-grey-v4.webp"
     assert page.locator(".julie-context-portrait").evaluate("x => x.complete && x.naturalWidth === 640 && x.naturalHeight === 960")
     assert page.locator(".julie-hi").inner_text() == "Hi! Let me know if you need help."
     page.locator("#julie-apps").scroll_into_view_if_needed()
@@ -39,9 +42,12 @@ with sync_playwright() as playwright:
     page.locator("#research").scroll_into_view_if_needed()
     page.wait_for_function("document.querySelector('.julie-runner-track').dataset.role === 'news'")
     page.wait_for_function("document.querySelector('.julie-runner-track').dataset.cast === 'black-cat'")
-    first_cat_frame = runner.evaluate("el => [getComputedStyle(el).getPropertyValue('--cat-frame-x'), getComputedStyle(el).getPropertyValue('--cat-frame-y')].join(' ')")
-    page.wait_for_timeout(160)
-    next_cat_frame = runner.evaluate("el => [getComputedStyle(el).getPropertyValue('--cat-frame-x'), getComputedStyle(el).getPropertyValue('--cat-frame-y')].join(' ')")
+    first_cat_frame = page.locator(".cat-runner-black").get_attribute("data-frame")
+    page.wait_for_function(
+        "first => document.querySelector('.cat-runner-black').dataset.frame !== first",
+        arg=first_cat_frame,
+    )
+    next_cat_frame = page.locator(".cat-runner-black").get_attribute("data-frame")
     assert first_cat_frame != next_cat_frame, (first_cat_frame, next_cat_frame)
     assert page.locator(".julie-context-portrait").get_attribute("src") == "assets/julie-role-news-v2.webp"
     assert not errors, errors
