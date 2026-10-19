@@ -53,6 +53,9 @@ with sync_playwright() as playwright:
     assert page.locator(".cat-runner-grey").get_attribute("data-sprite-src") == "assets/cat-run-cycle-grey-v4.webp"
     assert page.locator(".julie-context-portrait").evaluate("x => x.complete && x.naturalWidth === 640 && x.naturalHeight === 960")
     assert page.locator(".julie-hi").inner_text() == "Hi! Let me know if you need help."
+    greeting_box = page.locator(".julie-hi").bounding_box()
+    assert greeting_box and greeting_box["width"] > 150, greeting_box
+    assert greeting_box["x"] >= 0, greeting_box
     page.locator("#julie-apps").scroll_into_view_if_needed()
     page.wait_for_function("document.querySelectorAll('.julie-app-card.is-julie-visible').length > 0")
     assert "julie-idle-alive" in page.locator(".julie-app-card.is-julie-visible img").first.evaluate("el => getComputedStyle(el).animationName")
@@ -97,6 +100,13 @@ with sync_playwright() as playwright:
     reduced_page = browser.new_page(viewport={"width": 1280, "height": 800}, reduced_motion="reduce")
     assert reduced_page.goto(base, wait_until="domcontentloaded").status == 200
     assert reduced_page.locator(".julie-runner-track").is_hidden()
+
+    mobile_page = browser.new_page(viewport={"width": 320, "height": 700}, reduced_motion="no-preference")
+    assert mobile_page.goto(base, wait_until="domcontentloaded").status == 200
+    mobile_page.wait_for_function("document.querySelector('.julie-runner-track').classList.contains('is-resting')")
+    mobile_greeting = mobile_page.locator(".julie-hi").bounding_box()
+    assert mobile_greeting and mobile_greeting["width"] > 125, mobile_greeting
+    assert mobile_greeting["x"] >= 0, mobile_greeting
     browser.close()
 
 print("PASS: Julie and both cats use 24-frame sprint cycles, the cast begins Julie -> black cat, parks Julie in the corner, and stops for reduced motion.")
