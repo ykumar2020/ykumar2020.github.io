@@ -25,10 +25,12 @@
   <link rel="stylesheet" href="scroll-depth.css?v=20261014">
   <link rel="stylesheet" href="research-artifacts.css?v=20261014">
   <link rel="stylesheet" href="academic-clarity.css?v=20261016">
+  <link rel="stylesheet" href="project-pipeline.css?v=20261019-pipeline-v1">
   <script defer src="script.js?v=20261015-native-glasses-v4"></script>
   <script defer src="scroll-depth.js?v=20261014-motion-v2"></script>
   <script defer src="julie-motion.js?v=20261019-direction-lock-v7"></script>
   <script defer src="julie-rag.js?v=20261019-local-rag-v1"></script>
+  <script defer src="project-pipeline.js?v=20261019-pipeline-v1"></script>
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ProfilePage","@id":"https://ykumar2020.github.io/#profile","url":"https://ykumar2020.github.io/","name":"Julie Kumar | Trustworthy AI, Visual Evidence & Computing Education","dateModified":"2026-10-16","mainEntity":{"@id":"https://ykumar2020.github.io/#person"}},{"@type":"Person","@id":"https://ykumar2020.github.io/#person","name":"Yulia Kumar","alternateName":["Julie Kumar","Yulia Rossikova"],"honorificSuffix":"Ph.D.","url":"https://ykumar2020.github.io/","image":"https://ykumar2020.github.io/assets/julie-kumar.webp","jobTitle":"Senior Lecturer","worksFor":{"@type":"CollegeOrUniversity","name":"Kean University"},"sameAs":["https://orcid.org/0000-0002-7621-2734","https://scholar.google.com/citations?user=aVmqEKgAAAAJ&hl=en","https://github.com/ykumar2020","https://www.linkedin.com/in/yulia-kumar-1917275a/","https://www.youtube.com/@yuliakumar8682"]}]}</script>
 <link rel="stylesheet" href="assets/welcome-julie.css"><script type="module" src="assets/welcome-julie.js?v=20261015-native-glasses-v4"></script></head>
 <body class="relative isolate overflow-x-clip">
@@ -118,6 +120,28 @@
     <a class="research-theme" href="#projects"><span>04</span><h3>Scalable AI systems</h3><p>Compression, efficient training, benchmarking, and tools that expose system-level tradeoffs.</p></a>
     <a class="research-theme" href="#julie-apps"><span>05</span><h3>Accessible scientific communication</h3><p>Public-interest interfaces that connect explanations to live data, inspectable sources, and reproducible materials.</p></a>
   </div>
+  <section class="project-pipeline" id="project-pipeline" aria-labelledby="pipeline-title">
+    <div class="pipeline-heading"><div><p class="eyebrow">Research pipeline</p><h3 id="pipeline-title">From source evidence to graph-analysis results</h3></div><button class="pipeline-motion" type="button" aria-pressed="false">Pause pipeline</button></div>
+    <div class="pipeline-viewport" tabindex="0" aria-label="Animated research pipeline. Scroll horizontally on a small screen to inspect every stage.">
+      <svg class="pipeline-visual" viewBox="0 0 1200 360" role="img" aria-labelledby="pipeline-svg-title pipeline-svg-desc" data-active="0">
+        <title id="pipeline-svg-title">Research evidence pipeline</title><desc id="pipeline-svg-desc">Source records pass through evidence extraction and provenance checks into a linked graph, graph analysis, and inspectable result artifacts.</desc>
+        <defs><linearGradient id="pipeline-flow" x1="0" x2="1"><stop offset="0" stop-color="#ff8093"/><stop offset=".52" stop-color="#ffbf72"/><stop offset="1" stop-color="#78d8ff"/></linearGradient><filter id="pipeline-glow"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+        <g class="pipeline-grid" aria-hidden="true"><path d="M0 70H1200M0 180H1200M0 290H1200M120 0V360M360 0V360M600 0V360M840 0V360M1080 0V360"/></g>
+        <path class="pipeline-flow-base" d="M120 180 C220 180 225 180 315 180 S470 180 550 180 S720 180 800 180 S965 180 1075 180"/>
+        <path class="pipeline-flow-live" d="M120 180 C220 180 225 180 315 180 S470 180 550 180 S720 180 800 180 S965 180 1075 180"/>
+        <g class="pipeline-packets" aria-hidden="true"><circle r="6"><animateMotion dur="6s" repeatCount="indefinite" path="M120 180 C220 180 225 180 315 180 S470 180 550 180 S720 180 800 180 S965 180 1075 180"/></circle><circle r="4"><animateMotion dur="6s" begin="-2s" repeatCount="indefinite" path="M120 180 C220 180 225 180 315 180 S470 180 550 180 S720 180 800 180 S965 180 1075 180"/></circle><circle r="5"><animateMotion dur="6s" begin="-4s" repeatCount="indefinite" path="M120 180 C220 180 225 180 315 180 S470 180 550 180 S720 180 800 180 S965 180 1075 180"/></circle></g>
+        <g class="pipeline-stage-graphic pipeline-source" data-stage="0" transform="translate(120 180)"><rect x="-70" y="-78" width="112" height="132" rx="8"/><rect x="-54" y="-62" width="112" height="132" rx="8"/><path d="M-30-30H32M-30-8H32M-30 14H14"/><circle cx="55" cy="-56" r="21"/><path d="M48-56l6 7 12-16"/><text x="0" y="108">SOURCES</text></g>
+        <g class="pipeline-stage-graphic pipeline-evidence" data-stage="1" transform="translate(330 180)"><path d="M-66-68H42L70-40V66H-66Z"/><path d="M42-68V-40H70M-38-24H38M-38 2H38M-38 28H14"/><path class="pipeline-scan" d="M-54-42H56"/><text x="0" y="108">EVIDENCE</text></g>
+        <g class="pipeline-stage-graphic pipeline-graph" data-stage="2" transform="translate(585 180)"><g class="graph-edges"><path d="M0 0L-62-48M0 0L68-48M0 0L-72 45M0 0L72 48M-62-48L68-48M-72 45L72 48M68-48L72 48"/></g><g class="graph-nodes"><circle r="31"/><circle cx="-62" cy="-48" r="17"/><circle cx="68" cy="-48" r="21"/><circle cx="-72" cy="45" r="14"/><circle cx="72" cy="48" r="18"/></g><text x="0" y="108">LINKED GRAPH</text></g>
+        <g class="pipeline-stage-graphic pipeline-analysis" data-stage="3" transform="translate(835 180)"><circle r="68"/><path d="M-44 44V8M-14 44V-22M16 44V-2M46 44V-42"/><path class="analysis-orbit" d="M-78 0A78 78 0 0110-77"/><circle class="analysis-probe" cx="10" cy="-77" r="7"/><text x="0" y="108">ANALYSIS</text></g>
+        <g class="pipeline-stage-graphic pipeline-results" data-stage="4" transform="translate(1080 180)"><rect x="-78" y="-68" width="156" height="136" rx="8"/><path d="M-55 42L-24 8 2 24 30-20 58-42"/><circle cx="-55" cy="42" r="5"/><circle cx="-24" cy="8" r="5"/><circle cx="2" cy="24" r="5"/><circle cx="30" cy="-20" r="5"/><circle cx="58" cy="-42" r="5"/><text x="0" y="108">RESULTS</text></g>
+      </svg>
+    </div>
+    <div class="pipeline-controls" role="tablist" aria-label="Choose a pipeline stage">
+      <button type="button" role="tab" aria-selected="true" data-pipeline-step="0"><span>01</span>Source records</button><button type="button" role="tab" aria-selected="false" data-pipeline-step="1"><span>02</span>Evidence layer</button><button type="button" role="tab" aria-selected="false" data-pipeline-step="2"><span>03</span>Graph model</button><button type="button" role="tab" aria-selected="false" data-pipeline-step="3"><span>04</span>Graph analysis</button><button type="button" role="tab" aria-selected="false" data-pipeline-step="4"><span>05</span>Results</button>
+    </div>
+    <div class="pipeline-detail" role="tabpanel" aria-live="polite"><span class="pipeline-index">STAGE 01</span><div><h4>Source records</h4><p>Papers, datasets, code repositories, experiment captures, and teaching artifacts enter with their public identifiers intact.</p></div><ul><li>Public source</li><li>Stable identifier</li><li>Original artifact</li></ul></div>
+  </section>
   <div class="evidence-strip" aria-label="Selected verified outcomes">
     <article><strong>14</strong><span>testFAILS3 cases completed in the saved OpenAI regression run, with errors and unscored cases left visible.</span><a href="https://testfails3.vercel.app/" target="_blank" rel="noopener">Inspect the evaluator ↗</a></article>
     <article><strong>16</strong><span>synchronized views in The LLM Story, each tied to a shared model state and explicit computation scope.</span><a href="#cv-01">View the publication record ↓</a></article>
