@@ -15,9 +15,11 @@ with sync_playwright() as playwright:
     assert runner.evaluate("el => el.classList.contains('is-resting') && Number.parseFloat(getComputedStyle(el).opacity) > .9")
     assert runner.get_attribute("data-role") == "studio"
     assert runner.get_attribute("data-cast-order") == "julie,black-cat,grey-cat,julie-cats"
-    assert runner.get_attribute("data-cat-frames") == "12"
-    assert "cat-run-cycle-black-v2.webp" in page.locator(".cat-runner-black").evaluate("x => getComputedStyle(x).backgroundImage")
-    assert "cat-run-cycle-grey-v2.webp" in page.locator(".cat-runner-grey").evaluate("x => getComputedStyle(x).backgroundImage")
+    assert runner.get_attribute("data-run-frames") == "24"
+    assert runner.get_attribute("data-cat-frames") == "24"
+    assert "julie-run-cycle-v2.webp" in page.locator(".julie-runner-sprite").evaluate("x => getComputedStyle(x).backgroundImage")
+    assert "cat-run-cycle-black-v3.webp" in page.locator(".cat-runner-black").evaluate("x => getComputedStyle(x).backgroundImage")
+    assert "cat-run-cycle-grey-v3.webp" in page.locator(".cat-runner-grey").evaluate("x => getComputedStyle(x).backgroundImage")
     assert page.locator(".julie-context-portrait").evaluate("x => x.complete && x.naturalWidth === 640 && x.naturalHeight === 960")
     assert page.locator(".julie-hi").inner_text() == "Hi! Let me know if you need help."
     page.locator("#julie-apps").scroll_into_view_if_needed()
@@ -49,4 +51,4 @@ with sync_playwright() as playwright:
     assert reduced_page.locator(".julie-runner-track").is_hidden()
     browser.close()
 
-print("PASS: the sprint cast uses 12-frame cat run cycles, begins Julie -> black cat, declares the full four-part sequence, parks Julie in the corner, and stops for reduced motion.")
+print("PASS: Julie and both cats use 24-frame sprint cycles, the cast begins Julie -> black cat, parks Julie in the corner, and stops for reduced motion.")

@@ -15,7 +15,8 @@
   runner.dataset.direction = 'right';
   runner.dataset.cast = 'julie';
   runner.dataset.castOrder = 'julie,black-cat,grey-cat,julie-cats';
-  runner.dataset.catFrames = '12';
+  runner.dataset.runFrames = '24';
+  runner.dataset.catFrames = '24';
   runner.setAttribute('aria-hidden', 'true');
   runner.innerHTML = '<div class="julie-runner-sprite"></div><div class="cat-runner cat-runner-black"></div><div class="cat-runner cat-runner-grey"></div><div class="julie-greeting"><img class="julie-context-portrait" src="assets/julie-role-studio-v2.webp" alt="" width="640" height="960"><span class="julie-hi">Hi! Let me know if you need help.</span></div>';
   document.body.append(runner);
@@ -36,15 +37,10 @@
     'work-with-me': 'learn', contact: 'learn'
   };
   const sections = [...document.querySelectorAll('main section[id]')];
-  const framePositions = [
-    ['0%', '0%'], ['33.333%', '0%'], ['66.667%', '0%'], ['100%', '0%'],
-    ['0%', '100%'], ['33.333%', '100%'], ['66.667%', '100%'], ['100%', '100%']
-  ];
-  const catFramePositions = [
-    ['0%', '0%'], ['33.333%', '0%'], ['66.667%', '0%'], ['100%', '0%'],
-    ['0%', '50%'], ['33.333%', '50%'], ['66.667%', '50%'], ['100%', '50%'],
-    ['0%', '100%'], ['33.333%', '100%'], ['66.667%', '100%'], ['100%', '100%']
-  ];
+  const framePositions = Array.from({ length: 24 }, (_, index) => [
+    `${(index % 6) * 20}%`,
+    `${Math.floor(index / 6) * (100 / 3)}%`
+  ]);
   let paused = reduced.matches || document.documentElement.dataset.motion === 'paused';
   let currentX = 18;
   let direction = 1;
@@ -71,11 +67,10 @@
 
   function setFrame(index) {
     const [x, y] = framePositions[index % framePositions.length];
-    const [catX, catY] = catFramePositions[index % catFramePositions.length];
     sprite.style.setProperty('--julie-frame-x', x);
     sprite.style.setProperty('--julie-frame-y', y);
-    runner.style.setProperty('--cat-frame-x', catX);
-    runner.style.setProperty('--cat-frame-y', catY);
+    runner.style.setProperty('--cat-frame-x', x);
+    runner.style.setProperty('--cat-frame-y', y);
   }
 
   function setRunning(next) {
@@ -134,7 +129,7 @@
       const sprintDistance = innerWidth + (runner.offsetWidth * 2) + 36;
       place(currentX + direction * (sprintDistance / sprintDurationMs) * elapsed);
       if (now - lastFrameAt > 92) {
-        frame = (frame + 1) % 24;
+        frame = (frame + 1) % framePositions.length;
         setFrame(frame);
         lastFrameAt = now;
       }
