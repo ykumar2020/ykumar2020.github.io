@@ -13,8 +13,10 @@
   const runner = document.createElement('div');
   runner.className = 'julie-runner-track';
   runner.dataset.direction = 'right';
+  runner.dataset.cast = 'julie';
+  runner.dataset.castOrder = 'julie,black-cat,grey-cat,julie-cats';
   runner.setAttribute('aria-hidden', 'true');
-  runner.innerHTML = '<div class="julie-runner-sprite"></div><div class="julie-greeting"><img class="julie-context-portrait" src="assets/julie-role-studio-v2.webp" alt="" width="640" height="960"><span class="julie-hi">Hi! Let me know if you need help.</span></div>';
+  runner.innerHTML = '<div class="julie-runner-sprite"></div><img class="cat-runner cat-runner-black" src="assets/cat-runner-black-v1.webp" alt="" width="1536" height="1024"><img class="cat-runner cat-runner-grey" src="assets/cat-runner-grey-v1.webp" alt="" width="1536" height="1024"><div class="julie-greeting"><img class="julie-context-portrait" src="assets/julie-role-studio-v2.webp" alt="" width="640" height="960"><span class="julie-hi">Hi! Let me know if you need help.</span></div>';
   document.body.append(runner);
 
   const sprite = runner.querySelector('.julie-runner-sprite');
@@ -47,7 +49,9 @@
   let raf = 0;
   let running = false;
   let lastSprintSection = '';
+  let sprintCount = 0;
   const sprintDurationMs = 5500;
+  const sprintCast = ['julie', 'black-cat', 'grey-cat', 'julie-cats'];
 
   function leftPark() { return 18; }
   function rightPark() { return Math.max(18, innerWidth - runner.offsetWidth - 18); }
@@ -104,6 +108,8 @@
   function startSprint() {
     direction = 1;
     runner.dataset.direction = 'right';
+    runner.dataset.cast = sprintCast[sprintCount % sprintCast.length];
+    sprintCount += 1;
     place(offscreenStart());
     setRunning(true);
     lastTick = 0;

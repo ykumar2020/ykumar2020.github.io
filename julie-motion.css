@@ -52,11 +52,45 @@ html[data-motion="playing"] .julie-app-card.is-julie-visible .julie-app-visual i
   background-size: 400% 200%;
   background-position: var(--julie-frame-x, 0%) var(--julie-frame-y, 0%);
   transform-origin: center bottom;
+  display: none;
 }
 
+.cat-runner {
+  position: absolute;
+  display: none;
+  right: 0;
+  bottom: 3px;
+  width: 148px;
+  height: 99px;
+  object-fit: contain;
+  object-position: center bottom;
+  transform-origin: 50% 100%;
+  filter: drop-shadow(0 7px 6px #000a);
+}
+
+.julie-runner-track[data-cast="julie"] .julie-runner-sprite,
+.julie-runner-track[data-cast="julie-cats"] .julie-runner-sprite { display: block; }
+.julie-runner-track[data-cast="black-cat"] .cat-runner-black,
+.julie-runner-track[data-cast="grey-cat"] .cat-runner-grey,
+.julie-runner-track[data-cast="julie-cats"] .cat-runner { display: block; }
+.julie-runner-track[data-cast="black-cat"],
+.julie-runner-track[data-cast="grey-cat"] { width: 154px; }
+.julie-runner-track[data-cast="julie-cats"] { width: 254px; }
+.julie-runner-track[data-cast="julie-cats"] .julie-runner-sprite {
+  left: 71px;
+  right: auto;
+  width: 112px;
+}
+.julie-runner-track[data-cast="julie-cats"] .cat-runner { width: 101px; height: 68px; }
+.julie-runner-track[data-cast="julie-cats"] .cat-runner-black { left: 0; right: auto; }
+.julie-runner-track[data-cast="julie-cats"] .cat-runner-grey { right: 0; }
+
 .julie-runner-track.is-running .julie-runner-sprite { animation: julie-run-lean .32s ease-in-out infinite alternate; }
+.julie-runner-track.is-running .cat-runner { animation: cat-run-bound .34s ease-in-out infinite alternate; }
+.julie-runner-track.is-running .cat-runner-grey { animation-delay: -.17s; }
 .julie-runner-track.is-resting { width: 126px; height: 189px; }
-.julie-runner-track.is-resting .julie-runner-sprite { opacity: 0; }
+.julie-runner-track.is-resting .julie-runner-sprite,
+.julie-runner-track.is-resting .cat-runner { display: none; }
 .julie-greeting { position:absolute; inset:0; opacity:0; transition:opacity .2s ease; }
 .julie-runner-track.is-resting .julie-greeting { opacity:1; }
 .julie-greeting img { display:none; width:100%; height:100%; object-fit:contain; object-position:center bottom; filter:drop-shadow(0 9px 8px #0009); animation:julie-hello 1.25s ease-in-out infinite; transform-origin:50% 100%; }
@@ -66,6 +100,11 @@ html[data-motion="playing"] .julie-app-card.is-julie-visible .julie-app-visual i
 @keyframes julie-run-lean {
   from { translate: 0 1px; rotate: -.6deg; }
   to { translate: 0 -1px; rotate: .6deg; }
+}
+
+@keyframes cat-run-bound {
+  from { transform: translateY(2px) rotate(-1deg) scaleX(.985); }
+  to { transform: translateY(-5px) rotate(1deg) scaleX(1.015); }
 }
 
 @keyframes julie-hello {
@@ -81,6 +120,12 @@ html[data-motion="playing"] .julie-app-card.is-julie-visible .julie-app-visual i
 
 @media (max-width: 620px) {
   .julie-runner-track { width: 80px; height: 107px; bottom: 7px; }
+  .julie-runner-track[data-cast="black-cat"],
+  .julie-runner-track[data-cast="grey-cat"] { width: 108px; }
+  .cat-runner { width: 108px; height: 72px; }
+  .julie-runner-track[data-cast="julie-cats"] { width: 174px; }
+  .julie-runner-track[data-cast="julie-cats"] .julie-runner-sprite { left: 50px; width: 80px; }
+  .julie-runner-track[data-cast="julie-cats"] .cat-runner { width: 70px; height: 47px; }
   .julie-runner-track.is-resting { width: 92px; height: 138px; }
   .julie-hi { right:calc(100% - 8px); top:10px; max-width:calc(100vw - 118px); padding:7px 9px; font-size:.58rem; }
 }
@@ -89,6 +134,7 @@ html[data-motion="playing"] .julie-app-card.is-julie-visible .julie-app-visual i
   .julie-app-visual img,
   .julie-runner-track,
   .julie-runner-sprite,
+  .cat-runner,
   .julie-greeting img,
   .julie-hi { animation: none !important; transition: none !important; }
   .julie-runner-track { display: none; }
