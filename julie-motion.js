@@ -15,8 +15,9 @@
   runner.dataset.direction = 'right';
   runner.dataset.cast = 'julie';
   runner.dataset.castOrder = 'julie,black-cat,grey-cat,julie-cats';
+  runner.dataset.catFrames = '12';
   runner.setAttribute('aria-hidden', 'true');
-  runner.innerHTML = '<div class="julie-runner-sprite"></div><img class="cat-runner cat-runner-black" src="assets/cat-runner-black-v1.webp" alt="" width="1536" height="1024"><img class="cat-runner cat-runner-grey" src="assets/cat-runner-grey-v1.webp" alt="" width="1536" height="1024"><div class="julie-greeting"><img class="julie-context-portrait" src="assets/julie-role-studio-v2.webp" alt="" width="640" height="960"><span class="julie-hi">Hi! Let me know if you need help.</span></div>';
+  runner.innerHTML = '<div class="julie-runner-sprite"></div><div class="cat-runner cat-runner-black"></div><div class="cat-runner cat-runner-grey"></div><div class="julie-greeting"><img class="julie-context-portrait" src="assets/julie-role-studio-v2.webp" alt="" width="640" height="960"><span class="julie-hi">Hi! Let me know if you need help.</span></div>';
   document.body.append(runner);
 
   const sprite = runner.querySelector('.julie-runner-sprite');
@@ -37,6 +38,11 @@
   const sections = [...document.querySelectorAll('main section[id]')];
   const framePositions = [
     ['0%', '0%'], ['33.333%', '0%'], ['66.667%', '0%'], ['100%', '0%'],
+    ['0%', '100%'], ['33.333%', '100%'], ['66.667%', '100%'], ['100%', '100%']
+  ];
+  const catFramePositions = [
+    ['0%', '0%'], ['33.333%', '0%'], ['66.667%', '0%'], ['100%', '0%'],
+    ['0%', '50%'], ['33.333%', '50%'], ['66.667%', '50%'], ['100%', '50%'],
     ['0%', '100%'], ['33.333%', '100%'], ['66.667%', '100%'], ['100%', '100%']
   ];
   let paused = reduced.matches || document.documentElement.dataset.motion === 'paused';
@@ -65,8 +71,11 @@
 
   function setFrame(index) {
     const [x, y] = framePositions[index % framePositions.length];
+    const [catX, catY] = catFramePositions[index % catFramePositions.length];
     sprite.style.setProperty('--julie-frame-x', x);
     sprite.style.setProperty('--julie-frame-y', y);
+    runner.style.setProperty('--cat-frame-x', catX);
+    runner.style.setProperty('--cat-frame-y', catY);
   }
 
   function setRunning(next) {
@@ -124,8 +133,8 @@
       lastTick = now;
       const sprintDistance = innerWidth + (runner.offsetWidth * 2) + 36;
       place(currentX + direction * (sprintDistance / sprintDurationMs) * elapsed);
-      if (now - lastFrameAt > 118) {
-        frame = (frame + 1) % framePositions.length;
+      if (now - lastFrameAt > 92) {
+        frame = (frame + 1) % 24;
         setFrame(frame);
         lastFrameAt = now;
       }

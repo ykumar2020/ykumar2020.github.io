@@ -62,11 +62,14 @@ html[data-motion="playing"] .julie-app-card.is-julie-visible .julie-app-visual i
   bottom: 3px;
   width: 148px;
   height: 99px;
-  object-fit: contain;
-  object-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: 400% 300%;
+  background-position: var(--cat-frame-x, 0%) var(--cat-frame-y, 0%);
   transform-origin: 50% 100%;
   filter: drop-shadow(0 7px 6px #000a);
 }
+.cat-runner-black { background-image: url("assets/cat-run-cycle-black-v2.webp"); }
+.cat-runner-grey { background-image: url("assets/cat-run-cycle-grey-v2.webp"); }
 
 .julie-runner-track[data-cast="julie"] .julie-runner-sprite,
 .julie-runner-track[data-cast="julie-cats"] .julie-runner-sprite { display: block; }
@@ -86,8 +89,8 @@ html[data-motion="playing"] .julie-app-card.is-julie-visible .julie-app-visual i
 .julie-runner-track[data-cast="julie-cats"] .cat-runner-grey { right: 0; }
 
 .julie-runner-track.is-running .julie-runner-sprite { animation: julie-run-lean .32s ease-in-out infinite alternate; }
-.julie-runner-track.is-running .cat-runner { animation: cat-run-bound .34s ease-in-out infinite alternate; }
-.julie-runner-track.is-running .cat-runner-grey { animation-delay: -.17s; }
+.julie-runner-track.is-running .cat-runner { animation: cat-run-bound .28s ease-in-out infinite alternate; }
+.julie-runner-track.is-running .cat-runner-grey { animation-delay: -.14s; }
 .julie-runner-track.is-resting { width: 126px; height: 189px; }
 .julie-runner-track.is-resting .julie-runner-sprite,
 .julie-runner-track.is-resting .cat-runner { display: none; }
@@ -103,8 +106,8 @@ html[data-motion="playing"] .julie-app-card.is-julie-visible .julie-app-visual i
 }
 
 @keyframes cat-run-bound {
-  from { transform: translateY(2px) rotate(-1deg) scaleX(.985); }
-  to { transform: translateY(-5px) rotate(1deg) scaleX(1.015); }
+  from { transform: translateY(1px) rotate(-.35deg); }
+  to { transform: translateY(-2px) rotate(.35deg); }
 }
 
 @keyframes julie-hello {

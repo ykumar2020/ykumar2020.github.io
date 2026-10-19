@@ -15,8 +15,9 @@ with sync_playwright() as playwright:
     assert runner.evaluate("el => el.classList.contains('is-resting') && Number.parseFloat(getComputedStyle(el).opacity) > .9")
     assert runner.get_attribute("data-role") == "studio"
     assert runner.get_attribute("data-cast-order") == "julie,black-cat,grey-cat,julie-cats"
-    assert page.locator(".cat-runner-black").evaluate("x => x.complete && x.naturalWidth === 1536 && x.naturalHeight === 1024")
-    assert page.locator(".cat-runner-grey").evaluate("x => x.complete && x.naturalWidth === 1536 && x.naturalHeight === 1024")
+    assert runner.get_attribute("data-cat-frames") == "12"
+    assert "cat-run-cycle-black-v2.webp" in page.locator(".cat-runner-black").evaluate("x => getComputedStyle(x).backgroundImage")
+    assert "cat-run-cycle-grey-v2.webp" in page.locator(".cat-runner-grey").evaluate("x => getComputedStyle(x).backgroundImage")
     assert page.locator(".julie-context-portrait").evaluate("x => x.complete && x.naturalWidth === 640 && x.naturalHeight === 960")
     assert page.locator(".julie-hi").inner_text() == "Hi! Let me know if you need help."
     page.locator("#julie-apps").scroll_into_view_if_needed()
@@ -36,6 +37,10 @@ with sync_playwright() as playwright:
     page.locator("#research").scroll_into_view_if_needed()
     page.wait_for_function("document.querySelector('.julie-runner-track').dataset.role === 'news'")
     page.wait_for_function("document.querySelector('.julie-runner-track').dataset.cast === 'black-cat'")
+    first_cat_frame = runner.evaluate("el => [getComputedStyle(el).getPropertyValue('--cat-frame-x'), getComputedStyle(el).getPropertyValue('--cat-frame-y')].join(' ')")
+    page.wait_for_timeout(160)
+    next_cat_frame = runner.evaluate("el => [getComputedStyle(el).getPropertyValue('--cat-frame-x'), getComputedStyle(el).getPropertyValue('--cat-frame-y')].join(' ')")
+    assert first_cat_frame != next_cat_frame, (first_cat_frame, next_cat_frame)
     assert page.locator(".julie-context-portrait").get_attribute("src") == "assets/julie-role-news-v2.webp"
     assert not errors, errors
 
@@ -44,4 +49,4 @@ with sync_playwright() as playwright:
     assert reduced_page.locator(".julie-runner-track").is_hidden()
     browser.close()
 
-print("PASS: the sprint cast begins Julie -> black cat, declares the full four-part sequence, parks Julie in the corner, and stops for reduced motion.")
+print("PASS: the sprint cast uses 12-frame cat run cycles, begins Julie -> black cat, declares the full four-part sequence, parks Julie in the corner, and stops for reduced motion.")
