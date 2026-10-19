@@ -24,9 +24,17 @@
   runner.innerHTML = '<canvas class="julie-runner-sprite" width="256" height="256" data-sprite-src="assets/julie-run-cycle-v5.webp"></canvas><canvas class="cat-runner cat-runner-black" width="256" height="256" data-sprite-src="assets/cat-run-cycle-black-v5.webp"></canvas><canvas class="cat-runner cat-runner-grey" width="256" height="256" data-sprite-src="assets/cat-run-cycle-grey-v5.webp"></canvas><div class="julie-greeting"><img class="julie-context-portrait" src="assets/julie-role-studio-v2.webp" alt="" width="640" height="960"><span class="julie-hi">Hi! Let me know if you need help.</span></div>';
   document.body.append(runner);
 
+  const catCameo = document.createElement('div');
+  catCameo.className = 'cat-cameo';
+  catCameo.dataset.cat = 'black-cat';
+  catCameo.setAttribute('aria-hidden', 'true');
+  catCameo.innerHTML = '<span class="cat-cameo-speech">Myayu!</span><canvas class="cat-cameo-sprite" width="256" height="256"></canvas>';
+  document.body.append(catCameo);
+
   const sprite = runner.querySelector('.julie-runner-sprite');
   const blackCatSprite = runner.querySelector('.cat-runner-black');
   const greyCatSprite = runner.querySelector('.cat-runner-grey');
+  const catCameoSprite = catCameo.querySelector('.cat-cameo-sprite');
   const spriteCanvases = [sprite, blackCatSprite, greyCatSprite];
   const spriteImages = new Map();
   const contextPortrait = runner.querySelector('.julie-context-portrait');
@@ -100,6 +108,7 @@
   let running = false;
   let lastSprintSection = '';
   let sprintCount = 0;
+  let cameoActive = false;
   const sprintDurationMs = 5500;
   const frameIntervalMs = 145;
   const sprintCast = ['julie', 'black-cat', 'grey-cat', 'julie-cats'];
@@ -162,6 +171,25 @@
     setRunning(false);
   }
 
+  function showCatCameo(cast) {
+    if (cameoActive || paused || !cast.includes('cat')) return;
+    const source = cast === 'grey-cat' ? greyCatSprite : blackCatSprite;
+    const image = spriteImages.get(source);
+    if (!image) return;
+    catCameo.dataset.cat = cast === 'grey-cat' ? 'grey-cat' : 'black-cat';
+    drawFrame(catCameoSprite, image, cast === 'grey-cat' ? 7 : 5);
+    cameoActive = true;
+    catCameo.classList.remove('is-jumping');
+    void catCameo.offsetWidth;
+    catCameo.classList.add('is-jumping');
+  }
+
+  catCameo.addEventListener('animationend', event => {
+    if (event.animationName !== 'cat-center-cameo') return;
+    catCameo.classList.remove('is-jumping');
+    cameoActive = false;
+  });
+
   function startSprint() {
     direction = 1;
     runner.dataset.direction = 'right';
@@ -191,7 +219,10 @@
         lastFrameAt += frameIntervalMs;
       }
       const finished = direction > 0 ? currentX >= offscreenFinish() : currentX <= offscreenFinish();
-      if (finished) greet();
+      if (finished) {
+        showCatCameo(runner.dataset.cast);
+        greet();
+      }
       else raf = requestAnimationFrame(animate);
     }
   }
@@ -214,6 +245,8 @@
     if (paused) {
       cancelAnimationFrame(raf);
       raf = 0;
+      catCameo.classList.remove('is-jumping');
+      cameoActive = false;
     } else {
       runner.hidden = false;
       runner.classList.add('is-ready');

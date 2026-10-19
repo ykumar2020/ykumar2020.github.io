@@ -88,6 +88,15 @@ with sync_playwright() as playwright:
     assert page.locator(".julie-context-portrait").get_attribute("src") == "assets/julie-role-news-v2.webp"
 
     page.wait_for_function("document.querySelector('.julie-runner-track').classList.contains('is-resting')", timeout=7000)
+    page.wait_for_function("document.querySelector('.cat-cameo').classList.contains('is-jumping')")
+    assert page.locator(".cat-cameo").get_attribute("data-cat") == "black-cat"
+    assert page.locator(".cat-cameo-speech").inner_text() == "Myayu!"
+    page.wait_for_timeout(1750)
+    cameo_box = page.locator(".cat-cameo").bounding_box()
+    assert cameo_box, cameo_box
+    assert abs((cameo_box["x"] + cameo_box["width"] / 2) - 640) < 15, cameo_box
+    assert 230 < cameo_box["y"] < 470, cameo_box
+    assert page.locator(".cat-cameo-speech").evaluate("el => Number.parseFloat(getComputedStyle(el).opacity) > .8")
     page.locator("#projects").scroll_into_view_if_needed()
     page.wait_for_function("document.querySelector('.julie-runner-track').dataset.cast === 'grey-cat'")
     assert_legs_advance(page, ".cat-runner-grey")
@@ -103,6 +112,7 @@ with sync_playwright() as playwright:
     reduced_page = browser.new_page(viewport={"width": 1280, "height": 800}, reduced_motion="reduce")
     assert reduced_page.goto(base, wait_until="domcontentloaded").status == 200
     assert reduced_page.locator(".julie-runner-track").is_hidden()
+    assert reduced_page.locator(".cat-cameo").is_hidden()
 
     mobile_page = browser.new_page(viewport={"width": 320, "height": 700}, reduced_motion="no-preference")
     assert mobile_page.goto(base, wait_until="domcontentloaded").status == 200
