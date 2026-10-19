@@ -2,6 +2,33 @@
 import sys
 from playwright.sync_api import sync_playwright
 
+
+def lower_body_signature(locator):
+    """Hash visible lower-body pixels so a changing counter alone cannot pass."""
+    return locator.evaluate(
+        """canvas => {
+          const context = canvas.getContext('2d', {willReadFrequently: true});
+          const pixels = context.getImageData(0, canvas.height * .48,
+            canvas.width, canvas.height * .52).data;
+          let hash = 2166136261;
+          for (let i = 0; i < pixels.length; i += 4) {
+            hash ^= pixels[i] + (pixels[i + 1] << 8) +
+              (pixels[i + 2] << 16) + (pixels[i + 3] << 24);
+            hash = Math.imul(hash, 16777619);
+          }
+          return `${canvas.dataset.frame}:${hash >>> 0}`;
+        }"""
+    )
+
+
+def assert_legs_advance(page, selector):
+    sprite = page.locator(selector)
+    signatures = []
+    for _ in range(4):
+        page.wait_for_timeout(175)
+        signatures.append(lower_body_signature(sprite))
+    assert len(set(signatures)) == len(signatures), (selector, signatures)
+
 base = next((arg for arg in sys.argv[1:] if arg.startswith("http")), "http://127.0.0.1:8091/")
 with sync_playwright() as playwright:
     browser = playwright.chromium.launch(channel="chrome", headless=True)
@@ -17,6 +44,7 @@ with sync_playwright() as playwright:
     assert runner.get_attribute("data-cast-order") == "julie,black-cat,grey-cat,julie-cats"
     assert runner.get_attribute("data-run-frames") == "24"
     assert runner.get_attribute("data-cat-frames") == "24"
+    assert runner.get_attribute("data-frame-interval-ms") == "145"
     page.wait_for_function("document.querySelector('.julie-runner-track').dataset.spriteState === 'ready'")
     assert runner.get_attribute("data-sprite-renderer") == "canvas-cropped"
     assert page.locator(".julie-runner-sprite").evaluate("x => x.tagName === 'CANVAS' && x.width === 256 && x.height === 256")
@@ -35,6 +63,7 @@ with sync_playwright() as playwright:
     midpoint = runner.evaluate("el => Number.parseFloat(getComputedStyle(el).getPropertyValue('--julie-runner-x'))")
     assert 100 < midpoint < 1180, midpoint
     assert runner.get_attribute("data-direction") == "right"
+    assert_legs_advance(page, ".julie-runner-sprite")
     page.wait_for_function("document.querySelector('.julie-runner-track').classList.contains('is-resting')", timeout=7000)
     parked = runner.evaluate("el => Number.parseFloat(getComputedStyle(el).getPropertyValue('--julie-runner-x'))")
     assert parked > 1100, parked
@@ -49,7 +78,20 @@ with sync_playwright() as playwright:
     )
     next_cat_frame = page.locator(".cat-runner-black").get_attribute("data-frame")
     assert first_cat_frame != next_cat_frame, (first_cat_frame, next_cat_frame)
+    assert_legs_advance(page, ".cat-runner-black")
     assert page.locator(".julie-context-portrait").get_attribute("src") == "assets/julie-role-news-v2.webp"
+
+    page.wait_for_function("document.querySelector('.julie-runner-track').classList.contains('is-resting')", timeout=7000)
+    page.locator("#projects").scroll_into_view_if_needed()
+    page.wait_for_function("document.querySelector('.julie-runner-track').dataset.cast === 'grey-cat'")
+    assert_legs_advance(page, ".cat-runner-grey")
+
+    page.wait_for_function("document.querySelector('.julie-runner-track').classList.contains('is-resting')", timeout=7000)
+    page.locator("#teaching").scroll_into_view_if_needed()
+    page.wait_for_function("document.querySelector('.julie-runner-track').dataset.cast === 'julie-cats'")
+    assert_legs_advance(page, ".julie-runner-sprite")
+    assert_legs_advance(page, ".cat-runner-black")
+    assert_legs_advance(page, ".cat-runner-grey")
     assert not errors, errors
 
     reduced_page = browser.new_page(viewport={"width": 1280, "height": 800}, reduced_motion="reduce")

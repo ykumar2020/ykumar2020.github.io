@@ -17,6 +17,7 @@
   runner.dataset.castOrder = 'julie,black-cat,grey-cat,julie-cats';
   runner.dataset.runFrames = '24';
   runner.dataset.catFrames = '24';
+  runner.dataset.frameIntervalMs = '145';
   runner.dataset.spriteRenderer = 'canvas-cropped';
   runner.dataset.spriteState = 'loading';
   runner.setAttribute('aria-hidden', 'true');
@@ -100,6 +101,7 @@
   let lastSprintSection = '';
   let sprintCount = 0;
   const sprintDurationMs = 5500;
+  const frameIntervalMs = 145;
   const sprintCast = ['julie', 'black-cat', 'grey-cat', 'julie-cats'];
 
   function leftPark() { return 18; }
@@ -166,6 +168,9 @@
     runner.dataset.cast = sprintCast[sprintCount % sprintCast.length];
     sprintCount += 1;
     place(offscreenStart());
+    frame = 0;
+    lastFrameAt = 0;
+    setFrame(frame);
     setRunning(true);
     lastTick = 0;
     if (!raf) raf = requestAnimationFrame(animate);
@@ -179,10 +184,11 @@
       lastTick = now;
       const sprintDistance = innerWidth + (runner.offsetWidth * 2) + 36;
       place(currentX + direction * (sprintDistance / sprintDurationMs) * elapsed);
-      if (now - lastFrameAt > 92) {
+      if (!lastFrameAt) lastFrameAt = now;
+      if (now - lastFrameAt >= frameIntervalMs) {
         frame = (frame + 1) % framePositions.length;
         setFrame(frame);
-        lastFrameAt = now;
+        lastFrameAt += frameIntervalMs;
       }
       const finished = direction > 0 ? currentX >= offscreenFinish() : currentX <= offscreenFinish();
       if (finished) greet();
