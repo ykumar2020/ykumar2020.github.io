@@ -98,7 +98,6 @@
   });
   let paused = reduced.matches || document.documentElement.dataset.motion === 'paused';
   let currentX = 18;
-  let direction = 1;
   let frame = 0;
   let lastFrameAt = 0;
   let lastTick = 0;
@@ -114,8 +113,8 @@
 
   function leftPark() { return 18; }
   function rightPark() { return Math.max(18, innerWidth - runner.offsetWidth - 18); }
-  function offscreenStart() { return direction > 0 ? -runner.offsetWidth - 18 : innerWidth + 18; }
-  function offscreenFinish() { return direction > 0 ? innerWidth + 18 : -runner.offsetWidth - 18; }
+  function offscreenStart() { return -runner.offsetWidth - 18; }
+  function offscreenFinish() { return innerWidth + 18; }
 
   function place(x) {
     currentX = x;
@@ -190,7 +189,6 @@
   });
 
   function startSprint() {
-    direction = 1;
     runner.dataset.direction = 'right';
     runner.dataset.cast = sprintCast[sprintCount % sprintCast.length];
     sprintCount += 1;
@@ -210,14 +208,14 @@
       const elapsed = lastTick ? Math.min(34, now - lastTick) : 16;
       lastTick = now;
       const sprintDistance = innerWidth + (runner.offsetWidth * 2) + 36;
-      place(currentX + direction * (sprintDistance / sprintDurationMs) * elapsed);
+      place(currentX + (sprintDistance / sprintDurationMs) * elapsed);
       if (!lastFrameAt) lastFrameAt = now;
       if (now - lastFrameAt >= frameIntervalMs) {
         frame = (frame + 1) % framePositions.length;
         setFrame(frame);
         lastFrameAt += frameIntervalMs;
       }
-      const finished = direction > 0 ? currentX >= offscreenFinish() : currentX <= offscreenFinish();
+      const finished = currentX >= offscreenFinish();
       if (finished) {
         showCatCameo(runner.dataset.cast);
         greet();

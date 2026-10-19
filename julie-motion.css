@@ -1,4 +1,4 @@
-/* Julie motion language: a restrained idle loop plus a scroll-directed run cycle. */
+/* Julie motion language: a restrained idle loop plus a left-to-right run cycle. */
 .julie-app-visual img {
   transform-origin: 42% 92%;
   will-change: transform;
@@ -42,13 +42,13 @@ html[data-motion="playing"] .julie-app-card.is-julie-visible .julie-app-visual i
 .julie-runner-track[data-role="weather"] { --julie-accent:#61bfff77; }
 .julie-runner-track[data-role="news"] { --julie-accent:#ff668b77; }
 .julie-runner-track[data-role="learn"] { --julie-accent:#ffd06a77; }
-.julie-runner-track[data-direction="left"] .julie-runner-sprite { transform: scaleX(-1); }
 .julie-runner-sprite {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   transform-origin: center bottom;
+  transform: none;
   display: none;
 }
 
