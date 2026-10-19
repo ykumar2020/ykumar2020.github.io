@@ -129,9 +129,10 @@ export function createCollaborationNetwork(_stage, _inspect) {
 
     button.append(disc);
     if (ambiguous) button.append(el('span', surname(person.name), 'face-key'));
-    button.append(el('span', person.name, 'face-name'), el('span', center ? 'Central author' : `${person.papers.length} shared`, 'face-count'));
+    button.append(el('span', person.name, 'face-name'));
+    if (!center) button.append(el('span', `${person.papers.length} shared`, 'face-count'));
     if (center) {
-      button.setAttribute('aria-label', 'Julie Kumar, central author');
+      button.setAttribute('aria-label', 'Julie Kumar');
       button.addEventListener('click', () => document.querySelector('#home').scrollIntoView({behavior: 'smooth'}));
     } else {
       button.dataset.person = person.id;
