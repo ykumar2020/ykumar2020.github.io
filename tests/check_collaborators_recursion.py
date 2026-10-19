@@ -13,7 +13,7 @@ for person in manifest['people']:
  if 'image' in person:
   assert hashlib.sha256((ROOT/person['image']).read_bytes()).hexdigest()==person['sha256']
   assert person['imageSource'].startswith('https://')
-  if person['id']=='jose-serra': assert person['photoAttribution']=='Google Scholar profile photo for Jose Serra'
+  if person['id']=='jose-serra': assert person['photoAttribution']=='Portrait supplied by Yulia Kumar for Jose Serra'
 assert len(scholar['people'])==12
 assert all((ROOT/person['image']).is_file() for person in scholar['people'])
 people={person['id']:person for person in manifest['people']}

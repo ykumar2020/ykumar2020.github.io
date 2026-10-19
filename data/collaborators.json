@@ -55,6 +55,12 @@
     "Justin Delgado": [
       "J. Delgado"
     ],
+    "Chris Paredes": [
+      "C. Paredes"
+    ],
+    "Neil Tellez": [
+      "N. Tellez"
+    ],
     "Peter Sorial": [
       "P. Sorial"
     ],
@@ -404,7 +410,12 @@
       ],
       "topics": [
         "Education"
-      ]
+      ],
+      "image": "assets/collaborators/user-anjana-manikandan.jpg",
+      "imageSource": "https://ykumar2020.github.io/assets/collaborators/user-anjana-manikandan.jpg",
+      "photoAttribution": "Portrait supplied by Yulia Kumar for Anjana Manikandan",
+      "portraitUpdatedAt": "2026-10-18",
+      "sha256": "1f21633905bd521179067f84ffe5f4bbdf604a4dd6b6701cbcb23e41a2aad0bb"
     },
     {
       "id": "daehan-kwak",
@@ -465,7 +476,12 @@
         "Multimodal AI",
         "Trustworthy AI",
         "AI Systems"
-      ]
+      ],
+      "image": "assets/collaborators/user-justin-delgado.jpg",
+      "imageSource": "https://ykumar2020.github.io/assets/collaborators/user-justin-delgado.jpg",
+      "photoAttribution": "Portrait supplied by Yulia Kumar for Justin Delgado",
+      "portraitUpdatedAt": "2026-10-18",
+      "sha256": "c4b0ca6423b22cb117a74f7eab98bbf3845c557766cc1973819a9c8bf25bd644"
     },
     {
       "id": "kuan-huang",
@@ -495,11 +511,16 @@
         "AI Systems",
         "Multimodal AI",
         "Trustworthy AI"
-      ]
+      ],
+      "image": "assets/collaborators/user-zachary-gordon.jpg",
+      "imageSource": "https://ykumar2020.github.io/assets/collaborators/user-zachary-gordon.jpg",
+      "photoAttribution": "Portrait supplied by Yulia Kumar for Zachary Gordon",
+      "portraitUpdatedAt": "2026-10-18",
+      "sha256": "8d5dc76821813d73f63549bbc79471fabddf910ff88cabf025946a9feaead1b8"
     },
     {
-      "id": "c-paredes",
-      "name": "C. Paredes",
+      "id": "chris-paredes",
+      "name": "Chris Paredes",
       "papers": [
         "cv-25",
         "cv-38",
@@ -507,7 +528,12 @@
       ],
       "topics": [
         "Trustworthy AI"
-      ]
+      ],
+      "image": "assets/collaborators/user-chris-paredes.jpg",
+      "imageSource": "https://ykumar2020.github.io/assets/collaborators/user-chris-paredes.jpg",
+      "photoAttribution": "Portrait supplied by Yulia Kumar for Chris Paredes",
+      "portraitUpdatedAt": "2026-10-18",
+      "sha256": "57379725f1b34ba58233a86cca3b8afbbcef1d1e7780abf36aef7536bc7fc554"
     },
     {
       "id": "dan-li",
@@ -569,11 +595,11 @@
       "identitySource": "Reviewed direct Google Scholar profile",
       "scholar": "https://scholar.google.com/citations?user=NpJefRUAAAAJ&hl=en",
       "scholarSource": "https://scholar.google.com/citations?user=aVmqEKgAAAAJ&hl=en",
-      "image": "assets/collaborators/scholar-jose-serra.jpg",
-      "imageSource": "https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=NpJefRUAAAAJ&citpid=3",
-      "photoAttribution": "Google Scholar profile photo for Jose Serra",
-      "portraitUpdatedAt": "2026-10-15",
-      "sha256": "65df5e6b0f68554d6df04a7346ae3a988965445cc11075a0c8d20ad36ad4f6e2"
+      "image": "assets/collaborators/user-jose-serra.jpg",
+      "imageSource": "https://ykumar2020.github.io/assets/collaborators/user-jose-serra.jpg",
+      "photoAttribution": "Portrait supplied by Yulia Kumar for Jose Serra",
+      "portraitUpdatedAt": "2026-10-18",
+      "sha256": "434fc3212a711077583149015df69ae5a3f0ad4e930bc6bb7437d0dc0bd95d0b"
     },
     {
       "id": "k-august",
@@ -623,8 +649,8 @@
       "portraitUpdatedAt": "2026-10-15"
     },
     {
-      "id": "n-tellez",
-      "name": "N. Tellez",
+      "id": "neil-tellez",
+      "name": "Neil Tellez",
       "papers": [
         "cv-63",
         "cv-64",
@@ -633,7 +659,12 @@
       "topics": [
         "Trustworthy AI",
         "AI Systems"
-      ]
+      ],
+      "image": "assets/collaborators/user-neil-tellez.jpg",
+      "imageSource": "https://ykumar2020.github.io/assets/collaborators/user-neil-tellez.jpg",
+      "photoAttribution": "Portrait supplied by Yulia Kumar for Neil Tellez",
+      "portraitUpdatedAt": "2026-10-18",
+      "sha256": "16166689e6ce1a2d14a6996fb45eedf062e4a2257f9e708081de674f71f17e33"
     },
     {
       "id": "pankati-patel",
