@@ -21,7 +21,7 @@
   runner.dataset.spriteRenderer = 'canvas-cropped';
   runner.dataset.spriteState = 'loading';
   runner.setAttribute('aria-hidden', 'true');
-  runner.innerHTML = '<canvas class="julie-runner-sprite" width="256" height="256" data-sprite-src="assets/julie-run-cycle-v3.webp"></canvas><canvas class="cat-runner cat-runner-black" width="256" height="256" data-sprite-src="assets/cat-run-cycle-black-v4.webp"></canvas><canvas class="cat-runner cat-runner-grey" width="256" height="256" data-sprite-src="assets/cat-run-cycle-grey-v4.webp"></canvas><div class="julie-greeting"><img class="julie-context-portrait" src="assets/julie-role-studio-v2.webp" alt="" width="640" height="960"><span class="julie-hi">Hi! Let me know if you need help.</span></div>';
+  runner.innerHTML = '<canvas class="julie-runner-sprite" width="256" height="256" data-sprite-src="assets/julie-run-cycle-v5.webp"></canvas><canvas class="cat-runner cat-runner-black" width="256" height="256" data-sprite-src="assets/cat-run-cycle-black-v5.webp"></canvas><canvas class="cat-runner cat-runner-grey" width="256" height="256" data-sprite-src="assets/cat-run-cycle-grey-v5.webp"></canvas><div class="julie-greeting"><img class="julie-context-portrait" src="assets/julie-role-studio-v2.webp" alt="" width="640" height="960"><span class="julie-hi">Hi! Let me know if you need help.</span></div>';
   document.body.append(runner);
 
   const sprite = runner.querySelector('.julie-runner-sprite');

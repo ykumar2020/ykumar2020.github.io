@@ -48,9 +48,9 @@ with sync_playwright() as playwright:
     page.wait_for_function("document.querySelector('.julie-runner-track').dataset.spriteState === 'ready'")
     assert runner.get_attribute("data-sprite-renderer") == "canvas-cropped"
     assert page.locator(".julie-runner-sprite").evaluate("x => x.tagName === 'CANVAS' && x.width === 256 && x.height === 256")
-    assert page.locator(".julie-runner-sprite").get_attribute("data-sprite-src") == "assets/julie-run-cycle-v3.webp"
-    assert page.locator(".cat-runner-black").get_attribute("data-sprite-src") == "assets/cat-run-cycle-black-v4.webp"
-    assert page.locator(".cat-runner-grey").get_attribute("data-sprite-src") == "assets/cat-run-cycle-grey-v4.webp"
+    assert page.locator(".julie-runner-sprite").get_attribute("data-sprite-src") == "assets/julie-run-cycle-v5.webp"
+    assert page.locator(".cat-runner-black").get_attribute("data-sprite-src") == "assets/cat-run-cycle-black-v5.webp"
+    assert page.locator(".cat-runner-grey").get_attribute("data-sprite-src") == "assets/cat-run-cycle-grey-v5.webp"
     assert page.locator(".julie-context-portrait").evaluate("x => x.complete && x.naturalWidth === 640 && x.naturalHeight === 960")
     assert page.locator(".julie-hi").inner_text() == "Hi! Let me know if you need help."
     greeting_box = page.locator(".julie-hi").bounding_box()
@@ -58,6 +58,7 @@ with sync_playwright() as playwright:
     assert greeting_box["x"] >= 0, greeting_box
     page.locator("#julie-apps").scroll_into_view_if_needed()
     page.wait_for_function("document.querySelectorAll('.julie-app-card.is-julie-visible').length > 0")
+    page.wait_for_function("document.documentElement.dataset.motion === 'playing'")
     assert "julie-idle-alive" in page.locator(".julie-app-card.is-julie-visible img").first.evaluate("el => getComputedStyle(el).animationName")
     page.evaluate("scrollTo(0, document.documentElement.scrollHeight * .55)")
     page.wait_for_function("document.querySelector('.julie-runner-track').classList.contains('is-running')")
@@ -66,6 +67,7 @@ with sync_playwright() as playwright:
     midpoint = runner.evaluate("el => Number.parseFloat(getComputedStyle(el).getPropertyValue('--julie-runner-x'))")
     assert 100 < midpoint < 1180, midpoint
     assert runner.get_attribute("data-direction") == "right"
+    assert page.locator(".julie-runner-sprite").evaluate("el => getComputedStyle(el).animationName === 'none'")
     assert_legs_advance(page, ".julie-runner-sprite")
     page.wait_for_function("document.querySelector('.julie-runner-track').classList.contains('is-resting')", timeout=7000)
     parked = runner.evaluate("el => Number.parseFloat(getComputedStyle(el).getPropertyValue('--julie-runner-x'))")
@@ -81,6 +83,7 @@ with sync_playwright() as playwright:
     )
     next_cat_frame = page.locator(".cat-runner-black").get_attribute("data-frame")
     assert first_cat_frame != next_cat_frame, (first_cat_frame, next_cat_frame)
+    assert page.locator(".cat-runner-black").evaluate("el => getComputedStyle(el).animationName === 'none'")
     assert_legs_advance(page, ".cat-runner-black")
     assert page.locator(".julie-context-portrait").get_attribute("src") == "assets/julie-role-news-v2.webp"
 

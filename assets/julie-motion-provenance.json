@@ -10,6 +10,34 @@
       "sha256": "e0ff0de6309afbf47b1cfaa25241d92b10a99cb26cdb6009487bea64bd3f1426"
     },
     {
+      "file": "julie-run-cycle-source-v4.png",
+      "purpose": "Eight-phase side-view anatomical run-cycle source",
+      "sourceIdentity": "assets/julie-run-cycle-v1.webp",
+      "method": "OpenAI built-in reference-guided background extraction preserving the original eight poses",
+      "sha256": "052eb66cb306b0673acd8ec1b260403c7da6ec2a5513adff2f6652d4ac23efe9"
+    },
+    {
+      "file": "julie-run-cycle-v5.webp",
+      "purpose": "Twenty-four playback ticks repeating an eight-phase anatomical human gait",
+      "sourceIdentity": "assets/julie-run-cycle-source-v4.png",
+      "method": "Deterministic per-frame isolation, normalization, and three-cycle assembly by tools/build_anatomical_run_cycles.py",
+      "sha256": "b1e0d0e3de6afe193fe67f841ade6b7d82d649b9b4dee661f7b0f5e03738763f"
+    },
+    {
+      "file": "cat-run-cycle-black-v5.webp",
+      "purpose": "Twenty-four playback ticks repeating a twelve-phase feline gait",
+      "sourceIdentity": "assets/cat-run-cycle-black-v2.webp",
+      "method": "Deterministic per-frame isolation, normalization, and two-cycle assembly by tools/build_anatomical_run_cycles.py",
+      "sha256": "3fc35166b3fe152826af1834e01e3462f8c6f873f64c5452ec2af03db5edb11a"
+    },
+    {
+      "file": "cat-run-cycle-grey-v5.webp",
+      "purpose": "Twenty-four playback ticks repeating a twelve-phase feline gait",
+      "sourceIdentity": "assets/cat-run-cycle-grey-v2.webp",
+      "method": "Deterministic per-frame isolation, normalization, and two-cycle assembly by tools/build_anatomical_run_cycles.py",
+      "sha256": "78d728186dd8b8367e79544816be0e72eb99cc86e7dbf54652bc46c91820ffc2"
+    },
+    {
       "file": "julie-greeting-one-hand-v1.webp",
       "purpose": "Stationary side greeting with one raised hand",
       "sourceIdentity": "assets/julie-role-studio-v2.webp",
