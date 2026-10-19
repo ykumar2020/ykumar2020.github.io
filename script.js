@@ -1,10 +1,11 @@
 'use strict';
 const menuButton = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('#site-nav');
-function closeMenu() { navigation.classList.remove('is-open'); menuButton.setAttribute('aria-expanded', 'false'); }
+function closeMenu() { navigation.classList.remove('is-open'); menuButton.setAttribute('aria-expanded', 'false'); menuButton.setAttribute('aria-label', 'Open navigation menu'); }
 menuButton.addEventListener('click', () => {
   const opened = menuButton.getAttribute('aria-expanded') !== 'true';
   menuButton.setAttribute('aria-expanded', String(opened));
+  menuButton.setAttribute('aria-label', opened ? 'Close navigation menu' : 'Open navigation menu');
   navigation.classList.toggle('is-open', opened);
 });
 navigation.addEventListener('click', event => { if (event.target.closest('a')) closeMenu(); });
