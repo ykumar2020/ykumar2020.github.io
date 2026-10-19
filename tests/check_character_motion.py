@@ -52,7 +52,7 @@ with sync_playwright() as playwright:
     assert page.locator(".cat-runner-black").get_attribute("data-sprite-src") == "assets/cat-run-cycle-black-v5.webp"
     assert page.locator(".cat-runner-grey").get_attribute("data-sprite-src") == "assets/cat-run-cycle-grey-v5.webp"
     assert page.locator(".julie-context-portrait").evaluate("x => x.complete && x.naturalWidth === 640 && x.naturalHeight === 960")
-    assert page.locator(".julie-hi").inner_text() == "Hi! Let me know if you need help."
+    assert page.locator(".julie-hi").inner_text() == "Hi! Ask me about Yulia."
     greeting_box = page.locator(".julie-hi").bounding_box()
     assert greeting_box and greeting_box["width"] > 150, greeting_box
     assert greeting_box["x"] >= 0, greeting_box

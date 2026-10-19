@@ -20,8 +20,7 @@
   runner.dataset.frameIntervalMs = '145';
   runner.dataset.spriteRenderer = 'canvas-cropped';
   runner.dataset.spriteState = 'loading';
-  runner.setAttribute('aria-hidden', 'true');
-  runner.innerHTML = '<canvas class="julie-runner-sprite" width="256" height="256" data-sprite-src="assets/julie-run-cycle-v5.webp"></canvas><canvas class="cat-runner cat-runner-black" width="256" height="256" data-sprite-src="assets/cat-run-cycle-black-v5.webp"></canvas><canvas class="cat-runner cat-runner-grey" width="256" height="256" data-sprite-src="assets/cat-run-cycle-grey-v5.webp"></canvas><div class="julie-greeting"><img class="julie-context-portrait" src="assets/julie-role-studio-v2.webp" alt="" width="640" height="960"><span class="julie-hi">Hi! Let me know if you need help.</span></div>';
+  runner.innerHTML = '<canvas class="julie-runner-sprite" width="256" height="256" data-sprite-src="assets/julie-run-cycle-v5.webp" aria-hidden="true"></canvas><canvas class="cat-runner cat-runner-black" width="256" height="256" data-sprite-src="assets/cat-run-cycle-black-v5.webp" aria-hidden="true"></canvas><canvas class="cat-runner cat-runner-grey" width="256" height="256" data-sprite-src="assets/cat-run-cycle-grey-v5.webp" aria-hidden="true"></canvas><button class="julie-greeting" type="button" aria-label="Open Ask Julie, a local assistant about Yulia Kumar" aria-haspopup="dialog"><img class="julie-context-portrait" src="assets/julie-role-studio-v2.webp" alt="" width="640" height="960"><span class="julie-hi">Hi! Ask me about Yulia.</span></button>';
   document.body.append(runner);
 
   const catCameo = document.createElement('div');
@@ -241,12 +240,14 @@
 
   function setMotion(nextPaused) {
     paused = nextPaused || reduced.matches;
-    runner.hidden = paused;
     if (paused) {
       cancelAnimationFrame(raf);
       raf = 0;
       catCameo.classList.remove('is-jumping');
       cameoActive = false;
+      runner.hidden = false;
+      runner.classList.add('is-ready');
+      greet();
     } else {
       runner.hidden = false;
       runner.classList.add('is-ready');

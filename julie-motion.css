@@ -85,8 +85,11 @@ html[data-motion="playing"] .julie-app-card.is-julie-visible .julie-app-visual i
 .julie-runner-track.is-resting { width: 126px; height: 189px; }
 .julie-runner-track.is-resting .julie-runner-sprite,
 .julie-runner-track.is-resting .cat-runner { display: none; }
-.julie-greeting { position:absolute; inset:0; opacity:0; transition:opacity .2s ease; }
+.julie-greeting { position:absolute; inset:0; opacity:0; transition:opacity .2s ease; appearance:none; padding:0; border:0; background:transparent; color:inherit; font:inherit; pointer-events:none; cursor:pointer; }
 .julie-runner-track.is-resting .julie-greeting { opacity:1; }
+.julie-runner-track.is-resting .julie-greeting { pointer-events:auto; }
+.julie-runner-track.is-resting { pointer-events:auto; }
+.julie-greeting:focus-visible { outline:2px solid #ffd06a; outline-offset:4px; border-radius:10px; }
 .julie-greeting img { display:none; width:100%; height:100%; object-fit:contain; object-position:center bottom; filter:drop-shadow(0 9px 8px #0009); animation:julie-hello 1.25s ease-in-out infinite; transform-origin:50% 100%; }
 .julie-context-portrait { display:block!important; }
 .julie-hi { position:absolute; right:calc(100% - 12px); top:18px; width:max-content; max-width:min(230px,calc(100vw - 175px)); padding:8px 11px; border:1px solid var(--julie-accent,#ff8da0); border-radius:14px 14px 3px 14px; background:#0b101af2; color:#fff1f4; font:700 .7rem/1.35 var(--font-tech); letter-spacing:.025em; text-align:left; text-transform:none; box-shadow:0 5px 14px #0008; animation:julie-hi-pop 1.25s ease-in-out infinite; }
@@ -168,14 +171,12 @@ html[data-motion="playing"] .julie-app-card.is-julie-visible .julie-app-visual i
   .cat-runner,
   .julie-greeting img,
   .julie-hi { animation: none !important; transition: none !important; }
-  .julie-runner-track { display: none; }
   .cat-cameo { display:none; }
 }
 
 html[data-motion="paused"] .julie-app-visual img,
 html[data-motion="paused"] .julie-runner-track,
 html[data-motion="paused"] .julie-runner-sprite { animation-play-state: paused !important; }
-html[data-motion="paused"] .julie-runner-track { display: none; }
 html[data-motion="paused"] .cat-cameo { display:none; }
 
 @media print { .julie-runner-track, .cat-cameo { display: none !important; } }
