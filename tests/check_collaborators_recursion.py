@@ -46,6 +46,9 @@ with sync_playwright() as p:
  assert page.locator('#collaborator-detail a',has_text='Primary Google Scholar profile').get_attribute('href')=='https://scholar.google.com/citations?user=NpJefRUAAAAJ&hl=en'
  assert page.locator('.collaborator-face[data-person] img').count()==sum(1 for person in manifest['people'][:100] if person.get('image'))
  assert page.locator('.collaborator-face img').evaluate_all('(xs)=>xs.every(x=>x.complete&&x.naturalWidth>0)')
+ miguel=page.locator('.collaborator-face[data-person="miguel-a-mosteiro"] .face-disc img')
+ assert miguel.evaluate("el=>getComputedStyle(el).transform==='none'")
+ assert miguel.evaluate("el=>getComputedStyle(el).objectPosition==='50% 25%'")
  host.screenshot(path=str(ROOT/'qa/collaborators-scholar-jose.png'))
  page.locator('#collaborator-select').select_option('dov-kruger');assert page.locator('#collaborator-detail h4').inner_text()=='Dov Kruger'
  dov=next(p for p in manifest['people'] if p['id']=='dov-kruger')
