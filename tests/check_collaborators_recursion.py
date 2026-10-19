@@ -35,6 +35,7 @@ with sync_playwright() as p:
  assert page.locator('.collaborator-face[data-person]').count()==100
  assert page.locator('.collaborator-face[data-person="jose-serra"]').count()==1
  assert page.locator('.collaborator-face[data-person="joseph-sarnoski"]').count()==1
+ assert page.locator('.collaborator-face[data-person="wilbert-villalobos"] img').get_attribute('src')=='assets/collaborators/user-wilbert-villalobos.jpg'
  assert page.locator('.collaborator-face[data-person="jose-serra"] .face-key').inner_text()=='Serra'
  assert page.locator('.collaborator-face[data-person="joseph-sarnoski"] .face-key').inner_text()=='Sarnoski'
  jose_size=float(page.locator('.collaborator-face[data-person="jose-serra"]').evaluate("e=>getComputedStyle(e).getPropertyValue('--node-size').replace('px','')"))

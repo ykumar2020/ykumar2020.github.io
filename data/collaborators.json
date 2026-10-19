@@ -709,7 +709,12 @@
       "topics": [
         "Agentic AI",
         "Multimodal AI"
-      ]
+      ],
+      "image": "assets/collaborators/user-wilbert-villalobos.jpg",
+      "imageSource": "https://ykumar2020.github.io/assets/collaborators/user-wilbert-villalobos.jpg",
+      "photoAttribution": "Portrait supplied by Yulia Kumar for Wilbert Villalobos",
+      "portraitUpdatedAt": "2026-10-19",
+      "sha256": "2d5d857ce868d67cbc9942e744cd190b03979de3f32a1fbbfc482bf070305c0d"
     },
     {
       "id": "a-watson",
