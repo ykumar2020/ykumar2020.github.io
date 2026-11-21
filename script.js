@@ -148,6 +148,8 @@ if (photoCarousel) {
   const liveStatus = photoCarousel.querySelector('.photo-status');
   const photoCaption = photoCarousel.querySelector('.photo-caption');
   const segments = photoCarousel.querySelector('.photo-segments');
+  const greeting = photoCarousel.querySelector('[data-greeting-animation]');
+  const greetingStill = greeting?.getAttribute('src');
   const ticks = slides.map((slide,index)=>{
     const button=document.createElement('button');button.type='button';button.className='photo-tick';
     button.setAttribute('aria-label',`Show photo ${index+1}: ${slide.dataset.caption}`);
@@ -169,6 +171,12 @@ if (photoCarousel) {
     pauseButton.setAttribute('aria-label', paused ? 'Play photo rotation' : 'Pause photo rotation');
     pauseButton.setAttribute('aria-pressed', String(paused));
     photoCarousel.dataset.paused = String(paused);
+    if (greeting) {
+      const playing = !paused && !reducedMotion.matches && visible && !document.hidden
+        && slides[current].contains(greeting);
+      const source = playing ? greeting.dataset.greetingAnimation : greetingStill;
+      if (greeting.getAttribute('src') !== source) greeting.src = source;
+    }
     ticks.forEach((tick,i)=>{tick.setAttribute('aria-pressed',String(i===current));tick.classList.remove('is-filling');});
     photoCarousel.dataset.autoplay=String(!paused&&!hovered&&!focused&&visible&&!document.hidden&&!busy);
     if (!paused && !hovered && !focused && visible && !document.hidden && !busy) {

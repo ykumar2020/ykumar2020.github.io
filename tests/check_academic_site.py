@@ -61,9 +61,9 @@ with sync_playwright() as p:
     assert page.locator('.teaching-case').count()==8
     assert page.locator('#knowledge-panel').bounding_box()['y'] < page.locator('#flagships').bounding_box()['y'] < page.locator('#publication-list').bounding_box()['y']
     report['checks'] += ['Four Julie projects use four photo-derived wardrobes and proportional rectangular glasses','LEGO Julie uses two real loaded photographs with keyboard-accessible view controls','Collaborator graph leads compact desktop research cards','Research and bibliography precede projects; six selected works and eight teaching examples']
-    assert page.locator('.portrait-slide').count()==9
-    assert page.locator('.portrait-slide img').evaluate_all('(xs)=>xs.slice(0,3).map(i=>i.getAttribute("src"))')==['assets/julie-amigo.webp','assets/julie-research-team.webp','assets/julie-awards.webp']
-    assert page.locator('.photo-caption').inner_text()=='AMIGO \u00b7 Emotionally aware AI'
+    assert page.locator('.portrait-slide').count()==10
+    assert page.locator('.portrait-slide img').evaluate_all('(xs)=>xs.slice(0,4).map(i=>i.getAttribute("src"))')==['assets/julie-greeting-still.webp','assets/julie-amigo.webp','assets/julie-research-team.webp','assets/julie-awards.webp']
+    assert page.locator('.photo-caption').inner_text()=='Welcome from Julie'
     assert page.locator('h1').count()==1
     assert 'Julie' in page.locator('h1').inner_text() and 'Kumar' in page.locator('h1').inner_text()
     assert page.locator('#publication-list .paper').count()==76

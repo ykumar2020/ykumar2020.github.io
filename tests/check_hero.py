@@ -23,7 +23,7 @@ with sync_playwright() as p:
  assert 'Finance' in page.locator('.degree-context').inner_text()
  assert 'Ph.D. Candidate in ECE' in page.locator('.hero-roles').inner_text()
  assert page.locator('.access-pass').count()==5
- assert page.locator('.photo-tick').count()==9
+ assert page.locator('.photo-tick').count()==10
  assert page.locator('#home .hero-art').count()==0
  assert page.locator('#photo-carousel').bounding_box()['width']>500
  geometry=page.locator('.research-geometry').bounding_box()
@@ -83,5 +83,5 @@ with sync_playwright() as p:
  page.wait_for_function('document.querySelector("#hero-art-scene").dataset.state==="fallback"')
  assert page.locator('#hero-art-scene .scene-fallback').is_visible()
  assert not errors,errors
- print(f'PASS: degree context, 9 ticks, autoplay/reduced motion, quick filter, real touch swipes, widths 320-1440, WebGL fallback. Emphasis contrast {ratio:.2f}:1; hero rendering {fps:.2f} fps.')
+ print(f'PASS: degree context, 10 ticks, autoplay/reduced motion, quick filter, real touch swipes, widths 320-1440, WebGL fallback. Emphasis contrast {ratio:.2f}:1; hero rendering {fps:.2f} fps.')
  b.close()

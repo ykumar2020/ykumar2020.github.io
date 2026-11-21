@@ -22,7 +22,7 @@ with sync_playwright() as playwright:
     ]
     assert page.locator("#work-with-me .opportunity-grid article").count() == 3
     assert page.locator("#photo-carousel").get_attribute("data-paused") == "true"
-    assert page.locator(".portrait-slide img").first.get_attribute("src") == "assets/julie-amigo.webp"
+    assert page.locator(".portrait-slide img").first.get_attribute("src") == "assets/julie-greeting-still.webp"
 
     assert page.locator("#publication-list .paper").count() == 76
     assert page.locator("#cv-19 .earlier-versions").count() == 1
