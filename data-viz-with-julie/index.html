@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=5b800ff90c6f">
-  <script type="module" src="./app.js?v=9d02cf983ed6"></script>
+  <link rel="stylesheet" href="./styles.css?v=b0e115cd494a">
+  <script type="module" src="./app.js?v=97656de2a480"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -46,6 +46,7 @@
       <a class="lecture-entry" id="mining-lab-nav" href="#mining-lab">Visual Mining Lab</a>
       <a class="lecture-entry" id="dashboard-lab-nav" href="#dashboard-lab">Dashboard Evidence Lab</a>
       <a class="lecture-entry" id="hierarchy-lab-nav" href="#hierarchy-lab">Hierarchy Lab</a>
+      <a class="lecture-entry" id="distribution-lab-nav" href="#distribution-lab">Distribution Lab</a>
     </aside>
     <main id="lesson" tabindex="-1">
       <header class="lesson-header">
@@ -364,6 +365,22 @@
           <a href="#hierarchy-lab/rollup" data-hierarchy-activity="rollup">Roll up totals</a>
         </nav>
         <div id="hierarchy-activities"></div>
+      </div>
+    </main>
+    <main id="distribution-workshop" aria-labelledby="distribution-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 · Days 24 and 28</div>
+        <h1 id="distribution-title" tabindex="-1">Distribution Lab</h1>
+        <p>Compare unequal histogram bins, inspect tied observations in a cumulative curve, and trace grouped boxplot summaries to the original waits.</p>
+      </header>
+      <p id="distribution-load-status" role="status">Loading distribution activities…</p>
+      <div id="distribution-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Distribution activities">
+          <a href="#distribution-lab/histogram" data-distribution-activity="histogram">Histogram intervals</a>
+          <a href="#distribution-lab/quantiles" data-distribution-activity="quantiles">Quantiles and cumulative share</a>
+          <a href="#distribution-lab/boxplots" data-distribution-activity="boxplots">Grouped boxplots</a>
+        </nav>
+        <div id="distribution-activities"></div>
       </div>
     </main>
     <section id="lecture-library" aria-labelledby="library-title" hidden>
