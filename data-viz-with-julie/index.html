@@ -3,27 +3,27 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0d0a15">
+  <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=quiz-workspace">
-  <script type="module" src="./app.js?v=quiz-workspace"></script>
+  <link rel="stylesheet" href="./styles.css?v=fall-2026">
+  <script type="module" src="./app.js?v=fall-2026"></script>
 </head>
 <body>
-  <a class="skip" href="#lesson">Skip to lesson</a>
+  <a class="skip" href="#lesson">Skip to content</a>
   <header class="top">
     <div class="top-inner">
       <a class="brand" href="#foundations/visual-encoding">
         <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
         <span>Data Viz <b>with Julie</b></span>
       </a>
-      <nav class="anchors" aria-label="In this lesson">
+      <nav class="anchors" aria-label="Course navigation">
+        <a href="#course/day-01" id="lecture-nav">Lectures</a>
         <a href="#lab" data-section="lab">Lab</a>
         <a href="#slides" data-section="slides">Slides</a>
         <a href="#quiz/foundations/visual-encoding" data-quiz-link>Quiz</a>
-        <a href="#lectures/day-01">Lectures</a>
       </nav>
-      <span class="top-meta">CPS 5745</span>
+      <span class="top-meta">CPS 5745 · Fall 2026</span>
     </div>
   </header>
   <div class="layout">
@@ -33,7 +33,7 @@
         <span id="course-progress" class="course-progress"></span>
       </div>
       <nav id="course-nav" aria-label="Units and lessons"></nav>
-      <a class="lecture-entry" href="#lectures/day-01">Original lecture library</a>
+      <a class="lecture-entry" href="#course/day-01">Fall 2026 lectures</a>
     </aside>
     <main id="lesson" tabindex="-1">
       <header class="lesson-header">
@@ -94,7 +94,7 @@
           </div>
           <div class="slide-links">
             <button type="button" id="present-slides">Present slides</button>
-            <a id="open-source-deck" class="quiet-link" href="#lectures/day-01">Original lecture</a>
+            <a id="open-source-deck" class="quiet-link" href="#course/day-01">Fall 2026 lecture</a>
             <a class="quiet-link" href="#quiz/foundations/visual-encoding" data-quiz-link>Try the quiz</a>
           </div>
         </section>
@@ -123,10 +123,18 @@
       </section>
       <footer class="footer"><span id="course-note"></span> <a href="https://ykumar2020.github.io/">Yulia (Julie) Kumar</a></footer>
     </main>
+    <main id="fall-course" aria-labelledby="fall-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 · Fall 2026</div>
+        <h1 id="fall-title" tabindex="-1">Data Analytics and Visualization</h1>
+        <p>Lectures by <a href="https://ykumar2020.github.io/">Yulia (Julie) Kumar</a></p>
+      </header>
+      <p id="fall-status" role="status">Loading lectures…</p>
+    </main>
     <section id="lecture-library" aria-labelledby="library-title" hidden>
       <header class="lesson-header">
         <div class="lesson-kicker">CPS 5745</div>
-        <h1 id="library-title" tabindex="-1">Original lectures</h1>
+        <h1 id="library-title" tabindex="-1">Fall 2025 source decks</h1>
         <p>31 decks. 927 slides. Open your course ZIP or select one of the original PDFs on this device.</p>
       </header>
       <div class="library-toolbar">
