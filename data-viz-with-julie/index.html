@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=57c1916df190">
-  <script type="module" src="./app.js?v=545186da076c"></script>
+  <link rel="stylesheet" href="./styles.css?v=5f1c19dc4203">
+  <script type="module" src="./app.js?v=081276566ab8"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -30,28 +30,33 @@
     </div>
   </header>
   <div class="layout">
-    <aside class="course" aria-label="Course outline">
+    <aside class="course" id="course-outline" aria-label="Course outline">
       <div class="course-title">
-        <h2>Course outline</h2>
+        <h2 id="course-outline-heading" tabindex="-1">Course outline</h2>
+        <button class="course-outline-toggle" type="button" id="course-outline-toggle" aria-expanded="false"
+          aria-controls="course-outline-links">Course outline</button>
         <span id="course-progress" class="course-progress"></span>
       </div>
-      <nav id="course-nav" aria-label="Units and lessons"></nav>
-      <a class="lecture-entry" href="#course">Fall 2026 lectures</a>
-      <a class="lecture-entry" id="comparison-lab-nav" href="#comparison-lab">Comparison Lab</a>
-      <a class="lecture-entry" id="census-lab-nav" href="#census-lab">Census Lab</a>
-      <a class="lecture-entry" id="encoding-lab-nav" href="#encoding-lab">Encoding Lab</a>
-      <a class="lecture-entry" id="preparation-lab-nav" href="#preparation-lab">Data Preparation Lab</a>
-      <a class="lecture-entry" id="time-series-lab-nav" href="#time-series-lab">Time Series Lab</a>
-      <a class="lecture-entry" id="spatial-lab-nav" href="#spatial-lab">Spatial Fields Lab</a>
-      <a class="lecture-entry" id="mining-lab-nav" href="#mining-lab">Visual Mining Lab</a>
-      <a class="lecture-entry" id="dashboard-lab-nav" href="#dashboard-lab">Dashboard Evidence Lab</a>
-      <a class="lecture-entry" id="hierarchy-lab-nav" href="#hierarchy-lab">Hierarchy Lab</a>
-      <a class="lecture-entry" id="distribution-lab-nav" href="#distribution-lab">Distribution Lab</a>
-      <a class="lecture-entry" id="aggregation-lab-nav" href="#aggregation-lab">SQL Aggregation Lab</a>
-      <a class="lecture-entry" id="color-lab-nav" href="#color-lab">Color and Perception Lab</a>
-      <a class="lecture-entry" id="map-geometry-lab-nav" href="#map-geometry-lab">Map Geometry Lab</a>
-      <a class="lecture-entry" id="model-fit-lab-nav" href="#model-fit-lab">Paired Data and Model Fit Lab</a>
-      <a class="lecture-entry" id="image-transforms-lab-nav" href="#image-transforms-lab">Image Transformations Lab</a>
+      <div class="course-outline-links" id="course-outline-links">
+        <nav id="course-nav" aria-label="Units and lessons"></nav>
+        <a class="lecture-entry" href="#course">Fall 2026 lectures</a>
+        <a class="lecture-entry" id="comparison-lab-nav" href="#comparison-lab">Comparison Lab</a>
+        <a class="lecture-entry" id="census-lab-nav" href="#census-lab">Census Lab</a>
+        <a class="lecture-entry" id="encoding-lab-nav" href="#encoding-lab">Encoding Lab</a>
+        <a class="lecture-entry" id="preparation-lab-nav" href="#preparation-lab">Data Preparation Lab</a>
+        <a class="lecture-entry" id="time-series-lab-nav" href="#time-series-lab">Time Series Lab</a>
+        <a class="lecture-entry" id="spatial-lab-nav" href="#spatial-lab">Spatial Fields Lab</a>
+        <a class="lecture-entry" id="mining-lab-nav" href="#mining-lab">Visual Mining Lab</a>
+        <a class="lecture-entry" id="clustering-lab-nav" href="#clustering-lab">Clustering Lab</a>
+        <a class="lecture-entry" id="dashboard-lab-nav" href="#dashboard-lab">Dashboard Evidence Lab</a>
+        <a class="lecture-entry" id="hierarchy-lab-nav" href="#hierarchy-lab">Hierarchy Lab</a>
+        <a class="lecture-entry" id="distribution-lab-nav" href="#distribution-lab">Distribution Lab</a>
+        <a class="lecture-entry" id="aggregation-lab-nav" href="#aggregation-lab">SQL Aggregation Lab</a>
+        <a class="lecture-entry" id="color-lab-nav" href="#color-lab">Color and Perception Lab</a>
+        <a class="lecture-entry" id="map-geometry-lab-nav" href="#map-geometry-lab">Map Geometry Lab</a>
+        <a class="lecture-entry" id="model-fit-lab-nav" href="#model-fit-lab">Paired Data and Model Fit Lab</a>
+        <a class="lecture-entry" id="image-transforms-lab-nav" href="#image-transforms-lab">Image Transformations Lab</a>
+      </div>
     </aside>
     <main id="lesson" tabindex="-1">
       <header class="lesson-header">
@@ -340,6 +345,9 @@
         </nav>
         <div id="mining-activities"></div>
       </div>
+      <footer class="fall-links">
+        <a href="#clustering-lab">Clustering Lab</a>
+      </footer>
     </main>
     <main id="dashboard-workshop" aria-labelledby="dashboard-title" hidden>
       <header class="lesson-header">
@@ -467,6 +475,22 @@
           <a href="#image-transforms-lab/rgb-cube" data-image-transforms-activity="rgb-cube">RGB color cube</a>
         </nav>
         <div id="image-transforms-activities"></div>
+      </div>
+    </main>
+    <main id="clustering-workshop" aria-labelledby="clustering-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 · Day 25</div>
+        <h1 id="clustering-title" tabindex="-1">Clustering Lab</h1>
+        <p>Trace how k-means groups eight shuttle trips, compare alternate runs, and check an isolated record against its dispatch note.</p>
+      </header>
+      <p id="clustering-load-status" role="status">Loading clustering activities…</p>
+      <div id="clustering-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Clustering activities">
+          <a href="#clustering-lab/centroids" data-clustering-activity="centroids">Centroid steps</a>
+          <a href="#clustering-lab/stability" data-clustering-activity="stability">Compare clusterings</a>
+          <a href="#clustering-lab/isolation" data-clustering-activity="isolation">Audit an isolated record</a>
+        </nav>
+        <div id="clustering-activities"></div>
       </div>
     </main>
     <section id="lecture-library" aria-labelledby="library-title" hidden>
