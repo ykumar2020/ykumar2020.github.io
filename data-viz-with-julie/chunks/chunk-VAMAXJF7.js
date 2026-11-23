@@ -1,0 +1,1 @@
+function d(o,n,c){let e=document.createElement("a");e.download=String(o??"").replace(/[<>:"/\\|?*\u0000-\u001f]/g,"-").trim()||"download",e.hidden=!0;let t=URL.createObjectURL(new Blob([n],{type:c}));e.href=t;try{document.body.append(e),e.click()}finally{e.remove(),setTimeout(()=>URL.revokeObjectURL(t),3e4)}}export{d as a};
