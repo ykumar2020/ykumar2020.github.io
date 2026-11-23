@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=b0e115cd494a">
-  <script type="module" src="./app.js?v=97656de2a480"></script>
+  <link rel="stylesheet" href="./styles.css?v=197dc17a9dcf">
+  <script type="module" src="./app.js?v=8e4feb03d9e3"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -47,6 +47,7 @@
       <a class="lecture-entry" id="dashboard-lab-nav" href="#dashboard-lab">Dashboard Evidence Lab</a>
       <a class="lecture-entry" id="hierarchy-lab-nav" href="#hierarchy-lab">Hierarchy Lab</a>
       <a class="lecture-entry" id="distribution-lab-nav" href="#distribution-lab">Distribution Lab</a>
+      <a class="lecture-entry" id="aggregation-lab-nav" href="#aggregation-lab">SQL Aggregation Lab</a>
     </aside>
     <main id="lesson" tabindex="-1">
       <header class="lesson-header">
@@ -381,6 +382,22 @@
           <a href="#distribution-lab/boxplots" data-distribution-activity="boxplots">Grouped boxplots</a>
         </nav>
         <div id="distribution-activities"></div>
+      </div>
+    </main>
+    <main id="aggregation-workshop" aria-labelledby="aggregation-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 · Days 3 and 4</div>
+        <h1 id="aggregation-title" tabindex="-1">SQL Aggregation Lab</h1>
+        <p>Check what SQL counts, when a filter runs, and which geographic keys define a group.</p>
+      </header>
+      <p id="aggregation-load-status" role="status">Loading aggregation activities…</p>
+      <div id="aggregation-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Aggregation activities">
+          <a href="#aggregation-lab/counts" data-aggregation-activity="counts">Rows and recorded counts</a>
+          <a href="#aggregation-lab/filters" data-aggregation-activity="filters">WHERE and HAVING</a>
+          <a href="#aggregation-lab/geography" data-aggregation-activity="geography">Geographic grouping</a>
+        </nav>
+        <div id="aggregation-activities"></div>
       </div>
     </main>
     <section id="lecture-library" aria-labelledby="library-title" hidden>
