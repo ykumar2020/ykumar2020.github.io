@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=0385ab4b0d68">
-  <script type="module" src="./app.js?v=7ac6674593c8"></script>
+  <link rel="stylesheet" href="./styles.css?v=f05513039fe1">
+  <script type="module" src="./app.js?v=897c0c418039"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -51,6 +51,7 @@
         <a class="lecture-entry" id="prediction-lab-nav" href="#prediction-lab">Predictive Modeling Lab</a>
         <a class="lecture-entry" id="dashboard-lab-nav" href="#dashboard-lab">Dashboard Evidence Lab</a>
         <a class="lecture-entry" id="portfolio-lab-nav" href="#portfolio-lab">Portfolio Charts Lab</a>
+        <a class="lecture-entry" id="rendering-lab-nav" href="#rendering-lab">Rendering Evidence Lab</a>
         <a class="lecture-entry" id="hierarchy-lab-nav" href="#hierarchy-lab">Hierarchy Lab</a>
         <a class="lecture-entry" id="distribution-lab-nav" href="#distribution-lab">Distribution Lab</a>
         <a class="lecture-entry" id="aggregation-lab-nav" href="#aggregation-lab">SQL Aggregation Lab</a>
@@ -526,6 +527,22 @@
           <a href="#portfolio-lab/correlation" data-portfolio-activity="correlation">Correlation matrix</a>
         </nav>
         <div id="portfolio-activities"></div>
+      </div>
+    </main>
+    <main id="rendering-workshop" aria-labelledby="rendering-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 · Days 13 and 24</div>
+        <h1 id="rendering-title" tabindex="-1">Rendering Evidence Lab</h1>
+        <p>Pick the same points in SVG and Canvas, measure browser work, and inspect the same data in two 3D renderers.</p>
+      </header>
+      <p id="rendering-load-status" role="status">Loading rendering activities…</p>
+      <div id="rendering-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Rendering activities">
+          <a href="#rendering-lab/surfaces" data-rendering-activity="surfaces">SVG and Canvas</a>
+          <a href="#rendering-lab/benchmark" data-rendering-activity="benchmark">Browser timing</a>
+          <a href="#rendering-lab/parity" data-rendering-activity="parity">3D renderers</a>
+        </nav>
+        <div id="rendering-activities"></div>
       </div>
     </main>
     <section id="lecture-library" aria-labelledby="library-title" hidden>
