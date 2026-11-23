@@ -344,6 +344,10 @@ tr.selected { background: var(--accent-soft); }
 .sampling-inspector input { width: 100%; accent-color: var(--accent); min-height: 34px; }
 .sampling-table-wrap { max-height: 290px; overflow: auto; }
 .sampling-table-wrap caption { text-align: left; padding: .5rem 0; color: var(--muted); }
+.sampling-export-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.sampling-share-address { width: 100%; min-height: 2.65rem; padding: .45rem .6rem; border: 1px solid #7f5b93; border-radius: 7px; background: var(--raised); color: var(--ink); }
+.sampling-share-status { color: var(--muted); font-size: .88rem; }
+.sampling-share-status:empty { display: none; }
 @media (max-width: 1130px) {
   .layout { grid-template-columns: minmax(174px,208px) minmax(0,1fr); gap: 17px; }
   .studio { grid-template-columns: minmax(0,1fr); }
