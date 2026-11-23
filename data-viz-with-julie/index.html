@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=a2abe799c24a">
-  <script type="module" src="./app.js?v=c9de8e0583aa"></script>
+  <link rel="stylesheet" href="./styles.css?v=5b800ff90c6f">
+  <script type="module" src="./app.js?v=9d02cf983ed6"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -45,6 +45,7 @@
       <a class="lecture-entry" id="spatial-lab-nav" href="#spatial-lab">Spatial Fields Lab</a>
       <a class="lecture-entry" id="mining-lab-nav" href="#mining-lab">Visual Mining Lab</a>
       <a class="lecture-entry" id="dashboard-lab-nav" href="#dashboard-lab">Dashboard Evidence Lab</a>
+      <a class="lecture-entry" id="hierarchy-lab-nav" href="#hierarchy-lab">Hierarchy Lab</a>
     </aside>
     <main id="lesson" tabindex="-1">
       <header class="lesson-header">
@@ -347,6 +348,22 @@
           <a href="#dashboard-lab/funnel" data-dashboard-activity="funnel">Conversion funnel</a>
         </nav>
         <div id="dashboard-activities"></div>
+      </div>
+    </main>
+    <main id="hierarchy-workshop" aria-labelledby="hierarchy-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 · Day 24</div>
+        <h1 id="hierarchy-title" tabindex="-1">Hierarchy Lab</h1>
+        <p>Read allocated hours as rectangle area, inspect a small item by opening its branch, and trace how leaves add up to a course total.</p>
+      </header>
+      <p id="hierarchy-load-status" role="status">Loading hierarchy activities…</p>
+      <div id="hierarchy-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Hierarchy activities">
+          <a href="#hierarchy-lab/area" data-hierarchy-activity="area">Treemap area</a>
+          <a href="#hierarchy-lab/drilldown" data-hierarchy-activity="drilldown">Small items</a>
+          <a href="#hierarchy-lab/rollup" data-hierarchy-activity="rollup">Roll up totals</a>
+        </nav>
+        <div id="hierarchy-activities"></div>
       </div>
     </main>
     <section id="lecture-library" aria-labelledby="library-title" hidden>
