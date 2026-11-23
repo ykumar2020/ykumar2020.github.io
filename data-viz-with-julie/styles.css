@@ -430,6 +430,18 @@ tr.selected { background: var(--accent-soft); }
 :is(.encoding-exercise,.preparation-exercise,.time-series-exercise,.spatial-exercise,.mining-exercise,.dashboard-exercise,.hierarchy-exercise,.distribution-exercise,.aggregation-exercise,.color-exercise,.map-geometry-exercise,.model-fit-exercise,.image-transforms-exercise,.clustering-exercise,.prediction-exercise,.portfolio-exercise,.rendering-exercise,.live-updates-exercise,.coordinate-frames-exercise,.data-mart-exercise,.energy-demand-exercise,.text-evidence-exercise) { min-width: 0; margin-top: 12px; }
 :is(.encoding-panel,.preparation-panel,.time-series-panel,.spatial-panel,.mining-panel,.dashboard-panel,.hierarchy-panel,.distribution-panel,.aggregation-panel,.color-panel,.map-geometry-panel,.model-fit-panel,.image-transforms-panel,.clustering-panel,.prediction-panel,.portfolio-panel,.rendering-panel,.live-updates-panel,.coordinate-frames-panel,.data-mart-panel,.energy-demand-panel,.text-evidence-panel) > .data-export { margin-top: 12px; }
 .chart-reproducibility-exercise { min-width: 0; margin-top: 12px; }
+.choropleth-exercise { min-width: 0; margin-top: 12px; }
+.choropleth-panel > .data-export { margin-top: 12px; }
+.choropleth-district-map { display: block; width: 100%; max-width: 620px; margin-inline: auto; border: 1px solid var(--line); border-radius: 10px; background: #1a1128; }
+.choropleth-district-map g[data-district-id] { cursor: pointer; outline: none; }
+.choropleth-district-shape { stroke: #ece0f7; stroke-width: 1.1; }
+.choropleth-district-map g:is(:focus-visible, [aria-pressed="true"]) > .choropleth-district-shape { stroke: #ffce84; stroke-width: 3; }
+.choropleth-map-id, .choropleth-map-value { text-anchor: middle; fill: #fff; stroke: #231431; stroke-width: 3px; paint-order: stroke; }
+.choropleth-map-id { font-size: 23px; font-weight: 800; }
+.choropleth-map-value { font-size: 18px; font-weight: 650; }
+@media (prefers-reduced-motion: no-preference) {
+  .choropleth-district-shape { transition: fill .18s ease, stroke .15s ease; }
+}
 .image-transform-grid { min-width: 0; margin: 0; padding: .65rem; border: 1px solid var(--line); border-radius: 8px; background: #21152e; }
 .image-transform-grid figcaption { margin-bottom: .55rem; font-weight: 700; }
 .image-transform-cells { display: grid; grid-template-columns: repeat(var(--pixel-columns),minmax(0,1fr)); gap: 4px; }
