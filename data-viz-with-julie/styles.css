@@ -36,8 +36,8 @@ button, select { min-height: 2.65rem; }
 button { cursor: pointer; }
 button:disabled { cursor: default; opacity: .45; }
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
-.skip { position: fixed; top: .5rem; left: .5rem; transform: translateY(-150%); z-index: 5; padding: .65rem 1rem; background: var(--accent); color: var(--button-ink); }
-.skip:focus { transform: none; }
+.skip { position: fixed; top: .5rem; left: .5rem; clip-path: inset(100%); z-index: 5; padding: .65rem 1rem; background: var(--accent); color: var(--button-ink); }
+.skip:focus { clip-path: none; }
 .top { background: #130a21ed; border-bottom: 1px solid var(--line); }
 .top-inner { max-width: 1510px; padding: 0 clamp(18px,3vw,52px); min-height: 72px; margin: auto; display: flex; align-items: center; gap: 28px; }
 .brand { text-decoration: none; display: inline-flex; align-items: center; gap: 12px; color: var(--ink); font-size: clamp(18px,2vw,23px); letter-spacing: -.035em; font-weight: 740; white-space: nowrap; }
@@ -207,6 +207,20 @@ tr.selected { background: var(--accent-soft); }
 #fall-course { min-width: 0; width: min(100%,1170px); margin-inline: auto; }
 .fall-toolbar,.fall-navigation,.fall-links { display: flex; flex-wrap: wrap; align-items: end; gap: 10px; }
 .fall-toolbar { margin-bottom: 14px; }
+.fall-study-search { margin: 0 0 16px; border: 1px solid var(--line); border-radius: 9px; background: #211331; }
+.fall-study-search > summary { width: fit-content; padding: .65rem .9rem; color: var(--accent); cursor: pointer; font-weight: 690; }
+.fall-search { padding: 0 .9rem .85rem; }
+.fall-search-form label { display: block; color: var(--muted); font-size: .89rem; margin-bottom: .36rem; }
+.fall-search-controls { display: flex; align-items: stretch; gap: 8px; }
+.fall-search-controls input { flex: 1 1 0; min-width: 0; border: 1px solid #7f5b93; border-radius: 7px; color: var(--ink); background: #150b21; padding: .5rem .7rem; }
+.fall-search-status { margin: .62rem 0 0; color: var(--muted); font-size: .88rem; }
+.fall-search-results { list-style: none; margin: .6rem 0 0; padding: 0; max-height: min(42vh,385px); overflow: auto; overscroll-behavior: contain; }
+.fall-search-result { display: grid; gap: .25rem; padding: .6rem .35rem .6rem .15rem; border-top: 1px solid var(--line); }
+.fall-search-link { width: fit-content; padding: .15rem 0; font-weight: 700; }
+.fall-search-meta,.fall-search-source { color: var(--muted); font-size: .82rem; }
+.fall-search-snippet { margin: 0; font-size: .91rem; line-height: 1.45; }
+.fall-progress { margin: -5px 0 13px; color: var(--muted); font-size: .9rem; line-height: 1.45; }
+.fall-progress a { display: inline-block; font-weight: 680; padding-block: .3rem; overflow-wrap: anywhere; }
 .fall-picker { display: grid; gap: 5px; flex: 1 1 245px; min-width: 0; color: var(--muted); font-size: .87rem; }
 .fall-viewer button,.fall-dialog button { border: 1px solid #7f5b93; border-radius: 7px; color: var(--ink); background: var(--raised); padding: .55rem .9rem; font-weight: 670; }
 .fall-viewer button:hover:not(:disabled),.fall-dialog button:hover:not(:disabled) { border-color: var(--accent); }
