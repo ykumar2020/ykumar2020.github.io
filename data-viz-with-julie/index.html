@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=lecture-study-tools">
-  <script type="module" src="./app.js?v=lecture-study-tools"></script>
+  <link rel="stylesheet" href="./styles.css?v=rgb-image-lab">
+  <script type="module" src="./app.js?v=rgb-image-lab"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -22,6 +22,7 @@
         <a href="#lab" data-section="lab">Lab</a>
         <a href="#slides" data-section="slides">Slides</a>
         <a href="#quiz/foundations/visual-encoding" data-quiz-link>Quiz</a>
+        <a href="#image-lab" id="image-lab-nav">Image lab</a>
       </nav>
       <span class="top-meta">CPS 5745 · Fall 2026</span>
     </div>
@@ -130,6 +131,20 @@
         <p>Lectures by <a href="https://ykumar2020.github.io/">Yulia (Julie) Kumar</a></p>
       </header>
       <p id="fall-status" role="status">Loading lectures…</p>
+    </main>
+    <main id="pixel-workshop" aria-labelledby="pixel-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 · Study 2</div>
+        <h1 id="pixel-title" tabindex="-1">RGB Image Lab</h1>
+        <p>Connect a drawn selection to the distribution of its pixel intensities.</p>
+      </header>
+      <p id="pixel-load-status" role="status">Loading image lab…</p>
+      <div id="pixel-lab-content" hidden></div>
+      <footer class="fall-links">
+        <a href="#course/resources/slide-3">Study 2 workshop</a>
+        <a href="#course/day-13">Canvas and SVG lecture</a>
+        <a href="#quiz/fall-2026/resources/slide-3">Workshop quiz</a>
+      </footer>
     </main>
     <section id="lecture-library" aria-labelledby="library-title" hidden>
       <header class="lesson-header">
