@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=f2a71b3d69a5">
-  <script type="module" src="./app.js?v=d9ec42cd91d2"></script>
+  <link rel="stylesheet" href="./styles.css?v=7c7d1585f06d">
+  <script type="module" src="./app.js?v=10d2f4f69d06"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -42,6 +42,7 @@
       <a class="lecture-entry" id="encoding-lab-nav" href="#encoding-lab">Encoding Lab</a>
       <a class="lecture-entry" id="preparation-lab-nav" href="#preparation-lab">Data Preparation Lab</a>
       <a class="lecture-entry" id="time-series-lab-nav" href="#time-series-lab">Time Series Lab</a>
+      <a class="lecture-entry" id="spatial-lab-nav" href="#spatial-lab">Spatial Fields Lab</a>
     </aside>
     <main id="lesson" tabindex="-1">
       <header class="lesson-header">
@@ -296,6 +297,22 @@
           <a href="#time-series-lab/partial" data-time-series-activity="partial">Partial periods</a>
         </nav>
         <div id="time-series-activities"></div>
+      </div>
+    </main>
+    <main id="spatial-workshop" aria-labelledby="spatial-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 · Days 13 and 28</div>
+        <h1 id="spatial-title" tabindex="-1">Spatial Fields Lab</h1>
+        <p>Explore one elevation grid as a 3D surface, follow a contour at a chosen height, and read the elevation along a route.</p>
+      </header>
+      <p id="spatial-load-status" role="status">Loading spatial activities…</p>
+      <div id="spatial-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Spatial field activities">
+          <a href="#spatial-lab/surface" data-spatial-activity="surface">Terrain surface</a>
+          <a href="#spatial-lab/contours" data-spatial-activity="contours">Elevation contours</a>
+          <a href="#spatial-lab/profile" data-spatial-activity="profile">Route profile</a>
+        </nav>
+        <div id="spatial-activities"></div>
       </div>
     </main>
     <section id="lecture-library" aria-labelledby="library-title" hidden>
