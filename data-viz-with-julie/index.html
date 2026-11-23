@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=a14426e27c91">
-  <script type="module" src="./app.js?v=307fbc1dc258"></script>
+  <link rel="stylesheet" href="./styles.css?v=ad1c0b927550">
+  <script type="module" src="./app.js?v=01b951893200"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -50,6 +50,7 @@
       <a class="lecture-entry" id="aggregation-lab-nav" href="#aggregation-lab">SQL Aggregation Lab</a>
       <a class="lecture-entry" id="color-lab-nav" href="#color-lab">Color and Perception Lab</a>
       <a class="lecture-entry" id="map-geometry-lab-nav" href="#map-geometry-lab">Map Geometry Lab</a>
+      <a class="lecture-entry" id="model-fit-lab-nav" href="#model-fit-lab">Paired Data and Model Fit Lab</a>
     </aside>
     <main id="lesson" tabindex="-1">
       <header class="lesson-header">
@@ -432,6 +433,22 @@
           <a href="#map-geometry-lab/routes" data-map-geometry-activity="routes">Great-circle routes</a>
         </nav>
         <div id="map-geometry-activities"></div>
+      </div>
+    </main>
+    <main id="model-fit-workshop" aria-labelledby="model-fit-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 · Day 02</div>
+        <h1 id="model-fit-title" tabindex="-1">Paired Data and Model Fit Lab</h1>
+        <p>Pair observations by their keys, compare linear fits, and use residuals to see where a model misses.</p>
+      </header>
+      <p id="model-fit-load-status" role="status">Loading model fit activities…</p>
+      <div id="model-fit-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Model fit activities">
+          <a href="#model-fit-lab/pairing" data-model-fit-activity="pairing">Pair observations</a>
+          <a href="#model-fit-lab/linear-fit" data-model-fit-activity="linear-fit">Compare linear fits</a>
+          <a href="#model-fit-lab/residuals" data-model-fit-activity="residuals">Diagnose residuals</a>
+        </nav>
+        <div id="model-fit-activities"></div>
       </div>
     </main>
     <section id="lecture-library" aria-labelledby="library-title" hidden>
