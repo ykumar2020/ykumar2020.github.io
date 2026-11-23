@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=221c91a64995">
-  <script type="module" src="./app.js?v=1762579b01d0"></script>
+  <link rel="stylesheet" href="./styles.css?v=3548a615cfe4">
+  <script type="module" src="./app.js?v=eafffd6637af"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -39,6 +39,7 @@
       <a class="lecture-entry" href="#course">Fall 2026 lectures</a>
       <a class="lecture-entry" id="comparison-lab-nav" href="#comparison-lab">Comparison Lab</a>
       <a class="lecture-entry" id="census-lab-nav" href="#census-lab">Census Lab</a>
+      <a class="lecture-entry" id="encoding-lab-nav" href="#encoding-lab">Encoding Lab</a>
     </aside>
     <main id="lesson" tabindex="-1">
       <header class="lesson-header">
@@ -245,6 +246,22 @@
           <p class="comparison-source" id="census-sources"></p>
         </section>
         <footer class="fall-links"><a href="#course/day-28">Visual data mining and maps lecture</a></footer>
+      </div>
+    </main>
+    <main id="encoding-workshop" aria-labelledby="encoding-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 · Day 24</div>
+        <h1 id="encoding-title" tabindex="-1">Encoding Lab</h1>
+        <p>Change how you draw the data and inspect how that changes the comparisons readers make.</p>
+      </header>
+      <p id="encoding-load-status" role="status">Loading encoding activities…</p>
+      <div id="encoding-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Encoding activities">
+          <a href="#encoding-lab/baseline" data-encoding-activity="baseline">Bar baselines</a>
+          <a href="#encoding-lab/symbols" data-encoding-activity="symbols">Proportional symbols</a>
+          <a href="#encoding-lab/composition" data-encoding-activity="composition">Counts and shares</a>
+        </nav>
+        <div id="encoding-activities"></div>
       </div>
     </main>
     <section id="lecture-library" aria-labelledby="library-title" hidden>
