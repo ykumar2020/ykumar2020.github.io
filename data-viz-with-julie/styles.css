@@ -274,6 +274,12 @@ tr.selected { background: var(--accent-soft); }
 .fall-links { row-gap: 2px; }
 .fall-links a { padding: 9px 8px 9px 0; font-size: .91rem; font-weight: 660; }
 .fall-hint { color: var(--muted); font-size: .82rem; margin: 4px 0 0; }
+.fall-lecture-sequence { display: flex; gap: 10px; margin-top: 15px; }
+.fall-lecture-sequence a { display: grid; gap: .23rem; width: min(48%,350px); padding: .62rem .78rem; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); text-decoration: none; }
+.fall-lecture-sequence a:hover { border-color: var(--accent); }
+.fall-lecture-sequence span { font-size: .8rem; color: var(--muted); }
+.fall-lecture-sequence strong { font-size: .94rem; line-height: 1.35; overflow-wrap: anywhere; }
+.fall-next-lecture { margin-left: auto; text-align: right; }
 .fall-dialog { width: min(1410px,calc(100% - 18px)); max-height: calc(100% - 18px); border: 1px solid #9068aa; border-radius: 14px; padding: clamp(10px,2vw,22px); color: var(--ink); background: var(--panel); }
 .fall-dialog::backdrop { background: #100716f0; }
 .fall-dialog > button { display: block; margin: 0 0 9px auto; }
@@ -371,6 +377,9 @@ tr.selected { background: var(--accent-soft); }
   .fall-index-groups { grid-template-columns: minmax(0,1fr); }
   .sampling-series { grid-template-columns: minmax(0,1fr); }
   .fall-viewer > .fall-navigation { position: sticky; top: 0; z-index: 2; padding: .35rem .4rem; background: #1a0e27; border: 1px solid var(--line); border-radius: 9px; }
+  .fall-lecture-sequence { flex-wrap: wrap; }
+  .fall-lecture-sequence a { flex: 1 1 12rem; width: auto; }
+  .fall-next-lecture { margin-left: 0; text-align: left; }
 }
 @media (max-width: 390px) {
   .brand { font-size: 17px; gap: 8px; }
