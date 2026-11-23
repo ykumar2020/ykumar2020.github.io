@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=5f1c19dc4203">
-  <script type="module" src="./app.js?v=081276566ab8"></script>
+  <link rel="stylesheet" href="./styles.css?v=b82ed0f7e4ea">
+  <script type="module" src="./app.js?v=9de30fe38884"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -48,6 +48,7 @@
         <a class="lecture-entry" id="spatial-lab-nav" href="#spatial-lab">Spatial Fields Lab</a>
         <a class="lecture-entry" id="mining-lab-nav" href="#mining-lab">Visual Mining Lab</a>
         <a class="lecture-entry" id="clustering-lab-nav" href="#clustering-lab">Clustering Lab</a>
+        <a class="lecture-entry" id="prediction-lab-nav" href="#prediction-lab">Predictive Modeling Lab</a>
         <a class="lecture-entry" id="dashboard-lab-nav" href="#dashboard-lab">Dashboard Evidence Lab</a>
         <a class="lecture-entry" id="hierarchy-lab-nav" href="#hierarchy-lab">Hierarchy Lab</a>
         <a class="lecture-entry" id="distribution-lab-nav" href="#distribution-lab">Distribution Lab</a>
@@ -347,6 +348,7 @@
       </div>
       <footer class="fall-links">
         <a href="#clustering-lab">Clustering Lab</a>
+        <a href="#prediction-lab">Predictive Modeling Lab</a>
       </footer>
     </main>
     <main id="dashboard-workshop" aria-labelledby="dashboard-title" hidden>
@@ -491,6 +493,22 @@
           <a href="#clustering-lab/isolation" data-clustering-activity="isolation">Audit an isolated record</a>
         </nav>
         <div id="clustering-activities"></div>
+      </div>
+    </main>
+    <main id="prediction-workshop" aria-labelledby="prediction-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 · Day 25</div>
+        <h1 id="prediction-title" tabindex="-1">Predictive Modeling Lab</h1>
+        <p>Predict shuttle arrival from departure-time features, test a frozen tree, and trace how future information can inflate a score.</p>
+      </header>
+      <p id="prediction-load-status" role="status">Loading predictive modeling activities…</p>
+      <div id="prediction-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Predictive modeling activities">
+          <a href="#prediction-lab/tree" data-prediction-activity="tree">Decision tree</a>
+          <a href="#prediction-lab/evaluation" data-prediction-activity="evaluation">Held-out test</a>
+          <a href="#prediction-lab/leakage" data-prediction-activity="leakage">Feature timing</a>
+        </nav>
+        <div id="prediction-activities"></div>
       </div>
     </main>
     <section id="lecture-library" aria-labelledby="library-title" hidden>
