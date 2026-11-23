@@ -273,6 +273,8 @@ tr.selected { background: var(--accent-soft); }
 .fall-position { min-width: 4.5em; text-align: center; color: var(--muted); font-variant-numeric: tabular-nums; }
 .fall-links { row-gap: 2px; }
 .fall-links a { padding: 9px 8px 9px 0; font-size: .91rem; font-weight: 660; }
+.fall-companion-labs { margin-top: 12px; padding: 11px 14px; border: 1px solid var(--line); border-radius: 9px; background: var(--raised); }
+.fall-companion-labs h3 { margin: 0; font-size: .95rem; }
 .fall-hint { color: var(--muted); font-size: .82rem; margin: 4px 0 0; }
 .fall-lecture-sequence { display: flex; gap: 10px; margin-top: 15px; }
 .fall-lecture-sequence a { display: grid; gap: .23rem; width: min(48%,350px); padding: .62rem .78rem; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); text-decoration: none; }
@@ -424,6 +426,11 @@ tr.selected { background: var(--accent-soft); }
   .fall-navigation { gap: 5px; }
   .fall-navigation button { padding-inline: .56rem; font-size: .85rem; }
   .fall-position { min-width: 3em; font-size: .85rem; }
+}
+@media (max-width: 510px) {
+  .anchors { width: 100%; margin: 0; display: grid; grid-template-columns: repeat(12,minmax(0,1fr)); }
+  .anchors a { display: grid; place-items: center; grid-column: span 3; min-height: 44px; padding: .35rem .2rem; text-align: center; }
+  .anchors a:nth-child(n+5) { grid-column: span 4; }
 }
 @media (max-width: 360px) {
   .fall-navigation { gap: 3px; }
