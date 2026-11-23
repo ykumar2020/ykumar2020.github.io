@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=fc931571633c">
-  <script type="module" src="./app.js?v=0f79e60d23e9"></script>
+  <link rel="stylesheet" href="./styles.css?v=fe556dd2a307">
+  <script type="module" src="./app.js?v=b9484ae1817c"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -56,6 +56,7 @@
         <a class="lecture-entry" id="coordinate-frames-lab-nav" href="#coordinate-frames-lab">Coordinate Frames and 3D Projection Lab</a>
         <a class="lecture-entry" id="data-mart-lab-nav" href="#data-mart-lab">Data Mart Query Lab</a>
         <a class="lecture-entry" id="energy-demand-lab-nav" href="#energy-demand-lab">Energy and Demand Lab</a>
+        <a class="lecture-entry" id="text-evidence-lab-nav" href="#text-evidence-lab">Text Evidence Lab</a>
         <a class="lecture-entry" id="hierarchy-lab-nav" href="#hierarchy-lab">Hierarchy Lab</a>
         <a class="lecture-entry" id="distribution-lab-nav" href="#distribution-lab">Distribution Lab</a>
         <a class="lecture-entry" id="aggregation-lab-nav" href="#aggregation-lab">SQL Aggregation Lab</a>
@@ -611,6 +612,22 @@
           <a href="#energy-demand-lab/demand" data-energy-demand-activity="demand">Coincident demand</a>
         </nav>
         <div id="energy-demand-activities"></div>
+      </div>
+    </main>
+    <main id="text-evidence-workshop" aria-labelledby="text-evidence-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 · Day 18</div>
+        <h1 id="text-evidence-title" tabindex="-1">Text Evidence Lab</h1>
+        <p>Trace counts to words and documents, audit sentiment rules, and bound what missing records leave unknown.</p>
+      </header>
+      <p id="text-evidence-load-status" role="status">Loading text evidence activities…</p>
+      <div id="text-evidence-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Text evidence activities">
+          <a href="#text-evidence-lab/frequency" data-text-evidence-activity="frequency">Term frequency</a>
+          <a href="#text-evidence-lab/sentiment" data-text-evidence-activity="sentiment">Sentiment rules</a>
+          <a href="#text-evidence-lab/coverage" data-text-evidence-activity="coverage">Missing feedback</a>
+        </nav>
+        <div id="text-evidence-activities"></div>
       </div>
     </main>
     <section id="lecture-library" aria-labelledby="library-title" hidden>
