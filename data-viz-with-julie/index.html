@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=b371860adead">
-  <script type="module" src="./app.js?v=e11590e73e66"></script>
+  <link rel="stylesheet" href="./styles.css?v=fc931571633c">
+  <script type="module" src="./app.js?v=0f79e60d23e9"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -55,6 +55,7 @@
         <a class="lecture-entry" id="live-updates-lab-nav" href="#live-updates-lab">Live Chart Updates Lab</a>
         <a class="lecture-entry" id="coordinate-frames-lab-nav" href="#coordinate-frames-lab">Coordinate Frames and 3D Projection Lab</a>
         <a class="lecture-entry" id="data-mart-lab-nav" href="#data-mart-lab">Data Mart Query Lab</a>
+        <a class="lecture-entry" id="energy-demand-lab-nav" href="#energy-demand-lab">Energy and Demand Lab</a>
         <a class="lecture-entry" id="hierarchy-lab-nav" href="#hierarchy-lab">Hierarchy Lab</a>
         <a class="lecture-entry" id="distribution-lab-nav" href="#distribution-lab">Distribution Lab</a>
         <a class="lecture-entry" id="aggregation-lab-nav" href="#aggregation-lab">SQL Aggregation Lab</a>
@@ -594,6 +595,22 @@
           <a href="#data-mart-lab/grain" data-data-mart-activity="grain">Mart grain</a>
         </nav>
         <div id="data-mart-activities"></div>
+      </div>
+    </main>
+    <main id="energy-demand-workshop" aria-labelledby="energy-demand-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 · Days 18 and 24</div>
+        <h1 id="energy-demand-title" tabindex="-1">Energy and Demand Lab</h1>
+        <p>Measure energy under a power trace, compare shared meter coverage, and find the system’s simultaneous peak.</p>
+      </header>
+      <p id="energy-demand-load-status" role="status">Loading energy activities…</p>
+      <div id="energy-demand-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Energy and demand activities">
+          <a href="#energy-demand-lab/integration" data-energy-demand-activity="integration">Power to energy</a>
+          <a href="#energy-demand-lab/coverage" data-energy-demand-activity="coverage">Shared coverage</a>
+          <a href="#energy-demand-lab/demand" data-energy-demand-activity="demand">Coincident demand</a>
+        </nav>
+        <div id="energy-demand-activities"></div>
       </div>
     </main>
     <section id="lecture-library" aria-labelledby="library-title" hidden>
