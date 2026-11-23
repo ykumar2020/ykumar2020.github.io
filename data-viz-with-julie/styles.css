@@ -205,9 +205,9 @@ tr.selected { background: var(--accent-soft); }
 .presenter-bottom { flex-wrap: wrap; }
 .footer { margin: 22px 2px 8px; font-size: .86rem; line-height: 1.55; color: var(--muted); }
 .noscript { margin: 18px; }
-.layout:has(:is(#fall-course,#pixel-workshop,#sampling-workshop):not([hidden])) { grid-template-columns: minmax(0,1fr); }
-.layout:has(:is(#fall-course,#pixel-workshop,#sampling-workshop):not([hidden])) .course { display: none; }
-#fall-course,#pixel-workshop,#sampling-workshop { min-width: 0; width: min(100%,1170px); margin-inline: auto; }
+.layout:has(:is(#fall-course,#pixel-workshop,#sampling-workshop,#csv-workshop):not([hidden])) { grid-template-columns: minmax(0,1fr); }
+.layout:has(:is(#fall-course,#pixel-workshop,#sampling-workshop,#csv-workshop):not([hidden])) .course { display: none; }
+#fall-course,#pixel-workshop,#sampling-workshop,#csv-workshop { min-width: 0; width: min(100%,1170px); margin-inline: auto; }
 .fall-toolbar,.fall-navigation,.fall-links { display: flex; flex-wrap: wrap; align-items: end; gap: 10px; }
 .fall-toolbar { margin-bottom: 14px; }
 .fall-study-search { margin: 0 0 16px; border: 1px solid var(--line); border-radius: 9px; background: #211331; }
@@ -355,6 +355,27 @@ tr.selected { background: var(--accent-soft); }
 .sampling-share-address { width: 100%; min-height: 2.65rem; padding: .45rem .6rem; border: 1px solid #7f5b93; border-radius: 7px; background: var(--raised); color: var(--ink); }
 .sampling-share-status { color: var(--muted); font-size: .88rem; }
 .sampling-share-status:empty { display: none; }
+.csv-lab { padding: clamp(14px,3vw,27px); border: 1px solid var(--line); border-radius: 14px; background: linear-gradient(140deg,#2b1842,var(--panel) 65%); }
+.csv-lab h2 { font: 700 clamp(1.4rem,3vw,2.15rem)/1.15 var(--heading-font); margin: 0 0 .55rem; }
+.csv-toolbar,.csv-controls,.csv-lookup { display: flex; flex-wrap: wrap; gap: 8px; align-items: end; }
+.csv-intro,.csv-source,.csv-status,.csv-count-note,.csv-readout,.csv-empty { color: var(--muted); font-size: .9rem; line-height: 1.5; overflow-wrap: anywhere; }
+.csv-status:empty { display: none; }
+.csv-button,.csv-upload { display: inline-flex; align-items: center; min-height: 2.65rem; padding: .45rem .75rem; border: 1px solid #7f5b93; border-radius: 7px; color: var(--ink); background: var(--raised); font-weight: 680; }
+.csv-upload { position: relative; overflow: hidden; color: var(--button-ink); background: var(--accent); border-color: var(--accent); }
+.csv-upload input { position: absolute; inset: 0; opacity: 0; width: 100%; cursor: pointer; }
+.csv-upload:focus-within { outline: 2px solid var(--focus); outline-offset: 3px; }
+.csv-controls { margin: 0 0 14px; border: 0; padding: 0; min-width: 0; }
+.csv-controls legend { margin-bottom: 7px; color: var(--muted); font-size: .9rem; }
+.csv-field { display: grid; gap: 4px; flex: 1 1 120px; min-width: 0; color: var(--muted); font-size: .86rem; }
+.csv-field input { width: 100%; padding: .4rem .55rem; min-height: 2.65rem; border: 1px solid #7f5b93; border-radius: 7px; color: var(--ink); background: var(--raised); }
+.csv-chart-panel { min-width: 0; padding: clamp(9px,2vw,17px); border: 1px solid var(--line); border-radius: 10px; background: #170d24; }
+.csv-chart-panel h3 { margin: 0 0 .65rem; }
+.csv-counts { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 8px; margin: 8px 0; }
+.csv-count { padding: 8px 10px; border: 1px solid var(--line); border-radius: 7px; }
+.csv-count dt { color: var(--muted); font-size: .82rem; }
+.csv-count dd { margin: 0; color: var(--accent); font-weight: 700; }
+.csv-scatter { width: 100%; height: clamp(330px,43vw,460px); overflow: hidden; border-radius: 7px; border: 1px solid var(--line); background: #f8f4fe; }
+.csv-lookup { margin-top: 13px; }
 @media (max-width: 1130px) {
   .layout { grid-template-columns: minmax(174px,208px) minmax(0,1fr); gap: 17px; }
   .studio { grid-template-columns: minmax(0,1fr); }
@@ -376,6 +397,7 @@ tr.selected { background: var(--accent-soft); }
   .pixel-workspace { grid-template-columns: minmax(0,1fr); }
   .fall-index-groups { grid-template-columns: minmax(0,1fr); }
   .sampling-series { grid-template-columns: minmax(0,1fr); }
+  .csv-counts { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .fall-viewer > .fall-navigation { position: sticky; top: 0; z-index: 2; padding: .35rem .4rem; background: #1a0e27; border: 1px solid var(--line); border-radius: 9px; }
   .fall-lecture-sequence { flex-wrap: wrap; }
   .fall-lecture-sequence a { flex: 1 1 12rem; width: auto; }

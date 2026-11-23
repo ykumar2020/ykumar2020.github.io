@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=lecture-sequence">
-  <script type="module" src="./app.js?v=lecture-sequence"></script>
+  <link rel="stylesheet" href="./styles.css?v=csv-lab">
+  <script type="module" src="./app.js?v=csv-lab"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -24,6 +24,7 @@
         <a href="#quiz/foundations/visual-encoding" data-quiz-link>Quiz</a>
         <a href="#image-lab" id="image-lab-nav">Image lab</a>
         <a href="#sampling-lab" id="sampling-lab-nav">Sampling lab</a>
+        <a href="#csv-lab" id="csv-lab-nav">CSV lab</a>
       </nav>
       <span class="top-meta">CPS 5745 · Fall 2026</span>
     </div>
@@ -159,6 +160,19 @@
       <footer class="fall-links">
         <a href="#course/day-02">Data exploration lecture</a>
         <a href="#quiz/foundations/distributions">Distribution quiz</a>
+      </footer>
+    </main>
+    <main id="csv-workshop" aria-labelledby="csv-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 · Local data files</div>
+        <h1 id="csv-title" tabindex="-1">CSV Scatterplot Lab</h1>
+        <p>Choose which columns become coordinates and inspect the original record behind a point.</p>
+      </header>
+      <p id="csv-load-status" role="status">Loading CSV lab…</p>
+      <div id="csv-lab-content" hidden></div>
+      <footer class="fall-links">
+        <a href="#course/day-14">Charts and local data files lecture</a>
+        <a href="#quiz/fall-2026/day-14">Lecture quiz</a>
       </footer>
     </main>
     <section id="lecture-library" aria-labelledby="library-title" hidden>
