@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=3548a615cfe4">
-  <script type="module" src="./app.js?v=eafffd6637af"></script>
+  <link rel="stylesheet" href="./styles.css?v=f261c5e0b0f6">
+  <script type="module" src="./app.js?v=58287a4e37cb"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -40,6 +40,7 @@
       <a class="lecture-entry" id="comparison-lab-nav" href="#comparison-lab">Comparison Lab</a>
       <a class="lecture-entry" id="census-lab-nav" href="#census-lab">Census Lab</a>
       <a class="lecture-entry" id="encoding-lab-nav" href="#encoding-lab">Encoding Lab</a>
+      <a class="lecture-entry" id="preparation-lab-nav" href="#preparation-lab">Data Preparation Lab</a>
     </aside>
     <main id="lesson" tabindex="-1">
       <header class="lesson-header">
@@ -262,6 +263,22 @@
           <a href="#encoding-lab/composition" data-encoding-activity="composition">Counts and shares</a>
         </nav>
         <div id="encoding-activities"></div>
+      </div>
+    </main>
+    <main id="preparation-workshop" aria-labelledby="preparation-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 · Day 27</div>
+        <h1 id="preparation-title" tabindex="-1">Data Preparation Lab</h1>
+        <p>Trace how data preparation changes the records and measurements that reach a chart.</p>
+      </header>
+      <p id="preparation-load-status" role="status">Loading data preparation activities…</p>
+      <div id="preparation-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Data preparation activities">
+          <a href="#preparation-lab/weather" data-preparation-activity="weather">Weather records</a>
+          <a href="#preparation-lab/schema" data-preparation-activity="schema">Identifiers and missing values</a>
+          <a href="#preparation-lab/joins" data-preparation-activity="joins">Verified joins</a>
+        </nav>
+        <div id="preparation-activities"></div>
       </div>
     </main>
     <section id="lecture-library" aria-labelledby="library-title" hidden>
