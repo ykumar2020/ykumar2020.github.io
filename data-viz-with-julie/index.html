@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=5546aa0dc834">
-  <script type="module" src="./app.js?v=075b7b97cff6"></script>
+  <link rel="stylesheet" href="./styles.css?v=70b9ea470e6c">
+  <script type="module" src="./app.js?v=beee3690811f"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -37,6 +37,7 @@
       </div>
       <nav id="course-nav" aria-label="Units and lessons"></nav>
       <a class="lecture-entry" href="#course">Fall 2026 lectures</a>
+      <a class="lecture-entry" id="comparison-lab-nav" href="#comparison-lab">Comparison Lab</a>
     </aside>
     <main id="lesson" tabindex="-1">
       <header class="lesson-header">
@@ -173,6 +174,20 @@
       <footer class="fall-links">
         <a href="#course/day-14">Charts and local data files lecture</a>
         <a href="#quiz/fall-2026/day-14">Lecture quiz</a>
+      </footer>
+    </main>
+    <main id="comparison-workshop" aria-labelledby="comparison-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 · Explore the data</div>
+        <h1 id="comparison-title" tabindex="-1">Comparison Lab</h1>
+        <p>Compare scatterplot shapes, see how group rates combine, and test which statistics hold up under an outlier.</p>
+      </header>
+      <p id="comparison-load-status" role="status">Loading comparisons…</p>
+      <div id="comparison-lab-content" hidden></div>
+      <footer class="fall-links">
+        <a href="#course/day-02">Data exploration lecture</a>
+        <a href="#course/day-04">Grouped summaries lecture</a>
+        <a href="#course/day-28">Visual data mining lecture</a>
       </footer>
     </main>
     <section id="lecture-library" aria-labelledby="library-title" hidden>
