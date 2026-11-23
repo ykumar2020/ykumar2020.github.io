@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=9fe57b214242">
-  <script type="module" src="./app.js?v=7c46eb69885b"></script>
+  <link rel="stylesheet" href="./styles.css?v=b371860adead">
+  <script type="module" src="./app.js?v=e11590e73e66"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -54,6 +54,7 @@
         <a class="lecture-entry" id="rendering-lab-nav" href="#rendering-lab">Rendering Evidence Lab</a>
         <a class="lecture-entry" id="live-updates-lab-nav" href="#live-updates-lab">Live Chart Updates Lab</a>
         <a class="lecture-entry" id="coordinate-frames-lab-nav" href="#coordinate-frames-lab">Coordinate Frames and 3D Projection Lab</a>
+        <a class="lecture-entry" id="data-mart-lab-nav" href="#data-mart-lab">Data Mart Query Lab</a>
         <a class="lecture-entry" id="hierarchy-lab-nav" href="#hierarchy-lab">Hierarchy Lab</a>
         <a class="lecture-entry" id="distribution-lab-nav" href="#distribution-lab">Distribution Lab</a>
         <a class="lecture-entry" id="aggregation-lab-nav" href="#aggregation-lab">SQL Aggregation Lab</a>
@@ -577,6 +578,22 @@
           <a href="#coordinate-frames-lab/projection" data-coordinate-frames-activity="projection">Camera projection</a>
         </nav>
         <div id="coordinate-frames-activities"></div>
+      </div>
+    </main>
+    <main id="data-mart-workshop" aria-labelledby="data-mart-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 · Day 19</div>
+        <h1 id="data-mart-title" tabindex="-1">Data Mart Query Lab</h1>
+        <p>Filter hotel offers, compare a raw query with a summary table, and see which detail the mart can answer.</p>
+      </header>
+      <p id="data-mart-load-status" role="status">Loading data mart activities…</p>
+      <div id="data-mart-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Data mart activities">
+          <a href="#data-mart-lab/amenities" data-data-mart-activity="amenities">Amenity filters</a>
+          <a href="#data-mart-lab/materialized" data-data-mart-activity="materialized">Materialized queries</a>
+          <a href="#data-mart-lab/grain" data-data-mart-activity="grain">Mart grain</a>
+        </nav>
+        <div id="data-mart-activities"></div>
       </div>
     </main>
     <section id="lecture-library" aria-labelledby="library-title" hidden>
