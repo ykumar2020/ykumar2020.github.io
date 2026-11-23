@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=f05513039fe1">
-  <script type="module" src="./app.js?v=897c0c418039"></script>
+  <link rel="stylesheet" href="./styles.css?v=33fd6710d063">
+  <script type="module" src="./app.js?v=52a4c055761c"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -52,6 +52,7 @@
         <a class="lecture-entry" id="dashboard-lab-nav" href="#dashboard-lab">Dashboard Evidence Lab</a>
         <a class="lecture-entry" id="portfolio-lab-nav" href="#portfolio-lab">Portfolio Charts Lab</a>
         <a class="lecture-entry" id="rendering-lab-nav" href="#rendering-lab">Rendering Evidence Lab</a>
+        <a class="lecture-entry" id="live-updates-lab-nav" href="#live-updates-lab">Live Chart Updates Lab</a>
         <a class="lecture-entry" id="hierarchy-lab-nav" href="#hierarchy-lab">Hierarchy Lab</a>
         <a class="lecture-entry" id="distribution-lab-nav" href="#distribution-lab">Distribution Lab</a>
         <a class="lecture-entry" id="aggregation-lab-nav" href="#aggregation-lab">SQL Aggregation Lab</a>
@@ -543,6 +544,22 @@
           <a href="#rendering-lab/parity" data-rendering-activity="parity">3D renderers</a>
         </nav>
         <div id="rendering-activities"></div>
+      </div>
+    </main>
+    <main id="live-updates-workshop" aria-labelledby="live-updates-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 · Days 17 and 23</div>
+        <h1 id="live-updates-title" tabindex="-1">Live Chart Updates Lab</h1>
+        <p>Check responses, replay competing requests, and follow the marks that survive a data update.</p>
+      </header>
+      <p id="live-updates-load-status" role="status">Loading chart update activities…</p>
+      <div id="live-updates-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Live chart update activities">
+          <a href="#live-updates-lab/contract" data-live-updates-activity="contract">Response checks</a>
+          <a href="#live-updates-lab/race" data-live-updates-activity="race">Response order</a>
+          <a href="#live-updates-lab/identity" data-live-updates-activity="identity">D3 mark identity</a>
+        </nav>
+        <div id="live-updates-activities"></div>
       </div>
     </main>
     <section id="lecture-library" aria-labelledby="library-title" hidden>
