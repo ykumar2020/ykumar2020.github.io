@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=e4630574d77c">
-  <script type="module" src="./app.js?v=349866822a5b"></script>
+  <link rel="stylesheet" href="./styles.css?v=a015b8d40271">
+  <script type="module" src="./app.js?v=ae4ea8d49dee"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -60,6 +60,7 @@
         <a class="lecture-entry" id="chart-reproducibility-lab-nav" href="#chart-reproducibility-lab">Chart Reproducibility Lab</a>
         <a class="lecture-entry" id="choropleth-lab-nav" href="#choropleth-lab">Choropleth Evidence Lab</a>
         <a class="lecture-entry" id="linked-views-lab-nav" href="#linked-views-lab">Linked Views Review Lab</a>
+        <a class="lecture-entry" id="growth-scales-lab-nav" href="#growth-scales-lab">Comparative Growth and Scales Lab</a>
         <a class="lecture-entry" id="hierarchy-lab-nav" href="#hierarchy-lab">Hierarchy Lab</a>
         <a class="lecture-entry" id="distribution-lab-nav" href="#distribution-lab">Distribution Lab</a>
         <a class="lecture-entry" id="aggregation-lab-nav" href="#aggregation-lab">SQL Aggregation Lab</a>
@@ -679,6 +680,22 @@
           <a href="#linked-views-lab/review" data-linked-views-activity="review">Review a repair</a>
         </nav>
         <div id="linked-views-activities"></div>
+      </div>
+    </main>
+    <main id="growth-scales-workshop" aria-labelledby="growth-scales-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 · Days 23 and 24</div>
+        <h1 id="growth-scales-title" tabindex="-1">Comparative Growth and Scales Lab</h1>
+        <p>Compare population levels and relative growth, measure equal ratios on a log scale, and trace signed values through symlog.</p>
+      </header>
+      <p id="growth-scales-load-status" role="status">Loading growth and scale activities…</p>
+      <div id="growth-scales-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Growth and scale activities">
+          <a href="#growth-scales-lab/population" data-growth-scales-activity="population">Population growth</a>
+          <a href="#growth-scales-lab/log" data-growth-scales-activity="log">Log spacing</a>
+          <a href="#growth-scales-lab/signed" data-growth-scales-activity="signed">Signed scales</a>
+        </nav>
+        <div id="growth-scales-activities"></div>
       </div>
     </main>
     <section id="lecture-library" aria-labelledby="library-title" hidden>
