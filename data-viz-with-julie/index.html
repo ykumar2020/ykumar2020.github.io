@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=f261c5e0b0f6">
-  <script type="module" src="./app.js?v=58287a4e37cb"></script>
+  <link rel="stylesheet" href="./styles.css?v=f2a71b3d69a5">
+  <script type="module" src="./app.js?v=d9ec42cd91d2"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -41,6 +41,7 @@
       <a class="lecture-entry" id="census-lab-nav" href="#census-lab">Census Lab</a>
       <a class="lecture-entry" id="encoding-lab-nav" href="#encoding-lab">Encoding Lab</a>
       <a class="lecture-entry" id="preparation-lab-nav" href="#preparation-lab">Data Preparation Lab</a>
+      <a class="lecture-entry" id="time-series-lab-nav" href="#time-series-lab">Time Series Lab</a>
     </aside>
     <main id="lesson" tabindex="-1">
       <header class="lesson-header">
@@ -279,6 +280,22 @@
           <a href="#preparation-lab/joins" data-preparation-activity="joins">Verified joins</a>
         </nav>
         <div id="preparation-activities"></div>
+      </div>
+    </main>
+    <main id="time-series-workshop" aria-labelledby="time-series-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 · Days 15 and 24</div>
+        <h1 id="time-series-title" tabindex="-1">Time Series Lab</h1>
+        <p>Check the spacing of dates, what happens at missing observations, and whether reporting periods cover comparable amounts of time.</p>
+      </header>
+      <p id="time-series-load-status" role="status">Loading time-series activities…</p>
+      <div id="time-series-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Time series activities">
+          <a href="#time-series-lab/spacing" data-time-series-activity="spacing">Elapsed spacing</a>
+          <a href="#time-series-lab/gaps" data-time-series-activity="gaps">Missing observations</a>
+          <a href="#time-series-lab/partial" data-time-series-activity="partial">Partial periods</a>
+        </nav>
+        <div id="time-series-activities"></div>
       </div>
     </main>
     <section id="lecture-library" aria-labelledby="library-title" hidden>
