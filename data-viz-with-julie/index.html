@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=b82ed0f7e4ea">
-  <script type="module" src="./app.js?v=9de30fe38884"></script>
+  <link rel="stylesheet" href="./styles.css?v=0385ab4b0d68">
+  <script type="module" src="./app.js?v=7ac6674593c8"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -50,6 +50,7 @@
         <a class="lecture-entry" id="clustering-lab-nav" href="#clustering-lab">Clustering Lab</a>
         <a class="lecture-entry" id="prediction-lab-nav" href="#prediction-lab">Predictive Modeling Lab</a>
         <a class="lecture-entry" id="dashboard-lab-nav" href="#dashboard-lab">Dashboard Evidence Lab</a>
+        <a class="lecture-entry" id="portfolio-lab-nav" href="#portfolio-lab">Portfolio Charts Lab</a>
         <a class="lecture-entry" id="hierarchy-lab-nav" href="#hierarchy-lab">Hierarchy Lab</a>
         <a class="lecture-entry" id="distribution-lab-nav" href="#distribution-lab">Distribution Lab</a>
         <a class="lecture-entry" id="aggregation-lab-nav" href="#aggregation-lab">SQL Aggregation Lab</a>
@@ -509,6 +510,22 @@
           <a href="#prediction-lab/leakage" data-prediction-activity="leakage">Feature timing</a>
         </nav>
         <div id="prediction-activities"></div>
+      </div>
+    </main>
+    <main id="portfolio-workshop" aria-labelledby="portfolio-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 · Days 18 and 24</div>
+        <h1 id="portfolio-title" tabindex="-1">Portfolio Charts Lab</h1>
+        <p>Trace candles to trades, compare prices with returns, and verify which sessions contribute to a correlation.</p>
+      </header>
+      <p id="portfolio-load-status" role="status">Loading portfolio chart activities…</p>
+      <div id="portfolio-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Portfolio chart activities">
+          <a href="#portfolio-lab/candles" data-portfolio-activity="candles">Candlesticks</a>
+          <a href="#portfolio-lab/levels-returns" data-portfolio-activity="levels-returns">Prices and returns</a>
+          <a href="#portfolio-lab/correlation" data-portfolio-activity="correlation">Correlation matrix</a>
+        </nav>
+        <div id="portfolio-activities"></div>
       </div>
     </main>
     <section id="lecture-library" aria-labelledby="library-title" hidden>
