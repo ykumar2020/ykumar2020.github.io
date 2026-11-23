@@ -269,6 +269,7 @@ tr.selected { background: var(--accent-soft); }
 .fall-credit { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .4em 1em; margin-top: 24px; padding-top: 12px; border-top: 1px solid #d3a1e45a; font-size: .81rem; line-height: 1.4; color: var(--muted); }
 .fall-credit span:first-child { color: var(--accent); font-weight: 650; }
 .fall-navigation { justify-content: center; align-items: center; margin: 14px 0; }
+.fall-viewer > .fall-navigation { margin: 0 0 14px; }
 .fall-position { min-width: 4.5em; text-align: center; color: var(--muted); font-variant-numeric: tabular-nums; }
 .fall-links { row-gap: 2px; }
 .fall-links a { padding: 9px 8px 9px 0; font-size: .91rem; font-weight: 660; }
@@ -369,6 +370,7 @@ tr.selected { background: var(--accent-soft); }
   .pixel-workspace { grid-template-columns: minmax(0,1fr); }
   .fall-index-groups { grid-template-columns: minmax(0,1fr); }
   .sampling-series { grid-template-columns: minmax(0,1fr); }
+  .fall-viewer > .fall-navigation { position: sticky; top: 0; z-index: 2; padding: .35rem .4rem; background: #1a0e27; border: 1px solid var(--line); border-radius: 9px; }
 }
 @media (max-width: 390px) {
   .brand { font-size: 17px; gap: 8px; }
