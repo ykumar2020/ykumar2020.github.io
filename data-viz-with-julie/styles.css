@@ -169,6 +169,7 @@ tr.selected { background: var(--accent-soft); }
 .answer-option[data-result="wrong"] { border-color: #835331; color: var(--amber); opacity: .82; }
 .quiz-feedback { color: var(--amber); background: #412b22; border-radius: 6px; margin: 8px 0 0; padding: 9px; font-size: .87rem; line-height: 1.4; }
 .quiz-feedback.correct { color: var(--positive); background: #26361f; }
+.quiz-review { display: inline-block; padding-block: .5rem; font-size: .9rem; font-weight: 680; }
 .quiz-actions { align-items: center; justify-content: flex-start; padding: 15px 18px; }
 .quiz-actions .quiz-next { margin-left: auto; color: var(--button-ink); background: var(--accent); border-color: var(--accent); }
 .quiz-actions .quiz-next:hover { color: var(--button-ink); background: #ffe3b9; }
