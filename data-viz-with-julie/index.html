@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=7c7d1585f06d">
-  <script type="module" src="./app.js?v=10d2f4f69d06"></script>
+  <link rel="stylesheet" href="./styles.css?v=a43f70b060ae">
+  <script type="module" src="./app.js?v=e7ad400a1904"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -43,6 +43,7 @@
       <a class="lecture-entry" id="preparation-lab-nav" href="#preparation-lab">Data Preparation Lab</a>
       <a class="lecture-entry" id="time-series-lab-nav" href="#time-series-lab">Time Series Lab</a>
       <a class="lecture-entry" id="spatial-lab-nav" href="#spatial-lab">Spatial Fields Lab</a>
+      <a class="lecture-entry" id="mining-lab-nav" href="#mining-lab">Visual Mining Lab</a>
     </aside>
     <main id="lesson" tabindex="-1">
       <header class="lesson-header">
@@ -313,6 +314,22 @@
           <a href="#spatial-lab/profile" data-spatial-activity="profile">Route profile</a>
         </nav>
         <div id="spatial-activities"></div>
+      </div>
+    </main>
+    <main id="mining-workshop" aria-labelledby="mining-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 · Day 25</div>
+        <h1 id="mining-title" tabindex="-1">Visual Mining Lab</h1>
+        <p>Trace classification errors, compare distances after scaling a feature, and check which baskets count toward an association rule.</p>
+      </header>
+      <p id="mining-load-status" role="status">Loading visual mining activities…</p>
+      <div id="mining-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Visual mining activities">
+          <a href="#mining-lab/threshold" data-mining-activity="threshold">Classification threshold</a>
+          <a href="#mining-lab/scaling" data-mining-activity="scaling">Feature scaling</a>
+          <a href="#mining-lab/rules" data-mining-activity="rules">Association rules</a>
+        </nav>
+        <div id="mining-activities"></div>
       </div>
     </main>
     <section id="lecture-library" aria-labelledby="library-title" hidden>
