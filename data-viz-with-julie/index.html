@@ -20,7 +20,7 @@
       <nav class="anchors" aria-label="In this lesson">
         <a href="#lab" data-section="lab">Lab</a>
         <a href="#slides" data-section="slides">Slides</a>
-        <a href="#quiz" data-section="quiz">Quiz</a>
+        <a href="#quiz/foundations/visual-encoding" data-quiz-link>Quiz</a>
         <a href="#lectures/day-01">Lectures</a>
       </nav>
       <span class="top-meta">CPS 5745</span>
@@ -95,17 +95,31 @@
           <div class="slide-links">
             <button type="button" id="present-slides">Present slides</button>
             <a id="open-source-deck" class="quiet-link" href="#lectures/day-01">Original lecture</a>
-            <a class="quiet-link" href="#quiz" data-section="quiz">Try the quiz</a>
+            <a class="quiet-link" href="#quiz/foundations/visual-encoding" data-quiz-link>Try the quiz</a>
           </div>
         </section>
       </div>
-      <section class="quiz" id="quiz" aria-labelledby="quiz-title">
+      <section class="quiz" id="quiz" aria-labelledby="quiz-title" hidden>
         <div class="quiz-head">
-          <div><h2 id="quiz-title">Check your understanding</h2><p>Choose an answer to see the reasoning.</p></div>
+          <div><h2 id="quiz-title">Lesson quiz</h2><p id="quiz-position"></p></div>
           <span id="quiz-score" role="status"></span>
         </div>
+        <progress id="quiz-progress" aria-label="Questions answered"></progress>
+        <div class="quiz-toolbar">
+          <label for="quiz-topic">Quiz topic <select id="quiz-topic"></select></label>
+          <label for="quiz-jump">Question <select id="quiz-jump"></select></label>
+        </div>
         <div id="questions"></div>
-        <div class="quiz-actions"><button type="button" id="quiz-reset">Reset quiz</button><a id="next-lesson" class="primary-link"></a></div>
+        <div id="quiz-summary" hidden></div>
+        <div class="quiz-actions">
+          <button type="button" id="quiz-prev">Back</button>
+          <button type="button" id="quiz-retry">Retry question</button>
+          <button type="button" id="quiz-next" class="quiz-next">Next question</button>
+        </div>
+        <div class="quiz-footer">
+          <a id="quiz-return" href="#foundations/visual-encoding">Back to lesson</a>
+          <button type="button" id="quiz-reset">Restart quiz</button>
+        </div>
       </section>
       <footer class="footer"><span id="course-note"></span> <a href="https://ykumar2020.github.io/">Yulia (Julie) Kumar</a></footer>
     </main>
