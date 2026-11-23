@@ -1,0 +1,541 @@
+{
+  "schemaVersion": 1,
+  "fixture": {
+    "path": "films.csv",
+    "sha256": "b04401595bf87b35e46cada9d197415919446845c747afa65732cbb5c360b1d3",
+    "rows": [
+      {
+        "id": "F1",
+        "rating": 5,
+        "revenueMillions": 8
+      },
+      {
+        "id": "F2",
+        "rating": 6,
+        "revenueMillions": 12
+      },
+      {
+        "id": "F3",
+        "rating": 7,
+        "revenueMillions": 18
+      },
+      {
+        "id": "F4",
+        "rating": 8,
+        "revenueMillions": 22
+      },
+      {
+        "id": "F5",
+        "rating": 9,
+        "revenueMillions": 30
+      },
+      {
+        "id": "F6",
+        "rating": 8,
+        "revenueMillions": null
+      }
+    ]
+  },
+  "runtime": {
+    "python": "3.13.5",
+    "implementation": "CPython",
+    "kernel": "ipykernel",
+    "packages": {
+      "ipykernel": "6.29.5",
+      "jupyter-client": "8.6.3",
+      "matplotlib": "3.10.3",
+      "nbclient": "0.10.2",
+      "nbformat": "5.10.4",
+      "numpy": "2.2.6",
+      "pandas": "2.3.3",
+      "Pillow": "11.3.0"
+    }
+  },
+  "notebooks": {
+    "7": {
+      "path": "films-cutoff-7.ipynb",
+      "sha256": "d597c08e119dc0cba95ee4dca1d0208cb96d33e0a22274d0a1c33b185b120bbc"
+    },
+    "8": {
+      "path": "films-cutoff-8.ipynb",
+      "sha256": "576f1fafdc1743a5885161ee4957daf8ac4c9ad72ecd00c1780fd96cb9b107a9"
+    }
+  },
+  "cases": {
+    "broken": {
+      "id": "broken",
+      "requestedCutoff": 7,
+      "analysisCutoff": null,
+      "events": [
+        {
+          "cell": "imports",
+          "label": "Import packages and choose Agg",
+          "status": "executed",
+          "executionCount": 1,
+          "error": null
+        },
+        {
+          "cell": "parameters",
+          "label": "Set the minimum rating",
+          "status": "executed",
+          "executionCount": 2,
+          "error": null
+        },
+        {
+          "cell": "summarize",
+          "label": "Filter, count and record the plotted rows",
+          "status": "error",
+          "executionCount": 3,
+          "error": {
+            "name": "NameError",
+            "message": "name 'films' is not defined"
+          }
+        }
+      ],
+      "summary": null,
+      "artifact": null
+    },
+    "clean-7": {
+      "id": "clean-7",
+      "requestedCutoff": 7,
+      "analysisCutoff": 7,
+      "events": [
+        {
+          "cell": "imports",
+          "label": "Import packages and choose Agg",
+          "status": "executed",
+          "executionCount": 1,
+          "error": null
+        },
+        {
+          "cell": "parameters",
+          "label": "Set the minimum rating",
+          "status": "executed",
+          "executionCount": 2,
+          "error": null
+        },
+        {
+          "cell": "load",
+          "label": "Read and validate the source CSV",
+          "status": "executed",
+          "executionCount": 3,
+          "error": null
+        },
+        {
+          "cell": "summarize",
+          "label": "Filter, count and record the plotted rows",
+          "status": "executed",
+          "executionCount": 4,
+          "error": null
+        },
+        {
+          "cell": "plot",
+          "label": "Render and save the chart",
+          "status": "executed",
+          "executionCount": 5,
+          "error": null
+        }
+      ],
+      "summary": {
+        "eligibleIds": [
+          "F3",
+          "F4",
+          "F5",
+          "F6"
+        ],
+        "plottedIds": [
+          "F3",
+          "F4",
+          "F5"
+        ],
+        "missingIds": [
+          "F6"
+        ],
+        "revenueSumUsdMillions": 70,
+        "points": [
+          {
+            "id": "F3",
+            "rating": 7,
+            "revenueMillions": 18
+          },
+          {
+            "id": "F4",
+            "rating": 8,
+            "revenueMillions": 22
+          },
+          {
+            "id": "F5",
+            "rating": 9,
+            "revenueMillions": 30
+          }
+        ]
+      },
+      "artifact": {
+        "revision": "cutoff-7",
+        "title": "Films with rating at least 7",
+        "xLabel": "Rating (out of 10)",
+        "yLabel": "Revenue (USD millions)",
+        "xDomain": [
+          4.0,
+          10.0
+        ],
+        "yDomain": [
+          0.0,
+          36.0
+        ],
+        "plotBounds": {
+          "left": 96.0,
+          "right": 564.0,
+          "top": 48.0,
+          "bottom": 332.0
+        },
+        "png": {
+          "path": "clean-7.png",
+          "width": 600,
+          "height": 400,
+          "sha256": "005b56aec48fe005b6107d0d99666a3ec0c1e41cec458043af4d2f3c23463ad3",
+          "markCenters": [
+            {
+              "id": "F3",
+              "x": 330.0,
+              "y": 190.0
+            },
+            {
+              "id": "F4",
+              "x": 408.0,
+              "y": 158.351852
+            },
+            {
+              "id": "F5",
+              "x": 486.0,
+              "y": 95.351852
+            }
+          ]
+        },
+        "svg": {
+          "path": "clean-7.svg",
+          "sha256": "6c2449731fbc99e0f512aa2b1de44a00095ba208840aac3f8b927c751d2e3993",
+          "markIds": [
+            "film-F3",
+            "film-F4",
+            "film-F5"
+          ],
+          "viewBox": [
+            0.0,
+            0.0,
+            432.0,
+            288.0
+          ],
+          "markCenters": [
+            {
+              "id": "F3",
+              "x": 237.6,
+              "y": 136.8
+            },
+            {
+              "id": "F4",
+              "x": 293.76,
+              "y": 114.08
+            },
+            {
+              "id": "F5",
+              "x": 349.91999999999996,
+              "y": 68.64
+            }
+          ]
+        }
+      }
+    },
+    "clean-8": {
+      "id": "clean-8",
+      "requestedCutoff": 8,
+      "analysisCutoff": 8,
+      "events": [
+        {
+          "cell": "imports",
+          "label": "Import packages and choose Agg",
+          "status": "executed",
+          "executionCount": 1,
+          "error": null
+        },
+        {
+          "cell": "parameters",
+          "label": "Set the minimum rating",
+          "status": "executed",
+          "executionCount": 2,
+          "error": null
+        },
+        {
+          "cell": "load",
+          "label": "Read and validate the source CSV",
+          "status": "executed",
+          "executionCount": 3,
+          "error": null
+        },
+        {
+          "cell": "summarize",
+          "label": "Filter, count and record the plotted rows",
+          "status": "executed",
+          "executionCount": 4,
+          "error": null
+        },
+        {
+          "cell": "plot",
+          "label": "Render and save the chart",
+          "status": "executed",
+          "executionCount": 5,
+          "error": null
+        }
+      ],
+      "summary": {
+        "eligibleIds": [
+          "F4",
+          "F5",
+          "F6"
+        ],
+        "plottedIds": [
+          "F4",
+          "F5"
+        ],
+        "missingIds": [
+          "F6"
+        ],
+        "revenueSumUsdMillions": 52,
+        "points": [
+          {
+            "id": "F4",
+            "rating": 8,
+            "revenueMillions": 22
+          },
+          {
+            "id": "F5",
+            "rating": 9,
+            "revenueMillions": 30
+          }
+        ]
+      },
+      "artifact": {
+        "revision": "cutoff-8",
+        "title": "Films with rating at least 8",
+        "xLabel": "Rating (out of 10)",
+        "yLabel": "Revenue (USD millions)",
+        "xDomain": [
+          4.0,
+          10.0
+        ],
+        "yDomain": [
+          0.0,
+          36.0
+        ],
+        "plotBounds": {
+          "left": 96.0,
+          "right": 564.0,
+          "top": 48.0,
+          "bottom": 332.0
+        },
+        "png": {
+          "path": "clean-8.png",
+          "width": 600,
+          "height": 400,
+          "sha256": "bb83406e7fc229a7f983726bb99d822d47a2dceac693ee48e44d78a565a6963d",
+          "markCenters": [
+            {
+              "id": "F4",
+              "x": 408.0,
+              "y": 158.351852
+            },
+            {
+              "id": "F5",
+              "x": 486.0,
+              "y": 95.351852
+            }
+          ]
+        },
+        "svg": {
+          "path": "clean-8.svg",
+          "sha256": "463ff5ab23a82728981e211a57971189c22a199d572459e337eaaa644f936a71",
+          "markIds": [
+            "film-F4",
+            "film-F5"
+          ],
+          "viewBox": [
+            0.0,
+            0.0,
+            432.0,
+            288.0
+          ],
+          "markCenters": [
+            {
+              "id": "F4",
+              "x": 293.76,
+              "y": 114.08
+            },
+            {
+              "id": "F5",
+              "x": 349.91999999999996,
+              "y": 68.64
+            }
+          ]
+        }
+      }
+    },
+    "stale-8": {
+      "id": "stale-8",
+      "requestedCutoff": 8,
+      "analysisCutoff": 7,
+      "events": [
+        {
+          "cell": "imports",
+          "label": "Import packages and choose Agg",
+          "status": "executed",
+          "executionCount": 1,
+          "error": null
+        },
+        {
+          "cell": "parameters",
+          "label": "Set the minimum rating",
+          "status": "executed",
+          "executionCount": 2,
+          "error": null
+        },
+        {
+          "cell": "load",
+          "label": "Read and validate the source CSV",
+          "status": "executed",
+          "executionCount": 3,
+          "error": null
+        },
+        {
+          "cell": "summarize",
+          "label": "Filter, count and record the plotted rows",
+          "status": "executed",
+          "executionCount": 4,
+          "error": null
+        },
+        {
+          "cell": "parameter-edit",
+          "label": "Change the minimum rating to 8",
+          "status": "executed",
+          "executionCount": 5,
+          "error": null
+        },
+        {
+          "cell": "plot",
+          "label": "Render and save the chart",
+          "status": "executed",
+          "executionCount": 6,
+          "error": null
+        }
+      ],
+      "summary": {
+        "eligibleIds": [
+          "F3",
+          "F4",
+          "F5",
+          "F6"
+        ],
+        "plottedIds": [
+          "F3",
+          "F4",
+          "F5"
+        ],
+        "missingIds": [
+          "F6"
+        ],
+        "revenueSumUsdMillions": 70,
+        "points": [
+          {
+            "id": "F3",
+            "rating": 7,
+            "revenueMillions": 18
+          },
+          {
+            "id": "F4",
+            "rating": 8,
+            "revenueMillions": 22
+          },
+          {
+            "id": "F5",
+            "rating": 9,
+            "revenueMillions": 30
+          }
+        ]
+      },
+      "artifact": {
+        "revision": "cutoff-8",
+        "title": "Films with rating at least 8",
+        "xLabel": "Rating (out of 10)",
+        "yLabel": "Revenue (USD millions)",
+        "xDomain": [
+          4.0,
+          10.0
+        ],
+        "yDomain": [
+          0.0,
+          36.0
+        ],
+        "plotBounds": {
+          "left": 96.0,
+          "right": 564.0,
+          "top": 48.0,
+          "bottom": 332.0
+        },
+        "png": {
+          "path": "stale-8.png",
+          "width": 600,
+          "height": 400,
+          "sha256": "f28a534302d14d7bf7dd5a9ffcd6f63e7d804d717ad9badec21c61a1528b950e",
+          "markCenters": [
+            {
+              "id": "F3",
+              "x": 330.0,
+              "y": 190.0
+            },
+            {
+              "id": "F4",
+              "x": 408.0,
+              "y": 158.351852
+            },
+            {
+              "id": "F5",
+              "x": 486.0,
+              "y": 95.351852
+            }
+          ]
+        },
+        "svg": {
+          "path": "stale-8.svg",
+          "sha256": "7f0f54d867a0c4ede1bb2869e98d781e43c79a038137bc300e099bc4406cdbc3",
+          "markIds": [
+            "film-F3",
+            "film-F4",
+            "film-F5"
+          ],
+          "viewBox": [
+            0.0,
+            0.0,
+            432.0,
+            288.0
+          ],
+          "markCenters": [
+            {
+              "id": "F3",
+              "x": 237.6,
+              "y": 136.8
+            },
+            {
+              "id": "F4",
+              "x": 293.76,
+              "y": 114.08
+            },
+            {
+              "id": "F5",
+              "x": 349.91999999999996,
+              "y": 68.64
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=fe556dd2a307">
-  <script type="module" src="./app.js?v=b9484ae1817c"></script>
+  <link rel="stylesheet" href="./styles.css?v=410694b37a9e">
+  <script type="module" src="./app.js?v=90002381a01d"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -57,6 +57,7 @@
         <a class="lecture-entry" id="data-mart-lab-nav" href="#data-mart-lab">Data Mart Query Lab</a>
         <a class="lecture-entry" id="energy-demand-lab-nav" href="#energy-demand-lab">Energy and Demand Lab</a>
         <a class="lecture-entry" id="text-evidence-lab-nav" href="#text-evidence-lab">Text Evidence Lab</a>
+        <a class="lecture-entry" id="chart-reproducibility-lab-nav" href="#chart-reproducibility-lab">Chart Reproducibility Lab</a>
         <a class="lecture-entry" id="hierarchy-lab-nav" href="#hierarchy-lab">Hierarchy Lab</a>
         <a class="lecture-entry" id="distribution-lab-nav" href="#distribution-lab">Distribution Lab</a>
         <a class="lecture-entry" id="aggregation-lab-nav" href="#aggregation-lab">SQL Aggregation Lab</a>
@@ -628,6 +629,22 @@
           <a href="#text-evidence-lab/coverage" data-text-evidence-activity="coverage">Missing feedback</a>
         </nav>
         <div id="text-evidence-activities"></div>
+      </div>
+    </main>
+    <main id="chart-reproducibility-workshop" aria-labelledby="chart-reproducibility-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 · Days 27 and 28</div>
+        <h1 id="chart-reproducibility-title" tabindex="-1">Chart Reproducibility Lab</h1>
+        <p>Replay a Jupyter run, reproduce a scatterplot from a fixed dataset, and compare the saved marks with the intended filter.</p>
+      </header>
+      <p id="chart-reproducibility-load-status" role="status">Loading chart reproducibility activities…</p>
+      <div id="chart-reproducibility-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Chart reproducibility activities">
+          <a href="#chart-reproducibility-lab/replay" data-chart-reproducibility-activity="replay">Notebook execution</a>
+          <a href="#chart-reproducibility-lab/parameters" data-chart-reproducibility-activity="parameters">Notebook parameters</a>
+          <a href="#chart-reproducibility-lab/exports" data-chart-reproducibility-activity="exports">Saved chart audit</a>
+        </nav>
+        <div id="chart-reproducibility-activities"></div>
       </div>
     </main>
     <section id="lecture-library" aria-labelledby="library-title" hidden>
