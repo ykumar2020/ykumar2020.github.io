@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=a43f70b060ae">
-  <script type="module" src="./app.js?v=e7ad400a1904"></script>
+  <link rel="stylesheet" href="./styles.css?v=a2abe799c24a">
+  <script type="module" src="./app.js?v=c9de8e0583aa"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -44,6 +44,7 @@
       <a class="lecture-entry" id="time-series-lab-nav" href="#time-series-lab">Time Series Lab</a>
       <a class="lecture-entry" id="spatial-lab-nav" href="#spatial-lab">Spatial Fields Lab</a>
       <a class="lecture-entry" id="mining-lab-nav" href="#mining-lab">Visual Mining Lab</a>
+      <a class="lecture-entry" id="dashboard-lab-nav" href="#dashboard-lab">Dashboard Evidence Lab</a>
     </aside>
     <main id="lesson" tabindex="-1">
       <header class="lesson-header">
@@ -330,6 +331,22 @@
           <a href="#mining-lab/rules" data-mining-activity="rules">Association rules</a>
         </nav>
         <div id="mining-activities"></div>
+      </div>
+    </main>
+    <main id="dashboard-workshop" aria-labelledby="dashboard-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 · Day 18</div>
+        <h1 id="dashboard-title" tabindex="-1">Dashboard Evidence Lab</h1>
+        <p>Follow a time filter across linked charts, check which traffic reports had arrived, and compare conversion rates for the same trips.</p>
+      </header>
+      <p id="dashboard-load-status" role="status">Loading dashboard activities…</p>
+      <div id="dashboard-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Dashboard evidence activities">
+          <a href="#dashboard-lab/filter" data-dashboard-activity="filter">Linked time filter</a>
+          <a href="#dashboard-lab/freshness" data-dashboard-activity="freshness">Traffic freshness</a>
+          <a href="#dashboard-lab/funnel" data-dashboard-activity="funnel">Conversion funnel</a>
+        </nav>
+        <div id="dashboard-activities"></div>
       </div>
     </main>
     <section id="lecture-library" aria-labelledby="library-title" hidden>

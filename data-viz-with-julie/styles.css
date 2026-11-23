@@ -426,8 +426,8 @@ tr.selected { background: var(--accent-soft); }
 .census-legend-title { font-weight: 700; }
 .census-legend .census-legend-title::before { display: none; }
 #census-terrain-status:empty { display: none; }
-:is(.encoding-exercise,.preparation-exercise,.time-series-exercise,.spatial-exercise,.mining-exercise) { min-width: 0; margin-top: 12px; }
-:is(.encoding-panel,.preparation-panel,.time-series-panel,.spatial-panel,.mining-panel) > .data-export { margin-top: 12px; }
+:is(.encoding-exercise,.preparation-exercise,.time-series-exercise,.spatial-exercise,.mining-exercise,.dashboard-exercise) { min-width: 0; margin-top: 12px; }
+:is(.encoding-panel,.preparation-panel,.time-series-panel,.spatial-panel,.mining-panel,.dashboard-panel) > .data-export { margin-top: 12px; }
 @media (max-width: 1130px) {
   .layout { grid-template-columns: minmax(174px,208px) minmax(0,1fr); gap: 17px; }
   .studio { grid-template-columns: minmax(0,1fr); }
