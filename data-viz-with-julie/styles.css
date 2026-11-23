@@ -430,6 +430,15 @@ tr.selected { background: var(--accent-soft); }
 :is(.encoding-exercise,.preparation-exercise,.time-series-exercise,.spatial-exercise,.mining-exercise,.dashboard-exercise,.hierarchy-exercise,.distribution-exercise,.aggregation-exercise,.color-exercise,.map-geometry-exercise,.model-fit-exercise,.image-transforms-exercise,.clustering-exercise,.prediction-exercise,.portfolio-exercise,.rendering-exercise,.live-updates-exercise,.coordinate-frames-exercise,.data-mart-exercise,.energy-demand-exercise,.text-evidence-exercise) { min-width: 0; margin-top: 12px; }
 :is(.encoding-panel,.preparation-panel,.time-series-panel,.spatial-panel,.mining-panel,.dashboard-panel,.hierarchy-panel,.distribution-panel,.aggregation-panel,.color-panel,.map-geometry-panel,.model-fit-panel,.image-transforms-panel,.clustering-panel,.prediction-panel,.portfolio-panel,.rendering-panel,.live-updates-panel,.coordinate-frames-panel,.data-mart-panel,.energy-demand-panel,.text-evidence-panel) > .data-export { margin-top: 12px; }
 .chart-reproducibility-exercise { min-width: 0; margin-top: 12px; }
+.linked-views-exercise { min-width: 0; margin-top: 12px; }
+.linked-views-panel > .data-export, .linked-views-exercise > .data-export { margin-top: 12px; }
+.linked-review-chart { display: block; width: 100%; max-width: 570px; margin: .75rem auto; background: #1a1128; border: 1px solid var(--line); border-radius: 10px; }
+.linked-review-form { margin-top: 1rem; padding: .7rem; background: var(--raised); border: 1px solid var(--line); border-radius: 8px; }
+.linked-review-form input { width: 100%; min-width: 0; min-height: 44px; padding: .36rem .55rem; color: var(--ink); background: var(--raised); border: 1px solid #7f5b93; border-radius: 7px; }
+.linked-review-form .comparison-stat { margin-top: .75rem; }
+@media (prefers-reduced-motion: no-preference) {
+  .linked-review-bar-value { transition: width .18s ease, fill .18s ease; }
+}
 .choropleth-exercise { min-width: 0; margin-top: 12px; }
 .choropleth-panel > .data-export { margin-top: 12px; }
 .choropleth-district-map { display: block; width: 100%; max-width: 620px; margin-inline: auto; border: 1px solid var(--line); border-radius: 10px; background: #1a1128; }

@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=0bb7bb81af74">
-  <script type="module" src="./app.js?v=373451ef3fb8"></script>
+  <link rel="stylesheet" href="./styles.css?v=e4630574d77c">
+  <script type="module" src="./app.js?v=349866822a5b"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -59,6 +59,7 @@
         <a class="lecture-entry" id="text-evidence-lab-nav" href="#text-evidence-lab">Text Evidence Lab</a>
         <a class="lecture-entry" id="chart-reproducibility-lab-nav" href="#chart-reproducibility-lab">Chart Reproducibility Lab</a>
         <a class="lecture-entry" id="choropleth-lab-nav" href="#choropleth-lab">Choropleth Evidence Lab</a>
+        <a class="lecture-entry" id="linked-views-lab-nav" href="#linked-views-lab">Linked Views Review Lab</a>
         <a class="lecture-entry" id="hierarchy-lab-nav" href="#hierarchy-lab">Hierarchy Lab</a>
         <a class="lecture-entry" id="distribution-lab-nav" href="#distribution-lab">Distribution Lab</a>
         <a class="lecture-entry" id="aggregation-lab-nav" href="#aggregation-lab">SQL Aggregation Lab</a>
@@ -662,6 +663,22 @@
           <a href="#choropleth-lab/classes" data-choropleth-activity="classes">Map classes</a>
         </nav>
         <div id="choropleth-activities"></div>
+      </div>
+    </main>
+    <main id="linked-views-workshop" aria-labelledby="linked-views-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 · Days 21–23</div>
+        <h1 id="linked-views-title" tabindex="-1">Linked Views Review Lab</h1>
+        <p>Combine two chart selections, trace which rides appear in each view, and check a repair for double counting.</p>
+      </header>
+      <p id="linked-views-load-status" role="status">Loading linked views activities…</p>
+      <div id="linked-views-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Linked views activities">
+          <a href="#linked-views-lab/brushes" data-linked-views-activity="brushes">Two brushes</a>
+          <a href="#linked-views-lab/cohort" data-linked-views-activity="cohort">2D and 3D coverage</a>
+          <a href="#linked-views-lab/review" data-linked-views-activity="review">Review a repair</a>
+        </nav>
+        <div id="linked-views-activities"></div>
       </div>
     </main>
     <section id="lecture-library" aria-labelledby="library-title" hidden>
