@@ -112,6 +112,8 @@ select {
 .mark-inspector output { grid-column: 1/-1; color: var(--muted); font-size: .89rem; line-height: 1.4; min-height: 1.3em; }
 #data-details { border-top: 1px solid var(--line); padding: 9px 18px 12px; }
 #data-details summary { cursor: pointer; width: fit-content; font-size: .9rem; font-weight: 680; padding: 3px 0; }
+.data-export { margin: .55rem 0; border-radius: 7px; border: 1px solid #7f5b93; background: var(--raised); color: var(--ink); padding: .42rem .75rem; font-size: .87rem; font-weight: 670; }
+.data-export:hover:not(:disabled) { border-color: var(--accent); }
 .table-scroll { overflow: auto; max-height: 300px; }
 table { border-collapse: collapse; width: 100%; font-size: .89rem; line-height: 1.35; text-align: left; }
 th,td { border-bottom: 1px solid var(--line); padding: 6px 9px; vertical-align: top; }

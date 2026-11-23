@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=rgb-image-lab">
-  <script type="module" src="./app.js?v=rgb-image-lab"></script>
+  <link rel="stylesheet" href="./styles.css?v=chart-csv-downloads">
+  <script type="module" src="./app.js?v=chart-csv-downloads"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -78,6 +78,7 @@
           </div>
           <details id="data-details">
             <summary>View chart data</summary>
+            <button type="button" id="export-chart-csv" class="data-export">Download plotted data CSV</button>
             <div id="chart-data" class="table-scroll"></div>
           </details>
         </section>
