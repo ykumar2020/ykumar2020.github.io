@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=70b9ea470e6c">
-  <script type="module" src="./app.js?v=beee3690811f"></script>
+  <link rel="stylesheet" href="./styles.css?v=221c91a64995">
+  <script type="module" src="./app.js?v=1762579b01d0"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -38,6 +38,7 @@
       <nav id="course-nav" aria-label="Units and lessons"></nav>
       <a class="lecture-entry" href="#course">Fall 2026 lectures</a>
       <a class="lecture-entry" id="comparison-lab-nav" href="#comparison-lab">Comparison Lab</a>
+      <a class="lecture-entry" id="census-lab-nav" href="#census-lab">Census Lab</a>
     </aside>
     <main id="lesson" tabindex="-1">
       <header class="lesson-header">
@@ -189,6 +190,62 @@
         <a href="#course/day-04">Grouped summaries lecture</a>
         <a href="#course/day-28">Visual data mining lecture</a>
       </footer>
+    </main>
+    <main id="census-workshop" aria-labelledby="census-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 · Geographic visualization</div>
+        <h1 id="census-title" tabindex="-1">Census Lab</h1>
+        <p>Compare where people live and how densely they live using the 2020 U.S. Census.</p>
+      </header>
+      <p id="census-load-status" role="status">Loading Census data…</p>
+      <div id="census-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Census Lab views">
+          <a href="#census-lab/map" data-census-view="map">2D map</a>
+          <a href="#census-lab/terrain" data-census-view="terrain">3D map</a>
+          <a href="#census-lab/ranking" data-census-view="ranking">Rankings</a>
+        </nav>
+        <section class="comparison-panel census-panel" aria-labelledby="census-view-title">
+          <h2 class="comparison-heading" id="census-view-title" tabindex="-1"></h2>
+          <p class="comparison-description" id="census-description"></p>
+          <div class="comparison-controls census-controls">
+            <div class="comparison-field">
+              <label for="census-metric">Measure</label>
+              <select id="census-metric">
+                <option value="population">Resident population</option>
+                <option value="density">Population density</option>
+              </select>
+            </div>
+            <div class="comparison-field">
+              <label for="census-state">Inspect a state or D.C.</label>
+              <select id="census-state"></select>
+            </div>
+          </div>
+          <dl class="comparison-stats census-stats" id="census-stats"></dl>
+          <div class="census-chart" id="census-map"></div>
+          <div id="census-terrain-panel" hidden>
+            <div class="camera-tools census-camera" id="census-camera" role="group" aria-label="3D map controls" hidden>
+              <button type="button" data-census-camera="left">Rotate left</button>
+              <button type="button" data-census-camera="right">Rotate right</button>
+              <button type="button" data-census-camera="closer">Zoom in</button>
+              <button type="button" data-census-camera="farther">Zoom out</button>
+              <button type="button" data-census-camera="reset">Reset view</button>
+            </div>
+            <p id="census-terrain-status" role="status"></p>
+            <a href="#census-lab/map" id="census-terrain-fallback" hidden>Open the 2D map</a>
+            <div class="census-terrain" id="census-terrain"></div>
+            <ul class="comparison-legend census-legend" id="census-terrain-legend"></ul>
+          </div>
+          <div class="census-chart" id="census-ranking" hidden></div>
+          <details class="comparison-details">
+            <summary>View and download Census data</summary>
+            <div class="comparison-records" id="census-records"></div>
+            <button type="button" class="data-export" id="census-download">Download Census data CSV</button>
+          </details>
+          <section class="comparison-practice" id="census-practice" aria-label="Check your interpretation" tabindex="-1"></section>
+          <p class="comparison-source" id="census-sources"></p>
+        </section>
+        <footer class="fall-links"><a href="#course/day-28">Visual data mining and maps lecture</a></footer>
+      </div>
     </main>
     <section id="lecture-library" aria-labelledby="library-title" hidden>
       <header class="lesson-header">
