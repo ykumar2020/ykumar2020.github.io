@@ -479,6 +479,9 @@ tr.selected { background: var(--accent-soft); }
 .animated-scatter-ledger-table { width: 100%; table-layout: fixed; margin-top: .5rem; }
 .animated-scatter-ledger-table th,.animated-scatter-ledger-table td { padding: .36rem .25rem; overflow-wrap: anywhere; }
 .animated-scatter-ledger-table tr[data-selected="true"] > :first-child { color: var(--accent); }
+.chart-debugging-exercise { min-width: 0; margin-top: 12px; }
+.chart-debugging-panel > .data-export { margin-top: 12px; }
+.chart-debugging-exercise svg { max-width: 100%; }
 .curves-cycle-player { align-self: end; min-height: 44px; margin: 0; }
 .curves-evidence-table { width: 100%; table-layout: fixed; margin-top: .5rem; }
 .curves-evidence-table th,.curves-evidence-table td { padding: .36rem .25rem; overflow-wrap: anywhere; }
