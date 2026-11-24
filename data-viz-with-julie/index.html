@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=b415dfec595f">
-  <script type="module" src="./app.js?v=e8034f9634d7"></script>
+  <link rel="stylesheet" href="./styles.css?v=714c6ac5c5ae">
+  <script type="module" src="./app.js?v=842b823f34df"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -68,6 +68,7 @@
         <a class="lecture-entry" id="calendar-clocks-lab-nav" href="#calendar-clocks-lab">Calendar Boundaries and Clocks Lab</a>
         <a class="lecture-entry" id="file-shape-lab-nav" href="#file-shape-lab">File Shape and Schema Lab</a>
         <a class="lecture-entry" id="followup-effects-lab-nav" href="#followup-effects-lab">Follow-up Effects and Missing Outcomes Lab</a>
+        <a class="lecture-entry" id="composition-rank-lab-nav" href="#composition-rank-lab">Composition, Rank, and Trend Lab</a>
         <a class="lecture-entry" id="hierarchy-lab-nav" href="#hierarchy-lab">Hierarchy Lab</a>
         <a class="lecture-entry" id="distribution-lab-nav" href="#distribution-lab">Distribution Lab</a>
         <a class="lecture-entry" id="aggregation-lab-nav" href="#aggregation-lab">SQL Aggregation Lab</a>
@@ -815,6 +816,22 @@
           <a href="#followup-effects-lab/sensitivity" data-followup-effects-activity="sensitivity">Missing outcomes</a>
         </nav>
         <div id="followup-effects-activities"></div>
+      </div>
+    </main>
+    <main id="composition-rank-workshop" aria-labelledby="composition-rank-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 · Days 15 and 24</div>
+        <h1 id="composition-rank-title" tabindex="-1">Composition, Rank, and Trend Lab</h1>
+        <p>Use one help-desk ledger to compare shares of a whole, cumulative rank, and changes across months.</p>
+      </header>
+      <p id="composition-rank-load-status" role="status">Loading chart comparison activities…</p>
+      <div id="composition-rank-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Composition, rank, and trend activities">
+          <a href="#composition-rank-lab/composition" data-composition-rank-activity="composition">Whole and parts</a>
+          <a href="#composition-rank-lab/pareto" data-composition-rank-activity="pareto">Pareto threshold</a>
+          <a href="#composition-rank-lab/trend" data-composition-rank-activity="trend">Monthly trend</a>
+        </nav>
+        <div id="composition-rank-activities"></div>
       </div>
     </main>
     <section id="lecture-library" aria-labelledby="library-title" hidden>
