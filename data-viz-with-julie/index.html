@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=a34c2f965424">
-  <script type="module" src="./app.js?v=ddc0e50d938b"></script>
+  <link rel="stylesheet" href="./styles.css?v=855783c40bd3">
+  <script type="module" src="./app.js?v=c968c3526323"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -75,6 +75,7 @@
         <a class="lecture-entry" id="location-evidence-lab-nav" href="#location-evidence-lab">Nearby Data and Location Uncertainty Lab</a>
         <a class="lecture-entry" id="data-disclosure-lab-nav" href="#data-disclosure-lab">Data Release and Disclosure Lab</a>
         <a class="lecture-entry" id="animated-scatter-lab-nav" href="#animated-scatter-lab">Animated Scatter and Density Lab</a>
+        <a class="lecture-entry" id="table-reshaping-lab-nav" href="#table-reshaping-lab">Pivots, Replicates, and Round Trips Lab</a>
         <a class="lecture-entry" id="classifier-decisions-lab-nav" href="#classifier-decisions-lab">Calibration, Base Rates, and Decision Costs Lab</a>
         <a class="lecture-entry" id="chart-debugging-lab-nav" href="#chart-debugging-lab">Chart Debugging and Regression Lab</a>
         <a class="lecture-entry" id="hierarchy-lab-nav" href="#hierarchy-lab">Hierarchy Lab</a>
@@ -943,6 +944,22 @@
           <a href="#animated-scatter-lab/density" data-animated-scatter-activity="density">Bin density</a>
         </nav>
         <div id="animated-scatter-activities"></div>
+      </div>
+    </main>
+    <main id="table-reshaping-workshop" aria-labelledby="table-reshaping-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 &#183; Days 4 and 27</div>
+        <h1 id="table-reshaping-title" tabindex="-1">Pivots, Replicates, and Round Trips Lab</h1>
+        <p>Trace rows into a grid, handle repeated keys, and check which original records return.</p>
+      </header>
+      <p id="table-reshaping-load-status" role="status">Loading reshaping activities...</p>
+      <div id="table-reshaping-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Reshaping activities">
+          <a href="#table-reshaping-lab/pivot" data-table-reshaping-activity="pivot">Pivot keys</a>
+          <a href="#table-reshaping-lab/replicates" data-table-reshaping-activity="replicates">Repeated keys</a>
+          <a href="#table-reshaping-lab/round-trip" data-table-reshaping-activity="round-trip">Round trip</a>
+        </nav>
+        <div id="table-reshaping-activities"></div>
       </div>
     </main>
     <main id="classifier-decisions-workshop" aria-labelledby="classifier-decisions-title" hidden>
