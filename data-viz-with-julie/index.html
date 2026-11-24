@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=3d687d072fbf">
-  <script type="module" src="./app.js?v=807b459da1cf"></script>
+  <link rel="stylesheet" href="./styles.css?v=38598e0e7582">
+  <script type="module" src="./app.js?v=1053684a65ed"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -72,6 +72,7 @@
         <a class="lecture-entry" id="curves-common-causes-lab-nav" href="#curves-common-causes-lab">Curves, Shared Peaks, and Common Causes Lab</a>
         <a class="lecture-entry" id="request-timing-lab-nav" href="#request-timing-lab">Requests, Queues, and Latency Budgets Lab</a>
         <a class="lecture-entry" id="location-evidence-lab-nav" href="#location-evidence-lab">Nearby Data and Location Uncertainty Lab</a>
+        <a class="lecture-entry" id="data-disclosure-lab-nav" href="#data-disclosure-lab">Data Release and Disclosure Lab</a>
         <a class="lecture-entry" id="hierarchy-lab-nav" href="#hierarchy-lab">Hierarchy Lab</a>
         <a class="lecture-entry" id="distribution-lab-nav" href="#distribution-lab">Distribution Lab</a>
         <a class="lecture-entry" id="aggregation-lab-nav" href="#aggregation-lab">SQL Aggregation Lab</a>
@@ -883,6 +884,22 @@
           <a href="#location-evidence-lab/lookup" data-location-evidence-activity="lookup">Forecast lookup</a>
         </nav>
         <div id="location-evidence-activities"></div>
+      </div>
+    </main>
+    <main id="data-disclosure-workshop" aria-labelledby="data-disclosure-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 · Days 01, 19, and 25</div>
+        <h1 id="data-disclosure-title" tabindex="-1">Data Release and Disclosure Lab</h1>
+        <p>Compare report audiences, withhold selected counts, and review what two releases reveal together.</p>
+      </header>
+      <p id="data-disclosure-load-status" role="status">Loading data release activities…</p>
+      <div id="data-disclosure-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Data disclosure activities">
+          <a href="#data-disclosure-lab/scope" data-data-disclosure-activity="scope">Audience scope</a>
+          <a href="#data-disclosure-lab/suppression" data-data-disclosure-activity="suppression">Withheld counts</a>
+          <a href="#data-disclosure-lab/history" data-data-disclosure-activity="history">Release history</a>
+        </nav>
+        <div id="data-disclosure-activities"></div>
       </div>
     </main>
     <section id="lecture-library" aria-labelledby="library-title" hidden>
