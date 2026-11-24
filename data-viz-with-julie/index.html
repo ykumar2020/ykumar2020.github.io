@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=df3afa4ba2df">
-  <script type="module" src="./app.js?v=6128ce53d2df"></script>
+  <link rel="stylesheet" href="./styles.css?v=847acc0ff9b9">
+  <script type="module" src="./app.js?v=4a8b9aa5b80f"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -62,6 +62,7 @@
         <a class="lecture-entry" id="linked-views-lab-nav" href="#linked-views-lab">Linked Views Review Lab</a>
         <a class="lecture-entry" id="growth-scales-lab-nav" href="#growth-scales-lab">Comparative Growth and Scales Lab</a>
         <a class="lecture-entry" id="refresh-alert-lab-nav" href="#refresh-alert-lab">Refresh and Alert Evidence Lab</a>
+        <a class="lecture-entry" id="correlation-search-lab-nav" href="#correlation-search-lab">Correlation After Search Lab</a>
         <a class="lecture-entry" id="hierarchy-lab-nav" href="#hierarchy-lab">Hierarchy Lab</a>
         <a class="lecture-entry" id="distribution-lab-nav" href="#distribution-lab">Distribution Lab</a>
         <a class="lecture-entry" id="aggregation-lab-nav" href="#aggregation-lab">SQL Aggregation Lab</a>
@@ -713,6 +714,22 @@
           <a href="#refresh-alert-lab/review" data-refresh-alert-activity="review">Input and status review</a>
         </nav>
         <div id="refresh-alert-activities"></div>
+      </div>
+    </main>
+    <main id="correlation-search-workshop" aria-labelledby="correlation-search-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 · Day 25</div>
+        <h1 id="correlation-search-title" tabindex="-1">Correlation After Search Lab</h1>
+        <p>Screen six rank correlations, compare the strongest result with an exact chance baseline, and test a frozen rule on a second synthetic batch.</p>
+      </header>
+      <p id="correlation-search-load-status" role="status">Loading rank correlation activities…</p>
+      <div id="correlation-search-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Correlation after search activities">
+          <a href="#correlation-search-lab/screen" data-correlation-search-activity="screen">Screen correlations</a>
+          <a href="#correlation-search-lab/null" data-correlation-search-activity="null">Compare chance baselines</a>
+          <a href="#correlation-search-lab/holdout" data-correlation-search-activity="holdout">Freeze and verify</a>
+        </nav>
+        <div id="correlation-search-activities"></div>
       </div>
     </main>
     <section id="lecture-library" aria-labelledby="library-title" hidden>
