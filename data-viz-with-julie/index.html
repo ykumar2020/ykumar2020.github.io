@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=23d7a981984f">
-  <script type="module" src="./app.js?v=eaf5be481ba7"></script>
+  <link rel="stylesheet" href="./styles.css?v=8e5b9f4e2f6f">
+  <script type="module" src="./app.js?v=fc4f6d1eed6b"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -432,14 +432,15 @@
       <header class="lesson-header">
         <div class="lesson-kicker">CPS 5745 · Day 24</div>
         <h1 id="hierarchy-title" tabindex="-1">Hierarchy Lab</h1>
-        <p>Read allocated hours as rectangle area, inspect a small item by opening its branch, and trace how leaves add up to a course total.</p>
+        <p>Read allocated hours as rectangle area, inspect a small item by opening its branch, trace how leaves add up to a course total, and compare angles and depth in a sunburst.</p>
       </header>
       <p id="hierarchy-load-status" role="status">Loading hierarchy activities…</p>
-      <div id="hierarchy-lab-content" hidden>
+      <div id="hierarchy-lab-content" class="hierarchy-lab-content" hidden>
         <nav class="comparison-tabs" aria-label="Hierarchy activities">
           <a href="#hierarchy-lab/area" data-hierarchy-activity="area">Treemap area</a>
           <a href="#hierarchy-lab/drilldown" data-hierarchy-activity="drilldown">Small items</a>
           <a href="#hierarchy-lab/rollup" data-hierarchy-activity="rollup">Roll up totals</a>
+          <a href="#hierarchy-lab/sunburst" data-hierarchy-activity="sunburst">Sunburst</a>
         </nav>
         <div id="hierarchy-activities"></div>
       </div>
