@@ -450,6 +450,25 @@ tr.selected { background: var(--accent-soft); }
 #census-terrain-status:empty { display: none; }
 :is(.encoding-exercise,.preparation-exercise,.time-series-exercise,.spatial-exercise,.mining-exercise,.dashboard-exercise,.hierarchy-exercise,.distribution-exercise,.aggregation-exercise,.color-exercise,.map-geometry-exercise,.model-fit-exercise,.image-transforms-exercise,.clustering-exercise,.prediction-exercise,.portfolio-exercise,.rendering-exercise,.live-updates-exercise,.coordinate-frames-exercise,.data-mart-exercise,.energy-demand-exercise,.text-evidence-exercise) { min-width: 0; margin-top: 12px; }
 :is(.encoding-panel,.preparation-panel,.time-series-panel,.spatial-panel,.mining-panel,.dashboard-panel,.hierarchy-panel,.distribution-panel,.aggregation-panel,.color-panel,.map-geometry-panel,.model-fit-panel,.image-transforms-panel,.clustering-panel,.prediction-panel,.portfolio-panel,.rendering-panel,.live-updates-panel,.coordinate-frames-panel,.data-mart-panel,.energy-demand-panel,.text-evidence-panel) > .data-export { margin-top: 12px; }
+.image-spatial-exercise { min-width: 0; margin-top: 12px; }
+.image-spatial-panel > .data-export { margin-top: 12px; }
+.image-spatial-ledger-table tr[data-selected="true"] > :first-child { color: var(--accent); }
+.image-spatial-exercise svg [role="button"]:focus-visible { outline: 2px solid var(--accent); }
+.image-spatial-endpoints > summary { min-height: 44px; }
+.image-spatial-coordinate-controls { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .5rem; margin-block: .65rem; }
+.image-spatial-endpoint-actions { display: flex; flex-wrap: wrap; gap: .5rem; }
+.image-spatial-endpoint-actions button { min-height: 44px; }
+.image-spatial-controls { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); }
+.image-spatial-profiles { display: grid; gap: .75rem; }
+@media (min-width: 980px) {
+  .image-spatial-controls { grid-template-columns: repeat(3,minmax(0,1fr)); }
+  .image-spatial-profiles {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    align-items: start;
+    width: min(100%,880px);
+    margin-inline: auto;
+  }
+}
 .chart-reproducibility-exercise { min-width: 0; margin-top: 12px; }
 .linked-views-exercise { min-width: 0; margin-top: 12px; }
 .growth-scales-exercise { min-width: 0; margin-top: 12px; }

@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=1ba6879e5b5a">
-  <script type="module" src="./app.js?v=df5b8bb6dda5"></script>
+  <link rel="stylesheet" href="./styles.css?v=a8865461d0cd">
+  <script type="module" src="./app.js?v=98e81a35b719"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -87,6 +87,7 @@
         <a class="lecture-entry" id="map-geometry-lab-nav" href="#map-geometry-lab">Map Geometry Lab</a>
         <a class="lecture-entry" id="model-fit-lab-nav" href="#model-fit-lab">Paired Data and Model Fit Lab</a>
         <a class="lecture-entry" id="image-transforms-lab-nav" href="#image-transforms-lab">Image Transformations Lab</a>
+        <a class="lecture-entry" id="image-spatial-lab-nav" href="#image-spatial-lab">Image Spatial Statistics Lab</a>
       </div>
     </aside>
     <main id="lesson" tabindex="-1">
@@ -222,6 +223,7 @@
         <a href="#course/day-13">Canvas and SVG lecture</a>
         <a href="#quiz/fall-2026/resources/slide-3">Workshop quiz</a>
         <a href="#image-transforms-lab">Image Transformations Lab</a>
+        <a href="#image-spatial-lab">Image Spatial Statistics Lab</a>
       </footer>
     </main>
     <main id="sampling-workshop" aria-labelledby="sampling-title" hidden>
@@ -530,6 +532,22 @@
           <a href="#image-transforms-lab/rgb-cube" data-image-transforms-activity="rgb-cube">RGB color cube</a>
         </nav>
         <div id="image-transforms-activities"></div>
+      </div>
+    </main>
+    <main id="image-spatial-workshop" aria-labelledby="image-spatial-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 · Study 2</div>
+        <h1 id="image-spatial-title" tabindex="-1">Image Spatial Statistics Lab</h1>
+        <p>Compare which pixels a selection includes, where intensities occur, and where intensity is centered.</p>
+      </header>
+      <p id="image-spatial-load-status" role="status">Loading image spatial statistics...</p>
+      <div id="image-spatial-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Image spatial statistics activities">
+          <a href="#image-spatial-lab/selection" data-image-spatial-activity="selection">Selection</a>
+          <a href="#image-spatial-lab/profiles" data-image-spatial-activity="profiles">Profiles</a>
+          <a href="#image-spatial-lab/centroid" data-image-spatial-activity="centroid">Center of intensity</a>
+        </nav>
+        <div id="image-spatial-activities"></div>
       </div>
     </main>
     <main id="clustering-workshop" aria-labelledby="clustering-title" hidden>
