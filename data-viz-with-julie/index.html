@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=79bbe2a94ada">
-  <script type="module" src="./app.js?v=ba29f6da7694"></script>
+  <link rel="stylesheet" href="./styles.css?v=c1a72c20ff9a">
+  <script type="module" src="./app.js?v=7d83a7188443"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -89,6 +89,7 @@
         <a class="lecture-entry" id="aggregation-lab-nav" href="#aggregation-lab">SQL Aggregation Lab</a>
         <a class="lecture-entry" id="color-lab-nav" href="#color-lab">Color and Perception Lab</a>
         <a class="lecture-entry" id="map-geometry-lab-nav" href="#map-geometry-lab">Map Geometry Lab</a>
+        <a class="lecture-entry" id="directed-routes-lab-nav" href="#directed-routes-lab">Directed Map Routes and Reachability Lab</a>
         <a class="lecture-entry" id="model-fit-lab-nav" href="#model-fit-lab">Paired Data and Model Fit Lab</a>
         <a class="lecture-entry" id="image-transforms-lab-nav" href="#image-transforms-lab">Image Transformations Lab</a>
         <a class="lecture-entry" id="image-spatial-lab-nav" href="#image-spatial-lab">Image Spatial Statistics Lab</a>
@@ -504,6 +505,22 @@
           <a href="#map-geometry-lab/routes" data-map-geometry-activity="routes">Great-circle routes</a>
         </nav>
         <div id="map-geometry-activities"></div>
+      </div>
+    </main>
+    <main id="directed-routes-workshop" aria-labelledby="directed-routes-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 · Days 14 and 15</div>
+        <h1 id="directed-routes-title" tabindex="-1">Directed Map Routes and Reachability Lab</h1>
+        <p>Read a marker bearing, compare route costs, and check where a directed closure leaves an open path.</p>
+      </header>
+      <p id="directed-routes-load-status" role="status">Loading directed map activities…</p>
+      <div id="directed-routes-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Directed map activities">
+          <a href="#directed-routes-lab/markers" data-directed-routes-activity="markers">Marker bearings</a>
+          <a href="#directed-routes-lab/route-cost" data-directed-routes-activity="route-cost">Route costs</a>
+          <a href="#directed-routes-lab/reachability" data-directed-routes-activity="reachability">Reachability</a>
+        </nav>
+        <div id="directed-routes-activities"></div>
       </div>
     </main>
     <main id="model-fit-workshop" aria-labelledby="model-fit-title" hidden>
