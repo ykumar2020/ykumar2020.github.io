@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=7baca3177d66">
-  <script type="module" src="./app.js?v=017580dd29b5"></script>
+  <link rel="stylesheet" href="./styles.css?v=ac602b0b3abd">
+  <script type="module" src="./app.js?v=dc662aeb4b88"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -64,6 +64,7 @@
         <a class="lecture-entry" id="refresh-alert-lab-nav" href="#refresh-alert-lab">Refresh and Alert Evidence Lab</a>
         <a class="lecture-entry" id="correlation-search-lab-nav" href="#correlation-search-lab">Correlation After Search Lab</a>
         <a class="lecture-entry" id="spreadsheet-references-lab-nav" href="#spreadsheet-references-lab">Spreadsheet References and Lookups Lab</a>
+        <a class="lecture-entry" id="browser-event-routing-lab-nav" href="#browser-event-routing-lab">Browser Event Routing Lab</a>
         <a class="lecture-entry" id="hierarchy-lab-nav" href="#hierarchy-lab">Hierarchy Lab</a>
         <a class="lecture-entry" id="distribution-lab-nav" href="#distribution-lab">Distribution Lab</a>
         <a class="lecture-entry" id="aggregation-lab-nav" href="#aggregation-lab">SQL Aggregation Lab</a>
@@ -747,6 +748,22 @@
           <a href="#spreadsheet-references-lab/index" data-spreadsheet-references-activity="index">Positions and keys</a>
         </nav>
         <div id="spreadsheet-references-activities"></div>
+      </div>
+    </main>
+    <main id="browser-event-routing-workshop" aria-labelledby="browser-event-routing-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 · Day 12</div>
+        <h1 id="browser-event-routing-title" tabindex="-1">Browser Event Routing Lab</h1>
+        <p>Follow a click through nested elements, compare listener cleanup policies, and handle clicks on marks added after a chart loads.</p>
+      </header>
+      <p id="browser-event-routing-load-status" role="status">Loading event routing activities…</p>
+      <div id="browser-event-routing-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Browser event routing activities">
+          <a href="#browser-event-routing-lab/propagation" data-browser-event-routing-activity="propagation">Click propagation</a>
+          <a href="#browser-event-routing-lab/listeners" data-browser-event-routing-activity="listeners">Listener replacement</a>
+          <a href="#browser-event-routing-lab/delegation" data-browser-event-routing-activity="delegation">Delegate mark clicks</a>
+        </nav>
+        <div id="browser-event-routing-activities"></div>
       </div>
     </main>
     <section id="lecture-library" aria-labelledby="library-title" hidden>
