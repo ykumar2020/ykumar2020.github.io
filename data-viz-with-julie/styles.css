@@ -765,6 +765,80 @@ tr.selected { background: var(--accent-soft); }
     grid-template-columns: repeat(2,minmax(0,1fr));
   }
 }
+
+.matrix-activity {
+  display: grid;
+  grid-template-columns: minmax(0,1fr);
+  gap: 1rem;
+  min-width: 0;
+}
+
+.matrix-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(min(100%,12rem),1fr));
+}
+
+.portfolio-panel:has(> #portfolio-heading-matrix-consistency) :is(select,button,details > summary) {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.matrix-controls select { width: 100%; }
+.matrix-heatmap { min-width: 0; }
+.matrix-heatmap svg {
+  display: block;
+  width: min(100%,36rem);
+  height: auto;
+  margin-inline: auto;
+}
+
+.matrix-heat-cell { cursor: pointer; }
+.matrix-heat-cell:focus-visible { outline: 2px solid #fff0b9; outline-offset: 2px; }
+
+:is(.matrix-receipt,.matrix-diagnostic) h3 { margin: 0 0 .6rem; }
+:is(.matrix-receipt,.matrix-diagnostic) dl {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(min(100%,13rem),1fr));
+  gap: .65rem 1.15rem;
+  margin: 0;
+}
+
+:is(.matrix-receipt,.matrix-diagnostic) dt { font-size: .9rem; }
+:is(.matrix-receipt,.matrix-diagnostic) dd {
+  margin: .12rem 0 0;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+.matrix-diagnostic ul { margin-bottom: 0; padding-inline-start: 1.4rem; }
+
+.matrix-table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  margin-top: .7rem;
+}
+
+.matrix-membership {
+  width: 100%;
+  min-width: 42rem;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.matrix-membership :is(th,td) {
+  padding: .5rem;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+}
+
+.matrix-membership tr[data-included="false"] { color: var(--muted); }
+
+@media (max-width:390px) {
+  #portfolio-lab-content > .comparison-tabs {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+}
 .image-spatial-exercise { min-width: 0; margin-top: 12px; }
 .image-spatial-panel > .data-export { margin-top: 12px; }
 .image-spatial-ledger-table tr[data-selected="true"] > :first-child { color: var(--accent); }
