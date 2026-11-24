@@ -498,6 +498,10 @@ tr.selected { background: var(--accent-soft); }
 .animated-scatter-ledger-table { width: 100%; table-layout: fixed; margin-top: .5rem; }
 .animated-scatter-ledger-table th,.animated-scatter-ledger-table td { padding: .36rem .25rem; overflow-wrap: anywhere; }
 .animated-scatter-ledger-table tr[data-selected="true"] > :first-child { color: var(--accent); }
+.forecast-windows-exercise { min-width: 0; margin-top: 12px; }
+.forecast-windows-panel > .data-export { margin-top: 12px; }
+.forecast-windows-ledger-table tr[data-selected="true"] > :first-child { color: var(--accent); }
+.forecast-windows-exercise svg [role="button"]:focus-visible { outline: 2px solid var(--accent); }
 .table-reshaping-exercise { min-width: 0; margin-top: 12px; }
 .table-reshaping-panel > .data-export { margin-top: 12px; }
 .table-reshaping-ledger-table tr[data-selected="true"] > :first-child { color: var(--accent); }

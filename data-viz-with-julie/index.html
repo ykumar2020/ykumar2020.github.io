@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=855783c40bd3">
-  <script type="module" src="./app.js?v=c968c3526323"></script>
+  <link rel="stylesheet" href="./styles.css?v=2ba24ccd6a52">
+  <script type="module" src="./app.js?v=ac4c2a7ce07a"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -75,6 +75,7 @@
         <a class="lecture-entry" id="location-evidence-lab-nav" href="#location-evidence-lab">Nearby Data and Location Uncertainty Lab</a>
         <a class="lecture-entry" id="data-disclosure-lab-nav" href="#data-disclosure-lab">Data Release and Disclosure Lab</a>
         <a class="lecture-entry" id="animated-scatter-lab-nav" href="#animated-scatter-lab">Animated Scatter and Density Lab</a>
+        <a class="lecture-entry" id="forecast-windows-lab-nav" href="#forecast-windows-lab">Moving Windows and Forecast Checks Lab</a>
         <a class="lecture-entry" id="table-reshaping-lab-nav" href="#table-reshaping-lab">Pivots, Replicates, and Round Trips Lab</a>
         <a class="lecture-entry" id="classifier-decisions-lab-nav" href="#classifier-decisions-lab">Calibration, Base Rates, and Decision Costs Lab</a>
         <a class="lecture-entry" id="chart-debugging-lab-nav" href="#chart-debugging-lab">Chart Debugging and Regression Lab</a>
@@ -944,6 +945,22 @@
           <a href="#animated-scatter-lab/density" data-animated-scatter-activity="density">Bin density</a>
         </nav>
         <div id="animated-scatter-activities"></div>
+      </div>
+    </main>
+    <main id="forecast-windows-workshop" aria-labelledby="forecast-windows-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 &#183; Days 24, 25 and 27</div>
+        <h1 id="forecast-windows-title" tabindex="-1">Moving Windows and Forecast Checks Lab</h1>
+        <p>Compare rolling windows, check which reports were available at issue, and score two fixed forecasts.</p>
+      </header>
+      <p id="forecast-windows-load-status" role="status">Loading forecast activities...</p>
+      <div id="forecast-windows-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Forecast activities">
+          <a href="#forecast-windows-lab/windows" data-forecast-windows-activity="windows">Windows</a>
+          <a href="#forecast-windows-lab/availability" data-forecast-windows-activity="availability">Issue time</a>
+          <a href="#forecast-windows-lab/walk-forward" data-forecast-windows-activity="walk-forward">Forecast checks</a>
+        </nav>
+        <div id="forecast-windows-activities"></div>
       </div>
     </main>
     <main id="table-reshaping-workshop" aria-labelledby="table-reshaping-title" hidden>
