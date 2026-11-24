@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=a8865461d0cd">
-  <script type="module" src="./app.js?v=98e81a35b719"></script>
+  <link rel="stylesheet" href="./styles.css?v=a7c297499c48">
+  <script type="module" src="./app.js?v=d9fd7424ffe1"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -77,6 +77,7 @@
         <a class="lecture-entry" id="animated-scatter-lab-nav" href="#animated-scatter-lab">Animated Scatter and Density Lab</a>
         <a class="lecture-entry" id="forecast-windows-lab-nav" href="#forecast-windows-lab">Moving Windows and Forecast Checks Lab</a>
         <a class="lecture-entry" id="spatial-overlay-lab-nav" href="#spatial-overlay-lab">Spatial Membership, Clipping, and Allocation Lab</a>
+        <a class="lecture-entry" id="retail-bridge-lab-nav" href="#retail-bridge-lab">Retail Sales, Margin, and Availability Lab</a>
         <a class="lecture-entry" id="table-reshaping-lab-nav" href="#table-reshaping-lab">Pivots, Replicates, and Round Trips Lab</a>
         <a class="lecture-entry" id="classifier-decisions-lab-nav" href="#classifier-decisions-lab">Calibration, Base Rates, and Decision Costs Lab</a>
         <a class="lecture-entry" id="chart-debugging-lab-nav" href="#chart-debugging-lab">Chart Debugging and Regression Lab</a>
@@ -996,6 +997,22 @@
           <a href="#spatial-overlay-lab/allocation" data-spatial-overlay-activity="allocation">Allocation</a>
         </nav>
         <div id="spatial-overlay-activities"></div>
+      </div>
+    </main>
+    <main id="retail-bridge-workshop" aria-labelledby="retail-bridge-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 &#183; Day 18</div>
+        <h1 id="retail-bridge-title" tabindex="-1">Retail Sales, Margin, and Availability Lab</h1>
+        <p>Reconcile sales and gross margin, trace a sales change, and check how much of the trading day has stock records.</p>
+      </header>
+      <p id="retail-bridge-load-status" role="status">Loading retail activities...</p>
+      <div id="retail-bridge-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Retail activities">
+          <a href="#retail-bridge-lab/margin" data-retail-bridge-activity="margin">Gross margin</a>
+          <a href="#retail-bridge-lab/bridge" data-retail-bridge-activity="bridge">Volume, mix, and price</a>
+          <a href="#retail-bridge-lab/availability" data-retail-bridge-activity="availability">Stock availability</a>
+        </nav>
+        <div id="retail-bridge-activities"></div>
       </div>
     </main>
     <main id="table-reshaping-workshop" aria-labelledby="table-reshaping-title" hidden>

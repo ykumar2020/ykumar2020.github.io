@@ -525,6 +525,16 @@ tr.selected { background: var(--accent-soft); }
 .spatial-overlay-panel > .data-export { margin-top: 12px; }
 .spatial-overlay-ledger-table tr[data-selected="true"] > :first-child { color: var(--accent); }
 .spatial-overlay-exercise svg [role="button"]:focus-visible { outline: 2px solid var(--accent); }
+.retail-bridge-exercise { min-width: 0; margin-top: 12px; }
+.retail-bridge-panel > .data-export { margin-top: 12px; }
+.retail-bridge-controls { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); }
+.retail-bridge-exercise details > summary { min-height: 44px; }
+.retail-bridge-ledger-table { font-variant-numeric: tabular-nums; }
+.retail-bridge-ledger-table tr[data-selected="true"] > :first-child { color: var(--accent); }
+.retail-bridge-exercise svg [role="button"]:focus-visible { outline: 2px solid var(--accent); }
+@media (min-width: 980px) {
+  .retail-bridge-controls { grid-template-columns: repeat(3,minmax(0,1fr)); }
+}
 .table-reshaping-exercise { min-width: 0; margin-top: 12px; }
 .table-reshaping-panel > .data-export { margin-top: 12px; }
 .table-reshaping-ledger-table tr[data-selected="true"] > :first-child { color: var(--accent); }
