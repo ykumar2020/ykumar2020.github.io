@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=98ee09064707">
-  <script type="module" src="./app.js?v=f4e5cb9ac72d"></script>
+  <link rel="stylesheet" href="./styles.css?v=866a3f97e7d8">
+  <script type="module" src="./app.js?v=398d5944569f"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -66,6 +66,7 @@
         <a class="lecture-entry" id="spreadsheet-references-lab-nav" href="#spreadsheet-references-lab">Spreadsheet References and Lookups Lab</a>
         <a class="lecture-entry" id="browser-event-routing-lab-nav" href="#browser-event-routing-lab">Browser Event Routing Lab</a>
         <a class="lecture-entry" id="calendar-clocks-lab-nav" href="#calendar-clocks-lab">Calendar Boundaries and Clocks Lab</a>
+        <a class="lecture-entry" id="file-shape-lab-nav" href="#file-shape-lab">File Shape and Schema Lab</a>
         <a class="lecture-entry" id="hierarchy-lab-nav" href="#hierarchy-lab">Hierarchy Lab</a>
         <a class="lecture-entry" id="distribution-lab-nav" href="#distribution-lab">Distribution Lab</a>
         <a class="lecture-entry" id="aggregation-lab-nav" href="#aggregation-lab">SQL Aggregation Lab</a>
@@ -781,6 +782,22 @@
           <a href="#calendar-clocks-lab/fold" data-calendar-clocks-activity="fold">Repeated local hour</a>
         </nav>
         <div id="calendar-clocks-activities"></div>
+      </div>
+    </main>
+    <main id="file-shape-workshop" aria-labelledby="file-shape-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 · Days 14 and 27</div>
+        <h1 id="file-shape-title" tabindex="-1">File Shape and Schema Lab</h1>
+        <p>Trace CSV fields across physical lines, match JSON columns by key, and check measurement units before plotting.</p>
+      </header>
+      <p id="file-shape-load-status" role="status">Loading file shape and schema activities…</p>
+      <div id="file-shape-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="File shape and schema activities">
+          <a href="#file-shape-lab/csv" data-file-shape-activity="csv">Quoted CSV records</a>
+          <a href="#file-shape-lab/json" data-file-shape-activity="json">JSON keys</a>
+          <a href="#file-shape-lab/schema" data-file-shape-activity="schema">Validate chart units</a>
+        </nav>
+        <div id="file-shape-activities"></div>
       </div>
     </main>
     <section id="lecture-library" aria-labelledby="library-title" hidden>
