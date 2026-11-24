@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=888d922ce286">
-  <script type="module" src="./app.js?v=f8da45553ea5"></script>
+  <link rel="stylesheet" href="./styles.css?v=a34c2f965424">
+  <script type="module" src="./app.js?v=ddc0e50d938b"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -40,6 +40,7 @@
       <div class="course-outline-links" id="course-outline-links">
         <nav id="course-nav" aria-label="Units and lessons"></nav>
         <a class="lecture-entry" href="#course">Fall 2026 lectures</a>
+        <a class="lecture-entry directory-link" href="#labs">Find an interactive lab</a>
         <a class="lecture-entry" id="comparison-lab-nav" href="#comparison-lab">Comparison Lab</a>
         <a class="lecture-entry" id="census-lab-nav" href="#census-lab">Census Lab</a>
         <a class="lecture-entry" id="encoding-lab-nav" href="#encoding-lab">Encoding Lab</a>
@@ -173,6 +174,29 @@
         </div>
       </section>
       <footer class="footer"><span id="course-note"></span> <a href="https://ykumar2020.github.io/">Yulia (Julie) Kumar</a></footer>
+    </main>
+    <main id="lab-directory" aria-labelledby="lab-directory-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 &#183; Fall 2026</div>
+        <h1 id="lab-directory-title" tabindex="-1">Find an interactive lab</h1>
+        <p>Search by a lab title or an activity topic.</p>
+      </header>
+      <form class="lab-directory-filter" role="search" aria-label="Find course labs">
+        <label for="lab-directory-query">Lab title or topic</label>
+        <div>
+          <input id="lab-directory-query" type="search" autocomplete="off" aria-controls="lab-directory-results">
+          <button type="submit">Show matches</button>
+          <button type="reset">Clear</button>
+        </div>
+      </form>
+      <section aria-labelledby="lab-directory-results-title">
+        <h2 id="lab-directory-results-title" tabindex="-1">Matching labs</h2>
+        <p role="status"></p>
+        <ul id="lab-directory-results"></ul>
+      </section>
+      <nav class="fall-links" aria-label="Return to course">
+        <a href="#course">Browse lectures and quizzes</a>
+      </nav>
     </main>
     <main id="fall-course" aria-labelledby="fall-title" hidden>
       <header class="lesson-header">
@@ -971,10 +995,16 @@
         <button type="button" id="deck-next" disabled>Next slide</button>
         <button type="button" id="deck-last" disabled>Last</button>
         <a id="deck-original" hidden target="_blank" rel="noopener">Open original PDF</a>
+        <a id="deck-companion" hidden>View matching Fall 2026 slide</a>
       </div>
       <div class="deck-stage" id="deck-stage" tabindex="0" aria-label="Original lecture slide">
         <p id="deck-empty">Select the course ZIP to view this lecture.</p>
       </div>
+      <details id="deck-text" class="comparison-note comparison-details" hidden>
+        <summary>Read original slide text</summary>
+        <p id="deck-text-status" role="status"></p>
+        <div id="deck-text-content"></div>
+      </details>
       <footer class="lecture-credit">
         <p id="lecture-author">Original lecture slides by Dr. Ching-yu (Austin) Huang.</p>
         <p>Teaching companion by <a href="https://ykumar2020.github.io/">Yulia (Julie) Kumar</a>.</p>
