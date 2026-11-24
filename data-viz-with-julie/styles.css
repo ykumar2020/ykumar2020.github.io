@@ -567,6 +567,19 @@ tr.selected { background: var(--accent-soft); }
 .contingency-chart svg [role="button"]:focus-visible { outline: 2px solid var(--accent); }
 .contingency-table { font-variant-numeric: tabular-nums; }
 .contingency-table tr[data-selected="true"] > :first-child { color: var(--accent); }
+.confidence-exercise { min-width: 0; margin-top: 12px; }
+.confidence-panel > .data-export { margin-top: 12px; }
+.confidence-controls { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,9rem),1fr)); }
+.confidence-panel :is(.confidence-controls select,.confidence-controls input,details > summary,
+  .pixel-modes button,.pixel-camera button,.pixel-volume-inspect select,.data-export) { min-width: 44px; min-height: 44px; }
+.confidence-chart { min-width: 0; }
+.confidence-chart svg { display: block; max-width: 100%; }
+.confidence-chart svg [role="button"]:focus-visible { outline: 2px solid var(--accent); }
+.confidence-exercise > output { display: block; margin: .65rem 0; }
+.confidence-receipt { overflow-wrap: anywhere; }
+.confidence-table { font-variant-numeric: tabular-nums; }
+.confidence-table td { overflow-wrap: anywhere; }
+.confidence-table tr[data-selected="true"] > :first-child { color: var(--accent); }
 .table-reshaping-exercise { min-width: 0; margin-top: 12px; }
 .table-reshaping-panel > .data-export { margin-top: 12px; }
 .table-reshaping-ledger-table tr[data-selected="true"] > :first-child { color: var(--accent); }
