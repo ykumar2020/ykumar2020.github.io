@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=847acc0ff9b9">
-  <script type="module" src="./app.js?v=9d16e4cd1975"></script>
+  <link rel="stylesheet" href="./styles.css?v=7baca3177d66">
+  <script type="module" src="./app.js?v=017580dd29b5"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -63,6 +63,7 @@
         <a class="lecture-entry" id="growth-scales-lab-nav" href="#growth-scales-lab">Comparative Growth and Scales Lab</a>
         <a class="lecture-entry" id="refresh-alert-lab-nav" href="#refresh-alert-lab">Refresh and Alert Evidence Lab</a>
         <a class="lecture-entry" id="correlation-search-lab-nav" href="#correlation-search-lab">Correlation After Search Lab</a>
+        <a class="lecture-entry" id="spreadsheet-references-lab-nav" href="#spreadsheet-references-lab">Spreadsheet References and Lookups Lab</a>
         <a class="lecture-entry" id="hierarchy-lab-nav" href="#hierarchy-lab">Hierarchy Lab</a>
         <a class="lecture-entry" id="distribution-lab-nav" href="#distribution-lab">Distribution Lab</a>
         <a class="lecture-entry" id="aggregation-lab-nav" href="#aggregation-lab">SQL Aggregation Lab</a>
@@ -730,6 +731,22 @@
           <a href="#correlation-search-lab/holdout" data-correlation-search-activity="holdout">Freeze and verify</a>
         </nav>
         <div id="correlation-search-activities"></div>
+      </div>
+    </main>
+    <main id="spreadsheet-references-workshop" aria-labelledby="spreadsheet-references-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 · Day 02</div>
+        <h1 id="spreadsheet-references-title" tabindex="-1">Spreadsheet References and Lookups Lab</h1>
+        <p>Trace a copied formula through its cells, compare exact keys with lower-bound lookups, and follow a cell through sorting.</p>
+      </header>
+      <p id="spreadsheet-references-load-status" role="status">Loading spreadsheet activities…</p>
+      <div id="spreadsheet-references-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Spreadsheet reference and lookup activities">
+          <a href="#spreadsheet-references-lab/references" data-spreadsheet-references-activity="references">Copied formulas</a>
+          <a href="#spreadsheet-references-lab/lookup" data-spreadsheet-references-activity="lookup">Exact and lower-bound lookups</a>
+          <a href="#spreadsheet-references-lab/index" data-spreadsheet-references-activity="index">Positions and keys</a>
+        </nav>
+        <div id="spreadsheet-references-activities"></div>
       </div>
     </main>
     <section id="lecture-library" aria-labelledby="library-title" hidden>
