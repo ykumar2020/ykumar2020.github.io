@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=38598e0e7582">
-  <script type="module" src="./app.js?v=1053684a65ed"></script>
+  <link rel="stylesheet" href="./styles.css?v=905a4d09c7a3">
+  <script type="module" src="./app.js?v=9e70051f997d"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -73,6 +73,7 @@
         <a class="lecture-entry" id="request-timing-lab-nav" href="#request-timing-lab">Requests, Queues, and Latency Budgets Lab</a>
         <a class="lecture-entry" id="location-evidence-lab-nav" href="#location-evidence-lab">Nearby Data and Location Uncertainty Lab</a>
         <a class="lecture-entry" id="data-disclosure-lab-nav" href="#data-disclosure-lab">Data Release and Disclosure Lab</a>
+        <a class="lecture-entry" id="animated-scatter-lab-nav" href="#animated-scatter-lab">Animated Scatter and Density Lab</a>
         <a class="lecture-entry" id="hierarchy-lab-nav" href="#hierarchy-lab">Hierarchy Lab</a>
         <a class="lecture-entry" id="distribution-lab-nav" href="#distribution-lab">Distribution Lab</a>
         <a class="lecture-entry" id="aggregation-lab-nav" href="#aggregation-lab">SQL Aggregation Lab</a>
@@ -900,6 +901,22 @@
           <a href="#data-disclosure-lab/history" data-data-disclosure-activity="history">Release history</a>
         </nav>
         <div id="data-disclosure-activities"></div>
+      </div>
+    </main>
+    <main id="animated-scatter-workshop" aria-labelledby="animated-scatter-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 · Days 01, 18, and 24</div>
+        <h1 id="animated-scatter-title" tabindex="-1">Animated Scatter and Density Lab</h1>
+        <p>Track cohorts across weeks, inspect overlapping marks, and compare densities at two bin widths.</p>
+      </header>
+      <p id="animated-scatter-load-status" role="status">Loading scatter and density activities…</p>
+      <div id="animated-scatter-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Scatter and density activities">
+          <a href="#animated-scatter-lab/motion" data-animated-scatter-activity="motion">Weekly motion</a>
+          <a href="#animated-scatter-lab/overlap" data-animated-scatter-activity="overlap">Overlapping marks</a>
+          <a href="#animated-scatter-lab/density" data-animated-scatter-activity="density">Bin density</a>
+        </nav>
+        <div id="animated-scatter-activities"></div>
       </div>
     </main>
     <section id="lecture-library" aria-labelledby="library-title" hidden>

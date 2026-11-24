@@ -472,6 +472,13 @@ tr.selected { background: var(--accent-soft); }
 .data-disclosure-ledger-table { width: 100%; table-layout: fixed; margin-top: .5rem; }
 .data-disclosure-ledger-table th,.data-disclosure-ledger-table td { padding: .36rem .25rem; overflow-wrap: anywhere; }
 .data-disclosure-ledger-table tr[data-selected="true"] th { color: var(--accent); }
+.animated-scatter-exercise { min-width: 0; margin-top: 12px; }
+.animated-scatter-panel > .data-export { margin-top: 12px; }
+.animated-scatter-exercise svg { max-width: 100%; }
+.animated-scatter-replay { align-self: end; min-height: 44px; margin: 0; }
+.animated-scatter-ledger-table { width: 100%; table-layout: fixed; margin-top: .5rem; }
+.animated-scatter-ledger-table th,.animated-scatter-ledger-table td { padding: .36rem .25rem; overflow-wrap: anywhere; }
+.animated-scatter-ledger-table tr[data-selected="true"] > :first-child { color: var(--accent); }
 .curves-cycle-player { align-self: end; min-height: 44px; margin: 0; }
 .curves-evidence-table { width: 100%; table-layout: fixed; margin-top: .5rem; }
 .curves-evidence-table th,.curves-evidence-table td { padding: .36rem .25rem; overflow-wrap: anywhere; }
