@@ -479,6 +479,10 @@ tr.selected { background: var(--accent-soft); }
 .animated-scatter-ledger-table { width: 100%; table-layout: fixed; margin-top: .5rem; }
 .animated-scatter-ledger-table th,.animated-scatter-ledger-table td { padding: .36rem .25rem; overflow-wrap: anywhere; }
 .animated-scatter-ledger-table tr[data-selected="true"] > :first-child { color: var(--accent); }
+.classifier-decisions-exercise { min-width: 0; margin-top: 12px; }
+.classifier-decisions-panel > .data-export { margin-top: 12px; }
+.classifier-decisions-ledger-table tr[data-selected="true"] > :first-child { color: var(--accent); }
+.classifier-decisions-exercise svg [role="button"]:focus-visible { outline: 2px solid var(--accent); }
 .chart-debugging-exercise { min-width: 0; margin-top: 12px; }
 .chart-debugging-panel > .data-export { margin-top: 12px; }
 .chart-debugging-exercise svg { max-width: 100%; }

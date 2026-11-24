@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=ae6bc9069687">
-  <script type="module" src="./app.js?v=51612315d9c2"></script>
+  <link rel="stylesheet" href="./styles.css?v=888d922ce286">
+  <script type="module" src="./app.js?v=f8da45553ea5"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -74,6 +74,7 @@
         <a class="lecture-entry" id="location-evidence-lab-nav" href="#location-evidence-lab">Nearby Data and Location Uncertainty Lab</a>
         <a class="lecture-entry" id="data-disclosure-lab-nav" href="#data-disclosure-lab">Data Release and Disclosure Lab</a>
         <a class="lecture-entry" id="animated-scatter-lab-nav" href="#animated-scatter-lab">Animated Scatter and Density Lab</a>
+        <a class="lecture-entry" id="classifier-decisions-lab-nav" href="#classifier-decisions-lab">Calibration, Base Rates, and Decision Costs Lab</a>
         <a class="lecture-entry" id="chart-debugging-lab-nav" href="#chart-debugging-lab">Chart Debugging and Regression Lab</a>
         <a class="lecture-entry" id="hierarchy-lab-nav" href="#hierarchy-lab">Hierarchy Lab</a>
         <a class="lecture-entry" id="distribution-lab-nav" href="#distribution-lab">Distribution Lab</a>
@@ -918,6 +919,22 @@
           <a href="#animated-scatter-lab/density" data-animated-scatter-activity="density">Bin density</a>
         </nav>
         <div id="animated-scatter-activities"></div>
+      </div>
+    </main>
+    <main id="classifier-decisions-workshop" aria-labelledby="classifier-decisions-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 ? Day 25</div>
+        <h1 id="classifier-decisions-title" tabindex="-1">Calibration, Base Rates, and Decision Costs Lab</h1>
+        <p>Compare forecasts with outcomes, then test how prevalence and error costs change a decision.</p>
+      </header>
+      <p id="classifier-decisions-load-status" role="status">Loading classifier activities?</p>
+      <div id="classifier-decisions-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Classifier activities">
+          <a href="#classifier-decisions-lab/calibration" data-classifier-decisions-activity="calibration">Calibration</a>
+          <a href="#classifier-decisions-lab/base-rates" data-classifier-decisions-activity="base-rates">Base rates</a>
+          <a href="#classifier-decisions-lab/costs" data-classifier-decisions-activity="costs">Decision costs</a>
+        </nav>
+        <div id="classifier-decisions-activities"></div>
       </div>
     </main>
     <main id="chart-debugging-workshop" aria-labelledby="chart-debugging-title" hidden>
