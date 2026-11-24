@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=a015b8d40271">
-  <script type="module" src="./app.js?v=4a3de7ba5763"></script>
+  <link rel="stylesheet" href="./styles.css?v=df3afa4ba2df">
+  <script type="module" src="./app.js?v=6128ce53d2df"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -61,6 +61,7 @@
         <a class="lecture-entry" id="choropleth-lab-nav" href="#choropleth-lab">Choropleth Evidence Lab</a>
         <a class="lecture-entry" id="linked-views-lab-nav" href="#linked-views-lab">Linked Views Review Lab</a>
         <a class="lecture-entry" id="growth-scales-lab-nav" href="#growth-scales-lab">Comparative Growth and Scales Lab</a>
+        <a class="lecture-entry" id="refresh-alert-lab-nav" href="#refresh-alert-lab">Refresh and Alert Evidence Lab</a>
         <a class="lecture-entry" id="hierarchy-lab-nav" href="#hierarchy-lab">Hierarchy Lab</a>
         <a class="lecture-entry" id="distribution-lab-nav" href="#distribution-lab">Distribution Lab</a>
         <a class="lecture-entry" id="aggregation-lab-nav" href="#aggregation-lab">SQL Aggregation Lab</a>
@@ -696,6 +697,22 @@
           <a href="#growth-scales-lab/signed" data-growth-scales-activity="signed">Signed scales</a>
         </nav>
         <div id="growth-scales-activities"></div>
+      </div>
+    </main>
+    <main id="refresh-alert-workshop" aria-labelledby="refresh-alert-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 · Days 26, 29, and 30</div>
+        <h1 id="refresh-alert-title" tabindex="-1">Refresh and Alert Evidence Lab</h1>
+        <p>Replay a dashboard timeout, inspect a simulated alert ledger, and compare what the dashboard reports after touch and keyboard input.</p>
+      </header>
+      <p id="refresh-alert-load-status" role="status">Loading refresh and alert activities…</p>
+      <div id="refresh-alert-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Refresh and alert activities">
+          <a href="#refresh-alert-lab/replay" data-refresh-alert-activity="replay">Refresh replay</a>
+          <a href="#refresh-alert-lab/alerts" data-refresh-alert-activity="alerts">Alert decisions</a>
+          <a href="#refresh-alert-lab/review" data-refresh-alert-activity="review">Input and status review</a>
+        </nav>
+        <div id="refresh-alert-activities"></div>
       </div>
     </main>
     <section id="lecture-library" aria-labelledby="library-title" hidden>
