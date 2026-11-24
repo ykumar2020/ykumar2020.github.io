@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=b50c541c5a11">
-  <script type="module" src="./app.js?v=a7f766f70031"></script>
+  <link rel="stylesheet" href="./styles.css?v=3154c1c856f1">
+  <script type="module" src="./app.js?v=35890817b1cd"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -79,6 +79,7 @@
         <a class="lecture-entry" id="spatial-overlay-lab-nav" href="#spatial-overlay-lab">Spatial Membership, Clipping, and Allocation Lab</a>
         <a class="lecture-entry" id="retail-bridge-lab-nav" href="#retail-bridge-lab">Retail Sales, Margin, and Availability Lab</a>
         <a class="lecture-entry" id="sql-ranked-lab-nav" href="#sql-ranked-lab">SQL Ranked Results and Paging Lab</a>
+        <a class="lecture-entry" id="contingency-lab-nav" href="#contingency-lab">Contingency Tables and Association Lab</a>
         <a class="lecture-entry" id="table-reshaping-lab-nav" href="#table-reshaping-lab">Pivots, Replicates, and Round Trips Lab</a>
         <a class="lecture-entry" id="classifier-decisions-lab-nav" href="#classifier-decisions-lab">Calibration, Base Rates, and Decision Costs Lab</a>
         <a class="lecture-entry" id="chart-debugging-lab-nav" href="#chart-debugging-lab">Chart Debugging and Regression Lab</a>
@@ -1030,6 +1031,22 @@
           <a href="#sql-ranked-lab/paging" data-sql-ranked-activity="paging">Paging across revisions</a>
         </nav>
         <div id="sql-ranked-activities"></div>
+      </div>
+    </main>
+    <main id="contingency-workshop" aria-labelledby="contingency-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 &#183; Day 18</div>
+        <h1 id="contingency-title" tabindex="-1">Contingency Tables and Association Lab</h1>
+        <p>Count recorded outcomes, build Pearson’s statistic cell by cell, and trace the exact assignment tail.</p>
+      </header>
+      <p id="contingency-load-status" role="status">Loading contingency activities...</p>
+      <div id="contingency-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Contingency activities">
+          <a href="#contingency-lab/observed" data-contingency-activity="observed">Observed counts</a>
+          <a href="#contingency-lab/statistic" data-contingency-activity="statistic">Pearson statistic</a>
+          <a href="#contingency-lab/tail" data-contingency-activity="tail">Exact tail</a>
+        </nav>
+        <div id="contingency-activities"></div>
       </div>
     </main>
     <main id="table-reshaping-workshop" aria-labelledby="table-reshaping-title" hidden>

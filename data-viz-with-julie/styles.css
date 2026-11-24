@@ -549,6 +549,24 @@ tr.selected { background: var(--accent-soft); }
 @media (min-width: 980px) {
   .sql-ranked-controls { grid-template-columns: repeat(3,minmax(0,1fr)); }
 }
+.contingency-exercise { min-width: 0; margin-top: 12px; }
+.contingency-panel > .data-export { margin-top: 12px; }
+.contingency-controls { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,9rem),1fr)); }
+.contingency-panel .contingency-controls select,.contingency-panel details > summary,
+.contingency-panel .pixel-modes button,.contingency-panel .pixel-camera button,
+.contingency-panel .pixel-volume-inspect select,.contingency-panel .data-export { min-height: 44px; }
+.contingency-controls input {
+  min-width: 0; width: 100%; min-height: 44px; padding: .36rem .55rem;
+  color: var(--ink); background: var(--raised); border: 1px solid #7f5b93; border-radius: 7px;
+}
+.contingency-exercise > output { display: block; margin: .65rem 0; }
+.contingency-receipt p { margin: .28rem 0; overflow-wrap: anywhere; }
+.contingency-receipt-heading { color: var(--ink); font-weight: 650; }
+.contingency-chart { min-width: 0; }
+.contingency-chart svg { display: block; max-width: 100%; }
+.contingency-chart svg [role="button"]:focus-visible { outline: 2px solid var(--accent); }
+.contingency-table { font-variant-numeric: tabular-nums; }
+.contingency-table tr[data-selected="true"] > :first-child { color: var(--accent); }
 .table-reshaping-exercise { min-width: 0; margin-top: 12px; }
 .table-reshaping-panel > .data-export { margin-top: 12px; }
 .table-reshaping-ledger-table tr[data-selected="true"] > :first-child { color: var(--accent); }
