@@ -459,6 +459,12 @@ tr.selected { background: var(--accent-soft); }
 .request-timing-table { width: 100%; table-layout: fixed; margin-top: .5rem; }
 .request-timing-table th,.request-timing-table td { padding: .36rem .25rem; overflow-wrap: anywhere; }
 .request-timing-table tr[data-selected="true"] th { color: #fedb99; }
+.location-evidence-exercise { min-width: 0; margin-top: 12px; }
+.location-evidence-panel > .data-export { margin-top: 12px; }
+.location-evidence-replay { align-self: end; min-height: 44px; margin: 0; }
+.location-evidence-2d { min-width: 0; margin-top: .65rem; }
+.location-evidence-2d svg { max-width: 100%; }
+.location-evidence-exercise [data-location-ledger] [data-selected="true"] > summary { color: var(--accent); }
 .curves-cycle-player { align-self: end; min-height: 44px; margin: 0; }
 .curves-evidence-table { width: 100%; table-layout: fixed; margin-top: .5rem; }
 .curves-evidence-table th,.curves-evidence-table td { padding: .36rem .25rem; overflow-wrap: anywhere; }

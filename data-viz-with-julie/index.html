@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=36ba9eae6b8f">
-  <script type="module" src="./app.js?v=1e03304bc865"></script>
+  <link rel="stylesheet" href="./styles.css?v=3d687d072fbf">
+  <script type="module" src="./app.js?v=807b459da1cf"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -71,6 +71,7 @@
         <a class="lecture-entry" id="composition-rank-lab-nav" href="#composition-rank-lab">Composition, Rank, and Trend Lab</a>
         <a class="lecture-entry" id="curves-common-causes-lab-nav" href="#curves-common-causes-lab">Curves, Shared Peaks, and Common Causes Lab</a>
         <a class="lecture-entry" id="request-timing-lab-nav" href="#request-timing-lab">Requests, Queues, and Latency Budgets Lab</a>
+        <a class="lecture-entry" id="location-evidence-lab-nav" href="#location-evidence-lab">Nearby Data and Location Uncertainty Lab</a>
         <a class="lecture-entry" id="hierarchy-lab-nav" href="#hierarchy-lab">Hierarchy Lab</a>
         <a class="lecture-entry" id="distribution-lab-nav" href="#distribution-lab">Distribution Lab</a>
         <a class="lecture-entry" id="aggregation-lab-nav" href="#aggregation-lab">SQL Aggregation Lab</a>
@@ -866,6 +867,22 @@
           <a href="#request-timing-lab/budget" data-request-timing-activity="budget">Latency budget</a>
         </nav>
         <div id="request-timing-activities"></div>
+      </div>
+    </main>
+    <main id="location-evidence-workshop" aria-labelledby="location-evidence-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 · Day 26</div>
+        <h1 id="location-evidence-title" tabindex="-1">Nearby Data and Location Uncertainty Lab</h1>
+        <p>Compare location sources, filter nearby events, and trace the inputs behind a saved forecast.</p>
+      </header>
+      <p id="location-evidence-load-status" role="status">Loading location activities…</p>
+      <div id="location-evidence-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Location evidence activities">
+          <a href="#location-evidence-lab/sources" data-location-evidence-activity="sources">Location sources</a>
+          <a href="#location-evidence-lab/nearby" data-location-evidence-activity="nearby">Nearby events</a>
+          <a href="#location-evidence-lab/lookup" data-location-evidence-activity="lookup">Forecast lookup</a>
+        </nav>
+        <div id="location-evidence-activities"></div>
       </div>
     </main>
     <section id="lecture-library" aria-labelledby="library-title" hidden>
