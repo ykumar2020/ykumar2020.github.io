@@ -489,6 +489,19 @@ tr.selected { background: var(--accent-soft); }
 .followup-effects-panel > .data-export { margin-top: 12px; }
 .composition-rank-exercise { min-width: 0; margin-top: 12px; }
 .composition-rank-panel > .data-export { margin-top: 12px; }
+.temporal-composition-exercise { min-width: 0; margin-top: 12px; }
+.temporal-composition-panel > .data-export { margin-top: 12px; }
+.temporal-composition-controls { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,9rem),1fr)); }
+.temporal-composition-panel :is(.temporal-composition-controls select,.temporal-composition-controls button,details > summary,
+  .pixel-modes button,.pixel-camera button,.pixel-volume-inspect select,.data-export) { min-width: 44px; min-height: 44px; }
+.temporal-composition-chart { min-width: 0; }
+.temporal-composition-chart svg { display: block; max-width: 100%; }
+.temporal-composition-panel svg [role="button"]:focus-visible { outline: 2px solid var(--accent); }
+.temporal-composition-exercise > output { display: block; margin: .65rem 0; }
+.temporal-composition-receipt { overflow-wrap: anywhere; }
+.temporal-composition-table { font-variant-numeric: tabular-nums; }
+.temporal-composition-table td { overflow-wrap: anywhere; }
+.temporal-composition-table tr[data-selected="true"] > :first-child { color: var(--accent); }
 .curves-common-causes-exercise { min-width: 0; margin-top: 12px; }
 .curves-common-causes-panel > .data-export { margin-top: 12px; }
 .request-timing-exercise { min-width: 0; margin-top: 12px; }
