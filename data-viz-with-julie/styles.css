@@ -470,6 +470,107 @@ tr.selected { background: var(--accent-soft); }
 .sunburst-table { font-variant-numeric: tabular-nums; }
 .sunburst-table td { overflow-wrap: anywhere; }
 .sunburst-table tr[data-selected="true"] > :first-child { color: var(--accent); }
+
+.saddle-activity {
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.saddle-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+}
+
+.spatial-panel:has(> #spatial-heading-saddle) :is(select,button,details > summary) {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.saddle-controls select { width: 100%; }
+
+.saddle-map {
+  width: 100%;
+  min-width: 0;
+}
+
+.saddle-map svg {
+  display: block;
+  width: min(100%, 34rem);
+  height: auto;
+  margin-inline: auto;
+}
+
+.saddle-map-marker {
+  cursor: pointer;
+}
+
+.saddle-map-marker:focus-visible {
+  outline: 2px solid #fff3b7;
+  outline-offset: 2px;
+}
+
+.saddle-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .65rem 1.1rem;
+  margin: .25rem 0;
+  padding: 0;
+  list-style: none;
+  font-size: .9rem;
+}
+
+.saddle-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+}
+.saddle-legend li[hidden] { display: none; }
+
+.saddle-legend li::before {
+  content: "";
+  width: .85rem;
+  height: .85rem;
+  border-radius: .15rem;
+  background: var(--saddle-key);
+}
+
+.saddle-legend [data-saddle-key="level"] { --saddle-key: #77efe2; }
+.saddle-legend [data-saddle-key="area"] { --saddle-key: #8764b9; }
+.saddle-legend [data-saddle-key="probe"] { --saddle-key: #ef9ce6; }
+.saddle-legend [data-saddle-key="sample"] { --saddle-key: #ddcaf2; }
+.saddle-legend [data-saddle-key="level"]::before { height: .2rem; }
+.saddle-legend [data-saddle-key="split"]::before {
+  height: 0;
+  border-top: 2px dashed #cbb7e6;
+}
+.saddle-legend [data-saddle-key="probe"]::before,
+.saddle-legend [data-saddle-key="sample"]::before { border-radius: 50%; }
+
+.saddle-receipt h3 {
+  margin-block: 0 .6rem;
+}
+
+.saddle-receipt dl {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
+  gap: .6rem 1rem;
+  margin: 0;
+}
+
+.saddle-receipt dt { font-size: .88rem; }
+.saddle-receipt dd {
+  margin-inline-start: 0;
+  margin-block-start: .15rem;
+  font-weight: 650;
+}
+
+@media (max-width: 390px) {
+  #spatial-lab-content > .comparison-tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
 .image-spatial-exercise { min-width: 0; margin-top: 12px; }
 .image-spatial-panel > .data-export { margin-top: 12px; }
 .image-spatial-ledger-table tr[data-selected="true"] > :first-child { color: var(--accent); }
