@@ -571,6 +571,95 @@ tr.selected { background: var(--accent-soft); }
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+.quartile-rule-activity {
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.quartile-rule-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(min(100%,12rem),1fr));
+}
+
+.distribution-panel:has(> #distribution-heading-quartile-rules) :is(select,button,details > summary) {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.quartile-rule-controls select { width: 100%; }
+
+.quartile-rules-chart {
+  min-width: 0;
+}
+
+.quartile-rules-chart svg {
+  display: block;
+  width: min(100%,36rem);
+  height: auto;
+  margin-inline: auto;
+}
+
+.quartile-mark { cursor: pointer; }
+.quartile-mark:focus-visible { outline: 2px solid #fff8d5; outline-offset: 2px; }
+
+.quartile-rule-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .6rem 1rem;
+  padding: 0;
+  margin: .35rem 0;
+  list-style: none;
+  font-size: .9rem;
+}
+
+.quartile-rule-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+}
+
+.quartile-rule-legend li::before {
+  content: "";
+  width: .85rem;
+  height: .85rem;
+  border-radius: .2rem;
+  background: var(--quartile-key);
+}
+
+.quartile-rule-legend [data-quartile-key="observation"]::before { border-radius: 50%; }
+.quartile-rule-legend [data-quartile-key="flag"]::before {
+  width: .7rem;
+  height: .7rem;
+  border-radius: 0;
+  transform: rotate(45deg);
+}
+.quartile-rule-legend [data-quartile-key="whisker"]::before { height: .2rem; }
+.quartile-rule-legend [data-quartile-key="fence"]::before {
+  height: 0;
+  background: transparent;
+  border-top: 2px dashed var(--quartile-key);
+}
+
+.quartile-rule-receipt h3 { margin: 0 0 .6rem; }
+.quartile-rule-receipt dl {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(min(100%,12rem),1fr));
+  gap: .7rem 1.2rem;
+  margin: 0;
+}
+.quartile-rule-receipt dt { font-size: .9rem; }
+.quartile-rule-receipt dd { margin: .18rem 0 0; font-weight: 650; }
+.quartile-contributors { margin-bottom: 0; padding-inline-start: 1.35rem; }
+.quartile-contributors li + li { margin-top: .3rem; }
+
+@media (max-width:390px) {
+  #distribution-lab-content > .comparison-tabs {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+}
 .image-spatial-exercise { min-width: 0; margin-top: 12px; }
 .image-spatial-panel > .data-export { margin-top: 12px; }
 .image-spatial-ledger-table tr[data-selected="true"] > :first-child { color: var(--accent); }
