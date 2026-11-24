@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=2ba24ccd6a52">
-  <script type="module" src="./app.js?v=ac4c2a7ce07a"></script>
+  <link rel="stylesheet" href="./styles.css?v=1ba6879e5b5a">
+  <script type="module" src="./app.js?v=df5b8bb6dda5"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -76,6 +76,7 @@
         <a class="lecture-entry" id="data-disclosure-lab-nav" href="#data-disclosure-lab">Data Release and Disclosure Lab</a>
         <a class="lecture-entry" id="animated-scatter-lab-nav" href="#animated-scatter-lab">Animated Scatter and Density Lab</a>
         <a class="lecture-entry" id="forecast-windows-lab-nav" href="#forecast-windows-lab">Moving Windows and Forecast Checks Lab</a>
+        <a class="lecture-entry" id="spatial-overlay-lab-nav" href="#spatial-overlay-lab">Spatial Membership, Clipping, and Allocation Lab</a>
         <a class="lecture-entry" id="table-reshaping-lab-nav" href="#table-reshaping-lab">Pivots, Replicates, and Round Trips Lab</a>
         <a class="lecture-entry" id="classifier-decisions-lab-nav" href="#classifier-decisions-lab">Calibration, Base Rates, and Decision Costs Lab</a>
         <a class="lecture-entry" id="chart-debugging-lab-nav" href="#chart-debugging-lab">Chart Debugging and Regression Lab</a>
@@ -961,6 +962,22 @@
           <a href="#forecast-windows-lab/walk-forward" data-forecast-windows-activity="walk-forward">Forecast checks</a>
         </nav>
         <div id="forecast-windows-activities"></div>
+      </div>
+    </main>
+    <main id="spatial-overlay-workshop" aria-labelledby="spatial-overlay-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 &#183; Day 28</div>
+        <h1 id="spatial-overlay-title" tabindex="-1">Spatial Membership, Clipping, and Allocation Lab</h1>
+        <p>Resolve shared boundaries, measure the pieces of one footprint, and compare two area-based allocations.</p>
+      </header>
+      <p id="spatial-overlay-load-status" role="status">Loading spatial activities...</p>
+      <div id="spatial-overlay-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Spatial overlay activities">
+          <a href="#spatial-overlay-lab/membership" data-spatial-overlay-activity="membership">Membership</a>
+          <a href="#spatial-overlay-lab/clipping" data-spatial-overlay-activity="clipping">Clipping</a>
+          <a href="#spatial-overlay-lab/allocation" data-spatial-overlay-activity="allocation">Allocation</a>
+        </nav>
+        <div id="spatial-overlay-activities"></div>
       </div>
     </main>
     <main id="table-reshaping-workshop" aria-labelledby="table-reshaping-title" hidden>
