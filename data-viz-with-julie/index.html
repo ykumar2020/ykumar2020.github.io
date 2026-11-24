@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=d63d9f379d58">
-  <script type="module" src="./app.js?v=b4694ab02b72"></script>
+  <link rel="stylesheet" href="./styles.css?v=36ba9eae6b8f">
+  <script type="module" src="./app.js?v=1e03304bc865"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -70,6 +70,7 @@
         <a class="lecture-entry" id="followup-effects-lab-nav" href="#followup-effects-lab">Follow-up Effects and Missing Outcomes Lab</a>
         <a class="lecture-entry" id="composition-rank-lab-nav" href="#composition-rank-lab">Composition, Rank, and Trend Lab</a>
         <a class="lecture-entry" id="curves-common-causes-lab-nav" href="#curves-common-causes-lab">Curves, Shared Peaks, and Common Causes Lab</a>
+        <a class="lecture-entry" id="request-timing-lab-nav" href="#request-timing-lab">Requests, Queues, and Latency Budgets Lab</a>
         <a class="lecture-entry" id="hierarchy-lab-nav" href="#hierarchy-lab">Hierarchy Lab</a>
         <a class="lecture-entry" id="distribution-lab-nav" href="#distribution-lab">Distribution Lab</a>
         <a class="lecture-entry" id="aggregation-lab-nav" href="#aggregation-lab">SQL Aggregation Lab</a>
@@ -849,6 +850,22 @@
           <a href="#curves-common-causes-lab/association" data-curves-common-causes-activity="association">Common cause</a>
         </nav>
         <div id="curves-common-causes-activities"></div>
+      </div>
+    </main>
+    <main id="request-timing-workshop" aria-labelledby="request-timing-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 · Days 05, 06, and 24</div>
+        <h1 id="request-timing-title" tabindex="-1">Requests, Queues, and Latency Budgets Lab</h1>
+        <p>Follow four simulated requests through the server and browser, then compare queue and budget outcomes.</p>
+      </header>
+      <p id="request-timing-load-status" role="status">Loading request timing activities…</p>
+      <div id="request-timing-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Request timing activities">
+          <a href="#request-timing-lab/trace" data-request-timing-activity="trace">Request trace</a>
+          <a href="#request-timing-lab/queue" data-request-timing-activity="queue">Workers and queue</a>
+          <a href="#request-timing-lab/budget" data-request-timing-activity="budget">Latency budget</a>
+        </nav>
+        <div id="request-timing-activities"></div>
       </div>
     </main>
     <section id="lecture-library" aria-labelledby="library-title" hidden>
