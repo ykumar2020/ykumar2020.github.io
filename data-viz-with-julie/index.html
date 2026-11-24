@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=866a3f97e7d8">
-  <script type="module" src="./app.js?v=398d5944569f"></script>
+  <link rel="stylesheet" href="./styles.css?v=b415dfec595f">
+  <script type="module" src="./app.js?v=e8034f9634d7"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -67,6 +67,7 @@
         <a class="lecture-entry" id="browser-event-routing-lab-nav" href="#browser-event-routing-lab">Browser Event Routing Lab</a>
         <a class="lecture-entry" id="calendar-clocks-lab-nav" href="#calendar-clocks-lab">Calendar Boundaries and Clocks Lab</a>
         <a class="lecture-entry" id="file-shape-lab-nav" href="#file-shape-lab">File Shape and Schema Lab</a>
+        <a class="lecture-entry" id="followup-effects-lab-nav" href="#followup-effects-lab">Follow-up Effects and Missing Outcomes Lab</a>
         <a class="lecture-entry" id="hierarchy-lab-nav" href="#hierarchy-lab">Hierarchy Lab</a>
         <a class="lecture-entry" id="distribution-lab-nav" href="#distribution-lab">Distribution Lab</a>
         <a class="lecture-entry" id="aggregation-lab-nav" href="#aggregation-lab">SQL Aggregation Lab</a>
@@ -798,6 +799,22 @@
           <a href="#file-shape-lab/schema" data-file-shape-activity="schema">Validate chart units</a>
         </nav>
         <div id="file-shape-activities"></div>
+      </div>
+    </main>
+    <main id="followup-effects-workshop" aria-labelledby="followup-effects-title" hidden>
+      <header class="lesson-header">
+        <div class="lesson-kicker">CPS 5745 · Days 18 and 25</div>
+        <h1 id="followup-effects-title" tabindex="-1">Follow-up Effects and Missing Outcomes Lab</h1>
+        <p>Trace paired assignments, compare denominators, and measure how missing registrations can change a group difference.</p>
+      </header>
+      <p id="followup-effects-load-status" role="status">Loading follow-up study activities…</p>
+      <div id="followup-effects-lab-content" hidden>
+        <nav class="comparison-tabs" aria-label="Follow-up study activities">
+          <a href="#followup-effects-lab/assignment" data-followup-effects-activity="assignment">Paired assignment</a>
+          <a href="#followup-effects-lab/denominators" data-followup-effects-activity="denominators">Outcome denominators</a>
+          <a href="#followup-effects-lab/sensitivity" data-followup-effects-activity="sensitivity">Missing outcomes</a>
+        </nav>
+        <div id="followup-effects-activities"></div>
       </div>
     </main>
     <section id="lecture-library" aria-labelledby="library-title" hidden>
