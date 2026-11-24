@@ -535,6 +535,20 @@ tr.selected { background: var(--accent-soft); }
 @media (min-width: 980px) {
   .retail-bridge-controls { grid-template-columns: repeat(3,minmax(0,1fr)); }
 }
+.sql-ranked-exercise { min-width: 0; margin-top: 12px; }
+.sql-ranked-panel > .data-export { margin-top: 12px; }
+.sql-ranked-controls { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); }
+.sql-ranked-exercise details > summary { min-height: 44px; }
+.sql-ranked-exercise pre {
+  max-width: 100%; margin: .6rem 0; padding: .65rem; border: 1px solid var(--line); border-radius: 7px;
+  background: #1a1028; white-space: pre-wrap; overflow-wrap: anywhere;
+}
+.sql-ranked-ledger-table { font-variant-numeric: tabular-nums; }
+.sql-ranked-ledger-table tr[data-selected="true"] > :first-child { color: var(--accent); }
+.sql-ranked-exercise svg [role="button"]:focus-visible { outline: 2px solid var(--accent); }
+@media (min-width: 980px) {
+  .sql-ranked-controls { grid-template-columns: repeat(3,minmax(0,1fr)); }
+}
 .table-reshaping-exercise { min-width: 0; margin-top: 12px; }
 .table-reshaping-panel > .data-export { margin-top: 12px; }
 .table-reshaping-ledger-table tr[data-selected="true"] > :first-child { color: var(--accent); }
