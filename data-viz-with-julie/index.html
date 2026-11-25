@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=d65549214d54">
-  <script type="module" src="./app.js?v=5969af57e3b0"></script>
+  <link rel="stylesheet" href="./styles.css?v=765614221474">
+  <script type="module" src="./app.js?v=44481187ea59"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -29,6 +29,11 @@
       <span class="top-meta">CPS 5745 · Fall 2026</span>
     </div>
   </header>
+  <nav class="course-return" aria-label="Return navigation" hidden>
+    <a id="quiz-return" href="#foundations/visual-encoding" hidden>Back to lesson</a>
+    <a id="route-parent" hidden></a>
+    <a id="route-lectures" href="#course">All lectures</a>
+  </nav>
   <div class="layout">
     <aside class="course" id="course-outline" aria-label="Course outline">
       <div class="course-title">
@@ -174,12 +179,11 @@
         <div id="questions"></div>
         <div id="quiz-summary" hidden></div>
         <div class="quiz-actions">
-          <button type="button" id="quiz-prev">Back</button>
+          <button type="button" id="quiz-prev">Previous question</button>
           <button type="button" id="quiz-retry">Retry question</button>
           <button type="button" id="quiz-next" class="quiz-next">Next question</button>
         </div>
         <div class="quiz-footer">
-          <a id="quiz-return" href="#foundations/visual-encoding">Back to lesson</a>
           <button type="button" id="quiz-reset">Restart quiz</button>
         </div>
       </section>
