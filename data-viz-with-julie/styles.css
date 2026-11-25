@@ -298,7 +298,6 @@ body:has(#lesson:not([hidden]) #quiz:not([hidden])) .course-return { position: s
 .fall-example p + pre { margin-top: 10px; }
 .fall-example code { font: .9rem/1.55 Consolas, ui-monospace, monospace; color: #f7ddfe; }
 .fall-credit { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .4em 1em; margin-top: 24px; padding-top: 12px; border-top: 1px solid #d3a1e45a; font-size: .81rem; line-height: 1.4; color: var(--muted); }
-.fall-credit span:first-child { color: var(--accent); font-weight: 650; }
 .fall-navigation { justify-content: center; align-items: center; margin: 14px 0; }
 .fall-viewer > .fall-navigation { margin: 0 0 14px; }
 .fall-position { min-width: 4.5em; text-align: center; color: var(--muted); font-variant-numeric: tabular-nums; }

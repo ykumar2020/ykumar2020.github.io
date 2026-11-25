@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#12091d">
   <meta name="description" content="Explore data visualization through interactive 2D and 3D charts, lecture slides, and quizzes.">
   <title>Data Viz with Julie</title>
-  <link rel="stylesheet" href="./styles.css?v=01deaef704e2">
-  <script type="module" src="./app.js?v=7c9ed215474c"></script>
+  <link rel="stylesheet" href="./styles.css?v=fd333d6eb7b6">
+  <script type="module" src="./app.js?v=27ca18176c28"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">Skip to content</a>
@@ -26,7 +26,7 @@
         <a href="#sampling-lab" id="sampling-lab-nav">Sampling lab</a>
         <a href="#csv-lab" id="csv-lab-nav">CSV lab</a>
       </nav>
-      <span class="top-meta">CPS 5745 · Fall 2026</span>
+      <span class="top-meta">Interactive 2D and 3D</span>
     </div>
   </header>
   <nav class="course-return" aria-label="Return navigation" hidden>
@@ -35,16 +35,16 @@
     <a id="route-lectures" href="#course">All lectures</a>
   </nav>
   <div class="layout">
-    <aside class="course" id="course-outline" aria-label="Course outline">
+    <aside class="course" id="course-outline" aria-label="Topic outline">
       <div class="course-title">
-        <h2 id="course-outline-heading" tabindex="-1">Course outline</h2>
+        <h2 id="course-outline-heading" tabindex="-1">Topic outline</h2>
         <button class="course-outline-toggle" type="button" id="course-outline-toggle" aria-expanded="false"
-          aria-controls="course-outline-links">Course outline</button>
+          aria-controls="course-outline-links">Topic outline</button>
         <span id="course-progress" class="course-progress"></span>
       </div>
       <div class="course-outline-links" id="course-outline-links">
         <nav id="course-nav" aria-label="Units and lessons"></nav>
-        <a class="lecture-entry" href="#course">Fall 2026 lectures</a>
+        <a class="lecture-entry" href="#course">Lecture library</a>
         <a class="lecture-entry directory-link" href="#labs">Find an interactive lab</a>
         <a class="lecture-entry" id="comparison-lab-nav" href="#comparison-lab">Comparison Lab</a>
         <a class="lecture-entry" id="census-lab-nav" href="#census-lab">Census Lab</a>
@@ -187,15 +187,14 @@
           <button type="button" id="quiz-reset">Restart quiz</button>
         </div>
       </section>
-      <footer class="footer"><span id="course-note"></span> <a href="https://ykumar2020.github.io/">Yulia (Julie) Kumar</a></footer>
+      <footer class="footer"><span id="course-note"></span> <a href="https://ykumar2020.github.io/#projects">Explore more projects</a></footer>
     </main>
     <main id="lab-directory" aria-labelledby="lab-directory-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 &#183; Fall 2026</div>
         <h1 id="lab-directory-title" tabindex="-1">Find an interactive lab</h1>
         <p>Search by a lab title or an activity topic.</p>
       </header>
-      <form class="lab-directory-filter" role="search" aria-label="Find course labs">
+      <form class="lab-directory-filter" role="search" aria-label="Find visualization labs">
         <label for="lab-directory-query">Lab title or topic</label>
         <div>
           <input id="lab-directory-query" type="search" autocomplete="off" aria-controls="lab-directory-results">
@@ -208,21 +207,19 @@
         <p role="status"></p>
         <ul id="lab-directory-results"></ul>
       </section>
-      <nav class="fall-links" aria-label="Return to course">
+      <nav class="fall-links" aria-label="Return to topics">
         <a href="#course">Browse lectures and quizzes</a>
       </nav>
     </main>
     <main id="fall-course" aria-labelledby="fall-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Fall 2026</div>
         <h1 id="fall-title" tabindex="-1">Data Analytics and Visualization</h1>
-        <p>Lectures by <a href="https://ykumar2020.github.io/">Yulia (Julie) Kumar</a></p>
+        <p>Explore visualization topics through slides, labs, and quizzes.</p>
       </header>
       <p id="fall-status" role="status">Loading lectures…</p>
     </main>
     <main id="pixel-workshop" aria-labelledby="pixel-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Study 2</div>
         <h1 id="pixel-title" tabindex="-1">RGB Image Lab</h1>
         <p>Connect a drawn selection to the distribution of its pixel intensities.</p>
       </header>
@@ -238,7 +235,6 @@
     </main>
     <main id="sampling-workshop" aria-labelledby="sampling-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Foundations</div>
         <h1 id="sampling-title" tabindex="-1">Sampling Variability Lab</h1>
         <p>Explore how changing sample size changes the spread of sample means.</p>
       </header>
@@ -251,7 +247,6 @@
     </main>
     <main id="csv-workshop" aria-labelledby="csv-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Local data files</div>
         <h1 id="csv-title" tabindex="-1">CSV Scatterplot Lab</h1>
         <p>Choose which columns become coordinates and inspect the original record behind a point.</p>
       </header>
@@ -264,7 +259,6 @@
     </main>
     <main id="comparison-workshop" aria-labelledby="comparison-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Explore the data</div>
         <h1 id="comparison-title" tabindex="-1">Comparison Lab</h1>
         <p>Compare scatterplot shapes, see how group rates combine, and test which statistics hold up under an outlier.</p>
       </header>
@@ -278,7 +272,6 @@
     </main>
     <main id="census-workshop" aria-labelledby="census-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Geographic visualization</div>
         <h1 id="census-title" tabindex="-1">Census Lab</h1>
         <p>Compare where people live and how densely they live using the 2020 U.S. Census.</p>
       </header>
@@ -334,7 +327,6 @@
     </main>
     <main id="encoding-workshop" aria-labelledby="encoding-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Day 24</div>
         <h1 id="encoding-title" tabindex="-1">Encoding Lab</h1>
         <p>Change how you draw the data and inspect how that changes the comparisons readers make.</p>
       </header>
@@ -350,7 +342,6 @@
     </main>
     <main id="preparation-workshop" aria-labelledby="preparation-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Day 27</div>
         <h1 id="preparation-title" tabindex="-1">Data Preparation Lab</h1>
         <p>Trace how data preparation changes the records and measurements that reach a chart.</p>
       </header>
@@ -366,7 +357,6 @@
     </main>
     <main id="time-series-workshop" aria-labelledby="time-series-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Days 15 and 24</div>
         <h1 id="time-series-title" tabindex="-1">Time Series Lab</h1>
         <p>Check the spacing of dates, what happens at missing observations, and whether reporting periods cover comparable amounts of time.</p>
       </header>
@@ -382,7 +372,6 @@
     </main>
     <main id="spatial-workshop" aria-labelledby="spatial-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Days 13 and 28</div>
         <h1 id="spatial-title" tabindex="-1">Spatial Fields Lab</h1>
         <p>Explore a 3D elevation surface, follow a contour, read elevation along a route, and compare interpolation rules inside a saddle cell.</p>
       </header>
@@ -399,7 +388,6 @@
     </main>
     <main id="mining-workshop" aria-labelledby="mining-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Day 25</div>
         <h1 id="mining-title" tabindex="-1">Visual Mining Lab</h1>
         <p>Trace classification errors, compare distances after scaling a feature, and check which baskets count toward an association rule.</p>
       </header>
@@ -419,7 +407,6 @@
     </main>
     <main id="dashboard-workshop" aria-labelledby="dashboard-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Day 18</div>
         <h1 id="dashboard-title" tabindex="-1">Dashboard Evidence Lab</h1>
         <p>Follow a time filter across linked charts, check which traffic reports had arrived, and compare conversion rates for the same trips.</p>
       </header>
@@ -435,7 +422,6 @@
     </main>
     <main id="hierarchy-workshop" aria-labelledby="hierarchy-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Day 24</div>
         <h1 id="hierarchy-title" tabindex="-1">Hierarchy Lab</h1>
         <p>Read allocated hours as rectangle area, inspect a small item by opening its branch, trace how leaves add up to a course total, and compare angles and depth in a sunburst.</p>
       </header>
@@ -452,7 +438,6 @@
     </main>
     <main id="distribution-workshop" aria-labelledby="distribution-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Days 02, 24, and 28</div>
         <h1 id="distribution-title" tabindex="-1">Distribution Lab</h1>
         <p>Compare unequal histogram bins, inspect ties in a cumulative curve, and see how quartile and whisker rules affect boxplots and outlier flags.</p>
       </header>
@@ -469,7 +454,6 @@
     </main>
     <main id="aggregation-workshop" aria-labelledby="aggregation-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Days 3 and 4</div>
         <h1 id="aggregation-title" tabindex="-1">SQL Aggregation Lab</h1>
         <p>Check what SQL counts, when a filter runs, and which geographic keys define a group.</p>
       </header>
@@ -485,7 +469,6 @@
     </main>
     <main id="color-workshop" aria-labelledby="color-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Day 24</div>
         <h1 id="color-title" tabindex="-1">Color and Perception Lab</h1>
         <p>Compare visual cues, measure text contrast, inspect layer order, and see how color ramps change with interpolation space.</p>
       </header>
@@ -502,7 +485,6 @@
     </main>
     <main id="map-geometry-workshop" aria-labelledby="map-geometry-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Day 28</div>
         <h1 id="map-geometry-title" tabindex="-1">Map Geometry Lab</h1>
         <p>Interpret longitude and latitude, compare the same regions on two projections, and trace routes on a spherical Earth.</p>
       </header>
@@ -518,7 +500,6 @@
     </main>
     <main id="directed-routes-workshop" aria-labelledby="directed-routes-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Days 14 and 15</div>
         <h1 id="directed-routes-title" tabindex="-1">Directed Map Routes and Reachability Lab</h1>
         <p>Read a marker bearing, compare route costs, and check where a directed closure leaves an open path.</p>
       </header>
@@ -534,7 +515,6 @@
     </main>
     <main id="model-fit-workshop" aria-labelledby="model-fit-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Day 02</div>
         <h1 id="model-fit-title" tabindex="-1">Paired Data and Model Fit Lab</h1>
         <p>Pair observations by their keys, compare linear fits, and use residuals to see where a model misses.</p>
       </header>
@@ -550,7 +530,6 @@
     </main>
     <main id="image-transforms-workshop" aria-labelledby="image-transforms-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Day 13</div>
         <h1 id="image-transforms-title" tabindex="-1">Image Transformations Lab</h1>
         <p>Compare grayscale recipes, invert an independent image buffer, and trace where individual RGB values move in three dimensions.</p>
       </header>
@@ -566,7 +545,6 @@
     </main>
     <main id="image-spatial-workshop" aria-labelledby="image-spatial-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Study 2</div>
         <h1 id="image-spatial-title" tabindex="-1">Image Spatial Statistics Lab</h1>
         <p>Compare which pixels a selection includes, where intensities occur, and where intensity is centered.</p>
       </header>
@@ -582,7 +560,6 @@
     </main>
     <main id="clustering-workshop" aria-labelledby="clustering-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Day 25</div>
         <h1 id="clustering-title" tabindex="-1">Clustering Lab</h1>
         <p>Trace how k-means groups eight shuttle trips, compare alternate runs, and check an isolated record against its dispatch note.</p>
       </header>
@@ -598,7 +575,6 @@
     </main>
     <main id="prediction-workshop" aria-labelledby="prediction-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Day 25</div>
         <h1 id="prediction-title" tabindex="-1">Predictive Modeling Lab</h1>
         <p>Predict shuttle arrival from departure-time features, test a frozen tree, and trace how future information can inflate a score.</p>
       </header>
@@ -614,7 +590,6 @@
     </main>
     <main id="portfolio-workshop" aria-labelledby="portfolio-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Days 18 and 24</div>
         <h1 id="portfolio-title" tabindex="-1">Portfolio Charts Lab</h1>
         <p>Trace candles to trades, compare prices with returns, audit paired sessions, and check a correlation matrix for joint consistency.</p>
       </header>
@@ -631,7 +606,6 @@
     </main>
     <main id="rendering-workshop" aria-labelledby="rendering-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Days 13 and 24</div>
         <h1 id="rendering-title" tabindex="-1">Rendering Evidence Lab</h1>
         <p>Pick the same points in SVG and Canvas, measure browser work, and inspect the same data in two 3D renderers.</p>
       </header>
@@ -647,7 +621,6 @@
     </main>
     <main id="live-updates-workshop" aria-labelledby="live-updates-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Days 17 and 23</div>
         <h1 id="live-updates-title" tabindex="-1">Live Chart Updates Lab</h1>
         <p>Check responses, replay competing requests, and follow the marks that survive a data update.</p>
       </header>
@@ -663,7 +636,6 @@
     </main>
     <main id="coordinate-frames-workshop" aria-labelledby="coordinate-frames-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Days 12 and 13</div>
         <h1 id="coordinate-frames-title" tabindex="-1">Coordinate Frames and 3D Projection Lab</h1>
         <p>Trace a pointer through coordinate systems, reorder 3D transforms, and compare two cameras.</p>
       </header>
@@ -679,7 +651,6 @@
     </main>
     <main id="data-mart-workshop" aria-labelledby="data-mart-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Day 19</div>
         <h1 id="data-mart-title" tabindex="-1">Data Mart Query Lab</h1>
         <p>Filter hotel offers, compare a raw query with a summary table, and see which detail the mart can answer.</p>
       </header>
@@ -695,7 +666,6 @@
     </main>
     <main id="energy-demand-workshop" aria-labelledby="energy-demand-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Days 18 and 24</div>
         <h1 id="energy-demand-title" tabindex="-1">Energy and Demand Lab</h1>
         <p>Measure energy under a power trace, compare shared meter coverage, and find the system’s simultaneous peak.</p>
       </header>
@@ -711,7 +681,6 @@
     </main>
     <main id="text-evidence-workshop" aria-labelledby="text-evidence-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Day 18</div>
         <h1 id="text-evidence-title" tabindex="-1">Text Evidence Lab</h1>
         <p>Trace counts to words and documents, audit sentiment rules, and bound what missing records leave unknown.</p>
       </header>
@@ -727,7 +696,6 @@
     </main>
     <main id="chart-reproducibility-workshop" aria-labelledby="chart-reproducibility-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Days 27 and 28</div>
         <h1 id="chart-reproducibility-title" tabindex="-1">Chart Reproducibility Lab</h1>
         <p>Replay a Jupyter run, reproduce a scatterplot from a fixed dataset, and compare the saved marks with the intended filter.</p>
       </header>
@@ -743,7 +711,6 @@
     </main>
     <main id="choropleth-workshop" aria-labelledby="choropleth-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Days 19, 24 and 28</div>
         <h1 id="choropleth-title" tabindex="-1">Choropleth Evidence Lab</h1>
         <p>Check the records behind the map, compare counts with population rates, and see when the same rate changes color.</p>
       </header>
@@ -759,7 +726,6 @@
     </main>
     <main id="linked-views-workshop" aria-labelledby="linked-views-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Days 21–23</div>
         <h1 id="linked-views-title" tabindex="-1">Linked Views Review Lab</h1>
         <p>Combine two chart selections, trace which rides appear in each view, and check a repair for double counting.</p>
       </header>
@@ -775,7 +741,6 @@
     </main>
     <main id="growth-scales-workshop" aria-labelledby="growth-scales-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Days 23 and 24</div>
         <h1 id="growth-scales-title" tabindex="-1">Comparative Growth and Scales Lab</h1>
         <p>Compare population levels and relative growth, measure equal ratios on a log scale, and trace signed values through symlog.</p>
       </header>
@@ -791,7 +756,6 @@
     </main>
     <main id="refresh-alert-workshop" aria-labelledby="refresh-alert-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Days 26, 29, and 30</div>
         <h1 id="refresh-alert-title" tabindex="-1">Refresh and Alert Evidence Lab</h1>
         <p>Replay a dashboard timeout, inspect a simulated alert ledger, and compare what the dashboard reports after touch and keyboard input.</p>
       </header>
@@ -807,7 +771,6 @@
     </main>
     <main id="correlation-search-workshop" aria-labelledby="correlation-search-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Day 25</div>
         <h1 id="correlation-search-title" tabindex="-1">Correlation After Search Lab</h1>
         <p>Screen six rank correlations, compare the strongest result with an exact chance baseline, and test a frozen rule on a second synthetic batch.</p>
       </header>
@@ -823,7 +786,6 @@
     </main>
     <main id="spreadsheet-references-workshop" aria-labelledby="spreadsheet-references-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Day 02</div>
         <h1 id="spreadsheet-references-title" tabindex="-1">Spreadsheet References and Lookups Lab</h1>
         <p>Trace a copied formula through its cells, compare exact keys with lower-bound lookups, and follow a cell through sorting.</p>
       </header>
@@ -839,7 +801,6 @@
     </main>
     <main id="browser-event-routing-workshop" aria-labelledby="browser-event-routing-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Day 12</div>
         <h1 id="browser-event-routing-title" tabindex="-1">Browser Event Routing Lab</h1>
         <p>Follow a click through nested elements, compare listener cleanup policies, and handle clicks on marks added after a chart loads.</p>
       </header>
@@ -855,7 +816,6 @@
     </main>
     <main id="calendar-clocks-workshop" aria-labelledby="calendar-clocks-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Days 02, 15, and 26</div>
         <h1 id="calendar-clocks-title" tabindex="-1">Calendar Boundaries and Clocks Lab</h1>
         <p>Decode a workbook date, filter a day by two clocks, and identify the two instants behind a repeated local time.</p>
       </header>
@@ -871,7 +831,6 @@
     </main>
     <main id="file-shape-workshop" aria-labelledby="file-shape-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Days 14 and 27</div>
         <h1 id="file-shape-title" tabindex="-1">File Shape and Schema Lab</h1>
         <p>Trace CSV fields across physical lines, match JSON columns by key, and check measurement units before plotting.</p>
       </header>
@@ -887,7 +846,6 @@
     </main>
     <main id="followup-effects-workshop" aria-labelledby="followup-effects-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Days 18 and 25</div>
         <h1 id="followup-effects-title" tabindex="-1">Follow-up Effects and Missing Outcomes Lab</h1>
         <p>Trace paired assignments, compare denominators, and measure how missing registrations can change a group difference.</p>
       </header>
@@ -903,7 +861,6 @@
     </main>
     <main id="composition-rank-workshop" aria-labelledby="composition-rank-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Days 15 and 24</div>
         <h1 id="composition-rank-title" tabindex="-1">Composition, Rank, and Trend Lab</h1>
         <p>Use one help-desk ledger to compare shares of a whole, cumulative rank, and changes across months.</p>
       </header>
@@ -919,7 +876,6 @@
     </main>
     <main id="temporal-composition-workshop" aria-labelledby="temporal-composition-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Day 24</div>
         <h1 id="temporal-composition-title" tabindex="-1">Stacked Time Series and Composition Lab</h1>
         <p>Compare weekly counts and shares, reorder stacked layers, and check which periods support a complete stack.</p>
       </header>
@@ -935,7 +891,6 @@
     </main>
     <main id="curves-common-causes-workshop" aria-labelledby="curves-common-causes-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Day 25</div>
         <h1 id="curves-common-causes-title" tabindex="-1">Curves, Shared Peaks, and Common Causes Lab</h1>
         <p>Trace the same 20 observations through a curve, two repeated cycles, and a grouped comparison.</p>
       </header>
@@ -951,7 +906,6 @@
     </main>
     <main id="request-timing-workshop" aria-labelledby="request-timing-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Days 05, 06, and 24</div>
         <h1 id="request-timing-title" tabindex="-1">Requests, Queues, and Latency Budgets Lab</h1>
         <p>Follow four simulated requests through the server and browser, then compare queue and budget outcomes.</p>
       </header>
@@ -967,7 +921,6 @@
     </main>
     <main id="location-evidence-workshop" aria-labelledby="location-evidence-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Day 26</div>
         <h1 id="location-evidence-title" tabindex="-1">Nearby Data and Location Uncertainty Lab</h1>
         <p>Compare location sources, filter nearby events, and trace the inputs behind a saved forecast.</p>
       </header>
@@ -983,7 +936,6 @@
     </main>
     <main id="data-disclosure-workshop" aria-labelledby="data-disclosure-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Days 01, 19, and 25</div>
         <h1 id="data-disclosure-title" tabindex="-1">Data Release and Disclosure Lab</h1>
         <p>Compare report audiences, withhold selected counts, and review what two releases reveal together.</p>
       </header>
@@ -999,7 +951,6 @@
     </main>
     <main id="animated-scatter-workshop" aria-labelledby="animated-scatter-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Days 01, 18, and 24</div>
         <h1 id="animated-scatter-title" tabindex="-1">Animated Scatter and Density Lab</h1>
         <p>Track cohorts across weeks, inspect overlapping marks, and compare densities at two bin widths.</p>
       </header>
@@ -1015,7 +966,6 @@
     </main>
     <main id="forecast-windows-workshop" aria-labelledby="forecast-windows-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 &#183; Days 24, 25 and 27</div>
         <h1 id="forecast-windows-title" tabindex="-1">Moving Windows and Forecast Checks Lab</h1>
         <p>Compare rolling windows, check which reports were available at issue, and score two fixed forecasts.</p>
       </header>
@@ -1031,7 +981,6 @@
     </main>
     <main id="spatial-overlay-workshop" aria-labelledby="spatial-overlay-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 &#183; Day 28</div>
         <h1 id="spatial-overlay-title" tabindex="-1">Spatial Membership, Clipping, and Allocation Lab</h1>
         <p>Resolve shared boundaries, measure the pieces of one footprint, and compare two area-based allocations.</p>
       </header>
@@ -1047,7 +996,6 @@
     </main>
     <main id="retail-bridge-workshop" aria-labelledby="retail-bridge-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 &#183; Day 18</div>
         <h1 id="retail-bridge-title" tabindex="-1">Retail Sales, Margin, and Availability Lab</h1>
         <p>Reconcile sales and gross margin, trace a sales change, and check how much of the trading day has stock records.</p>
       </header>
@@ -1063,7 +1011,6 @@
     </main>
     <main id="sql-ranked-workshop" aria-labelledby="sql-ranked-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 &#183; Day 3</div>
         <h1 id="sql-ranked-title" tabindex="-1">SQL Ranked Results and Paging Lab</h1>
         <p>Run SQLite queries to inspect tied results, projected rows, and the next page after new records arrive.</p>
       </header>
@@ -1079,7 +1026,6 @@
     </main>
     <main id="contingency-workshop" aria-labelledby="contingency-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 &#183; Day 18</div>
         <h1 id="contingency-title" tabindex="-1">Contingency Tables and Association Lab</h1>
         <p>Count recorded outcomes, build Pearson’s statistic cell by cell, and trace the exact assignment tail.</p>
       </header>
@@ -1095,7 +1041,6 @@
     </main>
     <main id="confidence-workshop" aria-labelledby="confidence-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 &#183; Days 24 and 25</div>
         <h1 id="confidence-title" tabindex="-1">Confidence Intervals and Decision Rules Lab</h1>
         <p>Compare observed outcomes, read a Wilson interval, and check a decision rule against a stated target.</p>
       </header>
@@ -1111,7 +1056,6 @@
     </main>
     <main id="table-reshaping-workshop" aria-labelledby="table-reshaping-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 &#183; Days 4 and 27</div>
         <h1 id="table-reshaping-title" tabindex="-1">Pivots, Replicates, and Round Trips Lab</h1>
         <p>Trace rows into a grid, handle repeated keys, and check which original records return.</p>
       </header>
@@ -1127,7 +1071,6 @@
     </main>
     <main id="classifier-decisions-workshop" aria-labelledby="classifier-decisions-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 ? Day 25</div>
         <h1 id="classifier-decisions-title" tabindex="-1">Calibration, Base Rates, and Decision Costs Lab</h1>
         <p>Compare forecasts with outcomes, then test how prevalence and error costs change a decision.</p>
       </header>
@@ -1143,7 +1086,6 @@
     </main>
     <main id="chart-debugging-workshop" aria-labelledby="chart-debugging-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745 · Day 16</div>
         <h1 id="chart-debugging-title" tabindex="-1">Chart Debugging and Regression Lab</h1>
         <p>Trace the fields a chart receives, audit its mean, and test both endpoints of a date filter.</p>
       </header>
@@ -1159,7 +1101,6 @@
     </main>
     <section id="lecture-library" aria-labelledby="library-title" hidden>
       <header class="lesson-header">
-        <div class="lesson-kicker">CPS 5745</div>
         <h1 id="library-title" tabindex="-1">Fall 2025 source decks</h1>
         <p>31 decks. 927 slides. Open your course ZIP or select one of the original PDFs on this device.</p>
       </header>
@@ -1187,7 +1128,6 @@
       </details>
       <footer class="lecture-credit">
         <p id="lecture-author">Original lecture slides by Dr. Ching-yu (Austin) Huang.</p>
-        <p>Teaching companion by <a href="https://ykumar2020.github.io/">Yulia (Julie) Kumar</a>.</p>
         <p><a href="https://www.kean.edu/directory/ching-yu-austin-huang">Instructor profile</a> · <a href="https://kean.instructure.com/">Kean course access</a></p>
       </footer>
     </section>
@@ -1208,7 +1148,7 @@
       <button type="button" id="present-next">Next slide</button>
       <button type="button" id="present-last">Last</button>
     </div>
-    <p class="present-credit">Teaching companion by Yulia (Julie) Kumar · Based on CPS 5745 lectures by Dr. Ching-yu (Austin) Huang</p>
+    <p class="present-credit">Based on source lectures by Dr. Ching-yu (Austin) Huang.</p>
   </dialog>
   <noscript><p class="noscript">Enable JavaScript to open the charts and quizzes.</p></noscript>
 </body>
